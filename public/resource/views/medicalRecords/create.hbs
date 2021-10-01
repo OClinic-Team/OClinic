@@ -1,0 +1,73 @@
+<div class="container-create-medical-record" style="width: 100%;">
+        <div class="left-medical-record-create-form">
+            <h3 style="text-align: center;">HỒ SƠ BỆNH ÁN</h3>
+            <form method="POST" action="/medicalRecord/storeMedicalRecord">
+                <label for="namePatient">Họ và tên bệnh nhân</label> </form>
+                <textarea name="namePatient" style="margin-top: 5px;" id="" cols="80" rows="1">{{medicalRecord.namePatient}}</textarea>
+                
+        
+                <legend class="col-form-label col-sm-2 pt-0">Giới tính</legend>
+                <div class="col-sm-10">
+                    <div class="form-check m-1">
+                    <input class="form-check-input" type="radio" name="sex" id="gridRadios1" value="male" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                    Nam
+                    </label>
+                    </div>
+                    <div class="form-check m-1">
+                    <input class="form-check-input" type="radio" name="sex" id="gridRadios2" value="female">
+                    <label class="form-check-label" for="gridRadios2">
+                    Nữ
+                    </label>
+                </div>
+                <label for="bithDay">Ngày sinh</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="birthDay" placeholder="Nhập ngày sinh">
+                <label for="address">Địa chỉ</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="address" placeholder="Nhập địa chỉ">
+                <label for="phone">Số điện thoại</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="phone" placeholder="Nhập số điện thoại">
+                
+
+                <label for="diagnose">Triệu Chứng</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="symptom" rows="4"></textarea>
+
+                <label for="diagnose">Chuẩn đoán</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="diagnose" rows="4"></textarea>
+
+                <label for="prescription">Đơn thuốc</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="prescription" rows="3"></textarea>
+
+                <label for="note">Ghi Chú</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="note" rows="2"></textarea>
+                    </div>
+            
+                    <button  type="submit" class="btn btn-primary" style="margin: 10px 10px 100px 300px; " >Tạo hồ sơ</button>
+            </form>
+        </div>
+    <div class="right-medical-record-create-form">
+        <h1>Lịch sử khám bệnh</h1>
+        {{!-- <h4>Họ và tên: {{medicalrecords.namePatient}}</h4>
+        <h2>Địa Chỉ: {{medicalrecords.address}}</h2>
+        <h2>Số Điện Thoại: {{medicalrecords.phone}}</h2>
+        <h2>Ngày Sinh: {{medicalrecords.bithDay}}</h2>
+        <h2>Giới Tính: {{medicalrecords.sex}}</h2>
+        <h2>Triệu Chứng:{{medicalRecord.symptom}}</h2>
+        <h2>Chuẩn đoán: {{medicalrecords.diagnose}}</h2>
+        <h2>Đơn Thuốc: {{medicalrecords.prescription}}</h3> --}}
+        {{#each medicalRecord}}
+        <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Thời gian khám: {{medicalRecord.createdAt}}
+        </a>
+        
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">{{medicalRecord.symptom}}</a>
+            <a class="dropdown-item" href="#">{{medicalRecord.diagnose}}</a>
+            <a class="dropdown-item" href="#">{{medicalRecord.prescription}}</a>
+        </div>
+        </div>
+        {{else}}
+            <h3>Chưa có hồ sơ</h3>
+        {{/each}}
+    </div>
+</div>

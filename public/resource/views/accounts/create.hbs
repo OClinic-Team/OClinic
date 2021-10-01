@@ -1,0 +1,32 @@
+<div class='mt-4 container'>
+  <H3>Thêm Bác Sĩ</H3>
+
+  <form method='POST' action='/accounts/store'>
+    <div class='form-group'>
+      <label for='name'>Họ Và Tên</label>
+      <input type='text' class='form-control' id='name' name='name' />
+    </div>
+    <div class='form-group'>
+      <label for='description'>Mô Tả</label>
+      <input
+        type='text'
+        class='form-control'
+        id='description'
+        name='description'
+      />
+    </div>
+    <div class='form-group'>
+      <label for='khoa'>Chuyên Khoa</label>
+      <input type='text' class='form-control' id='khoa' name='khoa' />
+    </div>
+    <div class='form-group'>
+      <label for='time'>Lịch Làm Việc</label>
+      <input type='text' class='form-control' id='time' name='time' />
+    </div>
+    <div class='form-group'>
+      <label for='chungNhan'>Chứng Nhận</label>
+      <input type='text' class='form-control' id='chungNhan' name='chungNhan' />
+    </div>
+    <button type='submit' class='btn btn-primary'>Submit</button>
+  </form>
+</div>

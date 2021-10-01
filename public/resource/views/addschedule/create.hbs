@@ -1,0 +1,34 @@
+<div class='mt-4 container'>
+  <H3>Đăng Ký Lịch Làm</H3>
+  <form method='POST' action='/accounts/store'>
+    <div class='form-group'>
+      <label for='name'>Chọn ngày</label>
+        <div class="col-lg-4 col-md-9 col-sm-12">
+            <input type="datepicker" class="form-control" readonly placeholder="Chọn ngày"/>
+        </div>
+    </div>
+    <div class='form-group'>
+      <label for='name'>Thời gian</label>
+        <div class="col-lg-4 col-md-9 col-sm-12">
+            <input type="timepicker" class="form-control" readonly placeholder="Chọn thời gian"/>
+        </div>
+    </div>
+   <button type='Select' class='btn-select'>Chọn</button>
+    <div class='form-group'>
+      <label for='name'>Lịch</label>
+    </div>
+    <button type='submit' class='btn-submit'>Đăng Ký</button> 
+  </form>
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  flatpickr("input[type=datepicker]", {});
+</script>
+<script>
+  flatpickr("input[type=timepicker]", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+  });
+</script>
