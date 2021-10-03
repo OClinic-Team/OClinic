@@ -3,13 +3,8 @@ const app = express();
 var cookieParser = require('cookie-parser')
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
-const passport = require('passport');
-const cookieSession = require('cookie-session');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-require('./passport');
 const path = require('path');
 const port = 3000;
-
 
 const route = require('./routes');
 const db = require('./config/db');
@@ -47,40 +42,8 @@ io.on('connection', (socket) => {
         });
     });
 });
-//auth google login
-app.use(cookieSession({
-    name: 'tuto-session',
-    keys: ['key1', 'key2']
-}))
-const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-}
-app.use(passport.initialize());
-app.use(passport.session());
 
-app.get('/afterlogout', (req, res) => res.send('sau khi logout ban lam gi'));
-
-app.get('/fail', (req, res) => res.send('dang nhap that bai thi lam gi!!!'));
-app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong mr ${req.user.displayName}  !!! gio thi lam gi`));
-app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/fail' }),
-    function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/success');
-    });
-
-app.get('/logout', (req, res) => {
-
-        req.session = null;
-        req.logout();
-        res.redirect('/afterlogout');
-    })
-    //connect to data base
+//connect to data base
 db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
