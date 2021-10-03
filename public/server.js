@@ -48,6 +48,9 @@ io.on('connection', (socket) => {
     });
 });
 //auth google login
+const account_patient = require('./app/models/AccountPatient');
+const { mutileMongooseToObject } = require('./util/mongoose');
+const { mongooseToObject } = require('./util/mongoose');
 app.use(cookieSession({
     name: 'tuto-session',
     keys: ['key1', 'key2']
@@ -65,22 +68,35 @@ app.use(passport.session());
 app.get('/after-logout', (req, res) => res.send('sau khi logout ban lam gi'));
 
 app.get('/fail', (req, res) => res.send('dang nhap that bai thi lam gi!!!'));
-app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong ID: ${req.user.id} Name: ${req.user.displayName} Email:${req.user.emails[0].value} !!! gio thi lam gi`));
+app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong ID: ${req.user.id} Name: ${req.user.displayName} Email:${req.user.emails[0].value} photo:${req.user.photos[0].value}!!! gio thi lam gi`));
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/fail' }),
     function(req, res) {
-        // Successful authentication, redirect home.
-        //xữ lý data base ở đây
-        res.redirect('/success');
-        // res.redirect('/')=> chuyen ve home
+        const accounts_patient = new account_patient({
+            Id: req.user.id,
+            Name: req.user.displayName,
+            ImageURL: req.user.photos[0].value,
+            Email: req.user.emails[0].value
+        })
+        accounts_patient.save()
+            // .then(res.redirect('/success'));
+            .then((accounts_patient) => {
+                res.render('home', {
+                    accounts_patient: mongooseToObject(accounts_patient),
+                });
+            })
+            // Successful authentication, redirect home.
+            //xữ lý data base ở đây
+            // res.redirect('/success');
+            // res.redirect('/')=> chuyen ve home
     });
 
 app.get('/logout', (req, res) => {
 
         req.session = null;
-        req.logout();
-        res.redirect('/after-logout');
+        req.logout()
+            .then(res.redirect('home'))
     })
     //connect to data base
 db.connect();

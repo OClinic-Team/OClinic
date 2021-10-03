@@ -1,4 +1,4 @@
-const account_patient = require('../models/sginin');
+const account_patient = require('../models/AccountPatient');
 const { mutileMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 
@@ -8,17 +8,16 @@ class PatientController {
 
     login(req, res) {
         res.render('accountPatient/login');
-          // Cookies that have not been signed
-         console.log('Cookies: ', req.cookies)
+        // Cookies that have not been signed
+        console.log('Cookies: ', req.cookies)
 
-     // Cookies that have been signed
-         console.log('Signed Cookies: ', req.signedCookies)
+        // Cookies that have been signed
+        console.log('Signed Cookies: ', req.signedCookies)
     }
 
 
-    dangnhap(req,res)
-    {
-        
+    dangnhap(req, res) {
+
     }
 
     //[Get] accountPatient/sginin
