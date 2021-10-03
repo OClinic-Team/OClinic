@@ -64,7 +64,7 @@ app.use(passport.session());
 app.get('/afterlogout', (req, res) => res.send('sau khi logout ban lam gi'));
 
 app.get('/fail', (req, res) => res.send('dang nhap that bai thi lam gi!!!'));
-app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong mr ${req.user.displayName} !!! gio thi lam gi`));
+app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong mr ${req.user.displayName}  !!! gio thi lam gi`));
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/fail' }),
