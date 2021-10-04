@@ -48,6 +48,17 @@ io.on('connection', (socket) => {
         });
     });
 });
+//test
+app.get('/', (req, res, next) => {
+    Account.find({})
+      .then((accounts) => {
+        res.render('home', {
+          accounts: mutileMongooseToObject(accounts),
+        });
+      })
+      .catch(next);
+});
+//
 //auth google login
 const account_patient = require('./app/models/AccountPatient');
 const { mutileMongooseToObject } = require('./util/mongoose');
@@ -65,6 +76,7 @@ const isLoggedIn = (req, res, next) => {
 }
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 app.get('/after-logout', (req, res) => res.send('sau khi logout ban lam gi'));
 
