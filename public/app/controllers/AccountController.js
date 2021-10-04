@@ -51,13 +51,13 @@ class AccountController {
   }
   //[DELETE] accounts/:id
   destroy(req, res, next) {
-    Account.delete({ _id: req.params.id })
+    Account.deleteOne({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next);
   }
   //[DELETE] accounts/:id/xoa-that
   destroyThat(req, res, next) {
-    Account.deleteOne({ _id: req.params.id })
+    Account.delete({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next);
   }

@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+const methodOverride = require('method-override');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('./passport');
 const path = require('path');
@@ -102,8 +103,7 @@ app.get('/logout', (req, res) => {
 db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-
+app.use(methodOverride('_method'));
 //sử dụng middleware để sử lý form.
 app.use(
     express.urlencoded({
