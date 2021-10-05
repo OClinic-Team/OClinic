@@ -50,13 +50,14 @@ io.on('connection', (socket) => {
 });
 //test
 app.get('/', (req, res, next) => {
-    Account.find({})
-      .then((accounts) => {
-        res.render('home', {
-          accounts: mutileMongooseToObject(accounts),
-        });
-      })
-      .catch(next);
+    // Account.find({})
+    //   .then((accounts) => {
+    //     res.render('home', {
+    //       accounts: mutileMongooseToObject(accounts),
+    //     });
+    //   })
+    //   .catch(next);
+    res.send('deploy thanh cong')
 });
 //
 //auth google login
