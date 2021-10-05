@@ -49,7 +49,7 @@ io.on('connection', (socket) => {
     });
 });
 //test
-app.get('/', (req, res, next) => {
+app.get('/server.js', (req, res, next) => {
     // Account.find({})
     //   .then((accounts) => {
     //     res.render('home', {
@@ -57,7 +57,7 @@ app.get('/', (req, res, next) => {
     //     });
     //   })
     //   .catch(next);
-    res.send('deploy thanh cong')
+    res.render('home');
 });
 //
 //auth google login
