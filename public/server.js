@@ -117,6 +117,8 @@ db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+
+
 //sử dụng middleware để sử lý form.
 app.use(
     express.urlencoded({
