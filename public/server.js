@@ -50,6 +50,21 @@ io.on('connection', (socket) => {
         });
     });
 });
+<<<<<<< HEAD
+=======
+//test
+// app.get('/', (req, res) => {
+//     // Account.find({})
+//     //   .then((accounts) => {
+//     //     res.render('home', {
+//     //       accounts: mutileMongooseToObject(accounts),
+//     //     });
+//     //   })
+//     //   .catch(next);
+//     res.render('home');
+// });
+//
+>>>>>>> 5f630530c9008c9ea82637d4077806de7cf8be16
 //auth google login
 const account_patient = require('./app/models/AccountPatient');
 const { mutileMongooseToObject } = require('./util/mongoose');
@@ -108,6 +123,8 @@ db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+
+
 //sử dụng middleware để sử lý form.
 app.use(
     express.urlencoded({
