@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --inspect public/server.js",
+    "watch": "node-sass public/resource/scss/app.scss public/public/css/app.css",
     "dev": "nodemon server.js"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
     "mongoose-morgan": "^1.0.17",
     "mongoose-slug-generator": "^1.0.4",
     "node-sass": "^6.0.1",
+    "nodemailer": "^6.6.5",
     "nodemon": "^2.0.13",
     "passport": "^0.5.0",
     "passport-google-oauth20": "^2.0.0",

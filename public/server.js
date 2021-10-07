@@ -34,7 +34,9 @@ app.get('/videocall', (req, res) => {
 app.get('/videocall/:room', (req, res) => {
     res.render('room', { roomId: req.params.room });
 });
-
+app.get('/datlichhen', (req, res) => {
+    res.render('datlichhen');
+});
 io.on('connection', (socket) => {
     socket.on('join-room', (roomId, userId) => {
         socket.join(roomId);
@@ -48,21 +50,11 @@ io.on('connection', (socket) => {
         });
     });
 });
-//test
-app.get('/', (req, res, next) => {
-    Account.find({})
-      .then((accounts) => {
-        res.render('home', {
-          accounts: mutileMongooseToObject(accounts),
-        });
-      })
-      .catch(next);
-});
-//
 //auth google login
 const account_patient = require('./app/models/AccountPatient');
 const { mutileMongooseToObject } = require('./util/mongoose');
 const { mongooseToObject } = require('./util/mongoose');
+const { Console } = require('console');
 app.use(cookieSession({
     name: 'tuto-session',
     keys: ['key1', 'key2']
