@@ -6,9 +6,49 @@ const { accounts } = require('./AccountController');
 const { medicalrecords } = require('./MedicalRecordController');
 
 class MeController {
+    
+    
+    //[GET] /datlichhen
+    datLich(req, res, next) {
+        let accountQuery  = Account.find({});
+        if (req.query.hasOwnProperty('_sort')){
+            accountQuery = accountQuery.sort({
+                [req.query.column]: req.query.type
+            })
+        }
+        accountQuery
+                .then(accounts => res.render('me/datlichhen', {
+                    accounts: mutileMongooseToObject(accounts),
+                }))
+                .catch(next);
+    }
+
+    //Soft 
+    handFormAction(req, res, next) {
+        switch(req.body.action){
+          case '1': 
+            //   Account.find({ _id: { $in: req.body.khoa} })
+            //   .then(() => res.redirect('back'))
+            //   .catch(next);
+            res.json(req.body);
+              break;
+          default: res.json({mesage: 'hanh dong khong hop le'})
+        }
+      }
+    
     //[GET] stored/account
+
+    
     storedAccounts(req, res, next) {
-            Promise.all([Account.find({}), Account.countDocumentsDeleted()])
+        let accountQuery  = Account.find({});
+        if (req.query.hasOwnProperty('_sort')){
+            accountQuery = accountQuery.sort({
+                name: 'asc'
+            })
+        }
+
+
+            Promise.all([accountQuery, Account.countDocumentsDeleted()])
                 .then(([accounts, deleteCount]) =>
                     res.render('me/stored-accounts', {
                         deleteCount,

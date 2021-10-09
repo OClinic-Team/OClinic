@@ -51,7 +51,7 @@
 
         <div class="mainControlsBlock">
           <div class="mainControlsButtonEndMeeting">
-             <span class="leaveMeeting">End</span>
+             <span id="leave-btn" class="leaveMeeting">End</span>
           </div>
        </div>
 
@@ -232,4 +232,12 @@ const setPlayVideo = () => {
 	document.querySelector('.mainVideoButton').innerHTML = html
 }
 
+//button end
+document.getElementById('leave-btn').addEventListener('click', () => {
+  const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
+  if (leaveRoom) {
+    window.location = '/';
+  } else {
+  }
+});
 </script>
