@@ -9,7 +9,7 @@ const methodOverride = require('method-override');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('./passport');
 const path = require('path');
-const port = 3000;
+const port = process.env.PORT || 3000;
 //Middleware
 const SortMiddleware = require('./app/middlewares/SoftMiddleware');
 //dsdsdsd
