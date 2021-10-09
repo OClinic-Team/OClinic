@@ -60,19 +60,23 @@ io.on('connection', (socket) => {
 //     res.render('home');
 // });
 //
+
 //auth google login
+
 const account_patient = require('./app/models/AccountPatient');
 const { mutileMongooseToObject } = require('./util/mongoose');
 const { mongooseToObject } = require('./util/mongoose');
+app.set('trust proxy', 1) // trust first proxy
 app.use(cookieSession({
-    name: 'tuto-session',
+    name: 'session',
     keys: ['key1', 'key2']
 }))
 const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
+    if (!req.session.isAuthenticated) {
         res.sendStatus(401);
+
+    } else {
+        next();
     }
 }
 app.use(passport.initialize());
@@ -82,7 +86,7 @@ app.use(passport.session());
 app.get('/after-logout', (req, res) => res.send('sau khi logout ban lam gi'));
 
 app.get('/fail', (req, res) => res.send('dang nhap that bai thi lam gi!!!'));
-app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong ID: ${req.user.id} Name: ${req.user.displayName} Email:${req.user.emails[0].value} photo:${req.user.photos[0].value}!!! gio thi lam gi`));
+app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong ${req.user.displayName}!!! gio thi lam gi`));
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/fail' }),
@@ -93,25 +97,32 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
             ImageURL: req.user.photos[0].value,
             Email: req.user.emails[0].value
         })
-        accounts_patient.save()
-            // .then(res.redirect('/success'));
-            .then((accounts_patient) => {
-                res.render('home', {
-                    accounts_patient: mongooseToObject(accounts_patient),
-                });
-            })
-            // Successful authentication, redirect home.
-            //xữ lý data base ở đây
-            // res.redirect('/success');
-            // res.redirect('/')=> chuyen ve home
+        accounts_patient.save();
+        // req.cookieSession.
+        req.session.isAuthenticated = true;
+        req.session.authUser = accounts_patient;
+        //dang nhap thanh cong chuyen ve home
+        res.redirect('/');
     });
 
 app.get('/logout', (req, res) => {
 
-        req.session = null;
-        req.logout()
-            .then(res.redirect('home'))
+    req.session = null;
+    req.logout();
+    //logout --> home
+    res.redirect('/');
+})
+
+app.use(async function(req, res, next) {
+        if (req.session.isAuthenticated === null) {
+            req.session.isAuthenticated = false;
+        }
+
+        res.locals.lcIsAuthenticated = req.session.isAuthenticated;
+        res.locals.lcAuthUser = req.session.authUser;
+        next();
     })
+    //
     //connect to data base
 db.connect();
 

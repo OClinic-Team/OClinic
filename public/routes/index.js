@@ -20,7 +20,9 @@ function route(app) {
 
     app.use('/accounts', accountsRouter);
 
-    app.use('/addschedule',addscheduleRoute);
+    app.use('/addschedule', addscheduleRoute);
+
+
 
     app.use('/', siteRouter);
 }
