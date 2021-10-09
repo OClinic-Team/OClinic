@@ -1,0 +1,162 @@
+<form class="mt-4 container" name="container-form" method="POST" action="/me/handle-form-action">
+  <div class="container">
+    <h3>ĐẶT LỊCH HẸN VỚI BÁC SĨ</h3>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" colspan="">STT</th>
+        <th scope="col">
+          <select class="form-control form-control-sm checkbox-select-all-options" name="action">
+            <option value="0">Chọn Chuyên Khoa</option>
+            <option value="1">Hô Hấp</option>
+            <option value="2">Răng Hàm Mặt</option>
+            <option value="3">Tim Mạch</option>
+          </select>
+        </th>
+        <th scope="col">Tên Bác Sỹ
+          {{{sortable 'name' _sort}}}
+        </th>
+        
+        <th scope="col">Lịch Làm Việc 
+          {{{sortable 'time' _sort}}}
+        </th>
+          
+          
+        <th scope="col">
+           <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
+        </th>
+       
+      </tr>
+    </thead>
+  <tbody>
+    {{#each accounts}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.khoa}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.time}}</td>
+      <td>
+          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
+      </td>
+    </tr>
+  </tbody>
+  {{else}}
+  <tr>
+    <td colspan="5" class="text-center">
+      Bạn Chưa Có Tài Khoản Nào. !!!
+      <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a>
+    </td>
+  </tr>
+  {{/each}}
+</table>
+</form>
+
+{{!-- xacs nhận xóa account --}}
+<div id="delete-account" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">XÓA TÀI KHOẢN</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc muốn xóa tài khoản không???
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button id="btn-delete-account" type="button" class="btn btn-primary btn-danger">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var accountID;
+        var deleteForm = document.forms['delete-form'];
+        var btnDeleteAccount = document.getElementById('btn-delete-account');
+        var accountItemCheckbox = $('input[name="accountIds[]"]');
+        var containerForm = document.forms['container-form'];
+        var checkboxAll= $('#checkbox-all');
+        var checkAllSubmitBtn= $('.check-all-submit-btn');
+
+        $('#delete-account').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget);
+          accountID = button.data('id');
+        });
+        // sự kiện Áp Dụng
+        checkAllSubmitBtn.on('submit', function (e) {
+          var isSubmitTable = !$(this).hasClass('disabled');
+            if (!isSubmitTable){
+              e.preventDefault();
+            }
+        });
+        //khinhấn vào nút delete 
+        btnDeleteAccount.onclick = function() {
+          deleteForm.action = '/accounts/' +accountID+ '?_method=DELETE';
+          deleteForm.submit();
+        }
+        // khi chọn tất cả được tick
+        checkboxAll.change(function () {
+          var isCheckedAll= $(this).prop('checked');
+          if (isCheckedAll){
+            accountItemCheckbox.prop('checked', true);
+          }else accountItemCheckbox.prop('checked', false);
+          renderCheckAllSubmibBtn();
+        });
+        //khi chọn một cái thì bỏ chọn tát cả
+        accountItemCheckbox.change(function(){
+          var isCheckedAll = accountItemCheckbox.length === $('input[name="accountIds[]"]:checked').length;
+          checkboxAll.prop('checked', isCheckedAll);
+          renderCheckAllSubmibBtn();
+        })
+        //hiện lại nút thực hiện
+        function renderCheckAllSubmibBtn(){
+          var checkedCount = $('input[name="accountIds[]"]:checked').length;
+          if(checkedCount >0){
+            checkAllSubmitBtn.removeClass('disabled');
+          }else {
+            checkAllSubmitBtn.addClass('disabled');
+          }
+        }
+
+        //
+
+        
+    });
+</script>
+
+
+{{!-- delete form --}}
+<form method='POST' name="delete-form"></form>
+
+
+</form>
+    <form action="/send-email" method="post">
+        <div class="row">
+          <div class="form-group col-md-8">
+            <button type="submit" class="btn btn-success">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
+  <script>const ROOM_ID = roomId;</script>
+  <script>
+    $(document).ready(function() {
+      ClassicEditor
+        .create(document.querySelector('#classic-editor'), {
+          initialData: `
+            <p>Chào Mừng Bạn Đến Với Online Clinic</p>
+            <p>Bấm vào đây để tham gia cuộc họp <a href="`+roomId+`">Tham gia cuộc họp ngay</a></p>
+          `
+        })
+        .catch(error => {
+            console.error( error )
+        })
+    })
+  </script>

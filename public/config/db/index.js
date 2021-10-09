@@ -6,7 +6,7 @@ async function connect() {
   const moongo ='mongodb://localhost:27017/online_clinic'
   
   try {
-    await mongoose.connect(moongoURI, {
+    await mongoose.connect(MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,

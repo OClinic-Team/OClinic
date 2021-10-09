@@ -72,9 +72,16 @@ class AccountController {
   handFormAction(req, res, next) {
     switch(req.body.action){
       case 'delete': 
-          Account.delete({ _id: { $in: req.body.accountIds} })
-          .then(() => res.redirect('back'))
-          .catch(next);
+          // Account.delete({ _id: { $in: req.body.accountIds} })
+          // .then(() => res.redirect('back'))
+          // .catch(next);
+          res.json(req.body);
+          break;
+          case 'alo': 
+          // Account.delete({ _id: { $in: req.body.accountIds} })
+          // .then(() => res.redirect('back'))
+          // .catch(next);
+          res.json(req.body);
           break;
       default: res.json({mesage: 'hanh dong khong hop le'})
     }
