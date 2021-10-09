@@ -168,7 +168,7 @@ app.engine(
 app.set('view engine', 'hbs');
 
 app.set('views', path.join(__dirname, 'resource', 'views'));
-
+//sdsd
 //route init khoi tao tuyen duong
 route(app);
 
