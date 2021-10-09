@@ -9,7 +9,7 @@ const methodOverride = require('method-override');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('./passport');
 const path = require('path');
-const port = 3000;
+const port = process.env.PORT || 3000;
 //adsdas
 //dsdsdsd
 const route = require('./routes');
@@ -50,8 +50,6 @@ io.on('connection', (socket) => {
         });
     });
 });
-<<<<<<< HEAD
-=======
 //test
 // app.get('/', (req, res) => {
 //     // Account.find({})
@@ -64,7 +62,6 @@ io.on('connection', (socket) => {
 //     res.render('home');
 // });
 //
->>>>>>> 5f630530c9008c9ea82637d4077806de7cf8be16
 //auth google login
 const account_patient = require('./app/models/AccountPatient');
 const { mutileMongooseToObject } = require('./util/mongoose');
