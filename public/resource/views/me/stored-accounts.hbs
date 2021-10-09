@@ -1,6 +1,6 @@
 <form class="mt-4 container" name="container-form" method="POST" action="/accounts/handle-form-action">
   <div class="container">
-    <h3>KHÓA HỌC CỦA TÔI</h3>
+    <h3>THÔNG TIN BÁC SĨ</h3>
     <a href="/me/trash/accounts">Thùng Rác ({{deleteCount}})</a>
 
     <div class="mt-4 d-flex align-items-center">
@@ -23,7 +23,11 @@
   <thead>
     <tr>
       <th scope="col" colspan="2">#</th>
-      <th scope="col">Tên Bác Sỹ</th>
+      <th scope="col">Tên Bác Sỹ
+        <a href="?_sort&column=name&type=asc">
+              <span class="oi oi-elevator"></span></th>
+        </a>
+      </th>
       <th scope="col">Khoa</th>
       <th scope="col" colspan="2">Lịch Làm Việc</th>
     </tr>

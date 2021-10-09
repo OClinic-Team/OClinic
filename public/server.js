@@ -10,10 +10,12 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('./passport');
 const path = require('path');
 const port = 3000;
-
+//Middleware
+const SortMiddleware = require('./app/middlewares/SoftMiddleware');
 //dsdsdsd
 const route = require('./routes');
 const db = require('./config/db');
+
 
 //webRTC
 const server = require('http').Server(app);
@@ -50,8 +52,6 @@ io.on('connection', (socket) => {
         });
     });
 });
-<<<<<<< HEAD
-=======
 //test
 // app.get('/', (req, res) => {
 //     // Account.find({})
@@ -64,7 +64,6 @@ io.on('connection', (socket) => {
 //     res.render('home');
 // });
 //
->>>>>>> 5f630530c9008c9ea82637d4077806de7cf8be16
 //auth google login
 const account_patient = require('./app/models/AccountPatient');
 const { mutileMongooseToObject } = require('./util/mongoose');
@@ -84,7 +83,7 @@ const isLoggedIn = (req, res, next) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+app.use(SortMiddleware);
 app.get('/after-logout', (req, res) => res.send('sau khi logout ban lam gi'));
 
 app.get('/fail', (req, res) => res.send('dang nhap that bai thi lam gi!!!'));
@@ -144,6 +143,24 @@ app.engine(
         helpers: {
             sum: function(a, b) {
                 return a + b;
+            },
+            sortable: (field, sort) =>{
+                const sortType = field ===sort.column ? sort.type : 'default'
+                const icons ={
+                    default: 'oi oi-elevator',
+                    asc: 'oi oi-sort-ascending',
+                    desc: 'oi oi-sort-descending'
+                };
+                const types ={
+                    default: 'desc',
+                    asc: 'desc',
+                    desc: 'asc'
+                };
+                const icon = icons[sortType];
+                const type = types[sortType];
+                return `<a href="?_sort&column=${field}&type=${type}">
+                    <span class="${icon}"></span>
+                </a>`;
             },
         },
     }),

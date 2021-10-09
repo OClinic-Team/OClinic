@@ -6,6 +6,7 @@ const nodeMailer = require('nodemailer')
 
 // Những thông tin dưới đây các bạn có thể ném nó vào biến môi trường env nhé.
 // Vì để demo nên mình để các biến const ở đây.
+
 const adminEmail = 'ntluan2.fb@gmail.com'
 const adminPassword = 'Tl19112306'
 
@@ -25,7 +26,7 @@ const sendMail = (subject, htmlContent) => {
       pass: adminPassword
     }
   })
-  const to = 'ntluan1.fb@gmail.com, ntluan111ntb@gmail.com'
+  const to = 'ntluan1.fb@gmail.com, doankhang750@gmail.com'
   const options = {
     from: adminEmail, // địa chỉ admin email bạn dùng để gửi
     to: to, // địa chỉ gửi đến
