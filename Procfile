@@ -1,1 +1,1 @@
-web: node --inspect public/server.js
+web: node public/server.js
