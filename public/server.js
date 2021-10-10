@@ -34,7 +34,7 @@ app.get('/videocall', (req, res) => {
 });
 
 app.get('/videocall/:room', (req, res) => {
-    res.render('room', { roomId: req.params.room });
+    res.render('room', {  layout: false, roomId: req.params.room });
 });
 app.get('/datlichhen', (req, res) => {
     res.render('datlichhen');
@@ -52,18 +52,6 @@ io.on('connection', (socket) => {
         });
     });
 });
-//test
-// app.get('/', (req, res) => {
-//     // Account.find({})
-//     //   .then((accounts) => {
-//     //     res.render('home', {
-//     //       accounts: mutileMongooseToObject(accounts),
-//     //     });
-//     //   })
-//     //   .catch(next);
-//     res.render('home');
-// });
-//
 //auth google login
 const account_patient = require('./app/models/AccountPatient');
 const { mutileMongooseToObject } = require('./util/mongoose');
