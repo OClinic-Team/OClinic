@@ -1,27 +1,27 @@
 const express = require('express');
 const router = express.Router();
-
+const authenticated = require('../app/middlewares/auth');
 const accountController = require('../app/controllers/AccountController');
 
 
-router.get('/create', accountController.create);
+router.get('/create', authenticated, accountController.create);
 
-router.post('/store', accountController.store);
+router.post('/store', authenticated, accountController.store);
 
-router.get('/:id/edit', accountController.edit);
+router.get('/:id/edit', authenticated, accountController.edit);
 
-router.post('/handle-form-action', accountController.handFormAction);
+router.post('/handle-form-action', authenticated, accountController.handFormAction);
 
-router.put('/:id', accountController.update);
+router.put('/:id', authenticated, accountController.update);
 
-router.patch('/:id/restore', accountController.restore);
+router.patch('/:id/restore', authenticated, accountController.restore);
 
-router.delete('/:id/xoa-that', accountController.destroyThat);
+router.delete('/:id/xoa-that', authenticated, accountController.destroyThat);
 
-router.delete('/:id', accountController.destroy);
+router.delete('/:id', authenticated, accountController.destroy);
 
-router.get('/:slug', accountController.show);
+router.get('/:slug', authenticated, accountController.show);
 
-router.get('/', accountController.accounts);
+router.get('/', authenticated, accountController.accounts);
 
 module.exports = router;

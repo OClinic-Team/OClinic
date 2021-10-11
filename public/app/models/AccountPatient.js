@@ -7,6 +7,7 @@ const accounts_patient = new Schema({
     Name: { type: String, required: true },
     ImageURL: { type: String },
     Email: { type: String, required: true },
+    // roles: [{ role: "patient", db: "patient" }]
 }, {
     timestamps: true
 });
