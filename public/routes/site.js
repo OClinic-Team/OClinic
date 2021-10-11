@@ -7,9 +7,10 @@ const emailController = require('../app/controllers/emailController')
 
 router.get('/search', siteController.search);
 router.post('/send-email', emailController.sendMail);
+router.get('/logout', siteController.logout);
 router.get('/', siteController.home);
 
- 
+
 
 // router.post('/send-email', emailController.sendMail)
 module.exports = router;

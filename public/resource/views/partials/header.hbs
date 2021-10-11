@@ -44,21 +44,13 @@
 				<img src={{lcAuthUser.ImageURL}} alt='' class='user-avatar' />
 				{{lcAuthUser.Name}}
 				</a>
-				{{else}}
-				<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-				<img src='https://image.lag.vn/upload/news/21/08/16/236599595_1425452954506376_3110056547255537769_n_WOLP.jpg' alt='' class='user-avatar' />
-				Nobody 
-				</a>
-				{{/if}}
-				<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+					<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
 					<a class='dropdown-item' href='/accounts/create'>Thêm Bác Sĩ</a>
 					<div class='dropdown-divider'></div>
 					<a class='dropdown-item' href='/me/datlichhen'>Đặt lịch hẹn</a>
 					<div class='dropdown-divider'></div>
 					<a class='dropdown-item' href='/me/stored/accounts'>Quản Lý Thông Tin
 					Bác Sỹ</a>
-					<div class='dropdown-divider'></div>
-					<a class='dropdown-item' href='/google'>Login</a>
 					<div class='dropdown-divider'></div>
 					<a class='dropdown-item' href='/addschedule/create'>Đăng Ký Lịch</a>
             		<div class='dropdown-divider'></div>
@@ -68,6 +60,17 @@
 					<div class='dropdown-divider'></div>
 					<a class='dropdown-item' href='/logout'>Logout</a>
 				</div>
+				{{else}}
+				<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+				<img src='https://image.lag.vn/upload/news/21/08/16/236599595_1425452954506376_3110056547255537769_n_WOLP.jpg' alt='' class='user-avatar' />
+				Nobody 
+				</a>
+				<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+					<a class='dropdown-item' href='/me/datlichhen'>Đặt lịch hẹn</a>
+					<div class='dropdown-divider'></div>
+					<a class='dropdown-item' href='/google'>Login</a>
+				</div>
+				{{/if}}
 			</li>
 			</ul>
 		  </div>

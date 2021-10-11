@@ -1,11 +1,12 @@
 <div class="container-create-medical-record" style="width: 100%;">
+
         <div class="left-medical-record-create-form">
             <h3 style="text-align: center;">HỒ SƠ BỆNH ÁN</h3>
             <form method="POST" action="/medicalRecord/storeMedicalRecord">
                 <label for="namePatient">Họ và tên bệnh nhân</label> </form>
-                <textarea name="namePatient" style="margin-top: 5px;" id="" cols="80" rows="1">{{medicalRecord.namePatient}}</textarea>
-                
-        
+                <textarea name="namePatient" style="margin-top: 5px;" id="" cols="80" rows="1">{{lcAuthUser.Name}}</textarea></br>
+                <label for="namePatient">Email:</label></br>
+                <textarea name="Email" style="margin-top: 5px;" id="" cols="80" rows="1">{{lcAuthUser.Email}}</textarea>
                 <legend class="col-form-label col-sm-2 pt-0">Giới tính</legend>
                 <div class="col-sm-10">
                     <div class="form-check m-1">

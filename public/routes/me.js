@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-
+const authenticated = require('../app/middlewares/auth');
 const meController = require('../app/controllers/MeController.js');
 
 // newsController.index();
-router.get('/stored/accounts', meController.storedAccounts);
-router.post('/handle-form-action', meController.handFormAction);
+router.get('/stored/accounts', authenticated, meController.storedAccounts);
+router.post('/handle-form-action', authenticated, meController.handFormAction);
 
-router.get('/trash/accounts', meController.trashAccounts);
-router.get('/stored/medical-record', meController.storedMedicalRecord);
-router.get('/trash/medical-record', meController.trashMedicalRecord);
-router.get('/datlichhen', meController.datLich);
+router.get('/trash/accounts', authenticated, meController.trashAccounts);
+router.get('/stored/medical-record', authenticated, meController.storedMedicalRecord);
+router.get('/trash/medical-record', authenticated, meController.trashMedicalRecord);
+router.get('/datlichhen', authenticated, meController.datLich);
 module.exports = router;
