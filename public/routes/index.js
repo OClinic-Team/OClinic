@@ -6,7 +6,6 @@ const patientRouter = require('./accountPatient');
 const medicalrecordRouter = require('./medicalRecord');
 const addscheduleRoute = require('./addschedule');
 const accountUserRouter = require('./accountUser')
-
 function route(app) {
     // app.use('/medicalRecord', createsMedicalRecord);
     app.use('/news', newsRouter);

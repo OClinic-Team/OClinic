@@ -3,7 +3,6 @@ const router = express.Router();
 const authenticated = require('../app/middlewares/auth');
 const accountController = require('../app/controllers/AccountController');
 
-
 router.get('/create', authenticated, accountController.create);
 
 router.post('/store', authenticated, accountController.store);

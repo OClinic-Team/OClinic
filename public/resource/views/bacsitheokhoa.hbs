@@ -1,25 +1,77 @@
-<div class='mt-4'>
-  <div class='row'>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Important link from https://bootsnipp.com/snippets/XqvZr-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"><div class="pd-wrap">
+</head>
+
+<div class='mt-4 container p-3 my-3'>
     {{#each accounts}}
-      <div class='col-sm-6 col-lg-4'>
-        <div class='card'>
-          <a href='/accounts/{{this.slug}}'>
-            <img
-              class='card-img-top'
-              src='{{this.image}}'
-              alt='{{this.name}}'
-            />
-          </a>
-          <div class='card-body'>
-            <a href='/accounts/{{this.slug}}'>
-              <h5 class='card-title'>{{this.name}}</h5>
-            </a>
-            <p class='card-text'>{{this.description}}</p>
-            <a href='/accounts/{{this.slug}}' class='btn btn-primary'>Xem thông
-              tin</a>
-          </div>
-        </div>
-      </div>
+        <div class="mt-4 row bg-muted">
+	        	<div class="col-lg-3">
+                <img
+                  class='card-img-top'
+                  src='{{this.image}}'
+                  alt='{{this.name}}'
+                />
+                
+                <div style="text-align: center;" class="product-count">
+	        				<a href="#" class="round-black-btn">Đặt Lịch Hẹn</a>
+	        			</div>
+	        	</div>
+	        	<div class="col-md-9">
+	        		<div class="product-dtl">
+        				<div class="product-info">
+		        			<div class="product-name">Bác Sĩ: {{this.name}}</div>
+		        			<div class="reviews-counter">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" checked />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" checked />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" checked />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    <span>3 Reviews</span>
+                  </div>
+		        		</div>
+                <div class="product-price-discount"><span><b>Chuyên Khoa:</b> {{this.name}}</span></div>
+                <div class="product-price-discount"><span><b>Chứng Nhận:</b> {{this.chungNhan}}</span></div>
+	        			<p>Mô tả: {{this.description}}</p>
+                <div class="product-count">
+	        				<h6>Lịch Làm Việc:
+	        				<form action="#" class="display-flex">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          7h00-11h00
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                        <label class="form-check-label" for="defaultCheck2">
+                          13h00-17h00
+                        </label>
+                      </div>
+                  </form>
+                  </h6>
+	        			</div>
+		        		<div class="product-price-discount"><span>Giá Khám Bệnh: <b>300.000</b> VNĐ</span></div>
+	        		</div>
+	        	</div>
+	        </div>  
     {{/each}}
-  </div>
 </div>

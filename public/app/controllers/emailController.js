@@ -1,7 +1,7 @@
 
 const mailer = require('../../util/mailer')
 const { v4: uuidv4 } = require('uuid');
-const link = 'http://localhost:3000/videocall/'+uuidv4();
+const link = 'https://nodejs-oclinic.herokuapp.com/videocall/'+uuidv4();
 let sendMail = async (req, res) => {
   try {
     // Lấy data truyền lên từ form phía client

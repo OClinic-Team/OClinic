@@ -5,7 +5,7 @@ const siteController = require('../app/controllers/SiteController');
 const emailController = require('../app/controllers/emailController')
 
 
-router.get('/search', siteController.search);
+router.get('/timkiem', siteController.search);
 router.post('/send-email', emailController.sendMail);
 router.get('/logout', siteController.logout);
 router.get('/', siteController.home);

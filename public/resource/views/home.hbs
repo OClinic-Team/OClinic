@@ -5,45 +5,31 @@
 		<div class="row">
 			<div class="col-lg-9 col-md-10">
 				<div class="block">
-					<span class="d-block mb-3 text-white text-capitalize">Gặp nhà trị liệu hoặc bác sĩ tâm lý qua video bất cứ khi nào và ở đâu phù hợp với bạn..</span>
 					<h1 class="animated fadeInUp mb-5">Online Clinic <br>Website Khám Bệnh Toàn Diện <br></h1>
-					<a href="#" target="_blank" class="btn btn-main animated fadeInUp btn-round-full" >Join Now<i class="btn-icon fa fa-angle-right ml-2"></i></a>
+					<a href='/videoCall/' target="_blank" class="btn btn-main animated fadeInUp btn-round-full" >Join Now<i class="btn-icon fa fa-angle-right ml-2"></i></a>
 				</div>
 			</div>
 		</div>
+		
 	</div>
 </section>
-<form method='GET' action="/accounts">
-    {{!-- <div class='form-group'>
-		<label for='search-input'>Nhập từ khóa</label>
-		<input
-			type='text'
-			name='q'
-			class='form-control'
-			id='search-input'
-			placeholder='Nhập từ khóa...'
-		/>
-    </div> --}}
 
-    <div class='form-group'>
-		<label for='Khoa-input'>Nhập từ khóa</label>
-		<select name='Khoa' class='form-control' id='Khoa-input'>
-			<option value=''>--Chọn giới tính--</option>
-			<option value='Hô Hấp'>Hô Hấp</option>
-			<option value='Răng Hàm Mặt'>Răng Hàm Mặt</option>
-		</select>
-    </div>
-    <button type='submit' class='btn btn-primary'>Tìm Kiếm</button>
-</form>
 <!-- Section Intro Start -->
 <section class="section intro">
 	<div class="container">
 		<div class="row ">
 			<div class="col-lg-8">
-				<div class="section-title">
-					<span class="h6 text-color ">Personalized care for your mind and body.</span>
-					<h2 class="mt-3 content-title">Our doctors know more than your medical history, they know you.</h2>
-				</div>
+				<h2 class="mt-3 content-title text-color">Chọn Chuyên Khoa Mà Bạn Muốn</h2>
+				<form method='GET' action="/timkiem">
+					<div class='form-group'>
+						<select name='Khoa' class='form-control' id='Khoa-input'>
+							<option value='Xương Khớp'>Xương Khớp</option>
+							<option value='Tiêu Hoá'>Tiêu Hoá</option>
+							<option value='Da Liễu'>Da Liễu</option>
+						</select>
+					</div>
+					<button type='submit' class='btn btn-primary'>Tìm Kiếm</button>
+				</form>
 			</div>
 		</div>
 		<div class="row justify-content-center">
