@@ -7,9 +7,9 @@ const { medicalrecords } = require('./MedicalRecordController');
 
 class datLichController {
 
-  //[GET] /lichHen
+    //[GET] /lichHen
 
-  }
+
 }
 
 module.exports = new datLichController;
