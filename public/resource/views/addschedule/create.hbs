@@ -1,34 +1,154 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="/css/app.css">
 <div class='mt-4 container'>
   <H3>Đăng Ký Lịch Làm</H3>
-  <form method='POST' action='/accounts/store'>
-    <div class='form-group'>
-      <label for='name'>Chọn ngày</label>
-        <div class="col-lg-4 col-md-9 col-sm-12">
-            <input type="datepicker" class="form-control" readonly placeholder="Chọn ngày"/>
+  <form method="POST" action="/addschedule/add">
+  <div class="form-date-time-swap">
+    <div class="form-date-time-left">
+      <div class='form-group'>
+      <label for='name' style="color:black;font-weight:400;">Chọn ngày 1</label>
+        <div>
+            <input type="datepicker" name="date" class="form-control" readonly placeholder="Chọn ngày"  />
         </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian bắt đầu</label>
+          <div>
+            <input type="timepicker" name="time_start" class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian kết thúc</label>
+          <div>
+            <input type="timepicker" name="time_end"  class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
     </div>
-    <div class='form-group'>
-      <label for='name'>Thời gian</label>
-        <div class="col-lg-4 col-md-9 col-sm-12">
-            <input type="timepicker" class="form-control" readonly placeholder="Chọn thời gian"/>
+
+    <div class="form-date-time-center">
+      <div class='form-group'>
+      <label for='name' style="color:black;font-weight:400;">Chọn ngày 2</label>
+        <div>
+            <input type="datepicker" name="date1" class="form-control" readonly placeholder="Chọn ngày"  />
         </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian bắt đầu</label>
+          <div>
+            <input type="timepicker" name="time_start1" class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian kết thúc</label>
+          <div>
+            <input type="timepicker" name="time_end1"  class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
     </div>
-   <button type='Select' class='btn-select'>Chọn</button>
-    <div class='form-group'>
-      <label for='name'>Lịch</label>
+
+    <div class="form-date-time-right">
+      <div class='form-group'>
+      <label for='name'style="color:black;font-weight:400;">Chọn ngày 3</label>
+        <div>
+            <input type="datepicker" name="date2" class="form-control" readonly placeholder="Chọn ngày"  />
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian bắt đầu</label>
+          <div>
+            <input type="timepicker" name="time_start2" class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian kết thúc</label>
+          <div>
+            <input type="timepicker" name="time_end2"  class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
     </div>
-    <button type='submit' class='btn-submit'>Đăng Ký</button> 
+  </div>
+
+  <div class="form-date-time-swap">
+     <div class="form-date-time-left">
+      <div class='form-group'>
+      <label for='name'style="color:black;font-weight:400;">Chọn ngày 4</label>
+        <div>
+            <input type="datepicker" name="date3" class="form-control" readonly placeholder="Chọn ngày"  />
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian bắt đầu</label>
+          <div>
+            <input type="timepicker" name="time_start3" class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian kết thúc</label>
+          <div>
+            <input type="timepicker" name="time_end3"  class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+    </div>
+
+    <div class="form-date-time-center">
+      <div class='form-group'>
+      <label for='name'style="color:black;font-weight:400;">Chọn ngày 5</label>
+        <div>
+            <input type="datepicker" name="date4" class="form-control" readonly placeholder="Chọn ngày"  />
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian bắt đầu</label>
+          <div>
+            <input type="timepicker" name="time_start4" class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian kết thúc</label>
+          <div>
+            <input type="timepicker" name="time_end4"  class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+    </div>
+
+    <div class="form-date-time-right1">
+      <div class='form-group'>
+      <label for='name'style="color:black;font-weight:400;">Chọn ngày 6</label>
+        <div>
+            <input type="datepicker" name="date5" class="form-control" readonly placeholder="Chọn ngày"  />
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian bắt đầu</label>
+          <div>
+            <input type="timepicker" name="time_start5" class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+      <div class='form-group'>
+        <label for='name'>Thời gian kết thúc</label>
+          <div>
+            <input type="timepicker" name="time_end5"  class="form-control" readonly placeholder="Chọn thời gian"/>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <button type='submit' class='btn-submit addschedule'>Đăng Ký</button> 
   </form>
 </div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-  flatpickr("input[type=datepicker]", {});
+  flatpickr("input[type=datepicker]", {
+    minDate: "today",
+    maxDate: new Date().fp_incr(6)
+  });
 </script>
 <script>
   flatpickr("input[type=timepicker]", {
     enableTime: true,
     noCalendar: true,
     dateFormat: "H:i",
+    time_24hr: true
   });
 </script>
