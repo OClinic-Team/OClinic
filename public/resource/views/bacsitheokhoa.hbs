@@ -25,7 +25,10 @@
                 />
                 
                 <div style="text-align: center;" class="product-count">
-	        				<a href="#" class="round-black-btn">Đặt Lịch Hẹn</a>
+	        				
+                  <form action="/send-email" method="post">
+                              <button type="submit" class="round-black-btn">Đặt Lịch Hẹn</button>
+                  </form>
 	        			</div>
 	        	</div>
 	        	<div class="col-md-9">
@@ -75,3 +78,6 @@
 	        </div>  
     {{/each}}
 </div>
+
+
+

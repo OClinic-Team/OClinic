@@ -16,6 +16,7 @@ class SiteController {
     search(req, res,next) {
         // res.json(req.query.Khoa);
         Account.find({khoa: req.query.Khoa})
+            
             .then((accounts) => {
                 res.render('bacsitheokhoa', {
                     accounts: mutileMongooseToObject(accounts),

@@ -130,33 +130,3 @@
 
 {{!-- delete form --}}
 <form method='POST' name="delete-form"></form>
-
-
-</form>
-    <form action="/send-email" method="post">
-        <div class="row">
-          <div class="form-group col-md-8">
-            <button type="submit" class="btn btn-success">Send</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
-  <script>const ROOM_ID = roomId;</script>
-  <script>
-    $(document).ready(function() {
-      ClassicEditor
-        .create(document.querySelector('#classic-editor'), {
-          initialData: `
-            <p>Chào Mừng Bạn Đến Với Online Clinic</p>
-            <p>Bấm vào đây để tham gia cuộc họp <a href="`+roomId+`">Tham gia cuộc họp ngay</a></p>
-          `
-        })
-        .catch(error => {
-            console.error( error )
-        })
-    })
-  </script>
