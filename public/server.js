@@ -36,7 +36,7 @@ app.get('/videocall', (req, res) => {
 });
 
 app.get('/videocall/:room', (req, res) => {
-    res.render('room', {  layout: false, roomId: req.params.room });
+    res.render('room', { layout: false, roomId: req.params.room });
 });
 app.get('/datlichhen', (req, res) => {
     res.render('datlichhen');
@@ -141,11 +141,10 @@ app.engine(
 app.set('view engine', 'hbs');
 
 app.set('views', path.join(__dirname, 'resource', 'views'));
-//sdsd
+
 //route init khoi tao tuyen duong
 route(app);
 
 server.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });
-//sdsdsdsds
