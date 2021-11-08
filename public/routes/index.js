@@ -6,8 +6,11 @@ const patientRouter = require('./accountPatient');
 const medicalrecordRouter = require('./medicalRecord');
 const addscheduleRoute = require('./addschedule');
 const accountUserRouter = require('./accountUser')
+const profileRouter = require('./profile');
 function route(app) {
     // app.use('/medicalRecord', createsMedicalRecord);
+    app.use('/profile',profileRouter);
+
     app.use('/news', newsRouter);
 
     app.use('/me', meRouter);

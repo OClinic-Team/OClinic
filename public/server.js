@@ -71,15 +71,18 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
         const accounts_patient = new account_patient({
             Id: req.user.id,
             Name: req.user.displayName,
+            Sex: '',
+            Address: '',
             ImageURL: req.user.photos[0].value,
+            Phone: '',
             Email: req.user.emails[0].value
         })
         accounts_patient.save();
         // req.cookieSession.
         req.session.isAuthenticated = true;
         req.session.authUser = accounts_patient;
-        //dang nhap thanh cong chuyen ve home
-        res.redirect('/');
+        //dang nhap thanh cong chuyen ve thằng profile
+        res.redirect(`/profile/${req.user.id}`);
     });
 //set data cho res.locals su dung cho .hdb
 app.use(async function(req, res, next) {
