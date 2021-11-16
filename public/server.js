@@ -67,50 +67,42 @@ app.use(passport.session());
 app.use(SortMiddleware);
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/fail' }),
-    // function(req, res) {
-    //     const accounts_patient = new account_patient({
-    //         Id: req.user.id,
-    //         Name: req.user.displayName,
-    //         Sex: '',
-    //         Address: '',
-    //         ImageURL: req.user.photos[0].value,
-    //         Phone: '',
-    //         Email: req.user.emails[0].value
-    //     })
-    //     accounts_patient.save();
-    //     // req.cookieSession.
-    //     req.session.isAuthenticated = true;
-    //     req.session.authUser = accounts_patient;
-    //     //dang nhap thanh cong chuyen ve thằng profile
-    //     res.redirect(`/profile/${req.user.id}`);
-    // });
-    function(req, res, next) {
-                account_patient.findOne({ Id: req.user.id }, (err, data) => {
-                    if (err) {
-                        console.log(err)
-                    } else {
-                        if (data === null) {
-                            data = new account_patient({
-                                Id: req.user.id,
-                                Name: req.user.displayName,
-                                ImageURL: req.user.photos[0].value,
-                                Email: req.user.emails[0].value,
-                            })
-                            data.save();
-                            // res.redirect('/profileUser');
-                            res.redirect(`/profile/${req.user.id}`);
-                        }
-                        // accounts_patient = data
-                        console.log(data);
-                        //req.cookieSession.
-                        req.session.isAuthenticated = true;
-                        req.session.authUser = data;
-                        req.session.token = req.user.token;
-                        //dang nhap thanh cong chuyen ve hom
-                        res.redirect('/profile');
-                    }
-                });
-            });
+    function(req, res, next) {    
+        account_patient.findOne({ Id: req.user.id }, (err, data) => {      
+            if (err) {        
+                console.log(err)      
+            } else {  
+                var check_firstTime = false;   
+                if (data === null) {          
+                    check_firstTime = true;
+                    data = new account_patient({            
+                        Id: req.user.id,
+                        Name: req.user.displayName,
+                        ImageURL: req.user.photos[0].value,
+                        Sex: '',
+                        Adress: '',
+                        Email: req.user.emails[0].value,
+                              
+                    })          
+                    data.save();               
+                }        
+                //req.cookieSession.         
+                req.session.isAuthenticated = true;        
+                req.session.authUser = data;        
+                req.session.token = req.user.token;  
+                // set data cho biến Local. dùng cho hdb
+                res.locals.lcIsAuthenticated = req.session.isAuthenticated;
+                res.locals.lcAuthUser = req.session.authUser;      
+                //dang nhap thanh cong chuyen ve home
+                if (check_firstTime) {
+                    res.redirect(`/profile/${req.user.id}`); 
+                } 
+                else {
+                    res.redirect('/');
+                }      
+            }    
+        });  
+    });
 //set data cho res.locals su dung cho .hdb
 app.use(async function(req, res, next) {
         if (req.session.isAuthenticated === null) {
