@@ -12,5 +12,3 @@ router.post('/login', patientController.login);
 
 
 module.exports = router;
-
-
