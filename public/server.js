@@ -36,7 +36,7 @@ app.get('/videocall', (req, res) => {
 });
 
 app.get('/videocall/:room', (req, res) => {
-    res.render('room', { layout: false, roomId: req.params.room });
+    res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id, userName: req.session.authUser.Name });
 });
 app.get('/datlichhen', (req, res) => {
     res.render('datlichhen');
