@@ -1735,27 +1735,7 @@ h3.quote::before {
 .review-form .round-black-btn {
   text-transform: uppercase;
   cursor: pointer; }
-
-.form-date-time-left {
-  float: left;
-  margin-left: 20px; }
-
-.form-date-time-center {
-  float: left;
-  margin-left: 30px; }
-
-.form-date-time-right {
-  float: left;
-  margin-left: 30px; }
-
-.form-date-time-right1 {
-  float: clear;
-  width: 200px;
-  margin-left: 18px; }
-
-button {
-  margin: 20px; }
-
+/* css schedule */
 .btn-submit {
   width: 130px;
   height: 40px;
