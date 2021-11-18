@@ -34,14 +34,9 @@ app.set('view engine', 'ejs');
 app.get('/videocall', (req, res) => {
     res.redirect(`/videocall/${uuidv4()}`);
 });
-var data = {}
+var dataUser = {};
 app.get('/videocall/:room', (req, res) => {
-    data = {
-        Id: req.session.authUser.Id,
-        Email: req.session.authUser.Email,
-        Name: req.session.authUser.Name,
-    }
-    res.render('room', { layout: false, roomId: req.params.room, userId: data.Id, userName: data.Name });
+    res.render('room', { layout: false, roomId: req.params.room, userId: dataUser.Id, userName: dataUser.Name });
 });
 app.get('/datlichhen', (req, res) => {
     res.render('datlichhen');
@@ -116,6 +111,11 @@ app.use(async function(req, res, next) {
         }
         res.locals.lcIsAuthenticated = req.session.isAuthenticated;
         res.locals.lcAuthUser = req.session.authUser;
+        dataUser = {
+            Id: req.session.authUser.Id,
+            Email: req.session.authUser.Email,
+            Name: req.session.authUser.Name,
+        }
         next();
     })
     //connect to data base
