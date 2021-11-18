@@ -80,7 +80,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
                         Name: req.user.displayName,
                         ImageURL: req.user.photos[0].value,
                         Sex: '',
-                        Adress: '',
+                        Address: '',
                         Email: req.user.emails[0].value,
                               
                     })          

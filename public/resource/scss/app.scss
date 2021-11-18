@@ -2080,27 +2080,8 @@ h3.quote::before {
     text-transform: uppercase;
     cursor: pointer;
   }
-  //  css addschedule
-.form-date-time-left{
-    float: left;
-    margin-left: 20px;
-}
-.form-date-time-center{
-    float: left;
-    margin-left: 30px;
-}
-.form-date-time-right{
-    float: left;
-    margin-left: 30px;
-}
-.form-date-time-right1{
-    float: clear;
-    width: 200px;
-    margin-left: 18px;
-}
-button {
-    margin: 20px;
-  }
+  //  css schedule
+
   .btn-submit{
     width: 130px;
     height: 40px;
@@ -2123,7 +2104,7 @@ button {
     background: rgb(96,9,240);
     background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
     border: none;
-    
+   
   }
   .addschedule:before {
     height: 0%;
@@ -2140,9 +2121,7 @@ button {
 
 
 /* this is css of profile */
-body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-}
+
 .emp-profile{
     padding: 3%;
     margin-top: 3%;
@@ -2238,9 +2217,6 @@ body{
 
 
 //this is css of edit profile
-
-				                
-body{margin-top:20px;}
 .avatar{
     background-color: #00d747;
 width:200px;
