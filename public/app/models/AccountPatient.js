@@ -9,6 +9,7 @@ const accounts_patient = new Schema({
     Phone: { type: String },
     Sex: { type: String },
     Address: { type: String },
+    Age: { type: String },
     Email: { type: String, required: true },
 
 }, {

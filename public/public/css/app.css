@@ -1786,9 +1786,6 @@ button {
 
 /*# sourceMappingURL=maps/style.css.map */
 /* this is css of profile */
-body {
-  background: -webkit-linear-gradient(left, #3931af, #00c6ff); }
-
 .emp-profile {
   padding: 3%;
   margin-top: 3%;
@@ -1880,9 +1877,6 @@ body {
 .profile-tab p {
   font-weight: 600;
   color: #0062cc; }
-
-body {
-  margin-top: 20px; }
 
 .avatar {
   background-color: #00d747;

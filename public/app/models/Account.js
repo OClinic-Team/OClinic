@@ -4,10 +4,10 @@ const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
 
 const Account = new Schema({
-    Id: { type: String, require: true },
+    Id: { type: String },
     Email: { type: String, require: true },
     RoleName: { type: String },
-    slug: { type: String, slug: 'Id', unique: true },
+    slug: { type: String, slug: 'Email', unique: true },
 }, {
     timestamps: true,
 }, );

@@ -1814,294 +1814,355 @@ h3.quote::before {
     }
 }
 
+
 /*Bác Sĩ Theo Khoa*/
+
 .pd-wrap {
     padding: 40px 0;
     font-family: 'Poppins', sans-serif;
-  }
-  .heading-section {
+}
+
+.heading-section {
     text-align: center;
     margin-bottom: 20px;
-  }
-  .sub-heading {
+}
+
+.sub-heading {
     font-family: 'Poppins', sans-serif;
-      font-size: 12px;
-      display: block;
-      font-weight: 600;
-      color: #2e9ca1;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-  }
-  .heading-section h2 {
+    font-size: 12px;
+    display: block;
+    font-weight: 600;
+    color: #2e9ca1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.heading-section h2 {
     font-size: 32px;
-      font-weight: 500;
-      padding-top: 10px;
-      padding-bottom: 15px;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 15px;
     font-family: 'Poppins', sans-serif;
-  }
-  .user-img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      position: relative;
+}
+
+.user-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: relative;
     min-width: 80px;
     background-size: 100%;
-  }
-  .carousel-testimonial .item {
+}
+
+.carousel-testimonial .item {
     padding: 30px 10px;
-  }
-  .quote {
+}
+
+.quote {
     position: absolute;
-      top: -23px;
-      color: #2e9da1;
-      font-size: 27px;
-  }
-  .name {
+    top: -23px;
+    color: #2e9da1;
+    font-size: 27px;
+}
+
+.name {
     margin-bottom: 0;
-      line-height: 14px;
-      font-size: 17px;
-      font-weight: 500;
-  }
-  .position {
+    line-height: 14px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.position {
     color: #adadad;
     font-size: 14px;
-  }
-  .owl-nav button {
+}
+
+.owl-nav button {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
     outline: none;
     height: 25px;
-  }
-  .owl-nav button svg {
+}
+
+.owl-nav button svg {
     width: 25px;
     height: 25px;
-  }
-  .owl-nav button.owl-prev {
+}
+
+.owl-nav button.owl-prev {
     left: 25px;
-  }
-  .owl-nav button.owl-next {
+}
+
+.owl-nav button.owl-next {
     right: 25px;
-  }
-  .owl-nav button span {
+}
+
+.owl-nav button span {
     font-size: 45px;
-  }
-  .product-thumb .item img {
+}
+
+.product-thumb .item img {
     height: 100px;
-  }
-  .product-name {
+}
+
+.product-name {
     color: #f75757;
     font-size: 30px;
     font-weight: 500;
     line-height: 22px;
     margin-bottom: 10px;
-  }
-  .product-price-discount {
+}
+
+.product-price-discount {
     font-size: 22px;
-      font-weight: 400;
-      clear: both;
-  }
-  .product-price-discount span.line-through {
+    font-weight: 400;
+    clear: both;
+}
+
+.product-price-discount span.line-through {
     text-decoration: line-through;
-      margin-left: 10px;
-      font-size: 14px;
-      vertical-align: middle;
-      color: #a5a5a5;
-  }
-  .display-flex {
+    margin-left: 10px;
+    font-size: 14px;
+    vertical-align: middle;
+    color: #a5a5a5;
+}
+
+.display-flex {
     display: flex;
-  }
-  .align-center {
+}
+
+.align-center {
     align-items: center;
-  }
-  .product-info {
+}
+
+.product-info {
     width: 100%;
-  }
-  .reviews-counter {
-      font-size: 13px;
-  }
-  .reviews-counter span {
+}
+
+.reviews-counter {
+    font-size: 13px;
+}
+
+.reviews-counter span {
     vertical-align: -2px;
-  }
-  .rate {
-      float: left;
-      padding: 0 10px 0 0;
-  }
-  .rate:not(:checked) > input {
-      position:absolute;
-      top:-9999px;
-  }
-  .rate:not(:checked) > label {
-      float: right;
-      width: 15px;
-      overflow: hidden;
-      white-space: nowrap;
-      cursor: pointer;
-      font-size: 21px;
-      color:#ccc;
+}
+
+.rate {
+    float: left;
+    padding: 0 10px 0 0;
+}
+
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 21px;
+    color: #ccc;
     margin-bottom: 0;
     line-height: 21px;
-  }
-  .rate:not(:checked) > label:before {
-      content: '\2605';
-  }
-  .rate > input:checked ~ label {
-      color: #ffc700;    
-  }
-  .rate:not(:checked) > label:hover,
-  .rate:not(:checked) > label:hover ~ label {
-      color: #deb217;  
-  }
-  .rate > input:checked + label:hover,
-  .rate > input:checked + label:hover ~ label,
-  .rate > input:checked ~ label:hover,
-  .rate > input:checked ~ label:hover ~ label,
-  .rate > label:hover ~ input:checked ~ label {
-      color: #c59b08;
-  }
-  .product-dtl p {
+}
+
+.rate:not(:checked)>label:before {
+    content: '\2605';
+}
+
+.rate>input:checked~label {
+    color: #ffc700;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #deb217;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #c59b08;
+}
+
+.product-dtl p {
     font-size: 14px;
     line-height: 24px;
     color: #7a7a7a;
-  }
-  .product-dtl .form-control {
+}
+
+.product-dtl .form-control {
     font-size: 15px;
-  }
-  .product-dtl label {
+}
+
+.product-dtl label {
     line-height: 16px;
     font-size: 15px;
-  }
-  .form-control:focus {
+}
+
+.form-control:focus {
     outline: none;
     box-shadow: none;
-  }
-  .product-count {
-    margin-top: 15px; 
-  }
-  .product-count .qtyminus,
-  .product-count .qtyplus {
+}
+
+.product-count {
+    margin-top: 15px;
+}
+
+.product-count .qtyminus,
+.product-count .qtyplus {
     width: 34px;
-      height: 34px;
-      background: #212529;
-      text-align: center;
-      font-size: 19px;
-      line-height: 36px;
-      color: #fff;
-      cursor: pointer;
-  }
-  .product-count .qtyminus {
-    border-radius: 3px 0 0 3px; 
-  }
-  .product-count .qtyplus {
-    border-radius: 0 3px 3px 0; 
-  }
-  .product-count .qty {
+    height: 34px;
+    background: #212529;
+    text-align: center;
+    font-size: 19px;
+    line-height: 36px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.product-count .qtyminus {
+    border-radius: 3px 0 0 3px;
+}
+
+.product-count .qtyplus {
+    border-radius: 0 3px 3px 0;
+}
+
+.product-count .qty {
     width: 60px;
     text-align: center;
-  }
-  .round-black-btn {
+}
+
+.round-black-btn {
     border-radius: 4px;
-      background: #f75757;
-      color: rgb(255, 255, 255);
-      font-weight: bold;
-      padding: 7px 45px;
-      display: inline-block;
-      margin-top: 20px;
-      border: solid 2px #000000; 
-      transition: all 0.5s ease-in-out 0s;
-  }
-  .round-black-btn:hover,
-  .round-black-btn:focus {
+    background: #f75757;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    padding: 7px 45px;
+    display: inline-block;
+    margin-top: 20px;
+    border: solid 2px #000000;
+    transition: all 0.5s ease-in-out 0s;
+}
+
+.round-black-btn:hover,
+.round-black-btn:focus {
     background: black;
     color: #f75757;
     font-weight: bold;
     text-decoration: none;
-  }
-  
-  .product-info-tabs {
-    margin-top: 25px; 
-  }
-  .product-info-tabs .nav-tabs {
+}
+
+.product-info-tabs {
+    margin-top: 25px;
+}
+
+.product-info-tabs .nav-tabs {
     border-bottom: 2px solid #d8d8d8;
-  }
-  .product-info-tabs .nav-tabs .nav-item {
+}
+
+.product-info-tabs .nav-tabs .nav-item {
     margin-bottom: 0;
-  }
-  .product-info-tabs .nav-tabs .nav-link {
-    border: none; 
+}
+
+.product-info-tabs .nav-tabs .nav-link {
+    border: none;
     border-bottom: 2px solid transparent;
     color: #323232;
-  }
-  .product-info-tabs .nav-tabs .nav-item .nav-link:hover {
-    border: none; 
-  }
-  .product-info-tabs .nav-tabs .nav-item.show .nav-link, 
-  .product-info-tabs .nav-tabs .nav-link.active, 
-  .product-info-tabs .nav-tabs .nav-link.active:hover {
-    border: none; 
+}
+
+.product-info-tabs .nav-tabs .nav-item .nav-link:hover {
+    border: none;
+}
+
+.product-info-tabs .nav-tabs .nav-item.show .nav-link,
+.product-info-tabs .nav-tabs .nav-link.active,
+.product-info-tabs .nav-tabs .nav-link.active:hover {
+    border: none;
     border-bottom: 2px solid #d8d8d8;
     font-weight: bold;
-  }
-  .product-info-tabs .tab-content .tab-pane {
+}
+
+.product-info-tabs .tab-content .tab-pane {
     padding: 30px 20px;
     font-size: 15px;
     line-height: 24px;
     color: #7a7a7a;
-  }
-  .review-form .form-group {
+}
+
+.review-form .form-group {
     clear: both;
-  }
-  .mb-20 {
+}
+
+.mb-20 {
     margin-bottom: 20px;
-  }
-  
-  .review-form .rate {
+}
+
+.review-form .rate {
     float: none;
     display: inline-block;
-  }
-  .review-heading {
+}
+
+.review-heading {
     font-size: 24px;
-      font-weight: 600;
-      line-height: 24px;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      color: #000;
-  }
-  .review-form .form-control {
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.review-form .form-control {
     font-size: 14px;
-  }
-  .review-form input.form-control {
+}
+
+.review-form input.form-control {
     height: 40px;
-  }
-  .review-form textarea.form-control {
+}
+
+.review-form textarea.form-control {
     resize: none;
-  }
-  .review-form .round-black-btn {
+}
+
+.review-form .round-black-btn {
     text-transform: uppercase;
     cursor: pointer;
-  }
-  //  css addschedule
-.form-date-time-left{
+}
+
+//  css addschedule
+.form-date-time-left {
     float: left;
     margin-left: 20px;
 }
-.form-date-time-center{
+
+.form-date-time-center {
     float: left;
     margin-left: 30px;
 }
-.form-date-time-right{
+
+.form-date-time-right {
     float: left;
     margin-left: 30px;
 }
-.form-date-time-right1{
+
+.form-date-time-right1 {
     float: clear;
     width: 200px;
     margin-left: 18px;
 }
+
 button {
     margin: 20px;
-  }
-  .btn-submit{
+}
+
+.btn-submit {
     width: 130px;
     height: 40px;
     color: #fff;
@@ -2114,49 +2175,48 @@ button {
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
-     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
     outline: none;
-  }
-  .addschedule{
-    background: rgb(96,9,240);
-    background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
+}
+
+.addschedule {
+    background: rgb(96, 9, 240);
+    background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%);
     border: none;
-    
-  }
-  .addschedule:before {
+}
+
+.addschedule:before {
     height: 0%;
     width: 2px;
-  }
-  .addschedule:hover {
-    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
-      inset -4px -4px 6px 0 rgba(255,255,255,.2),
-      inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
-  }
+}
+
+.addschedule:hover {
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5), -4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255, 255, 255, .2), inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
 
 /*# sourceMappingURL=maps/style.css.map */
 
 
 /* this is css of profile */
-body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-}
-.emp-profile{
+
+.emp-profile {
     padding: 3%;
     margin-top: 3%;
     margin-bottom: 3%;
     border-radius: 0.5rem;
     background: #fff;
 }
-.profile-img{
+
+.profile-img {
     text-align: center;
 }
-.profile-img img{
+
+.profile-img img {
     width: 70%;
     height: 100%;
 }
+
 .profile-img .file {
     position: relative;
     overflow: hidden;
@@ -2167,19 +2227,23 @@ body{
     font-size: 15px;
     background: #212529b8;
 }
+
 .profile-img .file input {
     position: absolute;
     opacity: 0;
     right: 0;
     top: 0;
 }
-.profile-head h5{
+
+.profile-head h5 {
     color: #333;
 }
-.profile-head h6{
+
+.profile-head h6 {
     color: #0062cc;
 }
-.profile-edit-btn{
+
+.profile-edit-btn {
     border: none;
     border-radius: 1.5rem;
     width: 70%;
@@ -2188,61 +2252,68 @@ body{
     color: #6c757d;
     cursor: pointer;
 }
-.proile-rating{
+
+.proile-rating {
     font-size: 12px;
     color: #818182;
     margin-top: 5%;
 }
-.proile-rating span{
+
+.proile-rating span {
     color: #495057;
     font-size: 15px;
     font-weight: 600;
 }
-.profile-head .nav-tabs{
-    margin-bottom:5%;
+
+.profile-head .nav-tabs {
+    margin-bottom: 5%;
 }
-.profile-head .nav-tabs .nav-link{
-    font-weight:600;
+
+.profile-head .nav-tabs .nav-link {
+    font-weight: 600;
     border: none;
 }
-.profile-head .nav-tabs .nav-link.active{
+
+.profile-head .nav-tabs .nav-link.active {
     border: none;
-    border-bottom:2px solid #0062cc;
+    border-bottom: 2px solid #0062cc;
 }
-.profile-work{
+
+.profile-work {
     padding: 14%;
     margin-top: -15%;
 }
-.profile-work p{
+
+.profile-work p {
     font-size: 12px;
     color: #818182;
     font-weight: 600;
     margin-top: 10%;
 }
-.profile-work a{
+
+.profile-work a {
     text-decoration: none;
     color: #495057;
     font-weight: 600;
     font-size: 14px;
 }
-.profile-work ul{
+
+.profile-work ul {
     list-style: none;
 }
-.profile-tab label{
+
+.profile-tab label {
     font-weight: 600;
 }
-.profile-tab p{
+
+.profile-tab p {
     font-weight: 600;
     color: #0062cc;
 }
 
-
 //this is css of edit profile
-
-				                
-body{margin-top:20px;}
-.avatar{
+.avatar {
     background-color: #00d747;
-width:200px;
-height:200px;
-}				              
+    width: 200px;
+    height: 200px;
+}

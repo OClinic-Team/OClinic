@@ -17,7 +17,6 @@
     <div class="mainLeft">
       <div class="mainVideos">
         <div id="videoGrid"> </div>
-
       </div>
       <div class="mainControls">
         <div class="mainControlsBlock">
@@ -30,7 +29,9 @@
             <span>Stop Video</span>
           </div>
         </div>
-
+		<div>
+		
+		</div>
         <div class="mainControlsBlock">
           <div class="mainControlsButton">
             <i class="fas fa-shield-alt"></i>
@@ -42,7 +43,7 @@
          </div>
          <div class="mainControlsButton">
             <i class="fas fa-comment-alt"></i>
-            <span>Chat</span>
+            <span>Chat </span>
          </div>
          <div class="mainControlsButton">
           <i class="fas fa-record-vinyl"></i>         
@@ -74,7 +75,7 @@
     </div>
 </div>
 <script>
-  const socket = io('/')
+const socket = io('/')
 const videoGrid = document.getElementById('videoGrid')
 const myVideo = document.createElement('video')
 myVideo.muted = true
@@ -98,9 +99,10 @@ navigator.mediaDevices
 		myVideoStream = stream
 		addVideoStream(myVideo, stream)
 
-		socket.on('user-connected', (userId) => {
+		socket.on('user-connected',function(userId,userName) {
 			connectToNewUser(userId, stream)
-			alert('Somebody connected', userId)
+			alert(`{{userName}} connect`);
+			
 		})
 
 		peer.on('call', (call) => {
