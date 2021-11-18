@@ -34,9 +34,14 @@ app.set('view engine', 'ejs');
 app.get('/videocall', (req, res) => {
     res.redirect(`/videocall/${uuidv4()}`);
 });
-
+var data = {}
 app.get('/videocall/:room', (req, res) => {
-    res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id, userName: req.session.authUser.Name });
+    data = {
+        Id: req.session.authUser.Id,
+        Email: req.session.authUser.Email,
+        Name: req.session.authUser.Name,
+    }
+    res.render('room', { layout: false, roomId: req.params.room, userId: data.Id, userName: data.Name });
 });
 app.get('/datlichhen', (req, res) => {
     res.render('datlichhen');
