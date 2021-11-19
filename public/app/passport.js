@@ -16,11 +16,12 @@ passport.deserializeUser((user, done) => {
 passport.use(new GoogleStrategy({
         clientID: '1044360178044-m8dmf3ou6d0vdb9cuaiodudfn67ce5f5.apps.googleusercontent.com',
         clientSecret: 'LKtBVKiujlp-Tbar-UawBdxK',
-        callbackURL: "http://oonlineclinic.herokuapp.com/google/callback"
+        callbackURL: "http://localhost:3000/google/callback"
     },
     function(accessToken, refreshToken, profile, done) {
         //user the profile info to check if the user is registered in db
         // User.findOrCreate({ exampleId: profile.id }, function(done, user) {
+        // console.log(accessToken);
         return done(null, profile);
 
     }));

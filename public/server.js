@@ -92,8 +92,14 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
                 req.session.authUser = data;
                 req.session.token = req.user.token;
                 // set data cho biến Local. dùng cho hdb
-                res.locals.lcIsAuthenticated = req.session.isAuthenticated;
-                res.locals.lcAuthUser = req.session.authUser;
+                // res.locals.lcIsAuthenticated = req.session.isAuthenticated;
+                // res.locals.lcAuthUser = req.session.authUser;
+                dataUser = {
+                    Id: req.session.authUser.Id,
+                    Email: req.session.authUser.Email,
+                    Name: req.session.authUser.Name,
+                }
+                console.log(req.session.authUser);
                 //dang nhap thanh cong chuyen ve home
                 if (check_firstTime) {
                     res.redirect(`/profile/${req.user.id}`);
@@ -102,23 +108,26 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
                 }
             }
         });
+
     });
 
 //set data cho res.locals su dung cho .hdb
 app.use(async function(req, res, next) {
-        if (req.session.isAuthenticated === null) {
-            req.session.isAuthenticated = false;
-        }
-        res.locals.lcIsAuthenticated = req.session.isAuthenticated;
-        res.locals.lcAuthUser = req.session.authUser;
-        dataUser = {
-            Id: req.session.authUser.Id,
-            Email: req.session.authUser.Email,
-            Name: req.session.authUser.Name,
-        }
-        next();
-    })
-    //connect to data base
+    if (req.session.isAuthenticated === null) {
+        req.session.isAuthenticated = false;
+    }
+    res.locals.lcIsAuthenticated = req.session.isAuthenticated;
+    res.locals.lcAuthUser = req.session.authUser;
+    next();
+})
+app.get('/logout', function(req, res) {
+    req.session = null;
+    req.logout();
+    console.log(req.session)
+    res.redirect('/');
+
+});
+//connect to data base
 db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
