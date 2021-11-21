@@ -1,6 +1,6 @@
 const Account = require('../models/Account');
 const Account_patient = require('../models/AccountPatient');
-module.exports = function(req, res, next) {
+module.exports.index = function(req, res, next) {
 
     Account.findOne({ Id: req.user.id }, (err, data) => {      
         if (err) {        

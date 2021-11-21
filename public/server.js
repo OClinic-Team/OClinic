@@ -8,6 +8,7 @@ const cookieSession = require('cookie-session');
 const methodOverride = require('method-override');
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const account_patient = require('./app/models/AccountPatient');
+const accounts = require('./app/models/Account')
 const { mutileMongooseToObject } = require('./util/mongoose');
 const { mongooseToObject } = require('./util/mongoose');
 require('./app/passport');
@@ -62,55 +63,175 @@ app.use(cookieSession({
     keys: ['key1', 'key2']
 }))
 
+const queryPatientAcc = async function(userId) {
+    const data = await account_patient.findOne({ Id: userId })
+
+
+    // , (err, result) => {
+    //     const account_detail = new account_patient({
+    //             Id: result.Id,
+    //             Name: result.Name,
+    //             ImageURL: result.ImageURL,
+    //             Sex: result.Sex,
+    //             Address: result.Address,
+    //             Email: result.Email,
+    //         })
+    //hien thi data biến local
+    return data;
+    //  })
+};
+const account_doctor = require('./app/models/AccountDoctor');
+
+const queryDoctorAcc = async function(userId) {
+    //test bang data from account_patient-->account doctor
+    const data = await account_patient.findOne({ Id: userId })
+
+
+    // , (err, result) => {
+    //     const account_detail = new account_patient({
+    //             Id: result.Id,
+    //             Name: result.Name,
+    //             ImageURL: result.ImageURL,
+    //             Sex: result.Sex,
+    //             Address: result.Address,
+    //             Email: result.Email,
+    //         })
+    //         //hien thi data biến local
+    return data;
+    // })
+};
+
+const queryAcc = async function(req, res) {
+    const data = await accounts.findOne({ Id: req.user.id })
+    if (data === null) {
+        const newAcc = new accounts({
+            Id: req.user.id,
+            Email: req.user.emails[0].value,
+            RoleName: 'patient',
+        })
+        newAcc.save();
+        const newPatientAcc = new account_patient({
+            Id: req.user.id,
+            Name: req.user.displayName,
+            ImageURL: req.user.photos[0].value,
+            Sex: '',
+            Address: '',
+            Email: req.user.emails[0].value,
+        })
+        await newPatientAcc.save();
+
+        return newAcc;
+    } else {
+
+        return data;
+    }
+
+
+
+    // })
+}
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(SortMiddleware);
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/fail' }),
-    //checkAccount
-    function(req, res, next) {
-        account_patient.findOne({ Id: req.user.id }, (err, data) => {
-            if (err) {
-                console.log(err)
+    async function(req, res, next) {
+        const account = await queryAcc(req, res);
+        console.log(account);
+        if (account.RoleName === 'patient') {
+            req.session.authUser = await queryPatientAcc(req.user.id);
+            console.log('PATIENT');
+        } else {
+            if (account.RoleName === 'doctor') {
+                req.session.authUser = await queryDoctorAcc(req.user.id);
+                console.log('DOCTOR');
             } else {
-                var check_firstTime = false;
-                if (data === null) {
-                    check_firstTime = true;
-                    data = new account_patient({
-                        Id: req.user.id,
-                        Name: req.user.displayName,
-                        ImageURL: req.user.photos[0].value,
-                        Sex: '',
-                        Adress: '',
-                        Email: req.user.emails[0].value,
-
-                    })
-                    data.save();
-                }
-                //req.cookieSession.         
-                req.session.isAuthenticated = true;
-                req.session.authUser = data;
-                req.session.token = req.user.token;
-                // set data cho biến Local. dùng cho hdb
-                // res.locals.lcIsAuthenticated = req.session.isAuthenticated;
-                // res.locals.lcAuthUser = req.session.authUser;
-                dataUser = {
-                    Id: req.session.authUser.Id,
-                    Email: req.session.authUser.Email,
-                    Name: req.session.authUser.Name,
-                }
-                console.log(req.session.authUser);
-                //dang nhap thanh cong chuyen ve home
-                if (check_firstTime) {
-                    res.redirect(`/profile/${req.user.id}`);
-                } else {
-                    res.redirect('/');
-                }
+                console.log('ADMIN');
             }
-        });
+        }
+
+        req.session.isAuthenticated = true;
+        // req.session.authUser = data;
+        req.session.token = req.user.token;
+
+
+        // accounts.findOne( { Id: req.user.id }, function(err, data) {
+        //     a(data.Id);
+        // if (err) {
+        //     console.log(err)
+        // } else {
+        //     var check_firstTime = false;
+        //     if (data === null) {
+        //         check_firstTime = true;
+        //         data = new accounts({
+        //             Id: req.user.id,
+        //             Email: req.user.emails[0].value,
+        //             RoleName: 'patient',
+        //         })
+        //         data.save();
+        //         const account_detail = new account_patient({
+        //             Id: req.user.id,
+        //             Name: req.user.displayName,
+        //             ImageURL: req.user.photos[0].value,
+        //             Sex: '',
+        //             Address: '',
+        //             Email: req.user.emails[0].value,
+        //         })
+        //         account_detail.save();
+        //         // app.locals({
+        //         //     lcIsAuthenticated: true,
+        //         //     lcAuthUser: account_detail,
+        //         // });
+        //         // app.session({
+        //         //     isAuthenticated: true,
+        //         //     authUser: account_detail,
+        //         // });
+        //         req.session.isAuthenticated = true;
+        //         req.session.authUser = account_detail;
+        //         req.session.token = req.user.token;
+        //         res.locals.lcIsAuthenticated = req.session.isAuthenticated;
+        //         res.locals.lcAuthUser = req.session.authUser;
+        //     } else {
+        //         if (data.RoleName === 'patient') {
+        //             a(req, res, data.Id)
+        //         }
+
+
+        //     }
+        // }
+        // console.log(req.session.authUser); //hien thi data session
+        // console.log(res.locals.isAuthenticated); //hien thi data biến locals
+        // if (check_firstTime) {
+
+        //     res.redirect(`/profile/${ req.session.authUser.Id }`);
+        // } else {
+        res.redirect('/');
+        // }
+        // req.session.isAuthenticated = true;
+        // req.session.authUser = data;
+        // req.session.token = req.user.token;
+        //req.cookieSession.         
+        // set data cho biến Local. dùng cho hdb
+        // res.locals.lcIsAuthenticated = req.session.isAuthenticated;
+        // res.locals.lcAuthUser = req.session.authUser;
+        // dataUser = {
+        //     Id: req.session.authUser.Id,
+        //     Email: req.session.authUser.Email,
+        //     Name: req.session.authUser.Name,
+        // }
+        //dang nhap thanh cong chuyen ve home
 
     });
 
+
+
+// app.use(function setdata(req, res, next) {
+//     req.session.isAuthenticated = true;
+//     req.session.authUser = get_data();
+//     req.session.token = req.user.token;
+//     console.log(req.session.authUser);
+// })
 //set data cho res.locals su dung cho .hdb
 app.use(async function(req, res, next) {
     if (req.session.isAuthenticated === null) {
@@ -119,11 +240,11 @@ app.use(async function(req, res, next) {
     res.locals.lcIsAuthenticated = req.session.isAuthenticated;
     res.locals.lcAuthUser = req.session.authUser;
     next();
-})
+});
+
 app.get('/logout', function(req, res) {
     req.session = null;
     req.logout();
-    console.log(req.session)
     res.redirect('/');
 
 });
@@ -168,9 +289,10 @@ app.engine(
                 };
                 const icon = icons[sortType];
                 const type = types[sortType];
-                return `<a href="?_sort&column=${field}&type=${type}">
-                    <span class="${icon}"></span>
-                </a>`;
+                return ` < a href = "?_sort&column=${field}&type=${type}" >
+                                                <
+                                                span class = "${icon}" > < /span> <
+                                                /a>`;
             },
         },
     }),
