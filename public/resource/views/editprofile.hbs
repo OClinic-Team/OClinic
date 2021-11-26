@@ -18,22 +18,22 @@ t<div class="container bootstrap snippets bootdey">
         <h3>Personal info</h3>
         
         <form method="POST" class="form-horizontal" action="/profile/editInformation">
-    
-        <div>  
-        <input type="hidden" name="ImageURL" class="form-control"  value={{profile.ImageURL}}>
-         <input type="hidden" name="Id" class="form-control"  value={{profile.Id}}>
-        <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80" rows="1" value={{profile.Email}}>
-        </div>
+        {{#if profilePatient}}
+          <div>  
+          <input type="hidden" name="ImageURL" class="form-control"  value={{profilePatient.ImageURL}}>
+          <input type="hidden" name="Id" class="form-control"  value={{profilePatient.Id}}>
+          <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80" rows="1" value={{profilePatient.Email}}>
+          </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Name:</label>
             <div class="col-lg-8">
-              <input class="form-control" name="Name" type="text" placeholder="{{profile.Name}}">
+              <input class="form-control" name="Name" type="text" placeholder="{{profilePatient.Name}}">
             </div>
           </div>
           <div class='form-group'>
             <label class="col-lg-3 control-label">Age:</label>
               <div>
-                <input class="form-control" name="DateOfBirth" type="text" placeholder="{{profile.DateOfBirth}}">
+                <input class="form-control" name="DateOfBirth" type="text" placeholder="{{profilePatient.DateOfBirth}}">
               </div>
           </div>
           <div class="form-group">
@@ -47,14 +47,14 @@ t<div class="container bootstrap snippets bootdey">
                     </div>
                     <div class="form-check m-1">
                     <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="female">
- <label class="form-check-label" for="gridRadios2">
+                    <label class="form-check-label" for="gridRadios2">
                     female
                     </label>
                     </label>
                     </div>
                     <div class="form-check m-1">
                     <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="other">
- <label class="form-check-label" for="gridRadios2">
+                    <label class="form-check-label" for="gridRadios2">
                     Other
                     </label>
           </div>
@@ -62,15 +62,81 @@ t<div class="container bootstrap snippets bootdey">
           <div class="form-group">
             <label class="col-lg-3 control-label">Phone:</label>
             <div class="col-lg-8">
-              <input class="form-control" name="Phone" type="text" placeholder="{{profile.Phone}}">
+              <input class="form-control" name="Phone" type="text" placeholder="{{profilePatient.Phone}}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Address</label>
             <div class="col-lg-8">
-              <input class="form-control" name="Address" type="text" placeholder="{{profile.Address}}">
+              <input class="form-control" name="Address" type="text" placeholder="{{profilePatient.Address}}">
             </div>
           </div>
+        {{else}}
+            <div>  
+            <input type="hidden" name="ImageURL" class="form-control"  value={{profileDoctor.ImageURL}}>
+            <input type="hidden" name="Id" class="form-control"  value={{profileDoctor.Id}}>
+            <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80" rows="1" value={{profileDoctor.Email}}>
+            </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Name:</label>
+                <div class="col-lg-8">
+                  <input class="form-control" name="Name" type="text" placeholder="{{profileDoctor.Name}}">
+                </div>
+              </div>
+              <div class='form-group'>
+                <label class="col-lg-3 control-label">Age:</label>
+                  <div>
+                    <input class="form-control" name="DateOfBirth" type="text" placeholder="{{profileDoctor.DateOfBirth}}">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Sex:</label>
+                <div class="col-sm-10">
+                    <div class="form-check m-1">
+                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios1" value="male" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                    male
+                    </label>
+                    </div>
+                    <div class="form-check m-1">
+                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="female">
+                    <label class="form-check-label" for="gridRadios2">
+                    female
+                    </label>
+                    </label>
+                    </div>
+                    <div class="form-check m-1">
+                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="other">
+                    <label class="form-check-label" for="gridRadios2">
+                    Other
+                    </label>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Phone:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="Phone" type="text" placeholder="{{profileDoctor.Phone}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Address</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="Address" type="text" placeholder="{{profileDoctor.Address}}">
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="col-lg-3 control-label">Department</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="Address" type="text" placeholder="{{profileDoctor.Department}}">
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="col-lg-3 control-label">Practicing certificate:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="Address" type="text" placeholder="{{profileDoctor.Practicing_certificate}}">
+            </div>
+          </div>
+        {{/if}}
             <button type="submit" >Save</button>
         </form>
       </div>

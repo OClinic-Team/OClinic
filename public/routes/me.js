@@ -6,7 +6,7 @@ const meController = require('../app/controllers/MeController.js');
 // newsController.index();
 router.get('/stored/accounts', authenticated, meController.storedAccounts);
 router.post('/handle-form-action', authenticated, meController.handFormAction);
-
+router.get('accounts/:Id/edit', meController.editUser);
 router.get('/trash/accounts', authenticated, meController.trashAccounts);
 router.get('/stored/medical-record', authenticated, meController.storedMedicalRecord);
 router.get('/trash/medical-record', authenticated, meController.trashMedicalRecord);

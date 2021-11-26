@@ -8,6 +8,8 @@ const cookieSession = require('cookie-session');
 const methodOverride = require('method-override');
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const account_patient = require('./app/models/AccountPatient');
+const account_doctor = require('./app/models/AccountDoctor');
+const account_admin = require('./app/models/AccountAdmin');
 const accounts = require('./app/models/Account')
 const { mutileMongooseToObject } = require('./util/mongoose');
 const { mongooseToObject } = require('./util/mongoose');
@@ -19,7 +21,6 @@ const port = process.env.PORT || 3000;
 //Middleware
 const SortMiddleware = require('./app/middlewares/SoftMiddleware');
 const checkLogin = require('./app/middlewares/login');
-const checkAccount = require('./app/middlewares/checkAccount');
 //webRTC
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -35,9 +36,9 @@ app.set('view engine', 'ejs');
 app.get('/videocall', (req, res) => {
     res.redirect(`/videocall/${uuidv4()}`);
 });
-var dataUser = {};
+
 app.get('/videocall/:room', (req, res) => {
-    res.render('room', { layout: false, roomId: req.params.room, userId: dataUser.Id, userName: dataUser.Name });
+    res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id, userName: req.session.authUser.Name });
 });
 app.get('/datlichhen', (req, res) => {
     res.render('datlichhen');
@@ -65,40 +66,32 @@ app.use(cookieSession({
 
 const queryPatientAcc = async function(userId) {
     const data = await account_patient.findOne({ Id: userId })
-
-
-    // , (err, result) => {
-    //     const account_detail = new account_patient({
-    //             Id: result.Id,
-    //             Name: result.Name,
-    //             ImageURL: result.ImageURL,
-    //             Sex: result.Sex,
-    //             Address: result.Address,
-    //             Email: result.Email,
-    //         })
-    //hien thi data biến local
     return data;
-    //  })
 };
-const account_doctor = require('./app/models/AccountDoctor');
-
-const queryDoctorAcc = async function(userId) {
-    //test bang data from account_patient-->account doctor
-    const data = await account_patient.findOne({ Id: userId })
-
-
-    // , (err, result) => {
-    //     const account_detail = new account_patient({
-    //             Id: result.Id,
-    //             Name: result.Name,
-    //             ImageURL: result.ImageURL,
-    //             Sex: result.Sex,
-    //             Address: result.Address,
-    //             Email: result.Email,
-    //         })
-    //         //hien thi data biến local
+const queryAdminAcc = async function(userId) {
+    const data = await account_admin.findOne({ Id: userId })
     return data;
-    // })
+}
+const queryDoctorAcc = async function(req, res, userId) {
+    const data = await account_doctor.findOne({ Id: userId })
+    if (data === null) {
+        const newDoctorAcc = new account_doctor({
+            Id: req.user.id,
+            Name: req.user.displayName,
+            ImageURL: req.user.photos[0].value,
+            Sex: '',
+            Address: '',
+            Email: req.user.emails[0].value,
+            Department: '',
+            Practicing_certificate: '',
+            Permission: '1',
+        })
+        await newDoctorAcc.save();
+        console.log(newDoctorAcc)
+        return newDoctorAcc;
+    }
+    return data;
+
 };
 
 const queryAcc = async function(req, res) {
@@ -117,6 +110,7 @@ const queryAcc = async function(req, res) {
             Sex: '',
             Address: '',
             Email: req.user.emails[0].value,
+            Permission: '0',
         })
         await newPatientAcc.save();
 
@@ -125,9 +119,6 @@ const queryAcc = async function(req, res) {
 
         return data;
     }
-
-
-
     // })
 }
 
@@ -141,97 +132,26 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
         console.log(account);
         if (account.RoleName === 'patient') {
             req.session.authUser = await queryPatientAcc(req.user.id);
-            console.log('PATIENT');
+            console.log(req.session.authUser.Permission);
         } else {
             if (account.RoleName === 'doctor') {
-                req.session.authUser = await queryDoctorAcc(req.user.id);
-                console.log('DOCTOR');
+                req.session.authUser = await queryDoctorAcc(req, res, req.user.id);
+                console.log(req.session.authUser.Permission);
             } else {
-                console.log('ADMIN');
+                req.session.authUser = await queryDoctorAcc(req.user.id);
+                console.log(req.session.authUser.Permission);
+
             }
         }
 
         req.session.isAuthenticated = true;
-        // req.session.authUser = data;
         req.session.token = req.user.token;
-
-
-        // accounts.findOne( { Id: req.user.id }, function(err, data) {
-        //     a(data.Id);
-        // if (err) {
-        //     console.log(err)
-        // } else {
-        //     var check_firstTime = false;
-        //     if (data === null) {
-        //         check_firstTime = true;
-        //         data = new accounts({
-        //             Id: req.user.id,
-        //             Email: req.user.emails[0].value,
-        //             RoleName: 'patient',
-        //         })
-        //         data.save();
-        //         const account_detail = new account_patient({
-        //             Id: req.user.id,
-        //             Name: req.user.displayName,
-        //             ImageURL: req.user.photos[0].value,
-        //             Sex: '',
-        //             Address: '',
-        //             Email: req.user.emails[0].value,
-        //         })
-        //         account_detail.save();
-        //         // app.locals({
-        //         //     lcIsAuthenticated: true,
-        //         //     lcAuthUser: account_detail,
-        //         // });
-        //         // app.session({
-        //         //     isAuthenticated: true,
-        //         //     authUser: account_detail,
-        //         // });
-        //         req.session.isAuthenticated = true;
-        //         req.session.authUser = account_detail;
-        //         req.session.token = req.user.token;
-        //         res.locals.lcIsAuthenticated = req.session.isAuthenticated;
-        //         res.locals.lcAuthUser = req.session.authUser;
-        //     } else {
-        //         if (data.RoleName === 'patient') {
-        //             a(req, res, data.Id)
-        //         }
-
-
-        //     }
-        // }
-        // console.log(req.session.authUser); //hien thi data session
-        // console.log(res.locals.isAuthenticated); //hien thi data biến locals
-        // if (check_firstTime) {
-
-        //     res.redirect(`/profile/${ req.session.authUser.Id }`);
-        // } else {
-        res.redirect('/');
-        // }
-        // req.session.isAuthenticated = true;
-        // req.session.authUser = data;
-        // req.session.token = req.user.token;
-        //req.cookieSession.         
-        // set data cho biến Local. dùng cho hdb
-        // res.locals.lcIsAuthenticated = req.session.isAuthenticated;
-        // res.locals.lcAuthUser = req.session.authUser;
-        // dataUser = {
-        //     Id: req.session.authUser.Id,
-        //     Email: req.session.authUser.Email,
-        //     Name: req.session.authUser.Name,
-        // }
-        //dang nhap thanh cong chuyen ve home
-
+        res.redirect(`/profile/${req.session.authUser.Id}`);
     });
 
 
 
-// app.use(function setdata(req, res, next) {
-//     req.session.isAuthenticated = true;
-//     req.session.authUser = get_data();
-//     req.session.token = req.user.token;
-//     console.log(req.session.authUser);
-// })
+
 //set data cho res.locals su dung cho .hdb
 app.use(async function(req, res, next) {
     if (req.session.isAuthenticated === null) {

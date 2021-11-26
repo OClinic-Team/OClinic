@@ -23,31 +23,31 @@
   <thead>
     <tr>
       <th scope="col" colspan="2">#</th>
-      <th scope="col">Tên Bác Sỹ
+      <th scope="col">ID User
         <a href="?_sort&column=name&type=asc">
               <span class="oi oi-elevator"></span></th>
         </a>
       </th>
-      <th scope="col">Khoa</th>
-      <th scope="col" colspan="2">Lịch Làm Việc</th>
+      <th scope="col">Email</th>
+      <th scope="col" colspan="2">RoleName</th>
     </tr>
   </thead>
   
   <tbody>
-    {{#each accounts}}
+    {{#each account}}
     <tr>
       <td>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
+          <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this.Id}}" >
           </label>
         </div>
       </td>
       <th scope="row">{{sum @index 1}}</th>
-      <td>{{this.name}}</td>
-      <td>{{this.khoa}}</td>
-      <td>{{this.time}}</td>
+      <td>{{this.Id}}</td>
+      <td>{{this.Email}}</td>
+      <td>{{this.RoleName}}</td>
       <td>
-          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+          <a href="/accounts/{{this._id}}/edit" id="btn-edit-account" type="button" class="btn btn-link">Sửa</a>
           <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
       </td>
     </tr>
@@ -87,6 +87,7 @@
         var accountID;
         var deleteForm = document.forms['delete-form'];
         var btnDeleteAccount = document.getElementById('btn-delete-account');
+        var btnEditAccount =document.getElementById('btn-edit-account')
         var accountItemCheckbox = $('input[name="accountIds[]"]');
         var containerForm = document.forms['container-form'];
         var checkboxAll= $('#checkbox-all');
@@ -107,6 +108,10 @@
         btnDeleteAccount.onclick = function() {
           deleteForm.action = '/accounts/' +accountID+ '?_method=DELETE';
           deleteForm.submit();
+        }
+        btnEditAccount.onclick=function(){
+           var button = $(event.relatedTarget);
+          accountID=button.data('Id');
         }
         // khi chọn tất cả được tick
         checkboxAll.change(function () {

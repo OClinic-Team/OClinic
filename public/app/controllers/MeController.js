@@ -58,15 +58,22 @@ class MeController {
     //         )
     //         .catch(next);
     // }
+    //[GET] /me/stored/accounts
     storedAccounts(req, res, next) {
             Account.find({}, function(err, data) {
                 if (err) res.send(err)
                 res.render('me/stored-accounts', {
-                    account: mutileMongooseToObject(data)
+                    account: mutileMongooseToObject(data),
                 });
             })
         }
-        //[GET] /me/trash/account
+        //[GET] /accounts/:Id/edit
+    editUser(req, res, next) {
+        console.log(req.body.Id)
+    }
+
+
+    //[GET] /me/trash/account
     trashAccounts(req, res, next) {
             Account.findDeleted({})
                 .then((accounts) =>
