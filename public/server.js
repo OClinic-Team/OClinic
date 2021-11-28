@@ -20,7 +20,7 @@ const path = require('path');
 const port = process.env.PORT || 3000;
 //Middleware
 const SortMiddleware = require('./app/middlewares/SoftMiddleware');
-const checkLogin = require('./app/middlewares/login');
+const auth = require('./app/middlewares/auth');
 //webRTC
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -28,34 +28,7 @@ const { ExpressPeerServer } = require('peer');
 const peerServer = ExpressPeerServer(server, {
     debug: true,
 });
-const { v4: uuidv4 } = require('uuid');
 
-app.use('/peerjs', peerServer);
-app.set('view engine', 'ejs');
-
-app.get('/videocall', (req, res) => {
-    res.redirect(`/videocall/${uuidv4()}`);
-});
-
-app.get('/videocall/:room', (req, res) => {
-    res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id, userName: req.session.authUser.Name });
-});
-app.get('/datlichhen', (req, res) => {
-    res.render('datlichhen');
-});
-io.on('connection', (socket) => {
-    socket.on('join-room', (roomId, userId) => {
-        socket.join(roomId);
-        socket.to(roomId).broadcast.emit('user-connected', userId);
-
-        socket.on('message', (message) => {
-            io.to(roomId).emit('createMessage', message, userId);
-        });
-        socket.on('disconnect', () => {
-            socket.to(roomId).broadcast.emit('user-disconnected', userId);
-        });
-    });
-});
 
 //auth google login
 app.set('trust proxy', 1) // trust first proxy
@@ -162,6 +135,48 @@ app.use(async function(req, res, next) {
     next();
 });
 
+
+//video call
+
+
+const { v4: uuidv4 } = require('uuid');
+
+app.use('/peerjs', peerServer);
+app.set('view engine', 'ejs');
+
+app.get('/videocall', auth, (req, res) => {
+    res.redirect(`/videocall/${uuidv4()}`);
+});
+
+app.get('/videocall/:room', auth, (req, res) => {
+    console.log(req.session.authUser.Name);
+    res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id, userName: req.session.authUser.Name });
+});
+
+io.on('connection', (socket) => {
+    socket.on('join-room', (roomId, userId, userName) => {
+        socket.join(roomId);
+        socket.to(roomId).broadcast.emit('user-connected', userId, userName);
+
+        socket.on('message', (message, userName) => {
+            io.to(roomId).emit('createMessage', message, userName);
+        });
+        socket.on('disconnect', () => {
+            socket.to(roomId).broadcast.emit('user-disconnected', userId);
+        });
+    });
+});
+
+
+
+
+
+
+
+
+app.get('/datlichhen', (req, res) => {
+    res.render('datlichhen');
+});
 app.get('/logout', function(req, res) {
     req.session = null;
     req.logout();
