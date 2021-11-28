@@ -54,13 +54,13 @@ class profileController {
                 .catch(next);
         } else {
             accounts_doctor.findOneAndReplace({ Id: req.body.Id }, {
-                    Id: req.user.id,
-                    Name: req.user.displayName,
-                    ImageURL: req.user.photos[0].value,
+                    Id: req.body.Id,
+                    Name: req.body.Name,
+                    ImageURL: req.body.ImageURL,
                     Sex: req.body.Sex,
                     Address: req.body.Address,
                     Age: req.body.Age,
-                    Email: req.user.emails[0].value,
+                    Email: req.body.Email,
                     Department: req.body.Department,
                     Practicing_certificate: req.body.Practicing_certificate,
                     Permission: '1',
