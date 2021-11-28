@@ -57,6 +57,7 @@ class profileController {
                     Id: req.body.Id,
                     Name: req.body.Name,
                     ImageURL: req.body.ImageURL,
+                    Phone: req.body.Phone,
                     Sex: req.body.Sex,
                     Address: req.body.Address,
                     Age: req.body.Age,
