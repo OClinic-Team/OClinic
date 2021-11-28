@@ -53,12 +53,13 @@ class profileController {
                 .then(() => res.redirect(`/profile/${req.body.Id}`))
                 .catch(next);
         } else {
-            accounts_patient.findOneAndReplace({ Id: req.body.Id }, {
+            accounts_doctor.findOneAndReplace({ Id: req.body.Id }, {
                     Id: req.user.id,
                     Name: req.user.displayName,
                     ImageURL: req.user.photos[0].value,
                     Sex: req.body.Sex,
                     Address: req.body.Address,
+                    Age: req.body.Age,
                     Email: req.user.emails[0].value,
                     Department: req.body.Department,
                     Practicing_certificate: req.body.Practicing_certificate,
