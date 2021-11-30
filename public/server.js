@@ -21,6 +21,9 @@ const port = process.env.PORT || 3000;
 //Middleware
 const SortMiddleware = require('./app/middlewares/SoftMiddleware');
 const auth = require('./app/middlewares/auth');
+//room video-call
+const stream = require('./app/room_module/stream');
+
 //webRTC
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -135,41 +138,49 @@ app.use(async function(req, res, next) {
     next();
 });
 
+//room videcall rtc socket
+app.get('/room', auth, (req, res) => {
+    res.render('index')
 
+});
+// app.get('/videoCall', (req, res) => {
+//     res.render('roomvideocall')
+
+// });
+// app.get('/videoCall', auth, (req, res) => {
+//     res.sendFile(path.join(__dirname, '/index.html'))
+
+// });
+
+io.of('/stream').on('connection', stream);
 //video call
+// const { v4: uuidv4 } = require('uuid');
 
+// app.use('/peerjs', peerServer);
+// app.set('view engine', 'ejs');
 
-const { v4: uuidv4 } = require('uuid');
+// app.get('/videocall', auth, (req, res) => {
+//     res.redirect(`/videocall/${uuidv4()}`);
+// });
 
-app.use('/peerjs', peerServer);
-app.set('view engine', 'ejs');
+// app.get('/videocall/:room', auth, (req, res) => {
+//     console.log(req.session.authUser.Name);
+//     res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id, userName: req.session.authUser.Name });
+// });
 
-app.get('/videocall', auth, (req, res) => {
-    res.redirect(`/videocall/${uuidv4()}`);
-});
+// io.on('connection', (socket) => {
+//     socket.on('join-room', (roomId, userId, userName) => {
+//         socket.join(roomId);
+//         socket.to(roomId).broadcast.emit('user-connected', userId, userName);
 
-app.get('/videocall/:room', auth, (req, res) => {
-    console.log(req.session.authUser.Name);
-    res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id, userName: req.session.authUser.Name });
-});
-
-io.on('connection', (socket) => {
-    socket.on('join-room', (roomId, userId, userName) => {
-        socket.join(roomId);
-        socket.to(roomId).broadcast.emit('user-connected', userId, userName);
-
-        socket.on('message', (message, userName) => {
-            io.to(roomId).emit('createMessage', message, userName);
-        });
-        socket.on('disconnect', () => {
-            socket.to(roomId).broadcast.emit('user-disconnected', userId);
-        });
-    });
-});
-
-
-
-
+//         socket.on('message', (message, userName) => {
+//             io.to(roomId).emit('createMessage', message, userName);
+//         });
+//         socket.on('disconnect', () => {
+//             socket.to(roomId).broadcast.emit('user-disconnected', userId);
+//         });
+//     });
+// });
 
 
 
@@ -229,6 +240,11 @@ app.engine(
                                                 span class = "${icon}" > < /span> <
                                                 /a>`;
             },
+            sections: function(name, options) {
+                if (!this._sections) this._sections = {};
+                this._sections[name] = options.fn(this);
+                return null;
+            }
         },
     }),
 );
