@@ -44,8 +44,19 @@ const queryPatientAcc = async function(userId) {
     const data = await account_patient.findOne({ Id: userId })
     return data;
 };
-const queryAdminAcc = async function(userId) {
+const queryAdminAcc = async function(req, res, userId) {
     const data = await account_admin.findOne({ Id: userId })
+    if (data === null) {
+        const newAdminAcc = new account_admin({
+            Id: req.user.id,
+            Name: req.user.displayName,
+            ImageURL: req.user.photos[0].value,
+            Email: req.user.emails[0].value,
+            Permission: '2',
+        })
+        await newAdminAcc.save();
+        return newAdminAcc;
+    }
     return data;
 }
 const queryDoctorAcc = async function(req, res, userId) {
@@ -59,6 +70,7 @@ const queryDoctorAcc = async function(req, res, userId) {
             Address: '',
             Email: req.user.emails[0].value,
             Department: '',
+            Description: '',
             Practicing_certificate: '',
             Permission: '1',
         })
@@ -108,15 +120,13 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
         console.log(account);
         if (account.RoleName === 'patient') {
             req.session.authUser = await queryPatientAcc(req.user.id);
-            console.log(req.session.authUser.Permission);
         } else {
             if (account.RoleName === 'doctor') {
                 req.session.authUser = await queryDoctorAcc(req, res, req.user.id);
-                console.log(req.session.authUser.Permission);
+                console.log(req.session.authUser.Schedule);
             } else {
-                req.session.authUser = await queryDoctorAcc(req.user.id);
+                req.session.authUser = await queryAdminAcc(req, res, req.user.id);
                 console.log(req.session.authUser.Permission);
-
             }
         }
 

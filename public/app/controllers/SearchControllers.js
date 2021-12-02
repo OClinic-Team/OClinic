@@ -1,22 +1,21 @@
-const account_patient = require('../models/AccountPatient');
+const account_doctor = require('../models/AccountDoctor');
 const { mutileMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 
 class SearchControllers {
 
     // [GET] / MedicalRecord / create
-    searchKhoa(req, res, next) {
 
-        res.json(req.params);
-        // Account.find({})
-        //   .then((accounts) => {
-        //     // res.render('accounts', {
-        //     //   accounts: mutileMongooseToObject(accounts),
-        //     // });
-        //     res.json(req.params);
-        //   })
-        //   .catch(next);
-      }
+    searchDepartment(req, res, next) {
+
+        account_doctor.find({ Department: req.query.Department })
+            .then((accounts) => {
+                res.render('accounts', {
+                    accounts: mutileMongooseToObject(accounts),
+                });
+            })
+            .catch(next);
+    }
 }
 
 

@@ -20,40 +20,25 @@
 	        	<div class="col-lg-3">
                 <img
                   class='card-img-top'
-                  src='{{this.image}}'
-                  alt='{{this.name}}'
+                  src='{{this.ImageURL}}'
+                  alt='{{this.Name}}'
                 />
                 
                 <div style="text-align: center;" class="product-count">
-	        				<a href="#" class="round-black-btn">Đặt Lịch Hẹn</a>
+	        				<button href="#" type="submit"class="round-black-btn">Đặt Lịch Hẹn</button>
 	        			</div>
 	        	</div>
 	        	<div class="col-md-9">
 	        		<div class="product-dtl">
         				<div class="product-info">
-		        			<div class="product-name">Bác Sĩ: {{this.name}}</div>
-		        			<div class="reviews-counter">
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" checked />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" checked />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" checked />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
-                    <span>3 Reviews</span>
-                  </div>
+		        			<div class="product-name">Bác Sĩ: {{this.Name}}</div>
 		        		</div>
-                <div class="product-price-discount"><span><b>Chuyên Khoa:</b> {{this.name}}</span></div>
-                <div class="product-price-discount"><span><b>Chứng Nhận:</b> {{this.chungNhan}}</span></div>
-	        			<p>Mô tả: {{this.description}}</p>
+                <div class="product-price-discount"><span><b>Chuyên Khoa:</b> {{this.Department}}</span></div>
+                <div class="product-price-discount"><span><b>Chứng Nhận:</b> {{this.Practicing_certificate}}</span></div>
+	        			 <div class="product-price-discount"><span><b>Mô Tả:</b> {{this.Description}}</span></div>
                 <div class="product-count">
 	        				<h6>Lịch Làm Việc:
-	        				<form action="#" class="display-flex">
+	        				{{!-- <form action="#" class="display-flex">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
@@ -66,7 +51,8 @@
                           13h00-17h00
                         </label>
                       </div>
-                  </form>
+                  </form> --}}
+                  
                   </h6>
 	        			</div>
 		        		<div class="product-price-discount"><span>Giá Khám Bệnh: <b>300.000</b> VNĐ</span></div>

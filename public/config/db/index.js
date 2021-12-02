@@ -13,12 +13,13 @@ async function connect() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,
-            useCreateIndex: true,
+            // useCreateIndex: true,
         });
         console.log('ket noi thanh cong');
     } catch (error) {
         console.log('Loi!!!!');
     }
 }
+
 
 module.exports = { connect };
