@@ -1,9 +1,8 @@
 <div class="container-create-medical-record" style="width: 100%;">
-
         <div class="left-medical-record-create-form">
             <h3 style="text-align: center;">HỒ SƠ BỆNH ÁN</h3>
             <form method="POST" action="/medicalRecord/storeMedicalRecord">
-                <label for="namePatient">Họ và tên bệnh nhân</label> </form>
+                <label for="namePatient">Họ và tên bệnh nhân</label>
                 <textarea name="namePatient" style="margin-top: 5px;" id="" cols="80" rows="1">{{lcAuthUser.Name}}</textarea></br>
                 <label for="namePatient">Email:</label></br>
                 <textarea name="Email" style="margin-top: 5px;" id="" cols="80" rows="1">{{lcAuthUser.Email}}</textarea>
@@ -29,17 +28,17 @@
                 <input type="text" class="form-control" id="exampleInputEmail1" name="phone" placeholder="Nhập số điện thoại">
                 
 
-                <label for="diagnose">Triệu Chứng</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="symptom" rows="4"></textarea>
+                <label for="symptom">Triệu Chứng</label>
+                <textarea name="symptom"class="form-control" id="exampleFormControlTextarea1" name="symptom" rows="4"></textarea>
 
                 <label for="diagnose">Chuẩn đoán</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="diagnose" rows="4"></textarea>
+                <textarea name="diagnose"class="form-control" id="exampleFormControlTextarea1" name="diagnose" rows="4"></textarea>
 
                 <label for="prescription">Đơn thuốc</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="prescription" rows="3"></textarea>
+                <textarea name="prescription"class="form-control" id="exampleFormControlTextarea1" name="prescription" rows="3"></textarea>
 
                 <label for="note">Ghi Chú</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="note" rows="2"></textarea>
+                <textarea name="note"class="form-control" id="exampleFormControlTextarea1" name="note" rows="2"></textarea>
                     </div>
             
                     <button  type="submit" class="btn btn-primary" style="margin: 10px 10px 100px 300px; " >Tạo hồ sơ</button>

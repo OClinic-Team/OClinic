@@ -22,6 +22,7 @@ function route(app) {
     app.use('/accounts', accountsRouter);
 
     app.use('/addschedule', addscheduleRoute);
+    app.use('/sendEmail',siteRouter)
 
     // app.use('/google', accountUserRouter);
 

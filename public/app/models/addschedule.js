@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Addschedule = new Schema({
+    doctorId:{type: String, required: true},
     date: { type: Date },
     time1: { type: Boolean },
     time2: { type: Boolean },

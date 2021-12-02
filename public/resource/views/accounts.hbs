@@ -15,25 +15,26 @@
 </head>
 
 <div class='mt-4 container p-3 my-3'>
+  <form method='GET' action='/sendEmail/send'>
     {{#each accounts}}
         <div class="mt-4 row bg-muted">
 	        	<div class="col-lg-3">
+               
+                <input type="hidden" name="Email" value="{{this.Email}}"/>
                 <img
                   class='card-img-top'
-                  src='{{this.image}}'
-                  alt='{{this.name}}'
+                  src='{{this.ImageURL}}'
+                  alt='{{this.Name}}'
                 />
-                
-                <div style="text-align: center;" class="product-count">
-	        				<a href="#" class="round-black-btn">Đặt Lịch Hẹn</a>
-	        			</div>
+          
 	        	</div>
 	        	<div class="col-md-9">
 	        		<div class="product-dtl">
         				<div class="product-info">
-		        			<div class="product-name">Bác Sĩ: {{this.name}}</div>
+             
+		        			<div class="product-name">Bác Sĩ: {{this.Name}}</div>
 		        			<div class="reviews-counter">
-                    <div class="rate">
+                    {{!-- <div class="rate">
                         <input type="radio" id="star5" name="rate" value="5" checked />
                         <label for="star5" title="text">5 stars</label>
                         <input type="radio" id="star4" name="rate" value="4" checked />
@@ -47,31 +48,35 @@
                     </div>
                     <span>3 Reviews</span>
                   </div>
-		        		</div>
+		        		</div> --}}
                 <div class="product-price-discount"><span><b>Chuyên Khoa:</b> {{this.name}}</span></div>
                 <div class="product-price-discount"><span><b>Chứng Nhận:</b> {{this.chungNhan}}</span></div>
 	        			<p>Mô tả: {{this.description}}</p>
                 <div class="product-count">
 	        				<h6>Lịch Làm Việc:
-	        				<form action="#" class="display-flex">
+	        				{{!-- <form action="#" class="display-flex">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <input id="time1"class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
                           7h00-11h00
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                        <input id="time2" class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
                         <label class="form-check-label" for="defaultCheck2">
                           13h00-17h00
                         </label>
                       </div>
-                  </form>
+                  </form> --}}
                   </h6>
 	        			</div>
 		        		<div class="product-price-discount"><span>Giá Khám Bệnh: <b>300.000</b> VNĐ</span></div>
 	        		</div>
 	        	</div>
-	        </div>  
+	        </div>
+            <div style="text-align: center;" class="product-count">
+	        				<button type="submit" class="btn btn-success">Đặt lịch hẹn</button>
+	        	</div> 
     {{/each}}
+  </form>
 </div>

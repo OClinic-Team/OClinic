@@ -7,7 +7,7 @@ const { mongooseToObject } = require('../../util/mongoose');
 class AccountController {
     //[GET] /account/:slug
     accounts(req, res, next) {
-        Account.find({})
+        Account_Doctor.find({})
             .then((accounts) => {
                 res.render('accounts', {
                     accounts: mutileMongooseToObject(accounts),
