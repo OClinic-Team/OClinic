@@ -7,7 +7,6 @@ async function connect() {
     //const MONGO_URI = 'mongodb+srv://online-clinic-project:123321123321@cluster.mjikz.mongodb.net/Online-Clinic'
     const MONGO_URI = 'mongodb://localhost:27017/online_clinic'
 
-
     try {
         await mongoose.connect(MONGO_URI, {
             useNewUrlParser: true,
