@@ -2289,223 +2289,152 @@ h3.quote::before {
     width: 200px;
     height: 200px;
 }
-
-// this is css for room video call
-.chat-col {
-    right: -100vw;
-    bottom: 0;
-    top: 40.5px;
-    z-index: 1000;
-    position: fixed;
-    color: #fff;
-    padding-right: 5px;
-    padding-left: 5px;
-    padding-bottom: 40px;
-    padding-top: 15px;
+// footer của home
+.covidVietNam {
+    display: flex;
+    justify-content: Center;
+    align-items: center;
     min-height: 100vh;
-}
-
-.chat-col.chat-opened {
-    right: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transition: all 0.3s ease !important;
-    -webkit-transition: all 0.3s ease !important;
-    -moz-transition: all 0.3s ease !important;
-}
-
-#chat-messages {
-    height: 70vh;
-    margin-bottom: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE 10+ */
-}
-
-#chat-messages::-webkit-scrollbar {
-    width: 0px;
-    /* remove scrollbar space */
-    background: transparent;
-}
-
-.chat-box {
-    bottom: 30px;
-    right: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(248, 184, 139, 0) 20%,
+        rgba(248, 184, 139, 0.1) 20%,
+        rgba(248, 184, 139, 0.1) 40%,
+        rgba(248, 184, 139, 0.2) 40%,
+        rgba(248, 184, 139, 0.2) 60%,
+        rgba(248, 184, 139, 0.4) 60%,
+        rgba(248, 184, 139, 0.4) 80%,
+        rgba(248, 184, 139, 0.5) 80%
+      ),
+      linear-gradient(
+        45deg,
+        rgba(250, 248, 132, 0.3) 20%,
+        rgba(250, 248, 132, 0.4) 20%,
+        rgba(250, 248, 132, 0.4) 40%,
+        rgba(250, 248, 132, 0.5) 40%,
+        rgba(250, 248, 132, 0.5) 60%,
+        rgba(250, 248, 132, 0.6) 60%,
+        rgba(250, 248, 132, 0.6) 80%,
+        rgba(250, 248, 132, 0.7) 80%
+      ),
+      linear-gradient(
+        -45deg,
+        rgba(186, 237, 145, 0) 20%,
+        rgba(186, 237, 145, 0.1) 20%,
+        rgba(186, 237, 145, 0.1) 40%,
+        rgba(186, 237, 145, 0.2) 40%,
+        rgba(186, 237, 145, 0.2) 60%,
+        rgba(186, 237, 145, 0.4) 60%,
+        rgba(186, 237, 145, 0.4) 80%,
+        rgba(186, 237, 145, 0.6) 80%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(178, 206, 254, 0) 20%,
+        rgba(178, 206, 254, 0.3) 20%,
+        rgba(178, 206, 254, 0.3) 40%,
+        rgba(178, 206, 254, 0.5) 40%,
+        rgba(178, 206, 254, 0.5) 60%,
+        rgba(178, 206, 254, 0.7) 60%,
+        rgba(178, 206, 254, 0.7) 80%,
+        rgba(178, 206, 254, 0.8) 80%
+      ),
+      linear-gradient(
+        -90deg,
+        rgba(242, 162, 232, 0) 20%,
+        rgba(242, 162, 232, 0.4) 20%,
+        rgba(242, 162, 232, 0.4) 40%,
+        rgba(242, 162, 232, 0.5) 40%,
+        rgba(242, 162, 232, 0.5) 60%,
+        rgba(242, 162, 232, 0.6) 60%,
+        rgba(242, 162, 232, 0.6) 80%,
+        rgba(242, 162, 232, 0.8) 80%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(254, 163, 170, 0) 20%,
+        rgba(254, 163, 170, 0.4) 20%,
+        rgba(254, 163, 170, 0.4) 40%,
+        rgba(254, 163, 170, 0.6) 40%,
+        rgba(254, 163, 170, 0.6) 60%,
+        rgba(254, 163, 170, 0.8) 60%,
+        rgba(254, 163, 170, 0.8) 80%,
+        rgba(254, 163, 170, 0.9) 80%
+      );
+    background-color: rgb(254, 163, 170);
+    background-size: 100% 100%;
+  }
+  .container {
+   // background: rgba(255, 255, 255, 0.3);
+    //padding: 40px 20px;
+    border-radius: 20px;
+  }
+  .card-deck {
+    margin: 0 -25px;
+    justify-content: center;
+  }
+  .card p {
+    font-size: 1.4rem;
+    border: 1px solid #fff;
+  }
+  h1 {
+    font-size: 2rem;
+    font-family: consolas;
+  }
+  img {
+    width: 60px;
+  }
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .card-deck .card {
+      -ms-flex: 0 0 48.7%;
+      flex: 0 0 48.7%;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .card-deck .card {
+      -ms-flex: 0 0 32%;
+      flex: 0 0 32%;
+    }
+  }
+  @media (min-width: 992px) {
+    .card-deck .card {
+      -ms-flex: 0 0 24%;
+      flex: 0 0 24%;
+    }
+  }
+  .animatediv img:nth-child(1) {
     position: absolute;
-    border: 0;
-    border-top: 1px groove white;
-    border-left: 1px groove white;
-    font-size: small;
-}
-
-.chat-box::placeholder {
-    font-size: small;
-    font-weight: lighter;
-    font-style: italic;
-}
-
-.chat-box,
-.chat-box:focus {
-    resize: none !important;
-    box-shadow: none !important;
-}
-
-.chat-row {
-    height: 100%;
-    overflow-x: scroll;
-}
-
-.main {
-    padding-top: 40px;
-}
-
-.remote-video {
-    width: 100%;
-    height: auto;
-    max-height: 90vh;
-}
-
-.remote-video-controls {
+    right: -6rem;
+    top: -8rem;
+  }
+  .animatediv img:nth-child(2) {
     position: absolute;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 300000;
-    padding: 10px;
-    width: 100%;
-    text-align: center;
-    visibility: hidden;
-}
-
-.remote-video:hover+.remote-video-controls,
-.remote-video-controls:hover {
-    visibility: visible;
-}
-
-.local-video {
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    width: 15vw;
-}
-
-.mirror-mode {
-    -ms-transform: scaleX(-1);
-    -moz-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-}
-
-.sender-info {
-    font-size: smaller;
-    margin-top: 5px;
-    align-self: flex-end;
-}
-
-.msg {
-    font-weight: 400;
-    font-size: 12px;
-    color: black;
-    background-color: wheat;
-}
-
-.chat-card {
-    border-radius: 6px;
-}
-
-.btn-no-effect:focus {
-    box-shadow: none;
-}
-
-.very-small {
-    font-size: 6px !important;
-}
-
-#close-single-peer-btn {
-    position: fixed;
-    top: 0;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1;
-    border-radius: 0%;
-    z-index: 100;
-}
-
-.pointer {
-    cursor: pointer;
-}
-
-.record-option {
-    height: 200px;
-    border-radius: 10%;
-    border: 1px solid #17a2b8;
-    cursor: pointer;
-    padding: 10px;
-    vertical-align: middle;
-}
-
-.custom-modal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 70%;
-    overflow: auto;
-}
-
-.custom-modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #17a2b8;
-    width: 80%;
-}
-
-@keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0
+    left: -38rem;
+    top: -3rem;
+  }
+  .animatediv img:nth-child(3) {
+    position: absolute;
+    left: -6rem;
+    bottom: -42rem;
+  }
+  .animatediv img:nth-child(4) {
+    position: absolute;
+    left: -36rem;
+    bottom: -42rem;
+  }
+  .animatediv {
+    animation: MoveUpDown 10s linear infinite alternate-reverse;
+    position: absolute;
+    right: 300px;
+  }
+  /* position of corona animation */
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      top: 150px;
     }
-    to {
-        top: 0;
-        opacity: 1
+    50% {
+      top: 250px;
     }
-}
-
-@media only screen and (max-width:767px) {
-    .chat-col {
-        right: -100vw;
-        width: 100vw;
-        z-index: 99999;
-        transition: 0.3s;
-        top: 47px;
-    }
-    .chat-opened::-webkit-scrollbar {
-        display: none;
-    }
-    #chat-messages {
-        height: 60vh;
-    }
-    .chat-box {
-        bottom: 90px;
-        margin-bottom: 0px;
-    }
-    .card-sm {
-        max-width: 100%;
-        min-width: 50%;
-    }
-    .local-video {
-        width: 40vw;
-    }
-}
-
-@media (min-width:768px) {
-    .card {
-        width: 50%;
-        z-index: 1000;
-    }
-}
+  }
+  
