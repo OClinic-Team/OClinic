@@ -25,11 +25,12 @@ class AccountController {
                     },
                 },
                 {
-                    $unwind: "$Doctor_Schedule",
+                    $unwind: { path: "$userInfoData", preserveNullAndEmptyArrays: true },
                 },
             ])
             .then((accounts => {
-                console.log(accounts.Permission)
+                console.log(accounts[0].Doctor_Schedule[0].date)
+                console.log(accounts[0])
                 res.render('accounts', { accounts })
             }))
             .catch((error) => {
@@ -112,7 +113,7 @@ class AccountController {
                 if (account.RoleName == 'patient') {
                     res.render('accounts/edit', { accountPatient: mongooseToObject(account) })
                 } else {
-                    res.render('accounts/edit', { accountDoctor: mongooseToObject(account) })
+                    res.render(`accounts/${account.Id}/edit`, { accountDoctor: mongooseToObject(account) })
                 }
             })
             // .then((account) =>

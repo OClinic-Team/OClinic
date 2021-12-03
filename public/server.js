@@ -132,7 +132,8 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
 
         req.session.isAuthenticated = true;
         req.session.token = req.user.token;
-        res.redirect(`/profile/${req.session.authUser.Id}`);
+        var redirectionUrl = req.session.redirectUrl || '/';
+        res.redirect(redirectionUrl);
     });
 
 
@@ -145,14 +146,18 @@ app.use(async function(req, res, next) {
     }
     res.locals.lcIsAuthenticated = req.session.isAuthenticated;
     res.locals.lcAuthUser = req.session.authUser;
+    // window.sessionStorage.setItem('Id', req.session.authUser.Id);
+    // sessionStorage.setItem('Name', req.session.authUser.Name);
+    // sessionStorage.setItem('Email', req.session.authUser.Email);
+    // window.sessionStorage.setItem('Id', req.session.authUser.Id)
     next();
 });
 
 //room videcall rtc socket
-app.get('/room', auth, (req, res) => {
-    res.render('index')
+// app.get('/room', auth, (req, res) => {
+//     res.render('index')
 
-});
+// });
 // app.get('/videoCall', (req, res) => {
 //     res.render('roomvideocall')
 
@@ -162,35 +167,34 @@ app.get('/room', auth, (req, res) => {
 
 // });
 
-io.of('/stream').on('connection', stream);
+// io.of('/stream').on('connection', stream);
+
 //video call
-// const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
-// app.use('/peerjs', peerServer);
-// app.set('view engine', 'ejs');
+app.use('/peerjs', peerServer);
+app.set('view engine', 'ejs');
 
-// app.get('/videocall', auth, (req, res) => {
-//     res.redirect(`/videocall/${uuidv4()}`);
-// });
+app.get('/videocall', (req, res) => {
+    res.redirect(`/videocall/${uuidv4()}`);
+});
+app.get('/videocall/:room', auth, (req, res) => {
+    res.render('room', { layout: false, roomId: req.params.room, userId: req.params.id });
+});
 
-// app.get('/videocall/:room', auth, (req, res) => {
-//     console.log(req.session.authUser.Name);
-//     res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id, userName: req.session.authUser.Name });
-// });
+io.on('connection', (socket) => {
+    socket.on('join-room', (roomId, userId) => {
+        socket.join(roomId);
+        socket.to(roomId).broadcast.emit('user-connected', userId);
 
-// io.on('connection', (socket) => {
-//     socket.on('join-room', (roomId, userId, userName) => {
-//         socket.join(roomId);
-//         socket.to(roomId).broadcast.emit('user-connected', userId, userName);
-
-//         socket.on('message', (message, userName) => {
-//             io.to(roomId).emit('createMessage', message, userName);
-//         });
-//         socket.on('disconnect', () => {
-//             socket.to(roomId).broadcast.emit('user-disconnected', userId);
-//         });
-//     });
-// });
+        socket.on('message', (message, userName) => {
+            io.to(roomId).emit('createMessage', message, userId);
+        });
+        socket.on('disconnect', () => {
+            socket.to(roomId).broadcast.emit('user-disconnected', userId);
+        });
+    });
+});
 
 
 

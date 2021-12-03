@@ -99,9 +99,9 @@ navigator.mediaDevices
 		myVideoStream = stream
 		addVideoStream(myVideo, stream)
 
-		socket.on('user-connected',function(userId,userName) {
+		socket.on('user-connected',function(userId) {
 			connectToNewUser(userId, stream)
-			alert(`{{userName}} connect`);
+			alert(`some one have ${userId} connect`,userId);
 			
 		})
 
@@ -122,7 +122,7 @@ navigator.mediaDevices
 			}
 		})
 		// sent message in box chat
-		socket.on('createMessage', (message,userName) => {
+		socket.on('createMessage', (message,userId) => {
 			$('ul').append(`<li >
 								<span class="messageHeader">
 									<span>

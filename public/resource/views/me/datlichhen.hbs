@@ -13,13 +13,9 @@
             <option value="3">Tim Mạch</option>
           </select>
         </th>
-        <th scope="col">Tên Bác Sỹ
-          {{{sortable 'name' _sort}}}
-        </th>
+        <th scope="col">Tên Bác Sỹ {{{sortable 'Name' _sort}}}</th>
         
-        <th scope="col">Lịch Làm Việc 
-          {{{sortable 'time' _sort}}}
-        </th>
+        <th scope="col">Lịch Làm Việc {{{sortable 'time' _sort}}}</th>
           
           
         <th scope="col">
@@ -79,7 +75,7 @@
         var accountItemCheckbox = $('input[name="accountIds[]"]');
         var containerForm = document.forms['container-form'];
         var checkboxAll= $('#checkbox-all');
-        var checkAllSubmitBtn= $('.check-all-submit-btn');
+        var checkAllSubmitBtn= $('.check-all-submit-btn');  
 
         $('#delete-account').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget);
