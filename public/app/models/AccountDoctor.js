@@ -12,6 +12,7 @@ const accounts_doctor = new Schema({
     Age: { type: String },
     Email: { type: String, required: true },
     Department: { type: String },
+    Description: { type: String },
     Practicing_certificate: { type: String },
     Permission: { type: String },
 

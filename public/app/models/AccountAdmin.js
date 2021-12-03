@@ -6,10 +6,6 @@ const accounts_admin = new Schema({
     Id: { type: String, required: true },
     Name: { type: String, required: true },
     ImageURL: { type: String },
-    Phone: { type: String },
-    Sex: { type: String },
-    Address: { type: String },
-    Age: { type: String },
     Email: { type: String, required: true },
     Permission: { type: String }
 }, {

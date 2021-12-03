@@ -63,6 +63,7 @@ class profileController {
                     Age: req.body.Age,
                     Email: req.body.Email,
                     Department: req.body.Department,
+                    Description: req.body.Description,
                     Practicing_certificate: req.body.Practicing_certificate,
                     Permission: '1',
                 })

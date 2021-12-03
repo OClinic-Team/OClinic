@@ -1,6 +1,7 @@
 const MedicalRecord = require('../models/MedicalRecord');
 const { mutileMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
+const mailer = require('../../util/mailer');
 
 class MedicalRecordController {
     // [GET] / MedicalRecord / create
@@ -18,6 +19,7 @@ class MedicalRecordController {
             .catch(next);
     }
     store(req, res, next) {
+        
             const medicalRecord = new MedicalRecord(req.body);
             medicalRecord
                 .save()
@@ -25,12 +27,13 @@ class MedicalRecordController {
                 .catch((error) => {});
         }
         //[POST] /medicalRecord/storeMedicalRecord
-    storeMedicalRecord(req, res, next) {
+        storeMedicalRecord(req, res, next) {
 
             const medicalRecord = new MedicalRecord(req.body);
             medicalRecord.save();
-            // .then(res.redirect("medicalRecord/create"))
-            res.send('Medical-Record Saved !');
+            console.log('Create Medical Record Successfully');
+            res.redirect('/medicalRecord/create')
+
         }
         //[GET] /MedicalRecord/:id
     show(req, res, next) {
