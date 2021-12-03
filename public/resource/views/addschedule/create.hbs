@@ -6,11 +6,11 @@
   <H3>Đăng Ký Lịch Làm</H3>
   <form method="POST" action="/addschedule/add">
   <div class="form-date-time-swap">
-    <div>
+    <div class='form-group'>
+        <div>
           <input type="hidden" name="doctorId" class="form-control"  value="{{lcAuthUser.Id}}">
-    </div>
+        </div>
     <div class="form-date-time">
-      <div class='form-group'>
       <label for='name' style="color:black;font-weight:400;">Chọn ngày 1</label>
         <div>
             <input type="datepicker" name="date" class="form-control" readonly placeholder="Chọn ngày"  />

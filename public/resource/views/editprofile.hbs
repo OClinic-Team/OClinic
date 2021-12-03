@@ -3,15 +3,23 @@
       <hr>
 	<div class="row">
       <!-- left column -->
+      {{#if profilePatient}}
       <div class="col-md-3">
         <div class="text-center">
-          <img src="{{profile.ImageURL}}" class="avatar img-circle img-thumbnail" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          
-          <input type="file" class="form-control">
-
+          <img src="{{profilePatient.ImageURL}}" class="avatar img-circle img-thumbnail" alt="avatar">
+          {{!-- <h6>Upload a different photo...</h6>
+          <input type="file" class="form-control"> --}}
         </div>
       </div>
+      {{else}}
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="{{profileDoctor.ImageURL}}" class="avatar img-circle img-thumbnail" alt="avatar">
+          {{!-- <h6>Upload a different photo...</h6>
+          <input type="file" class="form-control"> --}}
+        </div>
+      </div>
+      {{/if}}
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
@@ -20,13 +28,13 @@
         <form method="POST" class="form-horizontal" action="/profile/editInformation">
         {{#if profilePatient}}
           <div>  
-          <input type="hidden" name="ImageURL" class="form-control"  value={{profilePatient.ImageURL}}>
+          <img type="hidden" name="ImageURL" class="form-control"  src="{{profilePatient.ImageURL}}"/>
           <input type="hidden" name="Id" class="form-control"  value={{profilePatient.Id}}>
           <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80" rows="1" value={{profilePatient.Email}}>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Name:</label>
-            <div class="col-lg-8">
+            <div>
               <input class="form-control" name="Name" type="text" placeholder="{{profilePatient.Name}}">
             </div>
           </div>
@@ -61,13 +69,13 @@
           
           <div class="form-group">
             <label class="col-lg-3 control-label">Phone:</label>
-            <div class="col-lg-8">
+            <div>
               <input class="form-control" name="Phone" type="text" placeholder="{{profilePatient.Phone}}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Address</label>
-            <div class="col-lg-8">
+            <div>
               <input class="form-control" name="Address" type="text" placeholder="{{profilePatient.Address}}">
             </div>
           </div>
@@ -79,14 +87,14 @@
             </div>
               <div class="form-group">
                 <label class="col-lg-3 control-label">Name:</label>
-                <div class="col-lg-8">
-                  <input class="form-control" name="Name" type="text" placeholder="{{profileDoctor.Name}}">
+                <div >
+                  <input class="form-control" name="Name" type="text" placeholder="Nhập tên của bạn">
                 </div>
               </div>
               <div class='form-group'>
                 <label class="col-lg-3 control-label">Age:</label>
                   <div>
-                    <input class="form-control" name="Age" type="text" placeholder="{{profileDoctor.Age}}">
+                    <input class="form-control" name="Age" type="text" placeholder="Nhập tuổi">
                   </div>
               </div>
               <div class="form-group">
@@ -114,30 +122,46 @@
           
           <div class="form-group">
             <label class="col-lg-3 control-label">Phone:</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="Phone" type="text" placeholder="{{profileDoctor.Phone}}">
+            <div>
+              <input class="form-control" name="Phone" type="text" placeholder="Nhập số điện thoại">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Address</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="Address" type="text" placeholder="{{profileDoctor.Address}}">
+            <div>
+              <input class="form-control" name="Address" type="text" placeholder="Nhập địa chỉ">
             </div>
           </div>
            <div class="form-group">
             <label class="col-lg-3 control-label">Department</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="Department" type="text" placeholder="{{profileDoctor.Department}}">
+            <div class='form-group'>
+						<select name='Department' class='form-control' id='Department-input'>
+							<option value='Xương Khớp'>Xương Khớp</option>
+							<option value='Tiêu Hoá'>Tiêu Hoá</option>
+							<option value='Da Liễu'>Da Liễu</option>
+							<option value='Thần Kinh'>Thần Kinh</option>
+							<option value='Nhi Khoa'>Nhi Khoa</option>
+							<option value='Nha Khoa'>Nha Khoa</option>
+							<option value='Nội Tiết'>Nội Tiết</option>
+							<option value='Tai Mũi Họng'>Tai Mũi Họng</option>
+							<option value='Tư Vấn Covid'>Tư Vấn Covid</option>
+						</select>
+					</div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Description:</label>
+            <div>
+              <input class="form-control" name="Description" type="text" placeholder="Giới thiệu về bản thân">
             </div>
           </div>
            <div class="form-group">
             <label class="col-lg-3 control-label">Practicing certificate:</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="Practicing_certificate" type="text" placeholder="{{profileDoctor.Practicing_certificate}}">
+            <div>
+              <input class="form-control" name="Practicing_certificate" type="text" placeholder="Chứng nhận của bản thân ">
             </div>
           </div>
         {{/if}}
-            <button type="submit" >Save</button>
+            <button  type="submit" style="width:100px" class="btn btn-info" >Save</button>
         </form>
       </div>
   </div>
