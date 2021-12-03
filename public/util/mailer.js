@@ -1,6 +1,6 @@
 const nodeMailer = require('nodemailer')
-const adminEmail = 'huynhbaquoctrung077@gmail.com';
-const adminPassword = '0906108abcD'
+const adminEmail = 'onlineclinicvn@gmail.com';
+const adminPassword = '123456789abcD@'
 const { v4: uuidv4 } = require('uuid');`77`
 const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
 
@@ -19,7 +19,7 @@ const sendMailAppointment = (emailDoctor,emailPatient,) => {
       from: adminEmail,
       to: `${emailDoctor} , ${emailPatient}`,
       subject: 'Đây là đài phát thanh truyền hình Việt Nam',
-      text: link+"/br"+"ádsadsadsad",
+      text: link,
   };
   return transporter.sendMail(mailOptions)  
 }
