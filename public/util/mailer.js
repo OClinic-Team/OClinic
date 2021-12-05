@@ -19,7 +19,7 @@ const sendMailAppointment = (emailDoctor, emailPatient, ) => {
         from: adminEmail,
         to: `${emailDoctor} , ${emailPatient}`,
         subject: 'Đây là đài phát thanh truyền hình Việt Nam',
-        text: link + "/br" + "ádsadsadsad",
+        text: link
     };
     return transporter.sendMail(mailOptions)
 }

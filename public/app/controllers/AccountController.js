@@ -15,7 +15,7 @@ class AccountController {
         //     });
         // })
         // .catch(next);
-        const data = Account_Doctor.aggregate([{
+        Account_Doctor.aggregate([{
                     $lookup: {
                         from: "addschedules",
                         localField: "doctorId",
@@ -29,60 +29,11 @@ class AccountController {
                 },
             ])
             .then((accounts => {
-                console.log(accounts[0].Doctor_Schedule[0].date)
-                console.log(accounts[0])
                 res.render('accounts', { accounts })
             }))
             .catch((error) => {
                 console.log(error)
             })
-            // .toArray((error, result => {
-            //     console.log(result);
-            //     var ageNodes = results.reduce(function(obj, doc) {
-            //         obj[doc._id] = doc.docs
-            //         return obj;
-            //     }, {});
-            //     console.log(ageNodes);
-            //     res.json(ageNodes);
-            // }))
-            //(function(err, results) {
-            //     console.log(results);
-            //     var ageNodes = results.reduce(function(obj, doc) {
-            //         obj[doc._id] = doc.docs
-            //         return obj;
-            //     }, {});
-            //     console.log(ageNodes);
-            //     res.json(ageNodes);
-            // })
-
-        // Account_Doctor.find({})
-        //     .then(data => {
-        //         console.log('Database Doctor:')
-        //         console.log(data);
-        //         data.map((d, k) => {
-        //             dbDoctor.push(d.Id);
-        //         })
-        //         console.log(dbDoctor)
-        //     })
-        // AddingSchedule.find({ doctorId: { $in: dbDoctor } })
-        //     .then(data => {
-        //         console.log(data)
-        //         res.render('accounts', {
-        //             accounts: mutileMongooseToObject(data),
-        //         })
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     })
-        //cach 2
-        // Account_Doctor.find({}).forEach(
-        //     function(newDoctor) {
-        //         newDoctor.AddingSchedule({ doctorId: { $in: newDoctor.Id } }).toArray();
-        //     }
-        //     DoctorsReloaded.insert(newDoctor);
-        //)
-        //cach 3
-
     }
 
 
@@ -113,7 +64,8 @@ class AccountController {
                 if (account.RoleName == 'patient') {
                     res.render('accounts/edit', { accountPatient: mongooseToObject(account) })
                 } else {
-                    res.render(`accounts/${account.Id}/edit`, { accountDoctor: mongooseToObject(account) })
+
+                    res.redirect(`/profile/${account.Id}/edit`)
                 }
             })
             // .then((account) =>
