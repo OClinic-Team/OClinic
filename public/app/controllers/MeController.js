@@ -1,3 +1,4 @@
+const Doctor_Account = require('../models/AccountDoctor');
 const Account = require('../models/Account');
 const MedicalRecord = require('../models/MedicalRecord');
 const { mutileMongooseToObject } = require('../../util/mongoose');
@@ -10,14 +11,14 @@ class MeController {
 
     //[GET] /datlichhen
     datLich(req, res, next) {
-        let accountQuery = Account.find({});
+        let accountQuery = Doctor_Account.find({});
         if (req.query.hasOwnProperty('_sort')) {
             accountQuery = accountQuery.sort({
                 [req.query.column]: req.query.type
             })
         }
         accountQuery
-            .then(accounts => res.render('me/datlichhen', {
+            .then(accounts => res.render('me/appointment', {
                 accounts: mutileMongooseToObject(accounts),
             }))
             .catch(next);

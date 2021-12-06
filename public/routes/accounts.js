@@ -21,6 +21,6 @@ router.delete('/:id', authenticated, accountController.destroy);
 
 router.get('/:slug', authenticated, accountController.show);
 
-router.get('/', authenticated, accountController.accounts);
+router.get('/', accountController.accounts);
 
 module.exports = router;

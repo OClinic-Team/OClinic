@@ -1,10 +1,10 @@
 const nodeMailer = require('nodemailer')
-const adminEmail = 'huynhbaquoctrung077@gmail.com';
-const adminPassword = '0906108abcD'
+const adminEmail = 'onlineclinicvn@gmail.com';
+const adminPassword = '123456789abcD@'
 const { v4: uuidv4 } = require('uuid');
 const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
 
-const sendMailAppointment = (emailDoctor, emailPatient, ) => {
+const sendMailAppointment = (emailDoctor, emailPatient) => {
     var transporter = nodeMailer.createTransport({ // config mail server
         host: 'smtp.gmail.com',
         port: 587,
@@ -18,7 +18,7 @@ const sendMailAppointment = (emailDoctor, emailPatient, ) => {
     var mailOptions = {
         from: adminEmail,
         to: `${emailDoctor} , ${emailPatient}`,
-        subject: 'Đây là đài phát thanh truyền hình Việt Nam',
+        subject: 'INFORMATION ABOUT APPOINTMENT',
         text: link
     };
     return transporter.sendMail(mailOptions)

@@ -16,10 +16,11 @@ class AccountController {
         // })
         // .catch(next);
         Account_Doctor.aggregate([{
+
                     $lookup: {
                         from: "addschedules",
-                        localField: "doctorId",
-                        foreignField: "Id",
+                        localField: "Id",
+                        foreignField: "doctorId",
                         as: "Doctor_Schedule"
 
                     },

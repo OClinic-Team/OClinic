@@ -1,22 +1,15 @@
 <form class="mt-4 container" name="container-form" method="POST" action="/me/handle-form-action">
   <div class="container">
-    <h3>ĐẶT LỊCH HẸN VỚI BÁC SĨ</h3>
+    <h3>THÔNG TIN LỊCH HẸN </h3>
     <table class="table">
     <thead>
       <tr>
         <th scope="col" colspan="">STT</th>
-        <th scope="col">
-          <select class="form-control form-control-sm checkbox-select-all-options" name="action">
-            <option value="0">Chọn Chuyên Khoa</option>
-            <option value="1">Hô Hấp</option>
-            <option value="2">Răng Hàm Mặt</option>
-            <option value="3">Tim Mạch</option>
-          </select>
-        </th>
-        <th scope="col">Tên Bác Sỹ {{{sortable 'name' _sort}}}</th>
-        
-        <th scope="col">Lịch Làm Việc {{{sortable 'time' _sort}}}</th>
-          
+        <th scope="col">Tên Bác Sỹ {{{sortable 'Name' _sort}}}</th>
+        <th scope="col">Tên Bác Sỹ {{{sortable 'Name' _sort}}}</th>
+        <th scope="col">Link Phòng Họp {{{sortable 'Name' _sort}}}</th>
+        <th scope="col">Ngày Họp {{{sortable 'Name' _sort}}}</th>
+        <th scope="col">Thời Gian {{{sortable 'Name' _sort}}}</th>
           
         <th scope="col">
            <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
@@ -24,13 +17,16 @@
        
       </tr>
     </thead>
+
+
+    
   <tbody>
     {{#each accounts}}
     <tr>
       <th scope="row">{{sum @index 1}}</th>
-      <td>{{this.khoa}}</td>
-      <td>{{this.name}}</td>
-      <td>{{this.time}}</td>
+      <td>{{this.Department}}</td>
+      <td>{{this.Name}}</td>
+      <td>{{this.Phone}}</td>
       <td>
           <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
           <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>

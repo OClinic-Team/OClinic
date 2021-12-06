@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="form-date-time">
+    {{!-- <div class="form-date-time">
       <div class='form-group'>
       <label for='name' style="color:black;font-weight:400;">Chọn ngày 2</label>
         <div>
@@ -406,7 +406,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
     <button type='submit' class='btn-submit addschedule'>Đăng Ký</button> 
   </form>
@@ -414,6 +414,7 @@
 <script>
   flatpickr("input[type=datepicker]", {
     minDate: "today",
+    dateFormat: "l d m Y",
     maxDate: new Date().fp_incr(6)
   });
 </script>
@@ -423,5 +424,6 @@
     noCalendar: true,
     dateFormat: "H:i",
     time_24hr: true
+
   });
 </script>
