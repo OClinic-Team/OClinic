@@ -6,9 +6,10 @@ const Appointment = require('../models/Appointment');
 // const { medicalrecords } = require('./MedicalRecordController');
 const mailer = require('../../util/mailer');
 const { v4: uuidv4 } = require('uuid');
-const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
+
 class SendEmailController {
     async sendMailAppointment(req, res) {
+            const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
             const dataDoctorId = req.query.doctorId;
             const dataPatientId = req.session.authUser.Id;
             const dataEmailDoctor = req.query.doctorEmail
