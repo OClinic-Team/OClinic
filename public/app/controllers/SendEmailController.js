@@ -30,7 +30,7 @@ class SendEmailController {
                 data.save();
                 // Lấy data truyền lên từ form phía client
                 // Thực hiện gửi email
-                await mailer.sendMailAppointment(dataEmailDoctor, dataEmailPatient);
+                await mailer.sendMailAppointment(dataEmailDoctor, dataEmailPatient, link);
                 // Quá trình gửi email thành công thì gửi về thông báo success cho người dùng
                 res.render('home')
             } catch (error) {
