@@ -2,6 +2,7 @@ const MedicalRecord = require('../models/MedicalRecord');
 const { mutileMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 const mailer = require('../../util/mailer');
+const AccountPatient = require('../models/AccountPatient');
 
 class MedicalRecordController {
     // [GET] / MedicalRecord / create
@@ -18,8 +19,18 @@ class MedicalRecordController {
             })
             .catch(next);
     }
+    createMR(req, res, next) {
+        console.log(req.params.Id)
+        AccountPatient.findOne({ Id: req.params.Id })
+            .then((patient) => {
+                res.render('medicalRecords/create', {
+                    patient: mongooseToObject(patient),
+                });
+            })
+            .catch(next);
+    }
     store(req, res, next) {
-        
+
             const medicalRecord = new MedicalRecord(req.body);
             medicalRecord
                 .save()
@@ -27,7 +38,7 @@ class MedicalRecordController {
                 .catch((error) => {});
         }
         //[POST] /medicalRecord/storeMedicalRecord
-        storeMedicalRecord(req, res, next) {
+    storeMedicalRecord(req, res, next) {
 
             const medicalRecord = new MedicalRecord(req.body);
             medicalRecord.save();
