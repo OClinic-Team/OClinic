@@ -13,20 +13,21 @@ class SendEmailController {
             const dataPatientId = req.session.authUser.Id;
             const dataEmailDoctor = req.query.doctorEmail
             const dataEmailPatient = req.session.authUser.Email;
-
+            const dataDoctorName = req.query.doctorName;
+            const dataPatientName = req.session.authUser.Name;
+            console.log(req.query.time)
             try {
                 const data = new Appointment({
                     doctorId: dataDoctorId,
                     patientId: dataPatientId,
+                    doctorName: dataDoctorName,
+                    patientName: dataPatientName,
                     doctorEmail: dataEmailDoctor,
                     patientEmail: dataEmailPatient,
                     roomLink: link,
-                    date: req.query.date,
                     time: req.query.time,
                 })
                 data.save();
-                let content = dataDoctorId.toString();
-                console.log(content);
                 // Lấy data truyền lên từ form phía client
                 // Thực hiện gửi email
                 await mailer.sendMailAppointment(dataEmailDoctor, dataEmailPatient);

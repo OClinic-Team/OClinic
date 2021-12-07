@@ -2,45 +2,134 @@
   <div class="container">
     <h3>THÔNG TIN LỊCH HẸN </h3>
     <table class="table">
-    <thead>
-      <tr>
-        <th scope="col" colspan="">STT</th>
-        <th scope="col">Tên Bác Sỹ {{{sortable 'Name' _sort}}}</th>
-        <th scope="col">Tên Bác Sỹ {{{sortable 'Name' _sort}}}</th>
-        <th scope="col">Link Phòng Họp {{{sortable 'Name' _sort}}}</th>
-        <th scope="col">Ngày Họp {{{sortable 'Name' _sort}}}</th>
-        <th scope="col">Thời Gian {{{sortable 'Name' _sort}}}</th>
-          
-        <th scope="col">
-           <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
-        </th>
-       
-      </tr>
-    </thead>
+      {{#if patient}}
+          {{#each patient}}
+              <thead>
+                <tr>
+                  <th scope="col" colspan="">STT</th>
+                  <th scope="col">Tên Bác Sỹ {{{sortable 'Name' _sort}}}</th>
+                  <th scope="col">Link Phòng Họp </th>
+                  <th scope="col">Thời Gian {{{sortable 'time' _sort}}}</th>
+                    
+                  <th scope="col">
+                    <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
+                  </th>
+                
+                </tr>
+              </thead>
 
 
-    
-  <tbody>
-    {{#each accounts}}
-    <tr>
-      <th scope="row">{{sum @index 1}}</th>
-      <td>{{this.Department}}</td>
-      <td>{{this.Name}}</td>
-      <td>{{this.Phone}}</td>
-      <td>
-          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
-          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
-      </td>
-    </tr>
-  </tbody>
-  {{else}}
-  <tr>
-    <td colspan="5" class="text-center">
-      Bạn Chưa Có Tài Khoản Nào. !!!
-      <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a>
-    </td>
-  </tr>
-  {{/each}}
+
+                <tbody>
+                    <tr>
+                      <th scope="row">{{sum @index 1}}</th>
+                      <td>{{this.doctorName}}</td>
+                      <td>{{this.roomLink}}</td>
+                      <td>{{this.time}}</td>
+                      <td>
+                          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
+                      </td>
+                    </tr>
+                </tbody>
+                {{else}}
+                    <tr>
+                      <td colspan="5" class="text-center">
+                        Bạn Chưa Đặt Cuộc Hẹn Nào. !!!
+                        <a href="/accounts">Bấm vào đây để đăng tài khoản</a>
+                      </td>
+                    </tr>
+          {{/each}}
+        {{/if}}
+
+        {{#if doctor}}
+            {{#each doctor}}
+                <thead>
+                <tr>
+                  <th scope="col" colspan="">STT</th>
+                  <th scope="col">Tên Bệnh Nhân </th>
+                  <th scope="col">Thời Gian </th>
+                  <th scope="col">Link Phòng Họp </th>
+                  
+                    
+                  <th scope="col">
+                    <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
+                  </th>
+                
+                </tr>
+              </thead>
+
+
+
+                <tbody>
+                    <tr>
+                      <th scope="row">{{sum @index 1}}</th>
+                      <td>{{this.patientName}}</td>
+                      <td>{{this.time}}</td>
+                      <td>{{this.roomLink}}</td>
+                      
+                      <td>
+                          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
+                      </td>
+                    </tr>
+                </tbody>
+                {{else}}
+                    <tr>
+                      <td colspan="5" class="text-center">
+                        Bạn Chưa Có Cuộc Hẹn Nào. !!!
+                        {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
+                      </td>
+                    </tr>
+            {{/each}}
+        {{/if}}
+
+        {{#if admin}}
+            {{#each admin}}
+                   <thead>
+                <tr>
+                  <th scope="col" colspan="">STT</th>
+                  <th scope="col">Tên Bác Sĩ </th>
+                  <th scope="col">Tên Bệnh Nhân </th>
+                  <th scope="col">Thời Gian </th>
+                  <th scope="col">Link Phòng Họp </th>
+                  
+                    
+                  <th scope="col">
+                    <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
+                  </th>
+                
+                </tr>
+              </thead>
+
+
+
+                <tbody>
+                    <tr>
+                      <th scope="row">{{sum @index 1}}</th>
+                      <td>{{this.doctorName}}</td>
+                      <td>{{this.patientName}}</td>
+                      <td>{{this.time}}</td>
+                      <td>{{this.roomLink}}</td>
+                      
+                      <td>
+                          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
+                      </td>
+                    </tr>
+                </tbody>
+                {{else}}
+                    <tr>
+                      <td colspan="5" class="text-center">
+                        Không Có Cuộc Hẹn Nào!!!
+                        {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
+                      </td>
+                    </tr>
+            {{/each}}
+        {{/if}}
+
+
+
 </table>
 </form>
 

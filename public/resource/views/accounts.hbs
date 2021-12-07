@@ -51,6 +51,7 @@
 	        	<div class="col-lg-3">      
                 <input type="hidden" name="doctorEmail" value="{{this.Email}}"/>
                 <input type="hidden" name="doctorId" value="{{this.Id}}"/>
+                 <input type="hidden" name="doctorName" value="{{this.Name}}"/>
                 <img class='card-img-top'src='{{this.ImageURL}}'/>
 	        	</div>
 	        	<div class="col-md-9">
@@ -65,13 +66,14 @@
 	        				<h4><b>Lịch Làm Việc: </b></h4>
                     {{#each this.Doctor_Schedule}}
                           <div class="dropdown">
-                              <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" name="date" value="{{this.date}}" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
                                   {{this.date}}
                               </button>
+                              
                                 <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
                                   {{#if this.time1}}
                                   <div class="form-check ml-3">
-                                      <input id="time1"class="form-check-input" type="radio" name="time" value="7h00-8h00" id="defaultCheck1" >
+                                      <input id="time1"class="form-check-input" type="radio" name="time" value="7h00-8h00 {{this.date}}" id="defaultCheck1" >
                                       <label class="form-check-label" for="defaultCheck1">
                                         7h00-8h00
                                       </label>
@@ -79,7 +81,7 @@
                             {{/if}}
                             {{#if this.time2}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="8h00-9h00" id="defaultCheck2" >
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="8h00-9h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       8h00-9h00
                                     </label>
@@ -87,7 +89,7 @@
                             {{/if}}
                             {{#if this.time3}}
                                   <div class="form-check ml-3">
-                                    <input id="time3" class="form-check-input" type="radio" name="time" value="9h00-10h00" id="defaultCheck2" >
+                                    <input id="time3" class="form-check-input" type="radio" name="time" value="9h00-10h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       9h00-10h00
                                     </label>
@@ -95,7 +97,7 @@
                             {{/if}}
                             {{#if this.time4}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="10h00-11h00" id="defaultCheck2" >
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="10h00-11h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       10h00-11h00
                                     </label>
@@ -103,7 +105,7 @@
                             {{/if}}
                             {{#if this.time5}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="13h00-14h00" id="defaultCheck2" >
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="13h00-14h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       13h00-14h00
                                     </label>
@@ -111,7 +113,7 @@
                             {{/if}}
                             {{#if this.time6}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="14h00-15h00" id="defaultCheck2">
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="14h00-15h00 {{this.date}}" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck2">
                                       14h00-15h00
                                     </label>
@@ -119,7 +121,7 @@
                             {{/if}}
                             {{#if this.time7}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="15h00-16h00" id="defaultCheck2" >
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="15h00-16h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       15h00-16h00
                                     </label>
@@ -127,7 +129,7 @@
                             {{/if}}
                             {{#if this.time8}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="16h00-17h00" id="defaultCheck2" >
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="16h00-17h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       16h00-17h00
                                     </label>
@@ -135,7 +137,7 @@
                             {{/if}}
                             {{#if this.time9}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="18h00-19h00" id="defaultCheck2" >
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="18h00-19h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       18h00-19h00
                                     </label>
@@ -143,7 +145,7 @@
                             {{/if}}
                             {{#if this.time10}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="19h00-20h00" id="defaultCheck2" >
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="19h00-20h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       19h00-20h00
                                     </label>
@@ -151,7 +153,7 @@
                             {{/if}}
                             {{#if this.time11}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="20h00-21h00" id="defaultCheck2" >
+                                    <input id="time2" class="form-check-input" type="radio" name="time" value="20h00-21h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       20h00-21h00
                                     </label>
@@ -159,7 +161,7 @@
                             {{/if}}
                                  {{#if this.time12}}
                                     <div class="form-check ml-3">
-                                        <input id="time2" class="form-check-input" type="radio" name="time" value="21h00-22h00" id="defaultCheck2" >
+                                        <input id="time2" class="form-check-input" type="radio" name="time" value="21h00-22h00 {{this.date}}" id="defaultCheck2" >
                                         <label class="form-check-label" for="defaultCheck2">
                                             21h00-22h00
                                         </label>
@@ -176,7 +178,7 @@
 	        	</div>
 	        </div>
             <div style="text-align: left; margin-left: 5%" class="product-count">
-	        				<button type="submit" class="btn btn-success">Đặt lịch hẹn</button>
+	        				<button type="submit" onclick= myFunction() class="btn btn-success">Đặt lịch hẹn</button>
 	        	</div>
        </form>
        {{else}}
@@ -184,5 +186,14 @@
     {{/each}}
 </div>
 <script>
-
+      myFunction() {
+     var x;
+     if (confirm("Are you sure?") == true) {
+         x = "You pressed OK!";
+     } else {
+         x = "You pressed Cancel!";
+     }
+     return x; 
+}
+myFunction();
 </script>
