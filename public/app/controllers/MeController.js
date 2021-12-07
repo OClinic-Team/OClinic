@@ -1,3 +1,5 @@
+const Doctor_Account = require('../models/AccountDoctor');
+const Appointment = require('../models/Appointment')
 const Account = require('../models/Account');
 const MedicalRecord = require('../models/MedicalRecord');
 const { mutileMongooseToObject } = require('../../util/mongoose');
@@ -9,18 +11,45 @@ class MeController {
 
 
     //[GET] /datlichhen
-    datLich(req, res, next) {
-        let accountQuery = Account.find({});
-        if (req.query.hasOwnProperty('_sort')) {
-            accountQuery = accountQuery.sort({
-                [req.query.column]: req.query.type
+    async datLich(req, res, next) {
+        if (req.session.authUser.Permission == '1') {
+            const accountQuery = await Appointment.find({ doctorId: req.session.authUser.Id })
+            if (req.query.hasOwnProperty('_sort')) {
+                accountQuery = accountQuery.sort({
+                    [req.query.column]: req.query.type
+                })
+            }
+            res.render('me/appointment', {
+                doctor: mutileMongooseToObject(accountQuery)
             })
+
+
+        } else {
+            if (req.session.authUser.Permission == '0') {
+                const accountQuery = await Appointment.find({ patientId: req.session.authUser.Id })
+                if (req.query.hasOwnProperty('_sort')) {
+                    accountQuery = accountQuery.sort({
+                        [req.query.column]: req.query.type
+                    })
+                }
+                res.render('me/appointment', {
+                    patient: mutileMongooseToObject(accountQuery)
+                })
+            } else {
+                const accountQuery = await Appointment.find({})
+                if (req.query.hasOwnProperty('_sort')) {
+                    accountQuery = accountQuery.sort({
+                        [req.query.column]: req.query.type
+                    })
+                }
+                res.render('me/appointment', {
+                    admin: mutileMongooseToObject(accountQuery)
+                })
+            }
+
         }
-        accountQuery
-            .then(accounts => res.render('me/datlichhen', {
-                accounts: mutileMongooseToObject(accounts),
-            }))
-            .catch(next);
+
+
     }
 
     //Soft 

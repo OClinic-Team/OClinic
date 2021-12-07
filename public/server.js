@@ -249,10 +249,9 @@ app.engine(
                 };
                 const icon = icons[sortType];
                 const type = types[sortType];
-                return ` < a href = "?_sort&column=${field}&type=${type}" >
-                                                <
-                                                span class = "${icon}" > < /span> <
-                                                /a>`;
+                return `<a href="?_sort&column=${field}&type=${type}">
+                    <span class="${icon}"></span>
+                </a>`;
             },
             sections: function(name, options) {
                 if (!this._sections) this._sections = {};

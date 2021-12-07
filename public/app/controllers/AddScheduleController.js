@@ -9,7 +9,7 @@ class AddScheduleController {
         }
         //thêm lịch làm việc
     add(req, res, next) {
-            var myDate = Date(req.body.date)
+            const myDate = Date(req.body.date).toString()
             console.log(myDate)
             const schedule = new addschedule(req.body);
             schedule.save();

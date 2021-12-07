@@ -28,7 +28,7 @@
         <form method="POST" class="form-horizontal" action="/profile/editInformation">
         {{#if profilePatient}}
           <div>  
-          <img type="hidden" name="ImageURL" class="form-control"  src="{{profilePatient.ImageURL}}"/>
+          <input type="hidden" name="ImageURL" class="form-control"  value="{{profilePatient.ImageURL}}"/>
           <input type="hidden" name="Id" class="form-control"  value={{profilePatient.Id}}>
           <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80" rows="1" value={{profilePatient.Email}}>
           </div>

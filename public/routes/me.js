@@ -10,5 +10,5 @@ router.get('accounts/:Id/edit', meController.editUser);
 router.get('/trash/accounts', authenticated, meController.trashAccounts);
 router.get('/stored/medical-record', authenticated, meController.storedMedicalRecord);
 router.get('/trash/medical-record', authenticated, meController.trashMedicalRecord);
-router.get('/datlichhen', authenticated, meController.datLich);
+router.get('/appointment', authenticated, meController.datLich);
 module.exports = router;

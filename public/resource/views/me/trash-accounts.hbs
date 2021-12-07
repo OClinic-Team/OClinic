@@ -8,10 +8,10 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col" colspan="2">#</th>
-      <th scope="col">Tên Bác Sỹ</th>
-      <th scope="col">Khoa</th>
-      <th scope="col" colspan="2">Lịch Làm Việc</th>
+      <th scope="col" >No.</th>
+      <th scope="col">Id User</th>
+      <th scope="col">Email</th>
+      <th scope="col" colspan="2">Role</th>
     </tr>
   </thead>
   
@@ -19,9 +19,9 @@
     {{#each accounts}}
     <tr>
       <th scope="row">{{sum @index 1}}</th>
-      <td>{{this.name}}</td>
-      <td>{{this.khoa}}</td>
-      <td>{{this.time}}</td>
+      <td>{{this.Id}}</td>
+      <td>{{this.Email}}</td>
+      <td>{{this.RoleName}}</td>
       <td>
           <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">khôi phục</a>
           <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa Vĩnh Viễn</a>

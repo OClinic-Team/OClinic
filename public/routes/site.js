@@ -4,11 +4,9 @@ const router = express.Router();
 const siteController = require('../app/controllers/SiteController');
 const datLichController = require('../app/controllers/SendEmailController')
 
-
+const authentication = require('../app/middlewares/auth')
 router.get('/timkiem', siteController.search);
-//router.post('/send-email', emailController.sendMail);
-router.get('/send', datLichController.sendMailAppointment);
-// router.get('/logout', siteController.logout);
+router.get('/send', authentication, datLichController.sendMailAppointment);
 router.get('/', siteController.home);
 
 

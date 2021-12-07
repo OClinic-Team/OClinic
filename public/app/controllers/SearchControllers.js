@@ -7,6 +7,11 @@ class SearchControllers {
     // [GET] / MedicalRecord / create
 
     searchDepartment(req, res, next) {
+        // if (req.query.Department === '0') {
+        //     alert('Mời Bạn chọn khoa trước khi tìm');
+        //     res.redirect('back');
+        // }
+
         Account_Doctor.aggregate([{
                     $match: {
                         Department: req.query.Department
@@ -15,8 +20,8 @@ class SearchControllers {
                 {
                     $lookup: {
                         from: "addschedules",
-                        localField: "doctorId",
-                        foreignField: "Id",
+                        localField: "Id",
+                        foreignField: "doctorId",
                         as: "Doctor_Schedule"
 
                     },

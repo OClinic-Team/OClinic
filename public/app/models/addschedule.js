@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const Addschedule = new Schema({
     doctorId: { type: String, required: true },
-    date: { type: Date },
+    date: { type: String, require: true },
     time1: { type: Boolean, default: null },
     time2: { type: Boolean, default: null },
     time3: { type: Boolean, default: null },
