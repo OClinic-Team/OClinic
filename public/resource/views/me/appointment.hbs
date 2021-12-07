@@ -3,13 +3,12 @@
     <h3>THÔNG TIN LỊCH HẸN </h3>
     <table class="table">
       {{#if patient}}
-          {{#each patient}}
               <thead>
                 <tr>
                   <th scope="col" colspan="">STT</th>
-                  <th scope="col">Tên Bác Sỹ {{{sortable 'Name' _sort}}}</th>
+                  <th scope="col">Tên Bác Sỹ</th>
                   <th scope="col">Link Phòng Họp </th>
-                  <th scope="col">Thời Gian {{{sortable 'time' _sort}}}</th>
+                  <th scope="col">Thời Gian </th>
                     
                   <th scope="col">
                     <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
@@ -17,9 +16,7 @@
                 
                 </tr>
               </thead>
-
-
-
+          {{#each patient}}
                 <tbody>
                     <tr>
                       <th scope="row">{{sum @index 1}}</th>
@@ -43,8 +40,7 @@
         {{/if}}
 
         {{#if doctor}}
-            {{#each doctor}}
-                <thead>
+              <thead>
                 <tr>
                   <th scope="col" colspan="">STT</th>
                   <th scope="col">Tên Bệnh Nhân </th>
@@ -58,9 +54,7 @@
                 
                 </tr>
               </thead>
-
-
-
+            {{#each doctor}}
                 <tbody>
                     <tr>
                       <th scope="row">{{sum @index 1}}</th>
@@ -86,8 +80,7 @@
         {{/if}}
 
         {{#if admin}}
-            {{#each admin}}
-                   <thead>
+                  <thead>
                 <tr>
                   <th scope="col" colspan="">STT</th>
                   <th scope="col">Tên Bác Sĩ </th>
@@ -102,9 +95,7 @@
                 
                 </tr>
               </thead>
-
-
-
+            {{#each admin}}
                 <tbody>
                     <tr>
                       <th scope="row">{{sum @index 1}}</th>
