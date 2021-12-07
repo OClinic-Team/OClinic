@@ -3,427 +3,113 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link rel="stylesheet" href="/css/app.css">
 <div class='mt-4 container'>
-  <H3>Đăng Ký Lịch Làm</H3>
-  <form method="POST" action="/addschedule/add">
-  <div class="form-date-time-swap">
+
+<H3>Lịch Làm Việc</H3>
+<div>
+   <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" colspan="">STT</th>
+          <th scope="col">Ngày</th>
+          <th scope="col">Thời Gian </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.date}}</td>
+          <td>{{this.time}}</td>
+        </tr>
+    </tbody>
+   </table>  
+</div>
+<H3>Đăng Ký Lịch Làm</H3>
+<form method="POST" action="/addschedule/add">
+<div class="form-date-time-swap">
+  <div class='form-group'>
+      <div>
+        <input type="hidden" name="doctorId" class="form-control"  value="{{lcAuthUser.Id}}">
+      </div>
+  <div class="form-date-time">
+    <label for='name' style="color:black;font-weight:400;">Chọn ngày 1</label>
+      <div>
+          <input type="datepicker" name="date" class="form-control" readonly placeholder="Chọn ngày"  />
+      </div>
+    </div>
     <div class='form-group'>
-        <div>
-          <input type="hidden" name="doctorId" class="form-control"  value="{{lcAuthUser.Id}}">
-        </div>
-    <div class="form-date-time">
-      <label for='name' style="color:black;font-weight:400;">Chọn ngày 1</label>
-        <div>
-            <input type="datepicker" name="date" class="form-control" readonly placeholder="Chọn ngày"  />
-        </div>
+      <label for='name' style="color:black;font-weight:400;">Ca Sáng</label>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline1" name="time1" value="true">
+        <label class="custom-control-label" for="defaultInline1">7:00-8:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Sáng</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline1" name="time1" value="true">
-          <label class="custom-control-label" for="defaultInline1">7:00-8:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline2"name="time2" value="true">
-          <label class="custom-control-label" for="defaultInline2">8:00-9:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline3"name="time3" value="true">
-          <label class="custom-control-label" for="defaultInline3">9:00-10:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline4"name="time4" value="true">
-          <label class="custom-control-label" for="defaultInline4">10:00-11:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline2"name="time2" value="true">
+        <label class="custom-control-label" for="defaultInline2">8:00-9:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Chiều</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline5" name="time5" value="true">
-          <label class="custom-control-label" for="defaultInline5">13:00-14:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline6"name="time6" value="true">
-          <label class="custom-control-label" for="defaultInline6">14:00-15:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline7"name="time7" value="true">
-          <label class="custom-control-label" for="defaultInline7">15:00-16:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline8"name="time8" value="true">
-          <label class="custom-control-label" for="defaultInline8">16:00-17:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline3"name="time3" value="true">
+        <label class="custom-control-label" for="defaultInline3">9:00-10:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Tối</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline9" name="time9" value="true">
-          <label class="custom-control-label" for="defaultInline9">18:00-19:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline10"name="time10" value="true">
-          <label class="custom-control-label" for="defaultInline10">19:00-20:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline11"name="time11" value="true">
-          <label class="custom-control-label" for="defaultInline11">20:00-21:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline12"name="time12" value="true">
-          <label class="custom-control-label" for="defaultInline12">21:00-22:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline4"name="time4" value="true">
+        <label class="custom-control-label" for="defaultInline4">10:00-11:00</label>
       </div>
     </div>
-
-    {{!-- <div class="form-date-time">
-      <div class='form-group'>
-      <label for='name' style="color:black;font-weight:400;">Chọn ngày 2</label>
-        <div>
-            <input type="datepicker" name="date1" class="form-control" readonly placeholder="Chọn ngày"  />
-        </div>
+    <div class='form-group'>
+      <label for='name' style="color:black;font-weight:400;">Ca Chiều</label>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline5" name="time5" value="true">
+        <label class="custom-control-label" for="defaultInline5">13:00-14:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Sáng</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline13" name="time13" value="true">
-          <label class="custom-control-label" for="defaultInline13">7:00-8:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline14"name="time14" value="true">
-          <label class="custom-control-label" for="defaultInline14">8:00-9:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline15"name="time15" value="true">
-          <label class="custom-control-label" for="defaultInline15">9:00-10:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline16"name="time16" value="true">
-          <label class="custom-control-label" for="defaultInline16">10:00-11:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline6"name="time6" value="true">
+        <label class="custom-control-label" for="defaultInline6">14:00-15:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Chiều</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline17" name="time17" value="true">
-          <label class="custom-control-label" for="defaultInline17">13:00-14:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline18"name="time18" value="true">
-          <label class="custom-control-label" for="defaultInline18">14:00-15:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline19"name="time19" value="true">
-          <label class="custom-control-label" for="defaultInline19">15:00-16:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline20"name="time20" value="true">
-          <label class="custom-control-label" for="defaultInline20">16:00-17:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline7"name="time7" value="true">
+        <label class="custom-control-label" for="defaultInline7">15:00-16:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Tối</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline21" name="time21" value="true">
-          <label class="custom-control-label" for="defaultInline21">18:00-19:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline22"name="time22" value="true">
-          <label class="custom-control-label" for="defaultInline22">19:00-20:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline23"name="time23" value="true">
-          <label class="custom-control-label" for="defaultInline23">20:00-21:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline24"name="time24" value="true">
-          <label class="custom-control-label" for="defaultInline24">21:00-22:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline8"name="time8" value="true">
+        <label class="custom-control-label" for="defaultInline8">16:00-17:00</label>
       </div>
     </div>
-
-    <div class="form-date-time">
-      <div class='form-group'>
-      <label for='name' style="color:black;font-weight:400;">Chọn ngày 3</label>
-        <div>
-            <input type="datepicker" name="date2" class="form-control" readonly placeholder="Chọn ngày"  />
-        </div>
+    <div class='form-group'>
+      <label for='name' style="color:black;font-weight:400;">Ca Tối</label>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline9" name="time9" value="true">
+        <label class="custom-control-label" for="defaultInline9">18:00-19:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Sáng</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline25" name="time25" value="true">
-          <label class="custom-control-label" for="defaultInline25">7:00-8:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline26"name="time26" value="true">
-          <label class="custom-control-label" for="defaultInline26">8:00-9:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline27"name="time27" value="true">
-          <label class="custom-control-label" for="defaultInline27">9:00-10:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline28"name="time28" value="true">
-          <label class="custom-control-label" for="defaultInline28">10:00-11:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline10"name="time10" value="true">
+        <label class="custom-control-label" for="defaultInline10">19:00-20:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Chiều</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline29" name="time29" value="true">
-          <label class="custom-control-label" for="defaultInline29">13:00-14:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline30"name="time30" value="true">
-          <label class="custom-control-label" for="defaultInline30">14:00-15:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline31"name="time31" value="true">
-          <label class="custom-control-label" for="defaultInline31">15:00-16:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline32"name="time32" value="true">
-          <label class="custom-control-label" for="defaultInline32">16:00-17:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline11"name="time11" value="true">
+        <label class="custom-control-label" for="defaultInline11">20:00-21:00</label>
       </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Tối</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline33" name="time33" value="true">
-          <label class="custom-control-label" for="defaultInline33">18:00-19:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline34"name="time34" value="true">
-          <label class="custom-control-label" for="defaultInline34">19:00-20:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline35"name="time35" value="true">
-          <label class="custom-control-label" for="defaultInline35">20:00-21:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline36"name="time36" value="true">
-          <label class="custom-control-label" for="defaultInline36">21:00-22:00</label>
-        </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="defaultInline12"name="time12" value="true">
+        <label class="custom-control-label" for="defaultInline12">21:00-22:00</label>
       </div>
     </div>
   </div>
-
-  <div class="form-date-time-swap">
-    <div class="form-date-time">
-      <div class='form-group'>
-      <label for='name' style="color:black;font-weight:400;">Chọn ngày 4</label>
-        <div>
-            <input type="datepicker" name="date3" class="form-control" readonly placeholder="Chọn ngày"  />
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Sáng</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline37" name="time37" value="true">
-          <label class="custom-control-label" for="defaultInline37">7:00-8:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline38"name="time38" value="true">
-          <label class="custom-control-label" for="defaultInline38">8:00-9:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline39"name="time39" value="true">
-          <label class="custom-control-label" for="defaultInline39">9:00-10:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline40"name="time40" value="true">
-          <label class="custom-control-label" for="defaultInline40">10:00-11:00</label>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Chiều</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline41" name="time41" value="true">
-          <label class="custom-control-label" for="defaultInline41">13:00-14:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline42"name="time42" value="true">
-          <label class="custom-control-label" for="defaultInline42">14:00-15:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline43"name="time43" value="true">
-          <label class="custom-control-label" for="defaultInline43">15:00-16:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline44"name="time44" value="true">
-          <label class="custom-control-label" for="defaultInline44">16:00-17:00</label>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Tối</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline45" name="time45" value="true">
-          <label class="custom-control-label" for="defaultInline45">18:00-19:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline46"name="time46" value="true">
-          <label class="custom-control-label" for="defaultInline46">19:00-20:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline47"name="time47" value="true">
-          <label class="custom-control-label" for="defaultInline47">20:00-21:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline48"name="time48" value="true">
-          <label class="custom-control-label" for="defaultInline48">21:00-22:00</label>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-date-time">
-      <div class='form-group'>
-      <label for='name' style="color:black;font-weight:400;">Chọn ngày 5</label>
-        <div>
-            <input type="datepicker" name="date4" class="form-control" readonly placeholder="Chọn ngày"  />
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Sáng</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline49" name="time49" value="true">
-          <label class="custom-control-label" for="defaultInline49">7:00-8:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline50"name="time50" value="true">
-          <label class="custom-control-label" for="defaultInline50">8:00-9:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline51"name="time51" value="true">
-          <label class="custom-control-label" for="defaultInline51">9:00-10:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline52"name="time52" value="true">
-          <label class="custom-control-label" for="defaultInline52">10:00-11:00</label>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Chiều</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline53" name="time53" value="true">
-          <label class="custom-control-label" for="defaultInline53">13:00-14:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline54"name="time54" value="true">
-          <label class="custom-control-label" for="defaultInline54">14:00-15:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline55"name="time55" value="true">
-          <label class="custom-control-label" for="defaultInline55">15:00-16:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline56"name="time56" value="true">
-          <label class="custom-control-label" for="defaultInline56">16:00-17:00</label>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Tối</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline57" name="time57" value="true">
-          <label class="custom-control-label" for="defaultInline57">18:00-19:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline58"name="time58" value="true">
-          <label class="custom-control-label" for="defaultInline58">19:00-20:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline59"name="time59" value="true">
-          <label class="custom-control-label" for="defaultInline59">20:00-21:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline60"name="time60" value="true">
-          <label class="custom-control-label" for="defaultInline60">21:00-22:00</label>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-date-time">
-      <div class='form-group'>
-      <label for='name' style="color:black;font-weight:400;">Chọn ngày 6</label>
-        <div>
-            <input type="datepicker" name="date5" class="form-control" readonly placeholder="Chọn ngày"  />
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Sáng</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline61" name="time61" value="true">
-          <label class="custom-control-label" for="defaultInline61">7:00-8:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline62"name="time62" value="true">
-          <label class="custom-control-label" for="defaultInline62">8:00-9:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline63"name="time63" value="true">
-          <label class="custom-control-label" for="defaultInline63">9:00-10:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline64"name="time64" value="true">
-          <label class="custom-control-label" for="defaultInline64">10:00-11:00</label>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Chiều</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline65" name="time65" value="true">
-          <label class="custom-control-label" for="defaultInline65">13:00-14:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline66"name="time66" value="true">
-          <label class="custom-control-label" for="defaultInline66">14:00-15:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline67"name="time67" value="true">
-          <label class="custom-control-label" for="defaultInline67">15:00-16:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline68"name="time68" value="true">
-          <label class="custom-control-label" for="defaultInline68">16:00-17:00</label>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label for='name' style="color:black;font-weight:400;">Ca Tối</label>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline69" name="time69" value="true">
-          <label class="custom-control-label" for="defaultInline69">18:00-19:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline70"name="time70" value="true">
-          <label class="custom-control-label" for="defaultInline70">19:00-20:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline71"name="time71" value="true">
-          <label class="custom-control-label" for="defaultInline71">20:00-21:00</label>
-        </div>
-        <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="defaultInline72"name="time72" value="true">
-          <label class="custom-control-label" for="defaultInline72">21:00-22:00</label>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-
-    <button type='submit' class='btn-submit addschedule'>Đăng Ký</button> 
-  </form>
+  <button type='submit' class='btn-submit addschedule'>Đăng Ký</button> 
+</form>
 </div>
 <script>
-  flatpickr("input[type=datepicker]", {
-    minDate: "today",
-    dateFormat: "l d m Y",
-    maxDate: new Date().fp_incr(6)
-  });
+flatpickr("input[type=datepicker]", {
+  minDate: "today",
+  dateFormat: "l d m Y",
+  maxDate: new Date().fp_incr(6)
+});
 </script>
 {{!-- <script>
-  flatpickr("input[type=timepicker]", {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true
+flatpickr("input[type=timepicker]", {
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i",
+  time_24hr: true
 
-  });
+});
 </script> --}}

@@ -9,11 +9,6 @@
                   <th scope="col">Tên Bác Sỹ</th>
                   <th scope="col">Link Phòng Họp </th>
                   <th scope="col">Thời Gian </th>
-                    
-                  <th scope="col">
-                    <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
-                  </th>
-                
                 </tr>
               </thead>
           {{#each patient}}
@@ -23,10 +18,7 @@
                       <td>{{this.doctorName}}</td>
                       <td>{{this.roomLink}}</td>
                       <td>{{this.time}}</td>
-                      <td>
-                          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
-                          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
-                      </td>
+                    
                     </tr>
                 </tbody>
                 {{else}}
@@ -46,12 +38,6 @@
                   <th scope="col">Tên Bệnh Nhân </th>
                   <th scope="col">Thời Gian </th>
                   <th scope="col">Link Phòng Họp </th>
-                  
-                    
-                  <th scope="col">
-                    <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
-                  </th>
-                
                 </tr>
               </thead>
             {{#each doctor}}
@@ -64,8 +50,7 @@
                       
                       <td>
                           <a href="/medicalRecord/create/{{this.patientId}}" class="btn btn-link">Tạo Hồ Sơ Bệnh Án</a>
-                          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
-                          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
+                        
                       </td>
                     </tr>
                 </tbody>
@@ -87,12 +72,6 @@
                   <th scope="col">Tên Bệnh Nhân </th>
                   <th scope="col">Thời Gian </th>
                   <th scope="col">Link Phòng Họp </th>
-                  
-                    
-                  <th scope="col">
-                    <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
-                  </th>
-                
                 </tr>
               </thead>
             {{#each admin}}
@@ -103,11 +82,7 @@
                       <td>{{this.patientName}}</td>
                       <td>{{this.time}}</td>
                       <td>{{this.roomLink}}</td>
-                      
-                      <td>
-                          <a href="/accounts/{{this._id}}/edit" class="btn btn-link">Sửa</a>
-                          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa</a>
-                      </td>
+                    
                     </tr>
                 </tbody>
                 {{else}}
