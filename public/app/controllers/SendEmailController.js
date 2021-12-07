@@ -7,7 +7,7 @@
 const mailer = require('../../util/mailer');
 class SendEmailController {
     async sendMailAppointment(req, res) {
-            const emailDoctor = req.query.Email;
+            const emailDoctor = req.query.doctorEmail;
             const emailPatient = req.session.authUser.Email;
 
             try {
