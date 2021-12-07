@@ -4,8 +4,8 @@ const authenticated = require('../app/middlewares/auth');
 const medicalRecordController = require('../app/controllers/MedicalRecordController');
 
 router.post('/storeMedicalRecord', authenticated, medicalRecordController.storeMedicalRecord);
-
-router.get('/create', authenticated, medicalRecordController.create);
+router.get('/create/:Id', authenticated, medicalRecordController.createMR);
+// router.get('/create', authenticated, medicalRecordController.create);
 
 router.post('/handle-form-action', authenticated, medicalRecordController.handFormAction);
 
