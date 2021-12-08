@@ -5,28 +5,26 @@ const accountsRouter = require('./accounts');
 // const patientRouter = require('./accountPatient');
 const medicalrecordRouter = require('./medicalRecord');
 const addscheduleRoute = require('./addschedule');
-const accountUserRouter = require('./accountUser')
 const profileRouter = require('./profile');
-const searchRouter = require('./search')
+const searchRouter = require('./search');
+
 
 function route(app) {
     // app.use('/medicalRecord', createsMedicalRecord);
-    app.use('/profile', profileRouter);
+    app.use('/profile', profileRouter); //done
 
-    app.use('/news', newsRouter);
+    // app.use('/news', newsRouter);//khong tim ra trang
 
-    app.use('/me', meRouter);
+    app.use('/me', meRouter); //done
 
     // app.use('/accountPatient', patientRouter);
-    app.use('/search', searchRouter);
-    app.use('/medicalRecord', medicalrecordRouter);
+    app.use('/search', searchRouter); //done
+    app.use('/medicalRecord', medicalrecordRouter); //done
 
-    app.use('/accounts', accountsRouter);
+    app.use('/accounts', accountsRouter); //done
 
-    app.use('/addschedule', addscheduleRoute);
-    app.use('/sendEmail',siteRouter)
-
-    // app.use('/google', accountUserRouter);
+    app.use('/addschedule', addscheduleRoute); //done
+    app.use('/sendEmail', siteRouter) //done
 
     app.use('/', siteRouter);
 }

@@ -178,22 +178,16 @@
 	        	</div>
 	        </div>
             <div style="text-align: left; margin-left: 5%" class="product-count">
-	        				<button type="submit" onclick= myFunction() class="btn btn-success">Đặt lịch hẹn</button>
+	        				<button type="submit" id="btn-submit" value="Show Alert"class="btn btn-success">Đặt lịch hẹn</button>
 	        	</div>
        </form>
        {{else}}
        <p>Không có bác sĩ nào</p>
     {{/each}}
 </div>
-<script>
-      myFunction() {
-     var x;
-     if (confirm("Are you sure?") == true) {
-         x = "You pressed OK!";
-     } else {
-         x = "You pressed Cancel!";
-     }
-     return x; 
-}
-myFunction();
+<script language="javascript">
+    var button = document.getElementById("btn-submit");
+    button.onclick = function(){
+        alert("xac nhan dang ky");
+    }
 </script>

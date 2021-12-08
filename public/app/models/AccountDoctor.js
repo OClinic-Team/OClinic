@@ -13,7 +13,6 @@ const accounts_doctor = new Schema({
     Email: { type: String, required: true },
     Department: { type: String },
     Description: { type: String },
-    Practicing_certificate: { type: String },
     Permission: { type: String },
 
 }, {

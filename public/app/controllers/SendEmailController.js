@@ -6,9 +6,10 @@ const Appointment = require('../models/Appointment');
 // const { medicalrecords } = require('./MedicalRecordController');
 const mailer = require('../../util/mailer');
 const { v4: uuidv4 } = require('uuid');
-
+const alert = require('alert');
 class SendEmailController {
     async sendMailAppointment(req, res) {
+
             const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
             const dataDoctorId = req.query.doctorId;
             const dataPatientId = req.session.authUser.Id;
@@ -16,7 +17,6 @@ class SendEmailController {
             const dataEmailPatient = req.session.authUser.Email;
             const dataDoctorName = req.query.doctorName;
             const dataPatientName = req.session.authUser.Name;
-            console.log(req.query.time)
             try {
                 const data = new Appointment({
                     doctorId: dataDoctorId,
@@ -32,6 +32,7 @@ class SendEmailController {
                 // Lấy data truyền lên từ form phía client
                 // Thực hiện gửi email
                 await mailer.sendMailAppointment(dataEmailDoctor, dataEmailPatient, link);
+
                 // Quá trình gửi email thành công thì gửi về thông báo success cho người dùng
                 res.render('home')
             } catch (error) {

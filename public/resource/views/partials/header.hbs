@@ -21,16 +21,37 @@
 							<img src={{lcAuthUser.ImageURL}} alt='' class='user-avatar' />
 							{{lcAuthUser.Name}}
 						</a>
-						<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-							<a class='dropdown-item' href='/profile/{{lcAuthUser.Id}}'>Trang Cá Nhân</a> <div class='dropdown-divider'></div>
-							<a class='dropdown-item' href='/accounts/create'>Thêm Bác Sĩ</a> <div class='dropdown-divider'></div>
-							<a class='dropdown-item' href='/me/appointment'>Quản Lý Cuộc Hẹn</a> <div class='dropdown-divider'></div>	
-							<a class='dropdown-item' href='/me/stored/accounts'>Quản Lý Tài Khoản</a> <div class='dropdown-divider'></div>
-							<a class='dropdown-item' href='/addschedule/create'>Đăng Ký Lịch</a> <div class='dropdown-divider'></div>
-							<a class='dropdown-item' href='/medicalRecord/create'>Tạo Hồ sơ bệnh án</a> <div class='dropdown-divider'></div>
-							<a class='dropdown-item' href='/me/stored/medical-record'>Quản Lý Hồ Sơ Bệnh Án</a> <div class='dropdown-divider'></div>
-							<a class='dropdown-item' href='/logout'>Logout</a>
-						</div>
+								
+								<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+									{{#if_eq lcAuthUser.Permission '0'}}
+									<a class='dropdown-item' href='/profile/{{lcAuthUser.Id}}'>Trang Cá Nhân</a> <div class='dropdown-divider'></div>
+									{{!-- <a class='dropdown-item' href='/accounts/create'>Thêm Bác Sĩ</a> <div class='dropdown-divider'></div> --}}
+									<a class='dropdown-item' href='/me/appointment'>Quản Lý Cuộc Hẹn</a> <div class='dropdown-divider'></div>	
+									{{!-- <a class='dropdown-item' href='/me/stored/accounts'>Quản Lý Tài Khoản</a> <div class='dropdown-divider'></div> --}}
+									{{!-- <a class='dropdown-item' href='/addschedule/create'>Đăng Ký Lịch</a> <div class='dropdown-divider'></div> --}}
+									{{!-- <a class='dropdown-item' href='/medicalRecord/create'>Tạo Hồ sơ bệnh án</a> <div class='dropdown-divider'></div> --}}
+									<a class='dropdown-item' href='/me/stored/medical-record'>Quản Lý Hồ Sơ Bệnh Án</a> <div class='dropdown-divider'></div>
+									<a class='dropdown-item' href='/logout'>Logout</a>
+									{{else}}
+												{{#if_eq lcAuthUser.Permission '1'}}
+													<a class='dropdown-item' href='/profile/{{lcAuthUser.Id}}'>Trang Cá Nhân</a> <div class='dropdown-divider'></div>
+													<a class='dropdown-item' href='/addschedule/create'>Đăng Ký Lịch</a> <div class='dropdown-divider'></div>
+													<a class='dropdown-item' href='/me/appointment'>Quản Lý Cuộc Hẹn</a> <div class='dropdown-divider'></div>	
+													<a class='dropdown-item' href='/me/stored/medical-record'>Quản Lý Hồ Sơ Bệnh Án</a> <div class='dropdown-divider'></div>
+													<a class='dropdown-item' href='/logout'>Logout</a>
+												{{else}}
+														{{#if_eq lcAuthUser.Permission '2'}}
+															{{!-- <a class='dropdown-item' href='/accounts/create'>Thêm Bác Sĩ</a> <div class='dropdown-divider'></div> --}}
+															<a class='dropdown-item' href='/me/stored/accounts'>Quản Lý Tài Khoản</a> <div class='dropdown-divider'></div>
+															<a class='dropdown-item' href='/me/stored/medical-record'>Quản Lý Hồ Sơ Bệnh Án</a> <div class='dropdown-divider'></div>
+															<a class='dropdown-item' href='/logout'>Logout</a>
+														{{/if_eq}}
+												{{/if_eq}}
+									{{/if_eq}}
+								</div>
+								
+								
+								
 					{{else}}
 				<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
 				<img src='https://image.lag.vn/upload/news/21/08/16/236599595_1425452954506376_3110056547255537769_n_WOLP.jpg' alt='' class='user-avatar' />
