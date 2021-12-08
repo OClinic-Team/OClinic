@@ -37,12 +37,11 @@ class MedicalRecordController {
                 .then(() => res.redirect('/medicalRecord'))
                 .catch((error) => {});
         }
-        //[POST] /medicalRecord/storeMedicalRecord
+        //[POST] /medicalRecord/storeMedicalRecord (button save)
     storeMedicalRecord(req, res, next) {
 
             const medicalRecord = new MedicalRecord(req.body);
             medicalRecord.save();
-            console.log('Create Medical Record Successfully');
             res.redirect('/medicalRecord/create')
 
         }

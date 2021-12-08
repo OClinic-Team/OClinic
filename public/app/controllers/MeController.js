@@ -11,7 +11,7 @@ class MeController {
 
 
     //[GET] /datlichhen
-    async datLich(req, res, next) {
+    async xemLichHen(req, res, next) {
         if (req.session.authUser.Permission == '1') {
             const accountQuery = await Appointment.find({ doctorId: req.session.authUser.Id })
             if (req.query.hasOwnProperty('_sort')) {
@@ -52,19 +52,19 @@ class MeController {
 
     }
 
-    //Soft 
-    handFormAction(req, res, next) {
-        switch (req.body.action) {
-            case '1':
-                //   Account.find({ _id: { $in: req.body.khoa} })
-                //   .then(() => res.redirect('back'))
-                //   .catch(next);
-                res.json(req.body);
-                break;
-            default:
-                res.json({ mesage: 'hanh dong khong hop le' })
-        }
-    }
+    //Soft (Khong dung toi nen comment)
+    // handFormAction(req, res, next) {
+    //     switch (req.body.action) {
+    //         case '1':
+    //             //   Account.find({ _id: { $in: req.body.khoa} })
+    //             //   .then(() => res.redirect('back'))
+    //             //   .catch(next);
+    //             res.json(req.body);
+    //             break;
+    //         default:
+    //             res.json({ mesage: 'hanh dong khong hop le' })
+    //     }
+    // }
 
     //[GET] stored/account
 

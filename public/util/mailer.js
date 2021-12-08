@@ -1,6 +1,6 @@
 const nodeMailer = require('nodemailer')
-const adminEmail = 'onlineclinicvn@gmail.com';
-const adminPassword = '123456789abcD@'
+// const adminEmail = 'onlineclinicvn@gmail.com';
+// const adminPassword = '123456789abcD@'
 const { v4: uuidv4 } = require('uuid');
 // const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
 

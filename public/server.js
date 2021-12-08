@@ -257,6 +257,13 @@ app.engine(
                 if (!this._sections) this._sections = {};
                 this._sections[name] = options.fn(this);
                 return null;
+            },
+            'if_eq': function(a, b, opts) {
+                if (a == b) {
+                    return opts.fn(this);
+                } else {
+                    return opts.inverse(this);
+                }
             }
         },
     }),

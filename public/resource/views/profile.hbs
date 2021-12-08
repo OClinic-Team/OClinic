@@ -10,10 +10,10 @@
                         <div class="col-md-4">
                             <div class="profile-img">
                                 <img src="{{profilePatient.ImageURL}}" alt=""/>
-                                <div class="file btn btn-lg btn-primary">
+                                {{!-- <div class="file btn btn-lg btn-primary">
                                     Change Photo
                                     <input type="file" name="file"/>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -46,118 +46,66 @@
                         <div class="col-md-8">
                             <div class="tab-content profile-tab" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>User Id</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    
-                                                    <p>
-                                                        {{profilePatient.Id}}
-                                                    </p>
-                                            
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Name</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        {{profilePatient.Name}}
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Age:</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        {{profilePatient.Age}}
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Sex</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        {{profilePatient.Sex}}
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Address</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        {{profilePatient.Address}}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Email</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{profilePatient.Email}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Phone</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{profilePatient.Phone}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">                            
-                                            </div>
-                                </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Experience</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Expert</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Hourly Rate</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>10$/hr</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Total Projects</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>230</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>English Level</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Expert</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Availability</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>6 months</p>
-                                                </div>
-                                            </div>
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <label>Your Bio</label><br/>
-                                            <p>Your detail description</p>
+                                        <div class="col-md-6">
+                                            <label>User Id</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                {{profilePatient.Id}}
+                                            </p>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                {{profilePatient.Name}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Age:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                {{profilePatient.Age}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Sex</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                {{profilePatient.Sex}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Address</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                {{profilePatient.Address}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{profilePatient.Email}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Phone</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{profilePatient.Phone}}</p>
+                                        </div>
+                                    </div>     
                                 </div>
                             </div>
                         </div>
@@ -203,141 +151,90 @@
                         <div class="col-md-8">
                             <div class="tab-content profile-tab" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>User Id</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    
-                                                    <p>
-                                                        {{profileDoctor.Id}}
-                                                    </p>
-                                            
-                                                </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Name</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        {{profileDoctor.Name}}
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Age:</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        {{profileDoctor.Age}}
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Sex</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        {{profileDoctor.Sex}}
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Address</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        {{profileDoctor.Address}}
-                                                    </p>
-                                                </div>
+                                            <div class="col-md-6">
+                                                <p>
+                                                    {{profileDoctor.Id}}
+                                                </p>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Email</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{profileDoctor.Email}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Phone</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{profileDoctor.Phone}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Department</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{profileDoctor.Department}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label> Description</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{profileDoctor.Description}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label> Practicing certificate</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{profileDoctor.Practicing_certificate}}</p>
-                                                </div>
-                                            </div>
-                                        
-                                </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Experience</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Expert</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Hourly Rate</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>10$/hr</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Total Projects</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>230</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>English Level</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Expert</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Availability</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>6 months</p>
-                                                </div>
-                                            </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label>Your Bio</label><br/>
-                                            <p>Your detail description</p>
                                         </div>
-                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>
+                                                    {{profileDoctor.Name}}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Age:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>
+                                                    {{profileDoctor.Age}}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Sex</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>
+                                                    {{profileDoctor.Sex}}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>
+                                                    {{profileDoctor.Address}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{profileDoctor.Email}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{profileDoctor.Phone}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Department</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{profileDoctor.Department}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label> Description</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{profileDoctor.Description}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label> Practicing certificate</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{profileDoctor.Practicing_certificate}}</p>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
