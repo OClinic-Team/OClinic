@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 //const MONGO_URI = 'mongodb+srv://online-clinic-project:123321123321@cluster.mjikz.mongodb.net/test?authSource=admin&replicaSet=atlas-10rvle-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true';
 async function connect() {
     //const MONGO_URI = 'mongodb+srv://online-clinic-project:123321123321@cluster.mjikz.mongodb.net/Online-Clinic'
-    const MONGO_URI = 'mongodb://localhost:27017/online_clinic'
+        const MONGO_URI = 'mongodb://localhost:27017/online_clinic'
 
     try {
         await mongoose.connect(MONGO_URI, {
