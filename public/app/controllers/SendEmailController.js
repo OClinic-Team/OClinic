@@ -17,6 +17,7 @@ class SendEmailController {
             const dataEmailPatient = req.session.authUser.Email;
             const dataDoctorName = req.query.doctorName;
             const dataPatientName = req.session.authUser.Name;
+
             try {
                 const data = new Appointment({
                     doctorId: dataDoctorId,

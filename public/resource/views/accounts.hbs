@@ -177,7 +177,7 @@
 	        	</div>
 	        </div>
             <div style="text-align: left; margin-left: 5%" class="product-count">
-	        				<button type="submit" id="btn-submit" value="Show Alert"class="btn btn-success">Đặt lịch hẹn</button>
+	        				<button type="submit" id="btn-submit" value="ShowAlert"class="btn btn-success">Đặt lịch hẹn</button>
 	        	</div>
        </form>
        {{else}}
@@ -185,8 +185,36 @@
     {{/each}}
 </div>
 <script language="javascript">
-    var button = document.getElementById("btn-submit");
-    button.onclick = function(){
-        alert("xac nhan dang ky");
+        const button = document.getElementById("btn-submit");
+        const time1 = document.getElementById("time1");
+        const time2 = document.getElementById("time2");
+        const time3 = document.getElementById("time3");
+        const time4 = document.getElementById("time4");
+        const time5 = document.getElementById("time5");
+        const  time6 = document.getElementById("time6");
+        const time7 = document.getElementById("time7");
+        const time8 = document.getElementById("time8");
+        const time9 = document.getElementById("time9");
+        const time10 = document.getElementById("time10");
+        const time11 = document.getElementById("time11");
+        const time12 = document.getElementById("time12");
+    button.onclick = checkAppointment(time1,time2,time3,time4, time4,time5,time6,time6,time7,time8,time9,time11,time12);
+
+     function checkAppointment(time1,time2,time3,time4, time4,time5,time6,time6,time7,time8,time9,time11,time12){
+        if(confirm('Bạn muốn đăng kí lịch ?'))
+        {
+            if(time1.checked || time2.checked ||time3.checked ||time4.checked ||time5.checked ||time6.checked ||time7.checked ||time8.checked ||time9.checked ||time10.checked ||time11.checked ||time12.checked )
+            {
+              alert("bạn đã đăng kí!");
+              break;
+            }
+            else{
+              alert("bạn chưa chọn thời gian!")
+              return false;
+            }  
+        }
+        else{
+            return false;
+        }
     }
 </script>
