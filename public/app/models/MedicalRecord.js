@@ -8,15 +8,15 @@ const MedicalRecord = new Schema({
     Patient_Id: { type: String, require: true },
     namePatient: { type: String, minLength: 1, maxLength: 255 },
     nameDoctor: { type: String, minLength: 1, maxLength: 255 },
-    sex: { type: String },
-    birthDay: { type: String },
+    age: { type: String },
     address: { type: String },
     symptom: { type: String },
     phone: { type: String },
     diagnose: { type: String },
     prescription: { type: String },
     note: { type: String },
-    slug: { type: String, slug: 'MedicalRecordId', unique: true },
+    date: { type: String },
+    slug: { type: String, slug: 'date', unique: true },
 }, {
     timestamps: true,
 }, );

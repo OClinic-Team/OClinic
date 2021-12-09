@@ -20,14 +20,42 @@ class MedicalRecordController {
             .catch(next);
     }
     createMR(req, res, next) {
-        console.log(req.params.Id)
-        AccountPatient.findOne({ Id: req.params.Id })
-            .then((patient) => {
-                res.render('medicalRecords/create', {
-                    patient: mongooseToObject(patient),
-                });
+        // AccountPatient.findOne({ Id: req.params.Id })
+        //     .then((patient) => {
+        //         res.render('medicalRecords/create', {
+        //             patient: mongooseToObject(patient),
+        //         });
+        //     })
+        //     .catch(next);
+        AccountPatient.aggregate([{
+                    $lookup: {
+                        from: "medical-records",
+                        localField: "Patient_Id",
+                        foreignField: "Id",
+                        as: "medical_record"
+
+                    },
+                },
+                {
+                    $match: {
+                        Id: req.params.Id
+                    }
+                },
+                {
+                    $unwind: { path: "$userInfoData", preserveNullAndEmptyArrays: true },
+                },
+            ])
+            .then((patient => {
+                console.log(patient[0].medical_record[0])
+                res.render('medicalRecords/create', { patient })
+            }))
+            .catch((error) => {
+                console.log(error)
             })
-            .catch(next);
+
+
+
+
     }
     store(req, res, next) {
 
@@ -38,12 +66,26 @@ class MedicalRecordController {
                 .catch((error) => {});
         }
         //[POST] /medicalRecord/storeMedicalRecord (button save)
-    storeMedicalRecord(req, res, next) {
+    async storeMedicalRecord(req, res, next) {
+            let x = new Date()
+            const time = x.getHours().toString() + ':' + x.getMinutes().toString() + ' ' + x.getDate().toString() + '/' + x.getMonth().toString() + '/' + x.getFullYear().toString()
+            const medicalRecord = new MedicalRecord({
+                Doctor_Id: req.session.authUser.Id,
+                Patient_Id: req.body.patientId,
+                namePatient: req.body.namePatient,
+                nameDoctor: req.session.authUser.Name,
+                age: req.body.age,
+                address: req.body.address,
+                symptom: req.body.symptom,
+                phone: req.body.phone,
+                diagnose: req.body.diagnose,
+                prescription: req.body.prescription,
+                note: req.body.note,
+                date: time,
+            });
+            await medicalRecord.save();
 
-            const medicalRecord = new MedicalRecord(req.body);
-            medicalRecord.save();
-            res.redirect('/medicalRecord/create')
-
+            res.redirect('/me/stored/medical-record')
         }
         //[GET] /MedicalRecord/:id
     show(req, res, next) {

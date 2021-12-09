@@ -21,42 +21,125 @@
   </div>
 
     <table class="table">
-      <thead>
-        <tr>
-          <th scope="col" colspan="2">#</th>
-          <th scope="col">Tên Bệnh Nhân</th>
-          <th scope="col">Mã Bệnh Nhân</th>
-          <th scope="col" colspan="2">Thời Gian Tạo</th>
-        </tr>
-      </thead>
-  
-  <tbody>
-    {{#each medicalrecords}}
-    <tr>
-      <td>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
-          </label>
-        </div>
-      </td>
-      <th scope="row">{{sum @index 1}}</th>
-      <td>{{this.namePatient}}</td>
-      <td>{{this._id}}</td>
-      <td>{{this.createdAt}}</td>
-      <td>
-          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa</a>
-          <a href="/medicalRecord/{{this._id}}" class="btn btn-link">Xem</a>
-      </td>
-    </tr>
-  </tbody>
-  {{else}}
-  <tr>
-    <td colspan="5" class="text-center">
-      Bạn Chưa Có Tài Khoản Nào. !!!
-      <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a>
-    </td>
-  </tr>
-  {{/each}}
+      {{#if_eq lcAuthUser.Permission '1'}}
+                  <thead>
+                    <tr>
+                      <th scope="col" colspan="2">#</th>
+                      <th scope="col">Tên Bệnh Nhân</th>
+                      <th scope="col">Mã Bệnh Nhân</th>
+                      <th scope="col" colspan="2">Thời Gian Tạo</th>
+                    </tr>
+                  </thead>
+              
+              <tbody>
+                {{#each medicalrecords}}
+                <tr>
+                  <td>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
+                      </label>
+                    </div>
+                  </td>
+                  <th scope="row">{{sum @index 1}}</th>
+                  <td>{{this.namePatient}}</td>
+                  <td>{{this.Patient_Id}}</td>
+                  <td>{{this.date}}</td>
+                  <td>
+                      <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa</a>
+                      <a href="/medicalRecord/{{this._id}}" class="btn btn-link">Xem</a>
+                  </td>
+                </tr>
+              </tbody>
+              {{else}}
+                  <tr>
+                    <td colspan="5" class="text-center">
+                        HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
+                      {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
+                    </td>
+                  </tr>
+              {{/each}}
+    {{/if_eq}}
+    {{#if_eq lcAuthUser.Permission '0'}}
+         <thead>
+            <tr>
+              <th scope="col" colspan="2">#</th>
+              <th scope="col">Tên Bác Sĩ</th>
+              <th scope="col">Mã Bác Sĩ</th>
+              <th scope="col" colspan="2">Thời Gian Tạo</th>
+            </tr>
+        </thead>
+              
+              <tbody>
+                {{#each medicalrecords}}
+                <tr>
+                  <td>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
+                      </label>
+                    </div>
+                  </td>
+                  <th scope="row">{{sum @index 1}}</th>
+                  <td>{{this.nameDoctor}}</td>
+                  <td>{{this.Doctor_Id}}</td>
+                  <td>{{this.date}}</td>
+                  <td>
+                      <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa</a>
+                      <a href="/medicalRecord/{{this._id}}" class="btn btn-link">Xem</a>
+                  </td>
+                </tr>
+              </tbody>
+              {{else}}
+                  <tr>
+                    <td colspan="5" class="text-center">
+                        HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
+                      <a href="/accounts">Bấm vào đây để đăng ký lịch khám bệnh</a>
+                    </td>
+                  </tr>
+              {{/each}} 
+    {{/if_eq}}
+    {{#if_eq lcAuthUser.Permission '2'}}
+           <thead>
+            <tr>
+              <th scope="col" colspan="2">#</th>
+              <th scope="col">Tên Bác Sĩ</th>
+              <th scope="col">Tên Bệnh Nhân</th>
+              <th scope="col">Mã Bác Sĩ</th>
+              <th scope="col">Mã Bệnh Nhân</th>
+              <th scope="col" colspan="2">Thời Gian Tạo</th>
+            </tr>
+        </thead>
+              
+              <tbody>
+                {{#each medicalrecords}}
+                <tr>
+                  <td>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
+                      </label>
+                    </div>
+                  </td>
+                  <th scope="row">{{sum @index 1}}</th>
+                  <td>{{this.nameDoctor}}</td>
+                  <td>{{this.namePatient}}</td>
+                  <td>{{this.Doctor_Id}}</td>
+                  <td>{{this.Patient_Id}}</td>
+                  <td>{{this.date}}</td>
+                  <td>
+                      <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa</a>
+                      <a href="/medicalRecord/{{this._id}}" class="btn btn-link">Xem</a>
+                  </td>
+                </tr>
+              </tbody>
+              {{else}}
+                  <tr>
+                    <td colspan="5" class="text-center">
+                        HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
+                      <a href="/accounts">Bấm vào đây để đăng ký lịch khám bệnh</a>
+                    </td>
+                  </tr>
+              {{/each}} 
+    {{/if_eq}}
+    
 </table>
 </form>
 </div>

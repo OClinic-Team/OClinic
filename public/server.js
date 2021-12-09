@@ -129,7 +129,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
                 console.log(req.session.authUser.Permission);
             }
         }
-
+        // alert(` CHÀO MỪNG ${req.session.authUser.Name} `)
         req.session.isAuthenticated = true;
         req.session.token = req.user.token;
         var redirectionUrl = req.session.redirectUrl || '/';
@@ -146,28 +146,9 @@ app.use(async function(req, res, next) {
     }
     res.locals.lcIsAuthenticated = req.session.isAuthenticated;
     res.locals.lcAuthUser = req.session.authUser;
-    // window.sessionStorage.setItem('Id', req.session.authUser.Id);
-    // sessionStorage.setItem('Name', req.session.authUser.Name);
-    // sessionStorage.setItem('Email', req.session.authUser.Email);
-    // window.sessionStorage.setItem('Id', req.session.authUser.Id)
     next();
 });
 
-//room videcall rtc socket
-// app.get('/room', auth, (req, res) => {
-//     res.render('index')
-
-// });
-// app.get('/videoCall', (req, res) => {
-//     res.render('roomvideocall')
-
-// });
-// app.get('/videoCall', auth, (req, res) => {
-//     res.sendFile(path.join(__dirname, '/index.html'))
-
-// });
-
-// io.of('/stream').on('connection', stream);
 
 //video call
 const { v4: uuidv4 } = require('uuid');
@@ -199,9 +180,9 @@ io.on('connection', (socket) => {
 
 
 
-app.get('/datlichhen', (req, res) => {
-    res.render('datlichhen');
-});
+// app.get('/datlichhen', (req, res) => {
+//     res.render('datlichhen');
+// });
 app.get('/logout', function(req, res) {
     req.session = null;
     req.logout();

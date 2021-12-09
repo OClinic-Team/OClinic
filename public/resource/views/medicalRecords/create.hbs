@@ -1,32 +1,21 @@
 <div class="container-create-medical-record" style="width: 100%;">
-        <div class="left-medical-record-create-form ml-4">
+    {{#each patient}}
+        <div class="left-medical-record-create-form ">
             <h3 style="text-align: center;">HỒ SƠ BỆNH ÁN</h3>
+    
             <form method="POST" action="/medicalRecord/storeMedicalRecord">
-                <label for="namePatient">Họ và tên bệnh nhân</label></br>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="namePatient" placeholder="{{patient.Name}}">
-                <label for="namePatient">Email:</label></br>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="Email" placeholder="{{patient.Email}}">
-                {{!-- <legend class="col-form-label col-sm-2 pt-0">Giới tính</legend>
-                <div class="col-sm-10">
-                    <div class="form-check m-1">
-                    <input class="form-check-input" type="radio" name="sex" id="gridRadios1" value="male" checked>
-                    <label class="form-check-label" for="gridRadios1">
-                    Nam
-                    </label>
-                    </div>
-                    <div class="form-check m-1">
-                    <input class="form-check-input" type="radio" name="sex" id="gridRadios2" value="female">
-                    <label class="form-check-label" for="gridRadios2">
-                    Nữ
-                    </label>
-                </div> --}}
-                </br>
-                <label for="bithDay">Ngày sinh</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="birthDay" placeholder="{{patient.Age}}">
-                <label for="address">Địa chỉ</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="address" placeholder="{{patient.Address}}">
-                <label for="phone">Số điện thoại</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="phone" placeholder="{{this.Phone}}">
+                <label for="namePatient">Họ và tên bệnh nhân: {{this.Name}}</label></br>
+
+                <input type="text" class="form-control" id="exampleInputEmail1" name="patientId" value="{{this.Id}}" hidden>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="namePatient" value="{{this.Name}}"hidden>
+                <label for="namePatient">Email: {{this.Email}}</label></br>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="Email" value="{{this.Email}}" hidden>
+                <label for="bithDay">Tuổi: {{this.Age}}</label></br>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Age}}" hidden>
+                <label for="address">Địa chỉ: {{this.Address}}</label></br>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="address" value="{{this.Address}}" hidden>
+                <label for="phone">Số điện thoại: {{this.Phone}}</label></br>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="phone" value="{{this.Phone}}" hidden>
                 
 
                 <label for="symptom">Triệu Chứng</label>
@@ -45,44 +34,39 @@
                     <button  type="submit" class="btn btn-primary" style="margin: 10px 10px 100px 300px; " >Tạo hồ sơ</button>
             </form>
         </div>
-    <div class="right-medical-record-create-form">
-        <h1>Lịch sử khám bệnh</h1>
-        {{!-- {{
-                <h4>Họ và tên: {{medicalrecords.namePatient}}</h4>
-                <h2>Địa Chỉ: {{medicalrecords.address}}</h2>
-                <h2>Số Điện Thoại: {{medicalrecords.phone}}</h2>
-                <h2>Ngày Sinh: {{medicalrecords.bithDay}}</h2>
-                <h2>Giới Tính: {{medicalrecords.sex}}</h2>
-                <h2>Triệu Chứng:{{medicalRecord.symptom}}</h2>
-                <h2>Chuẩn đoán: {{medicalrecords.diagnose}}</h2>
-                <h2>Đơn Thuốc: {{medicalrecords.prescription}}</h3> --}}
-        {{#each patient.medicalRecord}}
-                <div class="dropdown">
-                   <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
-                      {{this.date}}
-                    </button>
-                    <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-                        <div class="form-check ml-3">
-                            <input id="time1"class="form-check-input"  id="defaultCheck1" readonly>
-                            <label class="form-check-label" for="defaultCheck1">
-                                Triệu Chứng:{{this.symptom}}
-                            </label>
-                        </div>
-                        <div class="form-check ml-3">
-                            <input id="time1"class="form-check-input"  id="defaultCheck1" readonly>
-                            <label class="form-check-label" for="defaultCheck1">
-                                Chuẩn Đoán:{{this.diagnose}}
-                            </label>
-                        </div>
-                        <div class="form-check ml-3">
-                            <input id="time1"class="form-check-input"  id="defaultCheck1" readonly>
-                            <label class="form-check-label" for="defaultCheck1">
-                                Đơn Thuốc:{{this.prescription}}
-                            </label>
-                        </div>
-
-                    </div>
-                </div>
+                <div class="right-medical-record-create-form ml-4">
+                    <h1>Lịch sử khám bệnh</h1>
+                    {{#each this.medical_record}}
+                            <div class="dropdown" >
+                            <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
+                                {{this.date}}
+                                </button>
+                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+                                    <div class="form-check ml-3">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Triệu Chứng:{{this.symptom}}
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-3">
+                                        
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Chuẩn Đoán:{{this.diagnose}}
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-3">
+                                      
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Đơn Thuốc:{{this.prescription}}
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-3">
+                                        
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Lưu ý:{{this.note}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
         {{!-- <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Thời gian khám: {{medicalRecord.createdAt}}
@@ -95,7 +79,8 @@
         </div>
         </div> --}}
         {{else}}
-            <h3>Chưa có hồ sơ</h3>
+            <h3>Bệnh nhân chưa có hồ sơ bệnh án</h3>
         {{/each}}
+    {{/each}}
     </div>
 </div>

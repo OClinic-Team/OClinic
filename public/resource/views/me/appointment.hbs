@@ -2,36 +2,39 @@
   <div class="container">
     <h3>THÔNG TIN LỊCH HẸN </h3>
     <table class="table">
-      {{#if patient}}
-              <thead>
-                <tr>
-                  <th scope="col" colspan="">STT</th>
-                  <th scope="col">Tên Bác Sỹ</th>
-                  <th scope="col">Link Phòng Họp </th>
-                  <th scope="col">Thời Gian </th>
-                </tr>
-              </thead>
-          {{#each patient}}
-                <tbody>
-                    <tr>
-                      <th scope="row">{{sum @index 1}}</th>
-                      <td>{{this.doctorName}}</td>
-                      <td>{{this.roomLink}}</td>
-                      <td>{{this.time}}</td>
-                    
-                    </tr>
-                </tbody>
+      {{#if_eq lcAuthUser.Permission '0'}}
+          <thead>
+            <tr>
+              <th scope="col" colspan="">STT</th>
+              <th scope="col">Tên Bác Sỹ</th>
+              <th scope="col">Link Phòng Họp </th>
+              <th scope="col">Thời Gian </th>
+            </tr>
+          </thead>
+              {{#if patient}}
+                    {{#each patient}}
+                          <tbody>
+                              <tr>
+                                <th scope="row">{{sum @index 1}}</th>
+                                <td>{{this.doctorName}}</td>
+                                <td>{{this.roomLink}}</td>
+                                <td>{{this.time}}</td>
+                              
+                              </tr>
+                          </tbody>
+                    {{/each}}
                 {{else}}
-                    <tr>
-                      <td colspan="5" class="text-center">
-                        Bạn Chưa Đặt Cuộc Hẹn Nào. !!!
-                        <a href="/accounts">Bấm vào đây để đăng tài khoản</a>
-                      </td>
-                    </tr>
-          {{/each}}
-        {{/if}}
+                      <tr>
+                        <td colspan="5" class="text-center">
+                          Bạn Chưa Đặt Cuộc Hẹn Nào. !!!
+                          <a href="/accounts">Bấm vào đây để đăng kí lịch hẹn</a>
+                        </td>
+                      </tr>
+              {{/if}}
+                
+        {{/if_eq}}
 
-        {{#if doctor}}
+        {{#if_eq lcAuthUser.Permission '1'}}
               <thead>
                 <tr>
                   <th scope="col" colspan="">STT</th>
@@ -40,32 +43,34 @@
                   <th scope="col">Link Phòng Họp </th>
                 </tr>
               </thead>
-            {{#each doctor}}
-                <tbody>
-                    <tr>
-                      <th scope="row">{{sum @index 1}}</th>
-                      <td>{{this.patientName}}</td>
-                      <td>{{this.time}}</td>
-                      <td>{{this.roomLink}}</td>
-                      
-                      <td>
-                          <a href="/medicalRecord/create/{{this.patientId}}" class="btn btn-link">Tạo Hồ Sơ Bệnh Án</a>
-                        
-                      </td>
-                    </tr>
-                </tbody>
-                {{else}}
-                    <tr>
-                      <td colspan="5" class="text-center">
-                        Bạn Chưa Có Cuộc Hẹn Nào. !!!
-                        {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
-                      </td>
-                    </tr>
-            {{/each}}
-        {{/if}}
+              {{#if doctor}}
+                          {{#each doctor}}
+                              <tbody>
+                                  <tr>
+                                    <th scope="row">{{sum @index 1}}</th>
+                                    <td>{{this.patientName}}</td>
+                                    <td>{{this.time}}</td>
+                                    <td>{{this.roomLink}}</td>
+                                    
+                                    <td>
+                                        <a href="/medicalRecord/create/{{this.patientId}}" class="btn btn-link">Tạo Hồ Sơ Bệnh Án</a>
+                                      
+                                    </td>
+                                  </tr>
+                              </tbody>
+                          {{/each}}
+                  {{else}}
+                        <tr>
+                          <td colspan="5" class="text-center">
+                            Bạn Chưa Có Cuộc Hẹn Nào. !!!
+                            {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
+                          </td>
+                        </tr>
+              {{/if}}      
+        {{/if_eq}}
 
-        {{#if admin}}
-                  <thead>
+        {{#if_eq lcAuthUser.Permission '2'}}
+              <thead>
                 <tr>
                   <th scope="col" colspan="">STT</th>
                   <th scope="col">Tên Bác Sĩ </th>
@@ -74,26 +79,27 @@
                   <th scope="col">Link Phòng Họp </th>
                 </tr>
               </thead>
-            {{#each admin}}
-                <tbody>
-                    <tr>
-                      <th scope="row">{{sum @index 1}}</th>
-                      <td>{{this.doctorName}}</td>
-                      <td>{{this.patientName}}</td>
-                      <td>{{this.time}}</td>
-                      <td>{{this.roomLink}}</td>
-                    
-                    </tr>
-                </tbody>
-                {{else}}
+            {{#if admin}}
+                  {{#each admin}}
+                      <tbody>
+                          <tr>
+                            <th scope="row">{{sum @index 1}}</th>
+                            <td>{{this.doctorName}}</td>
+                            <td>{{this.patientName}}</td>
+                            <td>{{this.time}}</td>
+                            <td>{{this.roomLink}}</td>
+                          
+                          </tr>
+                      </tbody>
+                  {{/each}}
+              {{else}}
                     <tr>
                       <td colspan="5" class="text-center">
                         Không Có Cuộc Hẹn Nào!!!
-                        {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
                       </td>
                     </tr>
-            {{/each}}
-        {{/if}}
+            {{/if}}      
+        {{/if_eq}}
 
 
 

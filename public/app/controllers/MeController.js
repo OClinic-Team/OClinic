@@ -124,14 +124,44 @@ class MeController {
         }
         //[GET] /me/store/medical-record
     storedMedicalRecord(req, res, next) {
-        Promise.all([MedicalRecord.find({}), MedicalRecord.countDocumentsDeleted()])
-            .then(([medicalrecords, deleteCount]) =>
-                res.render('me/medical-record', {
-                    deleteCount,
-                    medicalrecords: mutileMongooseToObject(medicalrecords),
-                })
-            )
-            .catch(next);
+        if (req.session.authUser.Permission === '2') {
+            Promise.all([MedicalRecord.find({}), MedicalRecord.countDocumentsDeleted()])
+                .then(([medicalrecords, deleteCount]) =>
+                    res.render('me/medical-record', {
+                        deleteCount,
+                        medicalrecords: mutileMongooseToObject(medicalrecords),
+                    })
+                )
+                .catch(next);
+        } else {
+            if (req.session.authUser.Permission === '1') {
+                Promise.all([MedicalRecord.find({ Doctor_Id: req.session.authUser.Id }), MedicalRecord.countDocumentsDeleted()])
+                    .then(([medicalrecords, deleteCount]) =>
+                        res.render('me/medical-record', {
+                            deleteCount,
+                            medicalrecords: mutileMongooseToObject(medicalrecords),
+                        })
+                    )
+                    .catch(next);
+            } else {
+                Promise.all([MedicalRecord.find({ Patient_Id: req.session.authUser.Id }), MedicalRecord.countDocumentsDeleted()])
+                    .then(([medicalrecords, deleteCount]) =>
+                        res.render('me/medical-record', {
+                            deleteCount,
+                            medicalrecords: mutileMongooseToObject(medicalrecords),
+                        })
+                    )
+                    .catch(next);
+            }
+        }
+        // Promise.all([MedicalRecord.find({}), MedicalRecord.countDocumentsDeleted()])
+        //     .then(([medicalrecords, deleteCount]) =>
+        //         res.render('me/medical-record', {
+        //             deleteCount,
+        //             medicalrecords: mutileMongooseToObject(medicalrecords),
+        //         })
+        //     )
+        //     .catch(next);
     }
 }
 

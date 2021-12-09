@@ -2,27 +2,28 @@
 <html>
 
 <head>
-  <script>
-    bootstrapValidate('#Khoa-input', 'required: Hãy chọn khoa trước khi tìm', function (isValid) {
-   if (isValid) {
-       alert('Element is valid');
-   } else {
-       alert('Element is invalid');
-   }
-});
-  </script>
 
-    <!--Important link from https://bootsnipp.com/snippets/XqvZr-->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"><div class="pd-wrap">
-</head>
+          <!--Important link from https://bootsnipp.com/snippets/XqvZr-->
+          <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+          <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <!------ Include the above in your HEAD tag ---------->
+
+          <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"><div class="pd-wrap">
+              <script>
+                bootstrapValidate('#Khoa-input', 'required: Hãy chọn khoa trước khi tìm', function (isValid) {
+                    if (isValid) {
+                        alert('Element is valid');
+                    } else {
+                        alert('Element is invalid');
+                    }
+                  });  
+              </script>
+      </head>
 
 <div class='mt-4 container p-3 my-3'>
         
@@ -69,7 +70,7 @@
                               <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
                                   {{this.date}}
                               </button>             
-                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   {{#if this.time1}}
                                   <div class="form-check ml-3">
                                       <input id="time1"class="form-check-input" type="radio" name="time" value="7h00-8h00 {{this.date}}" id="defaultCheck1" >
@@ -96,7 +97,7 @@
                             {{/if}}
                             {{#if this.time4}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="10h00-11h00 {{this.date}}" id="defaultCheck2" >
+                                    <input id="time4" class="form-check-input" type="radio" name="time" value="10h00-11h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       10h00-11h00
                                     </label>
@@ -104,7 +105,7 @@
                             {{/if}}
                             {{#if this.time5}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="13h00-14h00 {{this.date}}" id="defaultCheck2" >
+                                    <input id="time5" class="form-check-input" type="radio" name="time" value="13h00-14h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       13h00-14h00
                                     </label>
@@ -112,7 +113,7 @@
                             {{/if}}
                             {{#if this.time6}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="14h00-15h00 {{this.date}}" id="defaultCheck2">
+                                    <input id="time6" class="form-check-input" type="radio" name="time" value="14h00-15h00 {{this.date}}" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck2">
                                       14h00-15h00
                                     </label>
@@ -120,7 +121,7 @@
                             {{/if}}
                             {{#if this.time7}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="15h00-16h00 {{this.date}}" id="defaultCheck2" >
+                                    <input id="time7" class="form-check-input" type="radio" name="time" value="15h00-16h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       15h00-16h00
                                     </label>
@@ -128,7 +129,7 @@
                             {{/if}}
                             {{#if this.time8}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="16h00-17h00 {{this.date}}" id="defaultCheck2" >
+                                    <input id="time8" class="form-check-input" type="radio" name="time" value="16h00-17h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       16h00-17h00
                                     </label>
@@ -136,7 +137,7 @@
                             {{/if}}
                             {{#if this.time9}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="18h00-19h00 {{this.date}}" id="defaultCheck2" >
+                                    <input id="time9" class="form-check-input" type="radio" name="time" value="18h00-19h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       18h00-19h00
                                     </label>
@@ -144,7 +145,7 @@
                             {{/if}}
                             {{#if this.time10}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="19h00-20h00 {{this.date}}" id="defaultCheck2" >
+                                    <input id="time10" class="form-check-input" type="radio" name="time" value="19h00-20h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       19h00-20h00
                                     </label>
@@ -152,7 +153,7 @@
                             {{/if}}
                             {{#if this.time11}}
                                   <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="20h00-21h00 {{this.date}}" id="defaultCheck2" >
+                                    <input id="time11" class="form-check-input" type="radio" name="time" value="20h00-21h00 {{this.date}}" id="defaultCheck2" >
                                     <label class="form-check-label" for="defaultCheck2">
                                       20h00-21h00
                                     </label>
@@ -160,7 +161,7 @@
                             {{/if}}
                                  {{#if this.time12}}
                                     <div class="form-check ml-3">
-                                        <input id="time2" class="form-check-input" type="radio" name="time" value="21h00-22h00 {{this.date}}" id="defaultCheck2" >
+                                        <input id="time12" class="form-check-input" type="radio" name="time" value="21h00-22h00 {{this.date}}" id="defaultCheck2" >
                                         <label class="form-check-label" for="defaultCheck2">
                                             21h00-22h00
                                         </label>
@@ -177,44 +178,10 @@
 	        	</div>
 	        </div>
             <div style="text-align: left; margin-left: 5%" class="product-count">
-	        				<button type="submit" id="btn-submit" value="ShowAlert"class="btn btn-success">Đặt lịch hẹn</button>
+	        				<button type="submit" id="btn-submit"   class="btn btn-success">Đặt lịch hẹn</button>
 	        	</div>
        </form>
        {{else}}
        <p>Không có bác sĩ nào</p>
     {{/each}}
 </div>
-<script language="javascript">
-        const button = document.getElementById("btn-submit");
-        const time1 = document.getElementById("time1");
-        const time2 = document.getElementById("time2");
-        const time3 = document.getElementById("time3");
-        const time4 = document.getElementById("time4");
-        const time5 = document.getElementById("time5");
-        const  time6 = document.getElementById("time6");
-        const time7 = document.getElementById("time7");
-        const time8 = document.getElementById("time8");
-        const time9 = document.getElementById("time9");
-        const time10 = document.getElementById("time10");
-        const time11 = document.getElementById("time11");
-        const time12 = document.getElementById("time12");
-    button.onclick = checkAppointment(time1,time2,time3,time4, time4,time5,time6,time6,time7,time8,time9,time11,time12);
-
-     function checkAppointment(time1,time2,time3,time4, time4,time5,time6,time6,time7,time8,time9,time11,time12){
-        if(confirm('Bạn muốn đăng kí lịch ?'))
-        {
-            if(time1.checked || time2.checked ||time3.checked ||time4.checked ||time5.checked ||time6.checked ||time7.checked ||time8.checked ||time9.checked ||time10.checked ||time11.checked ||time12.checked )
-            {
-              alert("bạn đã đăng kí!");
-              break;
-            }
-            else{
-              alert("bạn chưa chọn thời gian!")
-              return false;
-            }  
-        }
-        else{
-            return false;
-        }
-    }
-</script>
