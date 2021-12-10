@@ -6,5 +6,6 @@ const auth = require('../app/middlewares/auth');
 const checkDoctor = require('../app/middlewares/checkDoctor');
 
 router.get('/create', auth, checkDoctor, addschedulecontroller.create);
+router.get('/viewschedule', auth, checkDoctor, addschedulecontroller.viewschedule);
 router.post('/add', auth, checkDoctor, addschedulecontroller.add);
 module.exports = router;

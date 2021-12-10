@@ -189,6 +189,7 @@ app.get('/logout', function(req, res) {
     res.redirect('/');
 
 });
+
 //connect to data base
 db.connect();
 
