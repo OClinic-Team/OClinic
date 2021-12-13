@@ -1,6 +1,8 @@
-<div class="container bootstrap snippets bootdey">
-    <h1 class="text-primary">Edit Profile</h1>
-      <hr>
+<div class="container h1 mt-3">
+    <h1>Chỉnh Sửa Thông Tin</h1>
+    <hr>
+</div>
+<div class="container bootstrap snippets bootdey"> 
 	<div class="row">
       <!-- left column -->
       {{#if profilePatient}}
@@ -23,8 +25,6 @@
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
-        <h3>Personal info</h3>
-        
         <form method="POST" class="form-horizontal" action="/profile/editInformation">
         {{#if profilePatient}}
           <div>  
@@ -33,48 +33,42 @@
           <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80" rows="1" value={{profilePatient.Email}}>
           </div>
           <div class="form-group">
-            <label class="col-lg-3 control-label">Name:</label>
+            <label class="col-lg-3 control-label"><b>Họ và Tên</b></label>
             <div>
               <input class="form-control" name="Name" type="text" placeholder="{{profilePatient.Name}}">
             </div>
           </div>
           <div class='form-group'>
-            <label class="col-lg-3 control-label">Age:</label>
+            <label class="col-lg-3 control-label"><b>Ngày Sinh</b></label>
               <div>
                 <input class="form-control" name="Age" type="text" placeholder="{{profilePatient.Age}}">
               </div>
           </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Sex:</label>
-            <div class="col-sm-10">
-                    <div class="form-check m-1">
-                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios1" value="male" checked>
-                    <label class="form-check-label" for="gridRadios1">
-                    male
-                    </label>
-                    </div>
-                    <div class="form-check m-1">
-                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="female">
-                    <label class="form-check-label" for="gridRadios2">
-                    female
-                    </label>
-                    </label>
-                    </div>
-                    <div class="form-check m-1">
-                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="other">
-                    <label class="form-check-label" for="gridRadios2">
-                    Other
-                    </label>
+          <div class="form-group mb-2">
+            <label class="col-lg-3 control-label"><b>Giới Tính</b></label>
+            <div>
+              <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="Sex" id="gridRadios1" value="Nam" checked>
+              <label class="form-check-label" for="inlineRadio1">Nam</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="Nữ">
+              <label class="form-check-label" for="inlineRadio2">Nữ</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="Khác">
+              <label class="form-check-label" for="inlineRadio3">Khác</label>
+            </div>
+            </div>
           </div>
-          
           <div class="form-group">
-            <label class="col-lg-3 control-label">Phone:</label>
+            <label class="col-lg-3 control-label"><b>Số Điện Thoại</b></label>
             <div>
               <input class="form-control" name="Phone" type="text" placeholder="{{profilePatient.Phone}}">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-lg-3 control-label">Address</label>
+            <label class="col-lg-3 control-label"><b>Địa Chỉ</b></label>
             <div>
               <input class="form-control" name="Address" type="text" placeholder="{{profilePatient.Address}}">
             </div>
@@ -86,54 +80,48 @@
             <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80" rows="1" value={{profileDoctor.Email}}>
             </div>
               <div class="form-group">
-                <label class="col-lg-3 control-label">Name:</label>
+                <label class="col-lg-3 control-label"><b>Họ và Tên</b></label>
                 <div >
-                  <input class="form-control" name="Name" type="text" placeholder="Nhập tên của bạn">
+                  <input class="form-control" name="Name" type="text" placeholder="{{profileDoctor.Name}}">
                 </div>
               </div>
               <div class='form-group'>
-                <label class="col-lg-3 control-label">Age:</label>
+                <label class="col-lg-3 control-label"><b>Ngày Sinh</b></label>
                   <div>
-                    <input class="form-control" name="Age" type="text" placeholder="Nhập tuổi">
+                    <input class="form-control" name="Age" type="text" placeholder="{{profileDoctor.Age}}">
                   </div>
               </div>
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Sex:</label>
-                <div class="col-sm-10">
-                    <div class="form-check m-1">
-                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios1" value="male" checked>
-                    <label class="form-check-label" for="gridRadios1">
-                    male
-                    </label>
-                    </div>
-                    <div class="form-check m-1">
-                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="female">
-                    <label class="form-check-label" for="gridRadios2">
-                    female
-                    </label>
-                    </label>
-                    </div>
-                    <div class="form-check m-1">
-                    <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="other">
-                    <label class="form-check-label" for="gridRadios2">
-                    Other
-                    </label>
-          </div>
-          
+              <div class="form-group mb-2">
+                <label class="col-lg-3 control-label"><b>Giới Tính</b></label>
+                <div>
+                  <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="Sex" id="gridRadios1" value="Nam" checked>
+                  <label class="form-check-label" for="inlineRadio1">Nam</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="Nữ">
+                  <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="Khác">
+                  <label class="form-check-label" for="inlineRadio3">Khác</label>
+                </div>
+                </div>
+              </div>
           <div class="form-group">
-            <label class="col-lg-3 control-label">Phone:</label>
+            <label class="col-lg-3 control-label"><b>Số Điện Thoại</b></label>
             <div>
-              <input class="form-control" name="Phone" type="text" placeholder="Nhập số điện thoại">
+              <input class="form-control" name="Phone" type="text" placeholder="{{profileDoctor.Phone}}">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-lg-3 control-label">Address</label>
+            <label class="col-lg-3 control-label"><b>Địa Chỉ</b></label>
             <div>
-              <input class="form-control" name="Address" type="text" placeholder="Nhập địa chỉ">
+              <input class="form-control" name="Address" type="text" placeholder="{{profileDoctor.Address}}">
             </div>
           </div>
            <div class="form-group">
-            <label class="col-lg-3 control-label">Department</label>
+            <label class="col-lg-3 control-label"><b>Chuyên Khoa</b></label>
             <div class='form-group'>
 						<select name='Department' class='form-control' id='Department-input'>
 							<option value='Xương Khớp'>Xương Khớp</option>
@@ -149,13 +137,13 @@
 					</div>
           </div>
           <div class="form-group">
-            <label class="col-lg-3 control-label">Description:</label>
+            <label class="col-lg-3 control-label"><b>Mô Tả</b></label>
             <div>
-              <input class="form-control" name="Description" type="text" placeholder="Giới thiệu về bản thân">
+              <textarea class="form-control" name="Description" type="textarea" placeholder="{{profileDoctor.Description}}"></textarea>
             </div>
           </div>
         {{/if}}
-            <button  type="submit" style="width:100px" class="btn btn-info" >Save</button>
+            <button  type="submit" style="width:100px" class="btn btn-info" >Lưu</button>
         </form>
       </div>
   </div>

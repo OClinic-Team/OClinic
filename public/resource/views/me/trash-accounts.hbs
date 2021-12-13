@@ -36,7 +36,6 @@
   </tr>
   {{/each}}
 </table>
-</form>
 {{! xacs nhận xóa account }}
 <div id="delete-account" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -46,7 +45,7 @@
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Bạn có chắc muốn xóa tài khoản {{accounts.Id}} không???
+        Bạn có chắc muốn xóa tài khoản nay không???
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
@@ -69,7 +68,6 @@
     var restoreForm = document.forms['restore-form']; 
     var btnDeleteAccount = document.getElementById('btn-delete-account'); 
     var restoreBtn = $('.btn-restore') ;
-
     $('#delete-account').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); 
         accountID = button.data('id'); 
@@ -87,4 +85,3 @@
     restoreForm.submit(); })
   });
 </script>
-

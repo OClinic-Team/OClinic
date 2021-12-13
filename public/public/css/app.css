@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.h1{
+  text-align: center;
+}
 .app {
   width: 100%; }
 
@@ -1771,7 +1774,7 @@ h3.quote::before {
 /* this is css of profile */
 .emp-profile {
   padding: 3%;
-  margin-top: 3%;
+  margin-top: 5px;
   margin-bottom: 3%;
   border-radius: 0.5rem;
   background: #fff; }
