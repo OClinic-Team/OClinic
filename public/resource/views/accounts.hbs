@@ -177,11 +177,41 @@
 	        		</div>
 	        	</div>
 	        </div>
-            <div style="text-align: left; margin-left: 5%" class="product-count">
-	        				<button type="submit" id="btn-submit"   class="btn btn-success">Đặt lịch hẹn</button>
-	        	</div>
+            <div style="text-align: left; margin-left: 5%">
+	        			  {{!-- <button type="submit" id="btn-submit" data-toggle="modal" data-target="#delete-account" class="btn btn-success">Đặt lịch hẹn</button> --}}
+                  <button class="btn btn-link" data-toggle="modal" data-target="#delete-account" >Đặt lịch hẹnaaa</button>
+	        	
+            </div>
        </form>
+       {{! xacs nhận xóa account }}
+        <div id="delete-account" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">XÓA TÀI KHOẢN</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Bạn có chắc muốn xóa tài  nayf khoản không???
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
+                <button id="btn-delete-account" type="button" class="btn btn-danger" >Xóa Bỏ</button>
+              </div>
+            </div>
+          </div>
+        </div>
        {{else}}
        <p>Không có bác sĩ nào</p>
     {{/each}}
 </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() { 
+  $('#delete-account').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); 
+        accountID = button.data('id'); 
+    });
+
+  });
+</script>
