@@ -12,7 +12,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script>const ROOM_ID = '<%= roomId %>';</script>
+    <script>
+		const ROOM_ID = `{{roomId}}`;
+		//const user = `{{userName}}`;
+		//sessionStorage.setItem('nameUser',userName)
+    	//sessionStorage.setItem('userId', req.session.authUser.Id)
+	</script>
+	
   <div class="main">
     <div class="mainLeft">
       <div class="mainVideos">
@@ -75,10 +81,9 @@
     </div>
 </div>
 <script>
-const socket = io('/')
+const socket = io.connect();
 const videoGrid = document.getElementById('videoGrid')
 const myVideo = document.createElement('video')
-myVideo.muted = true
 
 var peer = new Peer()
 
@@ -99,10 +104,11 @@ navigator.mediaDevices
 		myVideoStream = stream
 		addVideoStream(myVideo, stream)
 
+	
 		socket.on('user-connected',function(userId) {
 			connectToNewUser(userId, stream)
-			alert(`some one have ${userId} connect`,userId);
-			
+			//alert('some one have connect',userId);
+			alert(`Có người tham gia phòng họp`);
 		})
 
 		peer.on('call', (call) => {
@@ -122,16 +128,15 @@ navigator.mediaDevices
 			}
 		})
 		// sent message in box chat
-		socket.on('createMessage', (message,userId) => {
+		socket.on('createMessage', (message,userId,userName) => {
 			$('ul').append(`<li >
 								<span class="messageHeader">
 									<span>
 										From 
-										<span class="messageSender">Someone</span> 
+										<span class="messageSender">${userName}</span> 
 										to 
 										<span class="messageReceiver">Everyone:</span>
 									</span>
-
 									${new Date().toLocaleString('en-US', {
 										hour: 'numeric',
 										minute: 'numeric',
@@ -151,7 +156,7 @@ socket.on('user-disconnected', (userId) => {
 
 })
 
-peer.on('open', (id) => {
+peer.on('open', id => {
 	socket.emit('join-room', ROOM_ID, id)
 })
 
@@ -238,7 +243,7 @@ const setPlayVideo = () => {
 
 //button end
 document.getElementById('leave-btn').addEventListener('click', () => {
-  const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
+  const leaveRoom = confirm('Bạn có muốn rời phòng họp ?');
   if (leaveRoom) {
     window.location = '/';
   } else {
