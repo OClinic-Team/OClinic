@@ -1,6 +1,6 @@
-<div class="container-create-medical-record" style="width: 100%;">
-    {{#each patient}}
-        <div class="left-medical-record-create-form ">
+<div class="container d-flex flex-row" style="width: 100%;">
+        {{#each patient}}
+        <div class="p-2 order-3 w-100 ">
             <h3 style="text-align: center;">HỒ SƠ BỆNH ÁN</h3>
     
             <form method="POST" action="/medicalRecord/storeMedicalRecord">
@@ -28,59 +28,49 @@
                 <textarea name="prescription"class="form-control" id="exampleFormControlTextarea1" name="prescription" rows="3"></textarea>
 
                 <label for="note">Ghi Chú</label>
-                <textarea name="note"class="form-control" id="exampleFormControlTextarea1" name="note" rows="2"></textarea>
-                    </div>
-            
-                    <button  type="submit" class="btn btn-primary" style="margin: 10px 10px 100px 300px; " >Tạo hồ sơ</button>
+                <textarea name="note"class="form-control" id="exampleFormControlTextarea1" name="note" rows="2"></textarea>  
+                <button  type="submit" class="btn btn-primary" style="margin: 10px 10px 100px 300px; " >Tạo hồ sơ</button>
             </form>
         </div>
-                <div class="right-medical-record-create-form ml-4">
-                    <h1>Lịch sử khám bệnh</h1>
-                    {{#each this.medical_record}}
-                            <div class="dropdown" >
-                            <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
-                                {{this.date}}
-                                </button>
-                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-                                    <div class="form-check ml-3">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Triệu Chứng:{{this.symptom}}
-                                        </label>
-                                    </div>
-                                    <div class="form-check ml-3">
-                                        
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Chuẩn Đoán:{{this.diagnose}}
-                                        </label>
-                                    </div>
-                                    <div class="form-check ml-3">
-                                      
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Đơn Thuốc:{{this.prescription}}
-                                        </label>
-                                    </div>
-                                    <div class="form-check ml-3">
-                                        
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Lưu ý:{{this.note}}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-        {{!-- <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Thời gian khám: {{medicalRecord.createdAt}}
-        </a>
         
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">{{medicalRecord.symptom}}</a>
-            <a class="dropdown-item" href="#">{{medicalRecord.diagnose}}</a>
-            <a class="dropdown-item" href="#">{{medicalRecord.prescription}}</a>
+        
+        <div class="p-2 order-3">
+           <h1>Lịch sử khám bệnh</h1> 
+            <div class="dropdown" >
+                {{#each this.medical_record}}
+            <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
+                {{this.date}}
+                </button>
+                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+                    <div class="form-check ml-3">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Triệu Chứng:{{this.symptom}}
+                        </label>
+                    </div>
+                    <div class="form-check ml-3">
+                        
+                        <label class="form-check-label" for="defaultCheck1">
+                            Chuẩn Đoán:{{this.diagnose}}
+                        </label>
+                    </div>
+                    <div class="form-check ml-3">
+                        
+                        <label class="form-check-label" for="defaultCheck1">
+                            Đơn Thuốc:{{this.prescription}}
+                        </label>
+                    </div>
+                    <div class="form-check ml-3">
+                        
+                        <label class="form-check-label" for="defaultCheck1">
+                            Lưu ý:{{this.note}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
         </div>
-        </div> --}}
         {{else}}
-            <h3>Bệnh nhân chưa có hồ sơ bệnh án</h3>
-        {{/each}}
+        <h3>Bệnh nhân chưa có hồ sơ bệnh án</h3>
     {{/each}}
-    </div>
 </div>
