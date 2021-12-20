@@ -20,33 +20,24 @@ class MedicalRecordController {
             .catch(next);
     }
     createMR(req, res, next) {
-        // AccountPatient.findOne({ Id: req.params.Id })
-        //     .then((patient) => {
-        //         res.render('medicalRecords/create', {
-        //             patient: mongooseToObject(patient),
-        //         });
-        //     })
-        //     .catch(next);
         AccountPatient.aggregate([{
-                    $lookup: {
-                        from: "medical-records",
-                        localField: "Patient_Id",
-                        foreignField: "Id",
-                        as: "medical_record"
-
-                    },
-                },
-                {
                     $match: {
                         Id: req.params.Id
                     }
+                }, {
+                    $lookup: {
+                        from: "medical-records",
+                        localField: "Id ",
+                        foreignField: "Patient_Id",
+                        as: "medical_record"
+
+                    },
                 },
                 {
                     $unwind: { path: "$userInfoData", preserveNullAndEmptyArrays: true },
                 },
             ])
             .then((patient => {
-                console.log(patient[0].medical_record[0])
                 res.render('medicalRecords/create', { patient })
             }))
             .catch((error) => {

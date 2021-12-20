@@ -47,7 +47,7 @@
           </div>
         </form>
   {{#each accounts}}
-  <form onSubmit="return confirm('Bạn muốn đặt lich ?')" method='GET' action='/sendEmail/send '>
+  <form onSubmit="return confirm('Bạn muốn đặt lich ?')" method='GET' action='/sendEmail/sendLinkRoom '>
         <div class="mt-4 row bg-muted">
 	        	<div class="col-lg-3">      
                 <input type="hidden" name="doctorEmail" value="{{this.Email}}"/>
@@ -67,6 +67,7 @@
 	        				<h4><b>Lịch Làm Việc: </b></h4>
                     {{#each this.Doctor_Schedule}}
                           <div class="dropdown">
+                            
                               <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
                                   {{this.date}}
                               </button>             
@@ -179,7 +180,7 @@
 	        </div>
             <div style="text-align: left; margin-left: 5%">
 	        			  {{!-- <button type="submit" id="btn-submit" data-toggle="modal" data-target="#delete-account" class="btn btn-success">Đặt lịch hẹn</button> --}}
-                  <button class="btn btn-link" data-toggle="modal" data-target="#delete-account" >Đặt lịch hẹnaaa</button>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#delete-account" >Đặt lịch hẹn</button>
 	        	
             </div>
        </form>

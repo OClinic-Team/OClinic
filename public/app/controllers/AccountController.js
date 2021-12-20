@@ -8,16 +8,17 @@ const AddingSchedule = require('../models/addschedule')
 class AccountController {
     //[GET] /account/:slug
     accounts(req, res, next) {
-        // var a = Account_Doctor.find({})
-        // .then((accounts) => {
-        //     res.render('accounts', {
-        //         accounts: mutileMongooseToObject(accounts),
-        //     });
-        // })
-        // .catch(next);
-
-        Account_Doctor.aggregate([{
-
+            // var a = Account_Doctor.find({})
+            // .then((accounts) => {
+            //     res.render('accounts', {
+            //         accounts: mutileMongooseToObject(accounts),
+            //     });
+            // })
+            // .catch(next);
+            var tmp = new Date();
+            tmp.setDate(tmp.getDate() - 1);
+            console.log(tmp)
+            Account_Doctor.aggregate([{
                     $lookup: {
                         from: "addschedules",
                         localField: "Id",
@@ -25,19 +26,17 @@ class AccountController {
                         as: "Doctor_Schedule"
 
                     },
-                },
-                {
-                    $unwind: { path: "$userInfoData", preserveNullAndEmptyArrays: true },
-                },
-            ])
-            .then((accounts => {
-                res.render('accounts', { accounts })
-            }))
-            .catch((error) => {
-                console.log(error)
-            })
-    }
-
+                }, {
+                    $unwind: { path: "$Doctor", preserveNullAndEmptyArrays: true },
+                }, ])
+                .then((accounts => {
+                    res.render('accounts', { accounts })
+                }))
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+        //{ $gte: tmp }
 
     show(req, res, next) {
             Account.findOne({ slug: req.params.slug })
