@@ -9,59 +9,56 @@
         </div>
         <form method="POST" action="/medicalRecord/storeMedicalRecord">
             <div class="profile-head">
+                <input type="text" class="form-control" id="exampleInputEmail1" name="patientId" value="{{this.Id}}"
+                    hidden>
                 <div class="d-flex mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Họ và tên bệnh nhân: </b></h5>
+                    <h5 style=" width:220px ;" for="namePatient"><b>Họ và tên bệnh nhân: </b></h5>
                     <h5 class="text-primary">{{this.Name}}</h5>
-                    <h5 type="text" class="form-control" id="exampleInputEmail1" name="namePatient"
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="namePatient"
                         value="{{this.Name}}" hidden>
                 </div>
                 <div class="d-flex mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Email: </b></h5>
+                    <h5 style=" width:220px ; " for="Email"><b>Email: </b></h5>
                     <h5 class="text-primary">{{this.Email}}</h5>
-                    <h5 type="text" class="form-control" id="exampleInputEmail1" name="Email" value="{{this.Email}}"
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="Email" value="{{this.Email}}"
                         hidden>
                 </div>
                 <div class="d-flex mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Ngày Sinh: </b></h5>
+                    <h5 style=" width:220px ; " for="bithDay"><b>Ngày Sinh: </b></h5>
                     <h5 class="text-primary">{{this.Age}}</h5>
-                    <h5 type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Age}}" hidden>
-                </div>
-                <div class="d-flex mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Địa Chỉ: </b></h5>
-                    <h5 class="text-primary">{{this.Address}}</h5>
-                    <h5 type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Address}}"
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Age}}"
                         hidden>
                 </div>
                 <div class="d-flex mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Địa Chỉ: </b></h5>
+                    <h5 style=" width:220px ; " for="address"><b>Địa Chỉ: </b></h5>
                     <h5 class="text-primary">{{this.Address}}</h5>
-                    <h5 type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Address}}"
-                        hidden>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="address"
+                        value="{{this.Address}}" hidden>
                 </div>
                 <div class="d-flex mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Số Điện Thoại: </b></h5>
+                    <h5 style=" width:220px ; " for="phone"><b>Số Điện Thoại: </b></h5>
                     <h5 class="text-primary">{{this.Phone}}</h5>
-                    <h5 type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Phone}}"
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="phone" value="{{this.Phone}}"
                         hidden>
                 </div>
                 <div class=" mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Triệu Chứng: </b></h5>
+                    <h5 style=" width:220px ; " for="symptom"><b>Triệu Chứng: </b></h5>
                     <textarea name="symptom" class="form-control" id="exampleFormControlTextarea1" name="symptom"
                         rows="4"></textarea>
                 </div>
                 <div class=" mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Chuẩn Đoán: </b></h5>
+                    <h5 style=" width:220px ; " for="diagnose"><b>Chuẩn Đoán: </b></h5>
                     <textarea name="diagnose" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
                         rows="4"></textarea>
                 </div>
                 <div class=" mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Đơn Thuốc: </b></h5>
-                    <textarea name="diagnose" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
+                    <h5 style=" width:220px ; " for="prescription"><b>Đơn Thuốc: </b></h5>
+                    <textarea name="prescription" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
                         rows="4"></textarea>
                 </div>
                 <div class=" mt-1">
-                    <h5 style=" width:220px ; " for="namePatient"><b>Lời Khuyên: </b></h5>
-                    <textarea name="diagnose" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
+                    <h5 style=" width:220px ; " for="note"><b>Lời Khuyên: </b></h5>
+                    <textarea name="note" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
                         rows="4"></textarea>
                 </div>
             </div>

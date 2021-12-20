@@ -76,10 +76,16 @@
         </div>
         {{else}}
         <div>
-          <input type="hidden" name="ImageURL" class="form-control" value={{profileDoctor.ImageURL}}>
+          {{!-- <input type="hidden" name="ImageURL" class="form-control" value={{profileDoctor.ImageURL}}> --}}
           <input type="hidden" name="Id" class="form-control" value={{profileDoctor.Id}}>
           <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80"
             rows="1" value={{profileDoctor.Email}}>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label"><b>Link Ảnh Đại Diện</b></label>
+          <div>
+            <input class="form-control" name="Name" type="text" placeholder="{{profileDoctor.Name}}">
+          </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label"><b>Họ và Tên</b></label>

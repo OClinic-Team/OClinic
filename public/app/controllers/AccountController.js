@@ -4,7 +4,8 @@ const Account_Doctor = require('../models/AccountDoctor');
 const { mutileMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 const AddingSchedule = require('../models/addschedule')
-
+const accounts_patient = require('../models/AccountPatient');
+const accounts_doctor = require('../models/AccountDoctor');
 class AccountController {
     //[GET] /account/:slug
     accounts(req, res, next) {
@@ -114,6 +115,21 @@ class AccountController {
                 break;
             default:
                 res.json({ mesage: 'hanh dong khong hop le' })
+        }
+    }
+    async editAdmin(req, res, next){
+        if (req.session.authUser.Permission === '0') {
+            await accounts_patient.findOne({ Id: req.params.Id })
+                .then(editprofile => {
+                    res.render('editprofile', { profilePatient: mongooseToObject(editprofile) });
+                })
+                .catch(next)
+        } else {
+            await accounts_doctor.findOne({ Id: req.params.Id })
+                .then(editprofile => {
+                    res.render('editprofileAdmin', { profileDoctor: mongooseToObject(editprofile) });
+                })
+                .catch(next)
         }
     }
 }
