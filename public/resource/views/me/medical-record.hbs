@@ -1,151 +1,120 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<div class="container h1 mt-3">
+  <h1>Quản Lý Hồ Sơ Bệnh Án</h1>
+</div>
 <div class="container">
   <form class="mt-4" name="container-form" method="POST" action="/accounts/handle-form-action">
-  <h3 class="text-center">HỒ SƠ BỆNH ÁN aaaa</h3>
-  <div class="container">
-    
-    <a href="/me/trash/medical-record">Thùng Rác ({{deleteCount}})</a>
-
-    <div class="container mt-4 d-flex align-items-center">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
-        <label class="form-check-label" for="checkbox-all">
-          Chọn tất cả
-        </label>
-      </div>
-
-      <select class="form-control form-control-sm checkbox-select-all-options" name="action">
-        <option value="delete">xóa</option>
-      </select>
-
-      <button class="btn btn-primary btn-sm disabled check-all-submit-btn">Áp Dụng</button>
-    </div>
-  </div>
-
     <table class="table">
       {{#if_eq lcAuthUser.Permission '1'}}
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="2">#</th>
-                      <th scope="col">Tên Bệnh Nhân</th>
-                      <th scope="col">Mã Bệnh Nhân</th>
-                      <th scope="col" colspan="2">Thời Gian Tạo</th>
-                    </tr>
-                  </thead>
-              
-              <tbody>
-                {{#each medicalrecords}}
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
-                      </label>
-                    </div>
-                  </td>
-                  <th scope="row">{{sum @index 1}}</th>
-                  <td>{{this.namePatient}}</td>
-                  <td>{{this.Patient_Id}}</td>
-                  <td>{{this.date}}</td>
-                  <td>
-                      <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa</a>
-                      <a href="/medicalRecord/{{this._id}}" class="btn btn-link">Xem</a>
-                  </td>
-                </tr>
-              </tbody>
-              {{else}}
-                  <tr>
-                    <td colspan="5" class="text-center">
-                        HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
-                      {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
-                    </td>
-                  </tr>
-              {{/each}}
-    {{/if_eq}}
-    {{#if_eq lcAuthUser.Permission '0'}}
-         <thead>
-            <tr>
-              <th scope="col" colspan="2">#</th>
-              <th scope="col">Tên Bác Sĩ</th>
-              <th scope="col">Mã Bác Sĩ</th>
-              <th scope="col" colspan="2">Thời Gian Tạo</th>
-            </tr>
-        </thead>
-              
-              <tbody>
-                {{#each medicalrecords}}
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
-                      </label>
-                    </div>
-                  </td>
-                  <th scope="row">{{sum @index 1}}</th>
-                  <td>{{this.nameDoctor}}</td>
-                  <td>{{this.Doctor_Id}}</td>
-                  <td>{{this.date}}</td>
-                  <td>
-                      <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa</a>
-                      <a href="/medicalRecord/{{this._id}}" class="btn btn-link">Xem</a>
-                  </td>
-                </tr>
-              </tbody>
-              {{else}}
-                  <tr>
-                    <td colspan="5" class="text-center">
-                        HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
-                      <a href="/accounts">Bấm vào đây để đăng ký lịch khám bệnh</a>
-                    </td>
-                  </tr>
-              {{/each}} 
-    {{/if_eq}}
-    {{#if_eq lcAuthUser.Permission '2'}}
-           <thead>
-            <tr>
-              <th scope="col" colspan="2">#</th>
-              <th scope="col">Tên Bác Sĩ</th>
-              <th scope="col">Tên Bệnh Nhân</th>
-              <th scope="col">Mã Bác Sĩ</th>
-              <th scope="col">Mã Bệnh Nhân</th>
-              <th scope="col" colspan="2">Thời Gian Tạo</th>
-            </tr>
-        </thead>
-              
-              <tbody>
-                {{#each medicalrecords}}
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
-                      </label>
-                    </div>
-                  </td>
-                  <th scope="row">{{sum @index 1}}</th>
-                  <td>{{this.nameDoctor}}</td>
-                  <td>{{this.namePatient}}</td>
-                  <td>{{this.Doctor_Id}}</td>
-                  <td>{{this.Patient_Id}}</td>
-                  <td>{{this.date}}</td>
-                  <td>
-                      <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa</a>
-                      <a href="/medicalRecord/{{this._id}}" class="btn btn-link">Xem</a>
-                  </td>
-                </tr>
-              </tbody>
-              {{else}}
-                  <tr>
-                    <td colspan="5" class="text-center">
-                        HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
-                      <a href="/accounts">Bấm vào đây để đăng ký lịch khám bệnh</a>
-                    </td>
-                  </tr>
-              {{/each}} 
-    {{/if_eq}}
-    
-</table>
-</form>
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Tên Bệnh Nhân</th>
+          <th scope="col">Mã Bệnh Nhân</th>
+          <th scope="col">Thời Gian Tạo</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each medicalrecords}}
+        <tr>
+          <th>{{sum @index 1}}</th>
+          <td>{{this.namePatient}}</td>
+          <td>{{this.Patient_Id}}</td>
+          <td>{{this.date}}</td>
+          <td class="d-flex">
+            <a href="" class="btn btn-sm  btn-danger mr-1" data-toggle="modal" data-id="{{this._id}}"
+              data-target="#delete-medical-record">Xóa</a>
+            <a href="/medicalRecord/{{this._id}}" class="btn btn-sm btn-success">Xem</a>
+          </td>
+        </tr>
+      </tbody>
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
+          {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
+        </td>
+      </tr>
+      {{/each}}
+      {{/if_eq}}
+      {{#if_eq lcAuthUser.Permission '0'}}
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Tên Bác Sĩ</th>
+          <th scope="col">Mã Bác Sĩ</th>
+          <th scope="col" colspan="2">Thời Gian Tạo</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each medicalrecords}}
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.nameDoctor}}</td>
+          <td>{{this.Doctor_Id}}</td>
+          <td>{{this.date}}</td>
+          <td class="d-flex">
+            <a href="" class="btn btn-sm  btn-danger mr-1" data-toggle="modal" data-id="{{this._id}}"
+              data-target="#delete-medical-record">Xóa</a>
+            <a href="/medicalRecord/{{this._id}}" class="btn btn-sm  btn-success">Xem</a>
+          </td>
+        </tr>
+      </tbody>
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
+          <a href="/accounts">Bấm vào đây để đăng ký lịch khám bệnh</a>
+        </td>
+      </tr>
+      {{/each}}
+      {{/if_eq}}
+      {{#if_eq lcAuthUser.Permission '2'}}
+      <thead>
+        <tr>
+          <th scope="col" colspan="2">STT</th>
+          <th scope="col">Tên Bác Sĩ</th>
+          <th scope="col">Tên Bệnh Nhân</th>
+          <th scope="col">Mã Bác Sĩ</th>
+          <th scope="col">Mã Bệnh Nhân</th>
+          <th scope="col" colspan="2">Thời Gian Tạo</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each medicalrecords}}
+        <tr>
+          <th scope="">{{sum @index 1}}</th>
+          <td>{{this.nameDoctor}}</td>
+          <td>{{this.namePatient}}</td>
+          <td>{{this.Doctor_Id}}</td>
+          <td>{{this.Patient_Id}}</td>
+          <td>{{this.date}}</td>
+          <td class="d-flex">
+            <a href="" class="btn btn-danger btn-sm  mr-1" data-toggle="modal" data-id="{{this._id}}"
+              data-target="#delete-medical-record">Xóa</a>
+            <a href="/medicalRecord/{{this._id}}" class="btn btn-sm  btn-success">Xem</a>
+          </td>
+        </tr>
+      </tbody>
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          HIỆN CHƯA CÓ HỒ SƠ BỆNH ÁN NÀO!!!
+          <a href="/accounts">Bấm vào đây để đăng ký lịch khám bệnh</a>
+        </td>
+      </tr>
+      {{/each}}
+      {{/if_eq}}
+
+    </table>
+  </form>
 </div>
 {{!-- xacs nhận xóa account --}}
-<div id="delete-medical-record" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div id="delete-medical-record" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -157,75 +126,69 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
-        <button id="btn-delete-medical-record" type="button" class="btn btn-danger" >Xóa Bỏ</button>
+        <button id="btn-delete-medical-record" type="button" class="btn btn-danger">Xóa Bỏ</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var medicalRecordID;
-        var deleteForm = document.forms['delete-form'];
-        var btnDeleteMedicalRecord = document.getElementById('btn-delete-medical-record');
-        var accountItemCheckbox = $('input[name="accountIds[]"]');
-        var containerForm = document.forms['container-form'];
-        var checkboxAll= $('#checkbox-all');
-        var checkAllSubmitBtn= $('.check-all-submit-btn');
+  document.addEventListener('DOMContentLoaded', function () {
+    var medicalRecordID;
+    var deleteForm = document.forms['delete-form'];
+    var btnDeleteMedicalRecord = document.getElementById('btn-delete-medical-record');
+    var accountItemCheckbox = $('input[name="accountIds[]"]');
+    var containerForm = document.forms['container-form'];
+    var checkboxAll = $('#checkbox-all');
+    var checkAllSubmitBtn = $('.check-all-submit-btn');
 
-        $('#delete-medical-record').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget);
-          medicalRecordID = button.data('id');
-        });
-        // sự kiện Áp Dụng
-        checkAllSubmitBtn.on('submit', function (e) {
-          var isSubmitTable = !$(this).hasClass('disabled');
-            if (!isSubmitTable){
-              e.preventDefault();
-            }
-        });
-
-
-        
-        //khi nhấn vào nút delete 
-        btnDeleteMedicalRecord.onclick = function() {
-          deleteForm.action = '/medicalRecord/' +medicalRecordID+ '?_method=DELETE';
-          deleteForm.submit();
-        }
-
-        // khi chọn tất cả được tick
-        checkboxAll.change(function () {
-          var isCheckedAll= $(this).prop('checked');
-          if (isCheckedAll){
-            accountItemCheckbox.prop('checked', true);
-          }else accountItemCheckbox.prop('checked', false);
-          renderCheckAllSubmibBtn();
-        });
-
-        //khi chọn một cái thì bỏ chọn tát cả
-        accountItemCheckbox.change(function(){
-          var isCheckedAll = accountItemCheckbox.length === $('input[name="accountIds[]"]:checked').length;
-          checkboxAll.prop('checked', isCheckedAll);
-          renderCheckAllSubmibBtn();
-        })
-        
-
-        //hiện lại nút thực hiện
-        function renderCheckAllSubmibBtn(){
-          var checkedCount = $('input[name="accountIds[]"]:checked').length;
-          if(checkedCount >0){
-            checkAllSubmitBtn.removeClass('disabled');
-          }else {
-            checkAllSubmitBtn.addClass('disabled');
-          }
-        }
-
-                
+    $('#delete-medical-record').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      medicalRecordID = button.data('id');
     });
+    // sự kiện Áp Dụng
+    checkAllSubmitBtn.on('submit', function (e) {
+      var isSubmitTable = !$(this).hasClass('disabled');
+      if (!isSubmitTable) {
+        e.preventDefault();
+      }
+    });
+    //khi nhấn vào nút delete 
+    btnDeleteMedicalRecord.onclick = function () {
+      deleteForm.action = '/medicalRecord/' + medicalRecordID + '?_method=DELETE';
+      deleteForm.submit();
+    }
+
+    // khi chọn tất cả được tick
+    checkboxAll.change(function () {
+      var isCheckedAll = $(this).prop('checked');
+      if (isCheckedAll) {
+        accountItemCheckbox.prop('checked', true);
+      } else accountItemCheckbox.prop('checked', false);
+      renderCheckAllSubmibBtn();
+    });
+
+    //khi chọn một cái thì bỏ chọn tát cả
+    accountItemCheckbox.change(function () {
+      var isCheckedAll = accountItemCheckbox.length === $('input[name="accountIds[]"]:checked').length;
+      checkboxAll.prop('checked', isCheckedAll);
+      renderCheckAllSubmibBtn();
+    })
+    //hiện lại nút thực hiện
+    function renderCheckAllSubmibBtn() {
+      var checkedCount = $('input[name="accountIds[]"]:checked').length;
+      if (checkedCount > 0) {
+        checkAllSubmitBtn.removeClass('disabled');
+      } else {
+        checkAllSubmitBtn.addClass('disabled');
+      }
+    }
+
+
+  });
 </script>
 
 
 {{!-- delete form --}}
 <form method='POST' name="delete-form">
 </form>
-

@@ -30,8 +30,8 @@ class MedicalRecordController {
         AccountPatient.aggregate([{
                     $lookup: {
                         from: "medical-records",
-                        localField: "Patient_Id",
-                        foreignField: "Id",
+                        localField: "Id",
+                        foreignField: "Patient_Id",
                         as: "medical_record"
 
                     },
@@ -46,7 +46,6 @@ class MedicalRecordController {
                 },
             ])
             .then((patient => {
-                console.log(patient[0].medical_record[0])
                 res.render('medicalRecords/create', { patient })
             }))
             .catch((error) => {

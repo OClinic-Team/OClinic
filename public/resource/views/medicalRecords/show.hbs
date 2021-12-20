@@ -1,14 +1,59 @@
-<div class='mt-4 container' >
-  <div class='title'>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<div class='mt-4 container justify-content-center' >
+  <div class='container h1 mt-3'>
     <h1>Hồ Sơ Bệnh Án</h1>
   </div>
-  <div class=''>
-      <h2>Họ và tên: {{medicalrecords.namePatient}}</h2>
-      <h2>Địa Chỉ: {{medicalrecords.address}}</h2>
-      <h2>Số Điện Thoại: {{medicalrecords.phone}}</h2>
-      <h2>Tuổi: {{medicalrecords.age}}</h2>
-      <h2>Triệu Chứng:{{medicalrecords.symptom}}</h2>
-      <h2>Chuẩn đoán: {{medicalrecords.diagnose}}</h2>
-      <h2>Đơn Thuốc: {{medicalrecords.prescription}}</h2>
-      <h2>Lời Khuyên: {{medicalrecords.note}}</h2>
+  <div class="mb-2">
+    <a href='/me/stored/medical-record'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-backspace-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z" />
+      </svg>
+      QUAY LẠI</a>
+  </div>
+  <table class="table">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody class="profile-head">
+    <tr>
+      <th scope="row" style="width: 250px;"><h5>Họ tên bệnh Nhân:</h5></th>
+      <td scope="row" ><h6>{{medicalrecords.namePatient}}</h6></td>
+    </tr>
+    <tr>
+      <th scope="row"><h5>User ID:</h5></th>
+      <td scope="row"><h6>{{medicalrecords.Patient_Id}}</h6></td>
+    </tr>
+    <tr>
+      <th scope="row"><h5>Địa Chỉ:</h5></th>
+      <td scope="row"><h6>{{medicalrecords.address}}</h6></td>
+    </tr>
+    <tr>
+      <th scope="row"><h5>Số Điện Thoại:</h5></th>
+      <td scope="row"><h6>{{medicalrecords.phone}}</h6></td>
+    </tr>
+    <tr>
+      <th scope="row"><h5>Triệu Chứng:</h5></th>
+      <td scope="row"><h6>{{medicalrecords.symptom}}</h6></td>
+    </tr>
+    <tr>
+      <th scope="row"><h5>Chuẩn Đoán Bệnh:</h5></th>
+      <td scope="row"><h6>{{medicalrecords.diagnose}}</h6></td>
+    </tr>
+    <tr>
+      <th scope="row"><h5>Đơn Thuốc:</h5></th>
+      <td scope="row"><h6>{{medicalrecords.prescription}}</h6></dt>
+    </tr>
+    <tr>
+      <th scope="row"><h5>Ngày Tạo:</h5></th>
+      <td scope="row"><h6>{{medicalrecords.date}}</h6></td>
+    </tr>
+    <tr>
+      <th scope="row"><h5>Người Tạo:</h5></th>
+      <td scope="row"><h6>{{medicalrecords.nameDoctor}}</h6></dt>
+    </tr>
+  </tbody>
+</table>
 </div>

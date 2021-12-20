@@ -1368,7 +1368,6 @@ h3.quote::before {
   margin-left: 15px; }
 
 /*=== MEDIA QUERY ===*/
-<<<<<<< HEAD
 @media (max-width: 400px) {
   .header-top .header-top-info a {
     margin-left: 0px;
@@ -1476,8 +1475,6 @@ h3.quote::before {
     width: 100%;
     text-align: center; } }
 
-=======
->>>>>>> b3caaca3551bda2a10e18c84c548c3385fbf3e4a
 /*Bác Sĩ Theo Khoa*/
 .pd-wrap {
   padding: 40px 0;
@@ -1561,11 +1558,13 @@ h3.quote::before {
   margin-bottom: 10px; }
 
 .product-price-discount {
+  font-family: "Poppins", sans-serif;
   font-size: 22px;
   font-weight: 400;
   clear: both; }
 
 .product-price-discount span.line-through {
+  font-family: "Poppins", sans-serif;
   text-decoration: line-through;
   margin-left: 10px;
   font-size: 14px;
@@ -1869,7 +1868,6 @@ h3.quote::before {
   width: 200px;
   height: 200px; }
 
-<<<<<<< HEAD
 .covidVietNam {
   display: flex;
   justify-content: Center;
@@ -1944,7 +1942,6 @@ img {
     top: 150px; }
   50% {
     top: 250px; } }
-=======
 .chat-col {
   right: -100vw;
   bottom: 0;
@@ -2127,4 +2124,3 @@ img {
   .card {
     width: 50%;
     z-index: 1000; } }
->>>>>>> b3caaca3551bda2a10e18c84c548c3385fbf3e4a

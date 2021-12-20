@@ -1,70 +1,45 @@
 <div class='mt-4 container'>
   <H3>Cập Nhật Thông Tin</H3>
-{{#if accountPatient}}
+  {{#if accountPatient}}
   <form method='POST' action='/accounts/{{accountPatient._id}}?_method=PUT'>
     <div class='form-group'>
       <label for='name'>Id User</label>
-      <input
-      readonly="true"
-        type='text'
-        class='form-control'
-        value='{{accountPatient.Id}}'
-        id='Id'
-        name='Id'
-      />
+      <input readonly="true" type='text' class='form-control' value='{{accountPatient.Id}}' id='Id' name='Id' />
     </div>
     <div class='form-group'>
       <label for='description'>Email</label>
-      <textarea
-        readonly="true"
-        class='form-control'
-        id='Email'
-        name='Email'
-      >{{accountPatient.Email}}</textarea>
+      <textarea readonly="true" class='form-control' id='Email' name='Email'>{{accountPatient.Email}}</textarea>
     </div>
     <div>
-     <label for='RoleName'>Role Name</label></br>
+      <label for='RoleName'>Role Name</label></br>
       <select class="form-select" aria-label="Default select example" name="RoleName">
         <option selected>{{accountPatient.RoleName}}</option>
-          <option value="doctor">Doctor</option>
-          
+        <option value="doctor">Doctor</option>
       </select>
     </div>
-      </br>
-      
+    </br>
+
     <button type='submit' class='btn btn-primary'>Lưu Lại</button>
   </form>
   {{else}}
   <form method='POST' action='/accounts/{{accountDoctor._id}}?_method=PUT'>
     <div class='form-group'>
       <label for='name'>Id User</label>
-      <input
-      readonly="true"
-        type='text'
-        class='form-control'
-        value='{{accountDoctor.Id}}'
-        id='Id'
-        name='Id'
-      />
+      <input readonly="true" type='text' class='form-control' value='{{accountDoctor.Id}}' id='Id' name='Id' />
     </div>
     <div class='form-group'>
       <label for='description'>Email</label>
-      <textarea
-        readonly="true"
-        class='form-control'
-        id='Email'
-        name='Email'
-      >{{accountDoctor.Email}}</textarea>
+      <textarea readonly="true" class='form-control' id='Email' name='Email'>{{accountDoctor.Email}}</textarea>
     </div>
     <div>
-     <label for='RoleName'>Role Name</label></br>
+      <label for='RoleName'>Role Name</label></br>
       <select class="form-select" aria-label="Default select example" name="RoleName">
         <option selected>{{accountDoctor.RoleName}}</option>
-          <option value="doctor">doctor</option>
+        <option value="doctor">doctor</option>
       </select>
     </div>
-      </br>
-      
+    </br>
+
     <button type='submit' class='btn btn-primary'>Lưu Lại</button>
   </form>
   {{/if}}

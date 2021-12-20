@@ -1,109 +1,117 @@
 <form class="mt-4 container" name="container-form" method="POST" action="/me/handle-form-action">
   <div class="container">
-    <h3>THÔNG TIN LỊCH HẸN </h3>
-    <table class="table">
+    <div style="text-align: center;">
+      <h1>Thông Tin Lịch Hẹn</h1>
+    </div>
+    <table class="table mt-3">
       {{#if_eq lcAuthUser.Permission '0'}}
-          <thead>
-            <tr>
-              <th scope="col" colspan="">STT</th>
-              <th scope="col">Tên Bác Sỹ</th>
-              <th scope="col">Link Phòng Họp </th>
-              <th scope="col">Thời Gian </th>
-            </tr>
-          </thead>
-              {{#if patient}}
-                    {{#each patient}}
-                          <tbody>
-                              <tr>
-                                <th scope="row">{{sum @index 1}}</th>
-                                <td>{{this.doctorName}}</td>
-                                <td>{{this.roomLink}}</td>
-                                <td>{{this.time}}</td>
-                              
-                              </tr>
-                          </tbody>
-                    {{/each}}
-                {{else}}
-                      <tr>
-                        <td colspan="5" class="text-center">
-                          Bạn Chưa Đặt Cuộc Hẹn Nào. !!!
-                          <a href="/accounts">Bấm vào đây để đăng kí lịch hẹn</a>
-                        </td>
-                      </tr>
-              {{/if}}
-                
-        {{/if_eq}}
+      <thead>
+        <tr>
+          <th scope="col" colspan="">STT</th>
+          <th scope="col">Tên Bác Sỹ</th>
+          <th scope="col">Thời Gian</th>
+          <th scope="col">Phòng Họp</th>
+        </tr>
+      </thead>
+      {{#if patient}}
+      {{#each patient}}
+      <tbody>
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.doctorName}}</td>
+          <td>{{this.time}}</td>
+          <td>
+            <a href="{{this.roomLink}}" class="btn btn-success">Tham Gia Phòng Họp</a>
+          </td>
+          
 
-        {{#if_eq lcAuthUser.Permission '1'}}
-              <thead>
-                <tr>
-                  <th scope="col" colspan="">STT</th>
-                  <th scope="col">Tên Bệnh Nhân </th>
-                  <th scope="col">Thời Gian </th>
-                  <th scope="col">Link Phòng Họp </th>
-                </tr>
-              </thead>
-              {{#if doctor}}
-                          {{#each doctor}}
-                              <tbody>
-                                  <tr>
-                                    <th scope="row">{{sum @index 1}}</th>
-                                    <td>{{this.patientName}}</td>
-                                    <td>{{this.time}}</td>
-                                    <td>{{this.roomLink}}</td>
-                                    
-                                    <td>
-                                        <a href="/medicalRecord/create/{{this.patientId}}" class="btn btn-link">Tạo Hồ Sơ Bệnh Án</a>
-                                      
-                                    </td>
-                                  </tr>
-                              </tbody>
-                          {{/each}}
-                  {{else}}
-                        <tr>
-                          <td colspan="5" class="text-center">
-                            Bạn Chưa Có Cuộc Hẹn Nào. !!!
-                            {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
-                          </td>
-                        </tr>
-              {{/if}}      
-        {{/if_eq}}
+        </tr>
+      </tbody>
+      {{/each}}
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          Bạn Chưa Đặt Cuộc Hẹn Nào. !!!
+          <a href="/accounts">Bấm vào đây để đăng kí lịch hẹn</a>
+        </td>
+      </tr>
+      {{/if}}
 
-        {{#if_eq lcAuthUser.Permission '2'}}
-              <thead>
-                <tr>
-                  <th scope="col" colspan="">STT</th>
-                  <th scope="col">Tên Bác Sĩ </th>
-                  <th scope="col">Tên Bệnh Nhân </th>
-                  <th scope="col">Thời Gian </th>
-                  <th scope="col">Link Phòng Họp </th>
-                </tr>
-              </thead>
-            {{#if admin}}
-                  {{#each admin}}
-                      <tbody>
-                          <tr>
-                            <th scope="row">{{sum @index 1}}</th>
-                            <td>{{this.doctorName}}</td>
-                            <td>{{this.patientName}}</td>
-                            <td>{{this.time}}</td>
-                            <td>{{this.roomLink}}</td>
-                          
-                          </tr>
-                      </tbody>
-                  {{/each}}
-              {{else}}
-                    <tr>
-                      <td colspan="5" class="text-center">
-                        Không Có Cuộc Hẹn Nào!!!
-                      </td>
-                    </tr>
-            {{/if}}      
-        {{/if_eq}}
+      {{/if_eq}}
+
+      {{#if_eq lcAuthUser.Permission '1'}}
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col" style="width: 200px;">Tên Bệnh Nhân </th>
+          <th scope="col">Thời Gian </th>
+          <th scope="col">Link Phòng Họp </th>
+          <th scope="col">Hồ Sơ Bệnh Án </th>
+        </tr>
+      </thead>
+      {{#if doctor}}
+      {{#each doctor}}
+      <tbody>
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.patientName}}</td>
+          <td>{{this.time}}</td>
+          <td>
+            <a href="{{this.roomLink}}" class="btn btn-success">Tham Gia Phòng Họp</a>
+          </td>
+
+          <td>
+            <a href="/medicalRecord/create/{{this.patientId}}" class="btn btn-primary">Tạo Hồ Sơ Bệnh Án</a>
+
+          </td>
+        </tr>
+      </tbody>
+      {{/each}}
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          Bạn Chưa Có Cuộc Hẹn Nào. !!!
+          {{!-- <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a> --}}
+        </td>
+      </tr>
+      {{/if}}
+      {{/if_eq}}
+
+      {{#if_eq lcAuthUser.Permission '2'}}
+      <thead>
+        <tr>
+          <th scope="col" colspan="">STT</th>
+          <th scope="col">Tên Bác Sĩ </th>
+          <th scope="col">Tên Bệnh Nhân </th>
+          <th scope="col">Thời Gian </th>
+          <th scope="col">Link Phòng Họp </th>
+        </tr>
+      </thead>
+      {{#if admin}}
+      {{#each admin}}
+      <tbody>
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.doctorName}}</td>
+          <td>{{this.patientName}}</td>
+          <td>{{this.time}}</td>
+          <td>{{this.roomLink}}</td>
+
+        </tr>
+      </tbody>
+      {{/each}}
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          Không Có Cuộc Hẹn Nào!!!
+        </td>
+      </tr>
+      {{/if}}
+      {{/if_eq}}
 
 
 
-</table>
+    </table>
 </form>
 
 {{!-- xacs nhận xóa account --}}
@@ -126,59 +134,59 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var accountID;
-        var deleteForm = document.forms['delete-form'];
-        var btnDeleteAccount = document.getElementById('btn-delete-account');
-        var accountItemCheckbox = $('input[name="accountIds[]"]');
-        var containerForm = document.forms['container-form'];
-        var checkboxAll= $('#checkbox-all');
-        var checkAllSubmitBtn= $('.check-all-submit-btn');  
+  document.addEventListener('DOMContentLoaded', function () {
+    var accountID;
+    var deleteForm = document.forms['delete-form'];
+    var btnDeleteAccount = document.getElementById('btn-delete-account');
+    var accountItemCheckbox = $('input[name="accountIds[]"]');
+    var containerForm = document.forms['container-form'];
+    var checkboxAll = $('#checkbox-all');
+    var checkAllSubmitBtn = $('.check-all-submit-btn');
 
-        $('#delete-account').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget);
-          accountID = button.data('id');
-        });
-        // sự kiện Áp Dụng
-        checkAllSubmitBtn.on('submit', function (e) {
-          var isSubmitTable = !$(this).hasClass('disabled');
-            if (!isSubmitTable){
-              e.preventDefault();
-            }
-        });
-        //khinhấn vào nút delete 
-        btnDeleteAccount.onclick = function() {
-          deleteForm.action = '/accounts/' +accountID+ '?_method=DELETE';
-          deleteForm.submit();
-        }
-        // khi chọn tất cả được tick
-        checkboxAll.change(function () {
-          var isCheckedAll= $(this).prop('checked');
-          if (isCheckedAll){
-            accountItemCheckbox.prop('checked', true);
-          }else accountItemCheckbox.prop('checked', false);
-          renderCheckAllSubmibBtn();
-        });
-        //khi chọn một cái thì bỏ chọn tát cả
-        accountItemCheckbox.change(function(){
-          var isCheckedAll = accountItemCheckbox.length === $('input[name="accountIds[]"]:checked').length;
-          checkboxAll.prop('checked', isCheckedAll);
-          renderCheckAllSubmibBtn();
-        })
-        //hiện lại nút thực hiện
-        function renderCheckAllSubmibBtn(){
-          var checkedCount = $('input[name="accountIds[]"]:checked').length;
-          if(checkedCount >0){
-            checkAllSubmitBtn.removeClass('disabled');
-          }else {
-            checkAllSubmitBtn.addClass('disabled');
-          }
-        }
-
-        //
-
-        
+    $('#delete-account').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      accountID = button.data('id');
     });
+    // sự kiện Áp Dụng
+    checkAllSubmitBtn.on('submit', function (e) {
+      var isSubmitTable = !$(this).hasClass('disabled');
+      if (!isSubmitTable) {
+        e.preventDefault();
+      }
+    });
+    //khinhấn vào nút delete 
+    btnDeleteAccount.onclick = function () {
+      deleteForm.action = '/accounts/' + accountID + '?_method=DELETE';
+      deleteForm.submit();
+    }
+    // khi chọn tất cả được tick
+    checkboxAll.change(function () {
+      var isCheckedAll = $(this).prop('checked');
+      if (isCheckedAll) {
+        accountItemCheckbox.prop('checked', true);
+      } else accountItemCheckbox.prop('checked', false);
+      renderCheckAllSubmibBtn();
+    });
+    //khi chọn một cái thì bỏ chọn tát cả
+    accountItemCheckbox.change(function () {
+      var isCheckedAll = accountItemCheckbox.length === $('input[name="accountIds[]"]:checked').length;
+      checkboxAll.prop('checked', isCheckedAll);
+      renderCheckAllSubmibBtn();
+    })
+    //hiện lại nút thực hiện
+    function renderCheckAllSubmibBtn() {
+      var checkedCount = $('input[name="accountIds[]"]:checked').length;
+      if (checkedCount > 0) {
+        checkAllSubmitBtn.removeClass('disabled');
+      } else {
+        checkAllSubmitBtn.addClass('disabled');
+      }
+    }
+
+    //
+
+
+  });
 </script>
 
 

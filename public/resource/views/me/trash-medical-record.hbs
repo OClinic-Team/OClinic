@@ -1,97 +1,101 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <div class='mt-4 container'>
+  <div class="container h1 mt-3">
+    <h1>Thùng Rác Hồ Sơ Bệnh Án</h1>
+  </div>
   <div>
-    <a href='/me/stored/medical-record'>QUAY LẠI</a>
-    <h3>HỒ SƠ BỆNH ÁN ĐÃ XÓA</h3>
+    <a href='/me/stored/medical-record'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-backspace-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z" />
+      </svg>
+      QUAY LẠI</a>
   </div>
 
 
-    <table class="table">
-  <thead>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên Bệnh Nhân</th>
+        <th scope="col">Mã Bệnh Nhân</th>
+        <th scope="col" colspan="2">Thời Gian Tạo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each medicalrecords}}
+      <tr>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.namePatient}}</td>
+        <td>{{this._id}}</td>
+        <td>{{this.createdAt}}</td>
+        <td class="d-flex">
+          <a href="" class="btn btn-sm btn-success btn-restore mr-4" data-id="{{this._id}}">Khôi Phục</a>
+          <a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-id="{{this._id}}"
+            data-target="#delete-medical-record">Xóa Vĩnh Viễn</a>
+        </td>
+      </tr>
+    </tbody>
+    {{else}}
     <tr>
-      <th scope="col" colspan="2">#</th>
-      <th scope="col">Tên Bệnh Nhân</th>
-      <th scope="col">Mã Bệnh Nhân</th>
-      <th scope="col" colspan="2">Thời Gian Tạo</th>
+      <td colspan="5" class="text-center profile-head">
+        <h6>Thùng Rác Trống</h6>
+      </td>
     </tr>
-  </thead>
-  
-  <tbody>
-    {{#each medicalrecords}}
-    <tr>
-      <td>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
-          </label>
+    {{/each}}
+  </table>
+  </form>
+  {{! xacs nhận xóa account }}
+  <div id="delete-medical-record" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">XÓA KHÓA HỌC</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
-      </td>
-      <th scope="row">{{sum @index 1}}</th>
-      <td>{{this.namePatient}}</td>
-      <td>{{this._id}}</td>
-      <td>{{this.createdAt}}</td>
-      <td>
-          <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">khôi phục</a>
-          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa Vĩnh Viễn</a>
-      </td>
-    </tr>
-  </tbody>
-  {{else}}
-  <tr>
-    <td colspan="5" class="text-center">
-      Bạn Chưa Có Tài Khoản Nào. !!!
-      <a href="/accounts/create">Bấm vào đây để đăng tài khoản</a>
-    </td>
-  </tr>
-  {{/each}}
-</table>
-</form>
-{{! xacs nhận xóa account }}
-<div id="delete-medical-record" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">XÓA KHÓA HỌC</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Bạn có chắc muốn xóa tài khoản {{accounts.name}} không???
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
-        <button id="btn-delete-medical-record" type="button" class="btn btn-danger" >Xóa Bỏ</button>
+        <div class="modal-body">
+          Bạn có chắc muốn xóa tài khoản {{accounts.name}} không???
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
+          <button id="btn-delete-medical-record" type="button" class="btn btn-danger">Xóa Bỏ</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-{{! delete form }}
-<form method='POST' name='delete-form'></form>
+  {{! delete form }}
+  <form method='POST' name='delete-form'></form>
 
-{{! restore form }}
-<form method='POST' name='restore-form'></form>
+  {{! restore form }}
+  <form method='POST' name='restore-form'></form>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() { 
-    var medicalRecordID; 
-    var deleteForm = document.forms['delete-form']; 
-    var restoreForm = document.forms['restore-form']; 
-    var btnDeleteMedicalRecord = document.getElementById('btn-delete-medical-record'); 
-    var restoreBtn = $('.btn-restore') ;
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var medicalRecordID;
+      var deleteForm = document.forms['delete-form'];
+      var restoreForm = document.forms['restore-form'];
+      var btnDeleteMedicalRecord = document.getElementById('btn-delete-medical-record');
+      var restoreBtn = $('.btn-restore');
 
-    $('#delete-medical-record').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); 
-        medicalRecordID = button.data('id'); 
-    }); 
-  //khinhấn vào nút delete 
-  btnDeleteMedicalRecord.onclick = function() { 
-    deleteForm.action= '/medicalRecord/' +medicalRecordID+ '/xoa-that?_method=DELETE'; 
-    deleteForm.submit(); 
-  }
-  //khi nhấn vào nút khôi phục 
-  restoreBtn.click(function (e){
-    e.preventDefault(); 
-    var medicalRecordID= $(this).data('id'); 
-    restoreForm.action = '/medicalRecord/' +medicalRecordID+ '/restore?_method=PATCH';
-    restoreForm.submit(); })
-  });
-</script>
-
+      $('#delete-medical-record').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        medicalRecordID = button.data('id');
+      });
+      //khinhấn vào nút delete 
+      btnDeleteMedicalRecord.onclick = function () {
+        deleteForm.action = '/medicalRecord/' + medicalRecordID + '/xoa-that?_method=DELETE';
+        deleteForm.submit();
+      }
+      //khi nhấn vào nút khôi phục 
+      restoreBtn.click(function (e) {
+        e.preventDefault();
+        var medicalRecordID = $(this).data('id');
+        restoreForm.action = '/medicalRecord/' + medicalRecordID + '/restore?_method=PATCH';
+        restoreForm.submit();
+      })
+    });
+  </script>
