@@ -11,9 +11,8 @@ const checkAdmin = require('../app/middlewares/checkAdmin'); //kiem tra co phai 
 
 // router.post('/store', authenticated, accountController.store); // luu account sau khi bam vao nut submit o trang accounts/create
 
+router.get('/:Id/edit/admin', auth,checkAdmin, accountController.editAdmin);
 router.get('/:id/edit', auth, accountController.edit);// chinh sua trang ca nhan
-
-router.get('/:id/edit/admin', auth, accountController.editAdmin);
 
 router.post('/handle-form-action', auth, accountController.handFormAction);
 

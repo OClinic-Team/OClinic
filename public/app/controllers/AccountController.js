@@ -1,6 +1,4 @@
 const Account = require('../models/Account');
-const Account_Patient = require('../models/AccountPatient');
-const Account_Doctor = require('../models/AccountDoctor');
 const { mutileMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 const AddingSchedule = require('../models/addschedule')
@@ -9,7 +7,7 @@ const accounts_doctor = require('../models/AccountDoctor');
 class AccountController {
     //[GET] /account/:slug
     accounts(req, res, next) {
-        // var a = Account_Doctor.find({})
+        // var a = accounts_doctor.find({})
         // .then((accounts) => {
         //     res.render('accounts', {
         //         accounts: mutileMongooseToObject(accounts),
@@ -17,20 +15,20 @@ class AccountController {
         // })
         // .catch(next);
 
-        Account_Doctor.aggregate([{
+        accounts_doctor.aggregate([{
 
-                    $lookup: {
-                        from: "addschedules",
-                        localField: "Id",
-                        foreignField: "doctorId",
-                        as: "Doctor_Schedule"
+            $lookup: {
+                from: "addschedules",
+                localField: "Id",
+                foreignField: "doctorId",
+                as: "Doctor_Schedule"
 
-                    },
-                },
-                {
-                    $unwind: { path: "$userInfoData", preserveNullAndEmptyArrays: true },
-                },
-            ])
+            },
+        },
+        {
+            $unwind: { path: "$userInfoData", preserveNullAndEmptyArrays: true },
+        },
+        ])
             .then((accounts => {
                 res.render('accounts', { accounts })
             }))
@@ -41,58 +39,68 @@ class AccountController {
 
 
     show(req, res, next) {
-            Account.findOne({ slug: req.params.slug })
-                .then((account) => {
-                    res.render('accounts/show', {
-                        account: mongooseToObject(account),
-                    });
-                })
-                .catch(next);
-        }
-        //[GET] accounts/create
+        Account.findOne({ slug: req.params.slug })
+            .then((account) => {
+                res.render('accounts/show', {
+                    account: mongooseToObject(account),
+                });
+            })
+            .catch(next);
+    }
+    //[GET] accounts/create
     create(req, res, next) {
-            res.render('accounts/create');
-        }
-        //[POST] accounts/store
+        res.render('accounts/create');
+    }
+    //[POST] accounts/store
     store(req, res, next) {
         req.body.image = `https://img.youtube.com/vi/${req.body.video}/sddefault.jpg`
         const account = new Account(req.body);
         account
             .save()
             .then(() => res.redirect('/accounts'))
-            .catch((error) => {});
+            .catch((error) => { });
     }
     edit(req, res, next) {
         Account.findById(req.params.id, (err, account) => {
-                if (account.RoleName == 'patient') {
-                    res.render('accounts/edit', { accountPatient: mongooseToObject(account) })
-                } else {
+            if (account.RoleName == 'patient') {
+                res.render('accounts/edit', { accountPatient: mongooseToObject(account) })
+            } else {
 
-                    res.redirect(`/profile/${account.Id}/edit`)
-                }
-            })
-            // .then((account) =>
-            //     res.render('accounts/edit', { account: mongooseToObject(account) })
-            // )
-            // .catch(next);
+                res.redirect(`/profile/${account.Id}/edit`)
+            }
+        })
+        // .then((account) =>
+        //     res.render('accounts/edit', { account: mongooseToObject(account) })
+        // )
+        // .catch(next);
     }
-
+    editAdmin(req, res, next) {
+         accounts_doctor.findOne({ Id: req.params.Id })
+            .then((editprofile) => {
+                res.render('editprofileAdmin', {
+                    profileDoctor: mongooseToObject(editprofile),
+                });
+            })
+            .catch(next)
+    }
     //[PUT] accounts/:id
     async update(req, res, next) {
-            if (req.body.RoleName == 'doctor') {
-                const data = await Account_Patient.findOneAndDelete({ Id: req.body.Id });
-            }
-            await Account.updateOne({ Id: req.body.Id }, req.body)
-                .then(() => res.redirect('/me/stored/accounts'))
-                .catch(next);
+        if (req.body.RoleName == 'doctor') {
+            const data = await accounts_patient.findOneAndDelete({ Id: req.body.Id });
         }
-        //[DELETE] accounts/:id
+        await Account.updateOne({ Id: req.body.Id }, req.body)
+            .then(() => res.redirect('/me/stored/accounts'))
+            .catch(next);
+    }
+    
+
+    //[DELETE] accounts/:id
     destroy(req, res, next) {
-            Account.delete({ _id: req.params.id })
-                .then(() => res.redirect('back'))
-                .catch(next);
-        }
-        //[DELETE] accounts/:id/xoa-that
+        Account.delete({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+    //[DELETE] accounts/:id/xoa-that
     destroyThat(req, res, next) {
         Account.deleteOne({ _id: req.params.id })
             .then(() => res.redirect('back'))
@@ -101,11 +109,11 @@ class AccountController {
 
     //[PATCH] accounts/:id/restore
     restore(req, res, next) {
-            Account.restore({ _id: req.params.id })
-                .then(() => res.redirect('back'))
-                .catch(next);
-        }
-        //[POST]
+        Account.restore({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+    //[POST]
     handFormAction(req, res, next) {
         switch (req.body.action) {
             case 'delete':
@@ -117,21 +125,7 @@ class AccountController {
                 res.json({ mesage: 'hanh dong khong hop le' })
         }
     }
-    async editAdmin(req, res, next){
-        if (req.session.authUser.Permission === '0') {
-            await accounts_patient.findOne({ Id: req.params.Id })
-                .then(editprofile => {
-                    res.render('editprofile', { profilePatient: mongooseToObject(editprofile) });
-                })
-                .catch(next)
-        } else {
-            await accounts_doctor.findOne({ Id: req.params.Id })
-                .then(editprofile => {
-                    res.render('editprofileAdmin', { profileDoctor: mongooseToObject(editprofile) });
-                })
-                .catch(next)
-        }
-    }
+    
 }
 
 module.exports = new AccountController();
