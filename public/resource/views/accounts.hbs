@@ -2,214 +2,228 @@
 <html>
 
 <head>
+  <!--Important link from https://bootsnipp.com/snippets/XqvZr-->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
 
-
-          <!--Important link from https://bootsnipp.com/snippets/XqvZr-->
-          <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-          <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-          <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-          <!------ Include the above in your HEAD tag ---------->
-
-          <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
-          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"><div class="pd-wrap">
-              <script>
-                bootstrapValidate('#Khoa-input', 'required: Hãy chọn khoa trước khi tìm', function (isValid) {
-                    if (isValid) {
-                        alert('Element is valid');
-                    } else {
-                        alert('Element is invalid');
-                    }
-                  });  
-              </script>
-      </head>
-
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <div class="pd-wrap">
+    <script>
+      bootstrapValidate('#Khoa-input', 'required: Hãy chọn khoa trước khi tìm', function (isValid) {
+        if (isValid) {
+          alert('Element is valid');
+        } else {
+          alert('Element is invalid');
+        }
+      });  
+    </script>
+</head>
 <div class='mt-4 container p-3 my-3'>
-        
-          <form method='GET' action="/search" class="row g-2">
-                <div class='form-group' style="width: 60%;">
-                  <select name='Department' class='form-control col-auto' id='Khoa-input' required >
-                    <option value='' >Chọn Khoa Mà Bạn Muốn Tìm ...</option>
-                    <option value='Xương Khớp'>Xương Khớp</option>
-                    <option value='Tiêu Hoá'>Tiêu Hoá</option>
-                    <option value='Da Liễu'>Da Liễu</option>
-                    <option value='Thần Kinh'>Thần Kinh</option>
-                    <option value='Nhi Khoa'>Nhi Khoa</option>
-                    <option value='Nha Khoa'> Nha Khoa </option>
-                    <option value='Nội Tiết'>Nội Tiết</option>
-                    <option value='Tai Mũi Họng'>Tai Mũi Họng</option>
-                    <option value='Tư Vấn Covid'>Tư Vấn Covid</option>
-                  </select>
-                </div>
-          <div>
-            <button type='submit' class='btn btn-primary ml-2 col-auto' >Tìm Kiếm</button>
-          </div>
-        </form>
+  <form method='GET' action="/search" class="row g-2">
+    <div class='form-group' style="width: 60%;">
+      <select name='Department' class='form-control col-auto' id='Khoa-input' required>
+        <option value=''>Chọn Khoa Mà Bạn Muốn Tìm ...</option>
+        <option value='Xương Khớp'>Xương Khớp</option>
+        <option value='Tiêu Hoá'>Tiêu Hoá</option>
+        <option value='Da Liễu'>Da Liễu</option>
+        <option value='Thần Kinh'>Thần Kinh</option>
+        <option value='Nhi Khoa'>Nhi Khoa</option>
+        <option value='Nha Khoa'> Nha Khoa </option>
+        <option value='Nội Tiết'>Nội Tiết</option>
+        <option value='Tai Mũi Họng'>Tai Mũi Họng</option>
+        <option value='Tư Vấn Covid'>Tư Vấn Covid</option>
+      </select>
+    </div>
+    <div>
+      <button type='submit' class='btn btn-primary ml-2 col-auto'>Tìm Kiếm</button>
+    </div>
+  </form>
   {{#each accounts}}
-  <form method='GET' action='/sendEmail/send'>
-        <div class="mt-4 row bg-muted">
-	        	<div class="col-lg-3">      
-                <input type="hidden" name="doctorEmail" value="{{this.Email}}"/>
-                <input type="hidden" name="doctorId" value="{{this.Id}}"/>
-                 <input type="hidden" name="doctorName" value="{{this.Name}}"/>
-                <img class='card-img-top'src='{{this.ImageURL}}'/>
-	        	</div>
-	        	<div class="col-md-9">
-	        		<div class="product-dtl">
-        				<div class="product-info">
-		        			<div class="product-name">Bác Sĩ: {{this.Name}}</div>
-		        		</div>
-                <div class="product-price-discount"><span><b>Chuyên Khoa:</b> {{this.Department}}</span></div>
-                <div class="product-price-discount"><span><b>Mô Tả:</b> {{this.Description}}</span></div>
-
-                <div class="product-count">
-	        				<h4><b>Lịch Làm Việc: </b></h4>
-                    {{#each this.Doctor_Schedule}}
-                          <div class="dropdown">
-                              <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
-                                  {{this.date}}
-                              </button>             
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  {{#if this.time1}}
-                                  <div class="form-check ml-3">
-                                      <input id="time1"class="form-check-input" type="radio" name="time" value="7h00-8h00 {{this.date}}" id="defaultCheck1" >
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        7h00-8h00
-                                      </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time2}}
-                                  <div class="form-check ml-3">
-                                    <input id="time2" class="form-check-input" type="radio" name="time" value="8h00-9h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      8h00-9h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time3}}
-                                  <div class="form-check ml-3">
-                                    <input id="time3" class="form-check-input" type="radio" name="time" value="9h00-10h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      9h00-10h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time4}}
-                                  <div class="form-check ml-3">
-                                    <input id="time4" class="form-check-input" type="radio" name="time" value="10h00-11h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      10h00-11h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time5}}
-                                  <div class="form-check ml-3">
-                                    <input id="time5" class="form-check-input" type="radio" name="time" value="13h00-14h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      13h00-14h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time6}}
-                                  <div class="form-check ml-3">
-                                    <input id="time6" class="form-check-input" type="radio" name="time" value="14h00-15h00 {{this.date}}" id="defaultCheck2">
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      14h00-15h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time7}}
-                                  <div class="form-check ml-3">
-                                    <input id="time7" class="form-check-input" type="radio" name="time" value="15h00-16h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      15h00-16h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time8}}
-                                  <div class="form-check ml-3">
-                                    <input id="time8" class="form-check-input" type="radio" name="time" value="16h00-17h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      16h00-17h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time9}}
-                                  <div class="form-check ml-3">
-                                    <input id="time9" class="form-check-input" type="radio" name="time" value="18h00-19h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      18h00-19h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time10}}
-                                  <div class="form-check ml-3">
-                                    <input id="time10" class="form-check-input" type="radio" name="time" value="19h00-20h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      19h00-20h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                            {{#if this.time11}}
-                                  <div class="form-check ml-3">
-                                    <input id="time11" class="form-check-input" type="radio" name="time" value="20h00-21h00 {{this.date}}" id="defaultCheck2" >
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      20h00-21h00
-                                    </label>
-                                  </div>
-                            {{/if}}
-                                 {{#if this.time12}}
-                                    <div class="form-check ml-3">
-                                        <input id="time12" class="form-check-input" type="radio" name="time" value="21h00-22h00 {{this.date}}" id="defaultCheck2" >
-                                        <label class="form-check-label" for="defaultCheck2">
-                                            21h00-22h00
-                                        </label>
-                                    </div>
-                                {{/if}}
-                                </div>
-                          </div>
-                         {{else}}
-                         <h4><p>Bác sĩ chưa có lịch</p></h4>
-                  {{/each}}
-	        			</div>
-		        		<div class="product-price-discount"><span>Giá Khám Bệnh: <b>300.000</b> VNĐ</span></div>
-	        		</div>
-	        	</div>
-	        </div>
-            <div style="text-align: left; margin-left: 5%">
-	        			  {{!-- <button type="submit" id="btn-submit" data-toggle="modal" data-target="#delete-account" class="btn btn-success">Đặt lịch hẹn</button> --}}
-                  <button class="btn btn-link" data-toggle="modal" data-target="#delete-account" >Đặt lịch hẹnaaa</button>
-	        	
-            </div>
-       </form>
-       {{! xacs nhận xóa account }}
-        <div id="delete-account" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">XÓA TÀI KHOẢN</h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Bạn có chắc muốn xóa tài  nayf khoản không???
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
-                <button id="btn-delete-account" type="button" class="btn btn-danger" >Xóa Bỏ</button>
+  <form onSubmit="return confirm('Bạn muốn đặt lich ?')" method='GET' action='/sendEmail/send '>
+    <div class="mt-4 row bg-muted">
+      <div class="col-lg-3 text-center">
+        <input type="hidden" name="doctorEmail" value="{{this.Email}}" />
+        <input type="hidden" name="doctorId" value="{{this.Id}}" />
+        <input type="hidden" name="doctorName" value="{{this.Name}}" />
+        <img class='card-img-top' src='{{this.ImageURL}}' />
+        <button class="btn btn-primary mt-3" data-toggle="modal" data-target="#delete-account">Đặt lịch hẹn</button>
+      </div>
+      <div class="col-md-9">
+        <div class="product-dtl">
+          <div class="product-info">
+            <div class="product-name">Bác Sĩ: {{this.Name}}</div>
+          </div>
+          <h5><b>Mô ta:</b> {{this.Department}}</h5>
+          <div class="product-price-discount"><span><b>Chuyên Khoa:</b> {{this.Department}}</span></div>
+          <div class="product-price-discount"><span><b>Mô Tả:</b> {{this.Description}}</span></div>
+          <div class="product-price-discount"><span><b>Giá Khám Bệnh:</b> <b class="text-danger">300.000 VNĐ</b></span></div>
+          <div div class="product-count">
+            <h4><b>Lịch Làm Việc: </b></h4>
+            {{#each this.Doctor_Schedule}}
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle"
+                style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
+                {{this.date}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {{#if_eq this.time1 true}}
+                <div class="form-check ml-3">
+                  <input id="time1" class="form-check-input" type="radio" name="time" value="7h00-8h00 {{this.date}}"
+                    id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    7h00-8h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time2 true}}
+                <div class="form-check ml-3">
+                  <input id="time2" class="form-check-input" type="radio" name="time" value="8h00-9h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    8h00-9h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time3 true}}
+                <div class="form-check ml-3">
+                  <input id="time3" class="form-check-input" type="radio" name="time" value="9h00-10h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    9h00-10h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time4 true}}
+                <div class="form-check ml-3">
+                  <input id="time4" class="form-check-input" type="radio" name="time" value="10h00-11h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    10h00-11h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time5 true}}
+                <div class="form-check ml-3">
+                  <input id="time5" class="form-check-input" type="radio" name="time" value="13h00-14h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    13h00-14h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time6 true}}
+                <div class="form-check ml-3">
+                  <input id="time6" class="form-check-input" type="radio" name="time" value="14h00-15h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    14h00-15h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time7 true}}
+                <div class="form-check ml-3">
+                  <input id="time7" class="form-check-input" type="radio" name="time" value="15h00-16h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    15h00-16h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time8 true}}
+                <div class="form-check ml-3">
+                  <input id="time8" class="form-check-input" type="radio" name="time" value="16h00-17h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    16h00-17h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time9 true}}
+                <div class="form-check ml-3">
+                  <input id="time9" class="form-check-input" type="radio" name="time" value="18h00-19h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    18h00-19h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time10 true}}
+                <div class="form-check ml-3">
+                  <input id="time10" class="form-check-input" type="radio" name="time" value="19h00-20h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    19h00-20h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time11 true}}
+                <div class="form-check ml-3">
+                  <input id="time11" class="form-check-input" type="radio" name="time" value="20h00-21h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    20h00-21h00
+                  </label>
+                </div>
+                {{/if_eq}}
+                {{#if_eq this.time12 true}}
+                <div class="form-check ml-3">
+                  <input id="time12" class="form-check-input" type="radio" name="time" value="21h00-22h00 {{this.date}}"
+                    id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    21h00-22h00
+                  </label>
+                </div>
+                {{/if_eq}}
               </div>
             </div>
+            {{else}}
+            <h4>
+              <p>Bác sĩ chưa có lịch</p>
+            </h4>
+            {{/each}}
           </div>
         </div>
-       {{else}}
-       <p>Không có bác sĩ nào</p>
-    {{/each}}
+      </div>
+    </div>
+  </form>
+  {{! xacs nhận xóa account }}
+  <div id="delete-account" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">XÓA TÀI KHOẢN</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn có chắc muốn xóa tài nayf khoản không???
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
+          <button id="btn-delete-account" type="button" class="btn btn-danger">Xóa Bỏ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <p>Không có bác sĩ nào</p>
+  {{/each}}
+</div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', function() { 
-  $('#delete-account').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); 
-        accountID = button.data('id'); 
+  document.addEventListener('DOMContentLoaded', function () {
+    $('#delete-account').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      accountID = button.data('id');
     });
 
   });

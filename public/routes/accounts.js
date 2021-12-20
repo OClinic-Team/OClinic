@@ -18,13 +18,13 @@ router.post('/handle-form-action', authenticated, accountController.handFormActi
 
 router.put('/:id', authenticated, accountController.update); //update thong tin sau khi chinh sua
 
-// router.patch('/:id/restore', authenticated, accountController.restore); //
+router.patch('/:id/restore', authenticated, accountController.restore); //
 
-// router.delete('/:id/xoa-that', authenticated, accountController.destroyThat);
+router.delete('/:id/xoa-that', authenticated, accountController.destroyThat);
 
-// router.delete('/:id', authenticated, accountController.destroy);
+router.delete('/:id', authenticated, accountController.destroy);
 
-// router.get('/:slug', authenticated, accountController.show);
+router.get('/:slug', authenticated, accountController.show);
 
 router.get('/', accountController.accounts);
 

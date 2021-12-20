@@ -159,16 +159,22 @@ app.set('view engine', 'ejs');
 app.get('/videocall', (req, res) => {
     res.redirect(`/videocall/${uuidv4()}`);
 });
-app.get('/videocall/:room', auth, (req, res) => {
-    res.render('room', { layout: false, roomId: req.params.room, userId: req.params.id });
+app.get('/createVideocall', (req, res) => {
+    res.send(`http:/localhost:3000/videocall/${uuidv4()}`);
+
 });
 
-io.on('connection', (socket) => {
+app.get('/videocall/:room', auth, (req, res) => {
+    res.render('room', { layout: false, roomId: req.params.room, userName: req.session.authUser.Name });
+});
+
+io.sockets.on('connection', (socket) => {
     socket.on('join-room', (roomId, userId) => {
+
         socket.join(roomId);
         socket.to(roomId).broadcast.emit('user-connected', userId);
 
-        socket.on('message', (message, userName) => {
+        socket.on('message', (message, userId) => {
             io.to(roomId).emit('createMessage', message, userId);
         });
         socket.on('disconnect', () => {
@@ -176,6 +182,7 @@ io.on('connection', (socket) => {
         });
     });
 });
+
 
 
 

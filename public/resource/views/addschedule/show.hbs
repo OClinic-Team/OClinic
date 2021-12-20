@@ -1,143 +1,191 @@
-
-    <div style="text-align: center;">
-        <h1>LỊCH LÀM VIỆC</h1>
-    </div>
-    <table class="table table-bordered" style="border: 5px; margin:5px; width:fit-content">
-        {{#if schedule}}
-                <thead>
-                    <tr>
-                    <th scope="col">Time</th>
-                    {{#each schedule}}
-                    <th scope="col" style="text-align: center;">{{this.date}}</th>
-                     {{/each}}
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>    
-                            <td scope="row">7h00-8h00</td>
-                            {{#each schedule}}
-                                {{#if this.time1}}
-                                        <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                    {{else}}
-                                        <th scope="row"></th>
-                                    {{/if}}
-                             {{/each}}   
-                    </tr>
-                    <tr>
-                            <td scope="row">8h00-9h00</td>
-                            {{#each schedule}}
-                                {{#if this.time2}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                    {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}  
-                    </tr>
-                    <tr>
-                            <td scope="row">9h00-10h00</td>
-                            {{#each schedule}}
-                                {{#if this.time3}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">10h00-11h00</td>
-                             {{#each schedule}}
-                                {{#if this.time4}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">13h00-14h00</td>
-                             {{#each schedule}}
-                                {{#if this.time5}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">14h00-15h00</td>
-                             {{#each schedule}}
-                                {{#if this.time6}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">15h00-16h00</td>
-                             {{#each schedule}}
-                                {{#if this.time7}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">16h00-17h00</td>
-                             {{#each schedule}}
-                                {{#if this.time8}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">18h00-19h00</td>
-                             {{#each schedule}}
-                                {{#if this.time9}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">19h00-20h00</td>
-                             {{#each schedule}}
-                                {{#if this.time10}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">20h00-21h00</td>
-                             {{#each schedule}}
-                                {{#if this.time11}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                    <tr>
-                            <td scope="row">21h00-22h00</td>
-                             {{#each schedule}}
-                                {{#if this.time12}}
-                                    <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
-                                {{else}}
-                                    <th scope="row"></th>
-                                {{/if}}
-                            {{/each}}
-                    </tr>
-                </tbody>
-                
-              
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<div style="text-align: center;">
+    <h1>Lịch Làm Việc</h1>
+</div>
+<table class="table table-bordered border-primary rounded">
+    {{#if schedule}}
+    <thead>
+        <tr>
+            <th class="col-md-1" scope="col" style="">Time</th>
+            {{#each schedule}}
+            <th scope="col" style="text-align: center;">{{this.date}}</th>
+            {{/each}}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">7h00-8h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time1 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
             {{else}}
-                <h2>Bạn Chưa Đăng Ký Lịch!!!</h2>
+            {{#if_eq this.time1 false}}
+            <th scope="row" style="background-color: rgb(0, 255, 106)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">8h00-9h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time2 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time2 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">9h00-10h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time3 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time3 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">10h00-11h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time4 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time4 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">13h00-14h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time5 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time5 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">14h00-15h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time6 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time6 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">15h00-16h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time7 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time7 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">16h00-17h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time8 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time8 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">18h00-19h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time9 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time9 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">19h00-20h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time10 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time10 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">20h00-21h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time11 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time11 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">21h00-22h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time12 true}}
+            <th scope="row" style="background-color: rgb(241, 220, 100);"></th>
+            {{else}}
+            {{#if_eq this.time12 false}}
+            <th scope="row" style="background-color: orange"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+    </tbody>
+
+
+    {{else}}
+    <h2>Bạn Chưa Đăng Ký Lịch!!!</h2>
     {{/if}}
-    </table>
- 
+</table>
