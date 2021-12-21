@@ -769,7 +769,7 @@ a:focus {
 }
 
 #navbar li {
-  padding-left: 15px;
+  padding-left: 20px;
 }
 
 #navbar .nav-link {
@@ -784,9 +784,9 @@ a:focus {
   position: relative;
   padding: 0 0 2px;
   color: white;
-  font-weight: 500;
-  font-family: 'Helvetica', sans-serif;
-  font-size: 15px;
+  font-weight: 100;
+  font-family: "Helvetica", sans-serif;
+  font-size: 18px;
   letter-spacing: 1px;
   text-decoration: none;
   overflow: hidden;
