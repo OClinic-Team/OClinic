@@ -1,12 +1,8 @@
 const Schedule = require('../models/addschedule');
 const Appointment = require('../models/Appointment');
-// const { mutileMongooseToObject } = require('../../util/mongoose');
-// const { mongooseToObject } = require('../../util/mongoose');
-// const { accounts } = require('./AccountController');
-// const { medicalrecords } = require('./MedicalRecordController');
+const account_Patient = require('../models/AccountPatient');
 const mailer = require('../../util/mailer');
 const { v4: uuidv4 } = require('uuid');
-//const alert = require('alert');
 class SendEmailController {
     async sendMailAppointment(req, res) {
         // link room clinic
@@ -92,19 +88,26 @@ class SendEmailController {
         }
     }
     async sendMailMedicalRecord(req, res) {
-        const emailPatient = req.session.authUser.Email;
-
-        try {
-            // Lấy data truyền lên từ form phía client
-            // Thực hiện gửi email
-            await mailer.sendMailAppointment(emailPatient);
-            // Quá trình gửi email thành công thì gửi về thông báo success cho người dùng
-            res.render('home')
-        } catch (error) {
-            // Nếu có lỗi thì log ra để kiểm tra và cũng gửi về client
-            console.log(error)
-            res.send('Lịch đăng ký không được xác nhận. Vui lòng Đăng Ký Lại !!!')
-        }
+        // tìm Email bệnh nhân thông qua Id của bệnh nhân
+        await account_Patient.findOne({ Id: req.body.patientId }, (err, data) => {
+            const emailPatient = data.Email;
+            //config content Email for send Medical Record
+            const content = `Chào ${req.body.namePatient}!!!\n\nHỒ SƠ BỆNH ÁN\nBác Sĩ Khám: ${req.body.nameDoctor}\n` +
+                `Tên Bệnh Nhân: ${req.body.namePatient}\nNgày Khám: ${req.body.date}\nSố điện thoại: ${req.body.phone}\n` +
+                `Địa chỉ: ${req.body.address}\nTriệu Chứng: ${req.body.symptom}\nChuẩn Đoán: ${req.body.diagnose}\n` +
+                `Đơn thuốc: ${req.body.prescription}`
+            try {
+                // Lấy data truyền lên từ form phía client
+                // Thực hiện gửi email
+                mailer.sendMailMedicalRecord(emailPatient, content)
+                    // Quá trình gửi email thành công thì gửi về thông báo success cho người dùng
+                res.send(`<script> window.location.href = "/medicalRecord/${req.body.medicalRecord_id}"; alert("Bạn đã gửi hồ sơ bệnh án cho bệnh nhân !!!");</script>`);
+            } catch (error) {
+                // Nếu có lỗi thì log ra để kiểm tra và cũng gửi về client
+                console.log(error)
+                res.send('Gửi Hồ Sơ Bệnh Án Không Thành Công!!!')
+            }
+        })
     }
 }
 module.exports = new SendEmailController;

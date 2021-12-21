@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const accountController = require('../app/controllers/AccountController');
-
-const authenticated = require('../app/middlewares/auth'); //kiểm tra đã đăng nhập hay chưa
+const auth = require('../app/middlewares/auth'); //kiểm tra đã đăng nhập hay chưa
 const checkDoctor = require('../app/middlewares/checkDoctor'); // kiem tra co phai bac si khong
 const checkPatient = require('../app/middlewares/checkPatient'); //kiem tra co phai benh nhan khong
 const checkAdmin = require('../app/middlewares/checkAdmin'); //kiem tra co phai Admin khong
@@ -12,19 +11,21 @@ const checkAdmin = require('../app/middlewares/checkAdmin'); //kiem tra co phai 
 
 // router.post('/store', authenticated, accountController.store); // luu account sau khi bam vao nut submit o trang accounts/create
 
-router.get('/:id/edit', authenticated, accountController.edit); // chinh sua trang ca nhan
+router.get('/:id/edit', auth, accountController.edit); // chinh sua trang ca nhan
 
-router.post('/handle-form-action', authenticated, accountController.handFormAction);
+router.get('/:Id/edit/admin', auth, accountController.editAdmin);
 
-router.put('/:id', authenticated, accountController.update); //update thong tin sau khi chinh sua
+router.post('/handle-form-action', auth, accountController.handFormAction);
 
-// router.patch('/:id/restore', authenticated, accountController.restore); //
+router.put('/:id', auth, accountController.update); //update thong tin sau khi chinh sua
 
-// router.delete('/:id/xoa-that', authenticated, accountController.destroyThat);
+router.patch('/:id/restore', auth, accountController.restore); //
 
-// router.delete('/:id', authenticated, accountController.destroy);
+router.delete('/:id/xoa-that', auth, accountController.destroyThat);
 
-// router.get('/:slug', authenticated, accountController.show);
+router.delete('/:id', auth, accountController.destroy);
+
+router.get('/:slug', auth, accountController.show);
 
 router.get('/', accountController.accounts);
 

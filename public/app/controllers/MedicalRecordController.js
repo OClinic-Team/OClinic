@@ -27,7 +27,7 @@ class MedicalRecordController {
                 }, {
                     $lookup: {
                         from: "medical-records",
-                        localField: "Id ",
+                        localField: "Id",
                         foreignField: "Patient_Id",
                         as: "medical_record"
 

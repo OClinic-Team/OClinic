@@ -38,6 +38,7 @@ class profileController {
 
     }
     saveprofile(req, res, next) {
+        console.log(`Id: ${req.body.Id}`)
         if (req.session.authUser.Permission === '0') {
             accounts_patient.findOneAndReplace({ Id: req.body.Id }, {
                     Id: req.body.Id,

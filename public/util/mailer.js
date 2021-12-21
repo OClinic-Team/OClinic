@@ -37,7 +37,7 @@ const sendMailMedicalRecord = (emailPatient, contentMail) => {
     var mailOptions = {
         from: adminEmail,
         to: `${emailPatient}`,
-        subject: 'INFORMATION ABOUT APPOINTMENT',
+        subject: 'INFORMATION ABOUT MEDICAL RECORD',
         text: contentMail
     };
     return transporter.sendMail(mailOptions)

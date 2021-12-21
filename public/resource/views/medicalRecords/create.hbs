@@ -1,86 +1,111 @@
-<div class="container-create-medical-record" style="width: 100%;">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<div class="container d-flex">
     {{#each patient}}
-        <div class="left-medical-record-create-form ">
-            <h3 style="text-align: center;">HỒ SƠ BỆNH ÁN</h3>
-    
-            <form method="POST" action="/medicalRecord/storeMedicalRecord">
-                <label for="namePatient">Họ và tên bệnh nhân: {{this.Name}}</label></br>
-
-                <input type="text" class="form-control" id="exampleInputEmail1" name="patientId" value="{{this.Id}}" hidden>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="namePatient" value="{{this.Name}}"hidden>
-                <label for="namePatient">Email: {{this.Email}}</label></br>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="Email" value="{{this.Email}}" hidden>
-                <label for="bithDay">Tuổi: {{this.Age}}</label></br>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Age}}" hidden>
-                <label for="address">Địa chỉ: {{this.Address}}</label></br>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="address" value="{{this.Address}}" hidden>
-                <label for="phone">Số điện thoại: {{this.Phone}}</label></br>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="phone" value="{{this.Phone}}" hidden>
-                
-
-                <label for="symptom">Triệu Chứng</label>
-                <textarea name="symptom"class="form-control" id="exampleFormControlTextarea1" name="symptom" rows="4"></textarea>
-
-                <label for="diagnose">Chuẩn đoán</label>
-                <textarea name="diagnose"class="form-control" id="exampleFormControlTextarea1" name="diagnose" rows="4"></textarea>
-
-                <label for="prescription">Đơn thuốc</label>
-                <textarea name="prescription"class="form-control" id="exampleFormControlTextarea1" name="prescription" rows="3"></textarea>
-
-                <label for="note">Ghi Chú</label>
-                <textarea name="note"class="form-control" id="exampleFormControlTextarea1" name="note" rows="2"></textarea>
-                    </div>
-            
-                    <button  type="submit" class="btn btn-primary" style="margin: 10px 10px 100px 300px; " >Tạo hồ sơ</button>
-            </form>
+    <div class="flex-grow-1">
+        <div class="container h1 mt-3">
+            <h1>Tạo Hồ Sơ Bệnh Án</h1>
+            <hr>
         </div>
-                <div class="right-medical-record-create-form ml-4">
-                    <h1>Lịch sử khám bệnh</h1>
-                    {{#each this.medical_record}}
-                            <div class="dropdown" >
-                            <button class="btn btn-secondary dropdown-toggle" style="margin-top: 10px; width:500px; background-color:#28a745" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="date" value="{{this.date}}">
-                                {{this.date}}
-                                </button>
-                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-                                    <div class="form-check ml-3">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Triệu Chứng:{{this.symptom}}
-                                        </label>
-                                    </div>
-                                    <div class="form-check ml-3">
-                                        
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Chuẩn Đoán:{{this.diagnose}}
-                                        </label>
-                                    </div>
-                                    <div class="form-check ml-3">
-                                      
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Đơn Thuốc:{{this.prescription}}
-                                        </label>
-                                    </div>
-                                    <div class="form-check ml-3">
-                                        
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Lưu ý:{{this.note}}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-        {{!-- <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Thời gian khám: {{medicalRecord.createdAt}}
-        </a>
-        
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">{{medicalRecord.symptom}}</a>
-            <a class="dropdown-item" href="#">{{medicalRecord.diagnose}}</a>
-            <a class="dropdown-item" href="#">{{medicalRecord.prescription}}</a>
-        </div>
-        </div> --}}
-        {{else}}
-            <h3>Bệnh nhân chưa có hồ sơ bệnh án</h3>
-        {{/each}}
-    {{/each}}
+        <form method="POST" action="/medicalRecord/storeMedicalRecord">
+            <div class="profile-head">
+                <input type="text" class="form-control" id="exampleInputEmail1" name="patientId" value="{{this.Id}}"
+                    hidden>
+                <div class="d-flex mt-1">
+                    <h5 style=" width:220px ;" for="namePatient"><b>Họ và tên bệnh nhân: </b></h5>
+                    <h5 class="text-primary">{{this.Name}}</h5>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="namePatient"
+                        value="{{this.Name}}" hidden>
+                </div>
+                <div class="d-flex mt-1">
+                    <h5 style=" width:220px ; " for="Email"><b>Email: </b></h5>
+                    <h5 class="text-primary">{{this.Email}}</h5>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="Email" value="{{this.Email}}"
+                        hidden>
+                </div>
+                <div class="d-flex mt-1">
+                    <h5 style=" width:220px ; " for="bithDay"><b>Ngày Sinh: </b></h5>
+                    <h5 class="text-primary">{{this.Age}}</h5>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Age}}"
+                        hidden>
+                </div>
+                <div class="d-flex mt-1">
+                    <h5 style=" width:220px ; " for="address"><b>Địa Chỉ: </b></h5>
+                    <h5 class="text-primary">{{this.Address}}</h5>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="address"
+                        value="{{this.Address}}" hidden>
+                </div>
+                <div class="d-flex mt-1">
+                    <h5 style=" width:220px ; " for="phone"><b>Số Điện Thoại: </b></h5>
+                    <h5 class="text-primary">{{this.Phone}}</h5>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="phone" value="{{this.Phone}}"
+                        hidden>
+                </div>
+                <div class=" mt-1">
+                    <h5 style=" width:220px ; " for="symptom"><b>Triệu Chứng: </b></h5>
+                    <textarea name="symptom" class="form-control" id="exampleFormControlTextarea1" name="symptom"
+                        rows="4"></textarea>
+                </div>
+                <div class=" mt-1">
+                    <h5 style=" width:220px ; " for="diagnose"><b>Chuẩn Đoán: </b></h5>
+                    <textarea name="diagnose" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
+                        rows="4"></textarea>
+                </div>
+                <div class=" mt-1">
+                    <h5 style=" width:220px ; " for="prescription"><b>Đơn Thuốc: </b></h5>
+                    <textarea name="prescription" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
+                        rows="4"></textarea>
+                </div>
+                <div class=" mt-1">
+                    <h5 style=" width:220px ; " for="note"><b>Lời Khuyên: </b></h5>
+                    <textarea name="note" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
+                        rows="4"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Tạo hồ sơ</button>
+        </form>
     </div>
+    <div class="mt-5">
+        <h4 class="text-center"><b>Lịch sử khám bệnh</b></h4>
+        <div class="dropdown">
+            {{#each this.medical_record}}
+            <div class="mt-3">
+                <div class="btn-group" style="width: 400px;">
+                    <button class="btn btn-success dropdown-toggle  text-left" type="button" data-toggle="dropdown"
+                        aria-expanded="false" name="date" value="{{this.date}}" style="300px">
+                        {{this.namePatient}} {{this.date}}>
+                    </button>
+                    {{!-- <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-expanded="false" name="date" value="{{this.date}}">
+                    </button> --}}
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 530px;">
+                        <div class="form-check ml-3">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <h5><b>Triệu Chứng:</b> {{this.symptom}}</h5>
+                            </label>
+                        </div>
+                        <div class="form-check ml-3">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <h5><b>Chuẩn Đoán:</b> {{this.diagnose}}</h5>
+                            </label>
+                        </div>
+                        <div class="form-check ml-3">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <h5><b>Đơn Thuốc:</b> {{this.prescription}}</h5>
+                            </label>
+                        </div>
+                        <div class="form-check ml-3">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <h5><b>Lời Khuyên:</b> {{this.note}}</h5>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+           <h3>Bệnh nhân chưa có hồ sơ bệnh án</h3>
+            {{/each}}
+        </div>
+    </div>
+    {{/each}}
 </div>

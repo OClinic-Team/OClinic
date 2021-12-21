@@ -29,9 +29,9 @@
         {{#if profilePatient}}
         <div>
           <input type="hidden" name="ImageURL" class="form-control" value="{{profilePatient.ImageURL}}" />
-          <input type="hidden" name="Id" class="form-control" value={{profilePatient.Id}}>
+          <input type="hidden" name="Id" class="form-control" value="{{profilePatient.Id}}">
           <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80"
-            rows="1" value={{profilePatient.Email}}>
+            rows="1" value="{{profilePatient.Email}}">
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label"><b>Họ và Tên</b></label>
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class='form-group'>
-          <label class="col-lg-3 control-label"><b>Tuổi</b></label>
+          <label class="col-lg-3 control-label"><b>Ngày Sinh</b></label>
           <div>
             <input class="form-control" name="Age" type="text" placeholder="{{profilePatient.Age}}">
           </div>
@@ -76,10 +76,15 @@
         </div>
         {{else}}
         <div>
-          <input type="hidden" name="ImageURL" class="form-control" value={{profileDoctor.ImageURL}}>
-          <input type="hidden" name="Id" class="form-control" value={{profileDoctor.Id}}>
+          <input type="hidden" name="Id" class="form-control" value="{{profileDoctor.Id}}">
           <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80"
-            rows="1" value={{profileDoctor.Email}}>
+            rows="1" value="{{profileDoctor.Email}}">
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label"><b>Link Ảnh Đại Diện</b></label>
+          <div>
+            <input class="form-control" name="ImageURL" type="text" placeholder="{{profileDoctor.ImageURL}}">
+          </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label"><b>Họ và Tên</b></label>
@@ -88,7 +93,7 @@
           </div>
         </div>
         <div class='form-group'>
-          <label class="col-lg-3 control-label"><b>Tuổi</b></label>
+          <label class="col-lg-3 control-label"><b>Ngày Sinh</b></label>
           <div>
             <input class="form-control" name="Age" type="text" placeholder="{{profileDoctor.Age}}">
           </div>
