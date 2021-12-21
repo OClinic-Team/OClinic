@@ -60,29 +60,24 @@ class AccountController {
             .then(() => res.redirect('/accounts'))
             .catch((error) => { });
     }
-    edit(req, res, next) {
+    edit(req, res) {
         Account.findById(req.params.id, (err, account) => {
             if (account.RoleName == 'patient') {
                 res.render('accounts/edit', { accountPatient: mongooseToObject(account) })
             } else {
-
-                res.redirect(`/profile/${account.Id}/edit`)
+                res.redirect(`/accounts/${account.Id}/edit/admin`)
             }
         })
-        // .then((account) =>
-        //     res.render('accounts/edit', { account: mongooseToObject(account) })
-        // )
-        // .catch(next);
     }
     editAdmin(req, res, next) {
-         accounts_doctor.findOne({ Id: req.params.Id })
-            .then((editprofile) => {
-                res.render('editprofileAdmin', {
-                    profileDoctor: mongooseToObject(editprofile),
-                });
-            })
-            .catch(next)
-    }
+        accounts_doctor.findOne({ Id: req.params.Id })
+           .then((editprofile) => {
+               res.render('editprofileAdmin', {
+                   profileDoctor: mongooseToObject(editprofile),
+               });
+           })
+           .catch(next)
+   }
     //[PUT] accounts/:id
     async update(req, res, next) {
         if (req.body.RoleName == 'doctor') {
