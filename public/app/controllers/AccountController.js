@@ -119,21 +119,7 @@ class AccountController {
                 res.json({ mesage: 'hanh dong khong hop le' })
         }
     }
-    async editAdmin(req, res, next) {
-        if (req.session.authUser.Permission === '0') {
-            await accounts_patient.findOne({ Id: req.params.Id })
-                .then(editProfile => {
-                    res.render('editprofile', { profilePatient: mongooseToObject(editProfile) });
-                })
-                .catch(next)
-        } else {
-            await accounts_doctor.findOne({ Id: req.params.Id })
-                .then(editProfile => {
-                    res.render('editprofileAdmin', { profileDoctor: mongooseToObject(editProfile) });
-                })
-                .catch(next)
-        }
-    }
+
 }
 
 module.exports = new AccountController();
