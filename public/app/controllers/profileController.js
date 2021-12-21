@@ -34,8 +34,6 @@ class profileController {
                 })
                 .catch(next)
         }
-
-
     }
     saveprofile(req, res, next) {
         if (req.session.authUser.Permission === '0') {
