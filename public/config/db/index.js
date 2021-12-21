@@ -18,6 +18,4 @@ async function connect() {
         console.log('Loi!!!!');
     }
 }
-
-
 module.exports = { connect };

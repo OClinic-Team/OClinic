@@ -1,19 +1,10 @@
 <div class="container h1 mt-3">
-  <h1>Chỉnh Sửa Thông Tin</h1>
+  <h1>Chỉnh Sửa Thông Tin Bác Sĩ</h1>
   <hr>
 </div>
 <div class="container bootstrap snippets bootdey">
   <div class="row">
     <!-- left column -->
-    {{#if profilePatient}}
-    <div class="col-md-3">
-      <div class="text-center">
-        <img src="{{profilePatient.ImageURL}}" class="avatar img-circle img-thumbnail" alt="avatar">
-        {{!-- <h6>Upload a different photo...</h6>
-        <input type="file" class="form-control"> --}}
-      </div>
-    </div>
-    {{else}}
     <div class="col-md-3">
       <div class="text-center">
         <img src="{{profileDoctor.ImageURL}}" class="avatar img-circle img-thumbnail" alt="avatar">
@@ -21,69 +12,20 @@
         <input type="file" class="form-control"> --}}
       </div>
     </div>
-    {{/if}}
-
     <!-- edit form column -->
     <div class="col-md-9 personal-info">
       <form method="POST" class="form-horizontal" action="/profile/editInformation">
-        {{#if profilePatient}}
+        {{#if profileDoctor}}
         <div>
-          <input type="hidden" name="ImageURL" class="form-control" value="{{profilePatient.ImageURL}}" />
-          <input type="hidden" name="Id" class="form-control" value="{{profilePatient.Id}}">
-          <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80"
-            rows="1" value="{{profilePatient.Email}}">
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label"><b>Họ và Tên</b></label>
-          <div>
-            <input class="form-control" name="Name" type="text" placeholder="{{profilePatient.Name}}">
-          </div>
-        </div>
-        <div class='form-group'>
-          <label class="col-lg-3 control-label"><b>Ngày Sinh</b></label>
-          <div>
-            <input class="form-control" name="Age" type="text" placeholder="{{profilePatient.Age}}">
-          </div>
-        </div>
-        <div class="form-group mb-2">
-          <label class="col-lg-3 control-label"><b>Giới Tính</b></label>
-          <div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="Sex" id="gridRadios1" value="Nam" checked>
-              <label class="form-check-label" for="inlineRadio1">Nam</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="Nữ">
-              <label class="form-check-label" for="inlineRadio2">Nữ</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="Sex" id="gridRadios2" value="Khác">
-              <label class="form-check-label" for="inlineRadio3">Khác</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label"><b>Số Điện Thoại</b></label>
-          <div>
-            <input class="form-control" name="Phone" type="text" placeholder="{{profilePatient.Phone}}">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label"><b>Địa Chỉ</b></label>
-          <div>
-            <input class="form-control" name="Address" type="text" placeholder="{{profilePatient.Address}}">
-          </div>
-        </div>
-        {{else}}
-        <div>
-          <input type="hidden" name="Id" class="form-control" value="{{profileDoctor.Id}}">
+          {{!-- <input type="hidden" name="ImageURL" class="form-control" value={{this.ImageURL}}> --}}
+          <input type="hidden" name="Id" class="form-control" value={{profileDoctor.Id}}>
           <input type="hidden" class="col-lg-3 control-label" name="Email" style="margin-top: 5px;" id="" cols="80"
             rows="1" value="{{profileDoctor.Email}}">
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label"><b>Link Ảnh Đại Diện</b></label>
           <div>
-            <input class="form-control" name="ImageURL" type="text" placeholder="{{profileDoctor.ImageURL}}">
+            <input class="form-control" name="ImageURL" type="text" placeholder="{{profileDoctor.Name}}">
           </div>
         </div>
         <div class="form-group">
