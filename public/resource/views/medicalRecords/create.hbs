@@ -24,7 +24,7 @@
                         hidden>
                 </div>
                 <div class="d-flex mt-1">
-                    <h5 style=" width:220px ; " for="bithDay"><b>Ngày Sinh: </b></h5>
+                    <h5 style=" width:220px ; " for="bithDay"><b>Tuổi: </b></h5>
                     <h5 class="text-primary">{{this.Age}}</h5>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="age" value="{{this.Age}}"
                         hidden>
@@ -75,9 +75,6 @@
                         aria-expanded="false" name="date" value="{{this.date}}" style="300px">
                         {{this.namePatient}} {{this.date}}>
                     </button>
-                    {{!-- <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
-                        aria-expanded="false" name="date" value="{{this.date}}">
-                    </button> --}}
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 530px;">
                         <div class="form-check ml-3">
                             <label class="form-check-label" for="defaultCheck1">
@@ -103,7 +100,7 @@
                 </div>
             </div>
             {{else}}
-           <h3>Bệnh nhân chưa có hồ sơ bệnh án</h3>
+           <h3 style="text-align: center;">Bệnh nhân chưa có hồ sơ bệnh án</h3>
             {{/each}}
         </div>
     </div>

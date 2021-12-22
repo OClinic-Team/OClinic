@@ -94,6 +94,11 @@
         </div>
         {{/if}}
         <button type="submit" style="width:100px" class="btn btn-success">Lưu</button>
+        {{#if profileDoctor}}
+              <a class="btn btn-success" style="width:100px" href="/profile/{{profileDoctor.Id}} ">
+                Quay Lại
+              </a>
+        {{/if}}
       </form>
     </div>
   </div>

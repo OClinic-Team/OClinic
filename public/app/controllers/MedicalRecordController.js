@@ -77,7 +77,6 @@ class MedicalRecordController {
                 date: time,
             });
             await medicalRecord.save();
-
             res.redirect('/me/stored/medical-record')
         }
         //[GET] /MedicalRecord/:id
