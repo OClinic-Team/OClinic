@@ -172,7 +172,7 @@ io.sockets.on('connection', (socket) => {
     socket.on('join-room', (roomId, userId) => {
         console.log(userId)
         socket.join(roomId);
-        socket.to.broadcast(roomId).emit('user-connected', userId);
+        socket.broadcast.to(roomId).emit('user-connected', userId);
 
         socket.on('message', (message, userId) => {
             io.to(roomId).emit('createMessage', message, userId);
