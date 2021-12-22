@@ -165,14 +165,14 @@ app.get('/createVideocall', (req, res) => {
 
 app.get('/videocall/:room', auth, (req, res) => {
     console.log(req.params.id)
-    res.render('room', { layout: false, roomId: req.params.room });
+    res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id });
 });
 
 io.sockets.on('connection', (socket) => {
     socket.on('join-room', (roomId, userId) => {
         console.log(userId)
         socket.join(roomId);
-        socket.broadcast.to(roomId).emit('user-connected', userId);
+        socket.to(roomId).broadcast.emit('user-connected', userId);
         socket.on('message', (message, userId) => {
             io.to(roomId).emit('createMessage', message, userId);
         });
