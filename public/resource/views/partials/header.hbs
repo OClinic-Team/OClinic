@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg  py-4" id="navbar">
+<nav class="navbar navbar-expand-lg py-3 " id="navbar">
 		<div class="container">
-			<a class="navbar-brand" href='/'>
+			<a class="navbar-brand" style="font-size:2rem;" href='/'>
 				Online<span>Clinic.</span>
 			</a>			
 			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,8 +27,7 @@
 						<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
 							<img src={{lcAuthUser.ImageURL}} alt='' class='user-avatar' />
 							{{lcAuthUser.Name}}
-						</a>
-								
+						</a>	
 								<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
 									{{#if_eq lcAuthUser.Permission '0'}}
 									<a class='dropdown-item' href='/profile/{{lcAuthUser.Id}}'>Trang Cá Nhân</a> <div class='dropdown-divider'></div>
@@ -57,9 +56,6 @@
 												{{/if_eq}}
 									{{/if_eq}}
 								</div>
-								
-								
-								
 					{{else}}
 				<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
 				<img src='https://image.lag.vn/upload/news/21/08/16/236599595_1425452954506376_3110056547255537769_n_WOLP.jpg' alt='' class='user-avatar' />
