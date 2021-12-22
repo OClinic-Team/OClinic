@@ -3,7 +3,7 @@ const adminEmail = 'onlineclinicvn@gmail.com';
 const adminPassword = '123456789abcD@'
 const { v4: uuidv4 } = require('uuid');
 
-const sendMailAppointment = (emailDoctor, emailPatient, link) => {
+const sendMailAppointment = (email, link) => {
     var transporter = nodeMailer.createTransport({
         // config mail server
         host: 'smtp.gmail.com',
@@ -17,7 +17,7 @@ const sendMailAppointment = (emailDoctor, emailPatient, link) => {
 
     var mailOptions = {
         from: adminEmail,
-        to: `${emailDoctor} , ${emailPatient}`,
+        to: `${email}`,
         subject: 'INFORMATION ABOUT APPOINTMENT',
         text: link
     };
@@ -40,7 +40,7 @@ const sendMailMedicalRecord = (emailPatient, contentMail) => {
         subject: 'INFORMATION ABOUT MEDICAL RECORD',
         text: contentMail
     };
-    return transporter.sendMail(mailOptions)
+    transporter.sendMail(mailOptions)
 }
 module.exports = {
     sendMailAppointment: sendMailAppointment,

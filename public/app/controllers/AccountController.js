@@ -8,39 +8,89 @@ const accounts_patient = require('../models/AccountPatient');
 const accounts_doctor = require('../models/AccountDoctor');
 class AccountController {
     //[GET] /account/:slug
+    // accounts2(req, res, next) {
+    //     // var tmp = new Date();
+    //     // tmp.setDate(tmp.getDate() + 1);
+    //     // console.log(tmp)
+    //     accounts_doctor.aggregate([{
+    //                 $lookup: {
+    //                     from: "addschedules",
+    //                     as: "Doctor_Schedule",
+    //                     localField: "Id",
+    //                     foreignField: "doctorId",
+    //                     // pipeline: [{
+    //                     //         $match: {
+    //                     //             'timeWorking': { $gte: tmp },
+    //                     //         },
+    //                     //     },
+    //                     //     {
+    //                     //         $sort: {
+    //                     //             'timeWorking': 1
+    //                     //         },
+    //                     //     },
+    //                     // ],
+
+    //                 },
+    //             },
+    //             {
+    //                 $unwind: { path: "$Id", preserveNullAndEmptyArrays: true },
+    //             },
+    //             {
+    //                 $match: {
+    //                     'Doctor_Schedule.timeWorking': { $gt: new Date() },
+    //                 },
+    //             },
+    //             {
+    //                 $sort: {
+    //                     'timeWorking': 1
+    //                 },
+    //             },
+    //         ])
+    //         .then((accounts => {
+    //             console.log(accounts[0])
+    //             res.render('accounts', { accounts })
+    //         }))
+    //         .catch((error) => {
+    //             next();
+    //             console.log(error)
+    //         })
+    // }
     accounts(req, res, next) {
             var tmp = new Date();
             tmp.setDate(tmp.getDate() - 1);
+            console.log(tmp)
             accounts_doctor.aggregate([{
-                        $lookup: {
-                            from: "addschedules",
-                            localField: "doctorId",
-                            foreignField: "Id",
-                            pipeline: [{
-                                    $match: {
-                                        'timeWorking': { $gte: tmp }
-                                    },
+                    $lookup: {
+                        from: "addschedules",
+                        let: { user_id: "$Id" },
+                        pipeline: [{
+                                $match: {
+                                    $expr: {
+                                        $and: [{
+                                                $eq: ['$doctorId', "$$user_id"]
+                                            },
+                                            { $gte: ["$timeWorking", tmp] }
 
-                                },
-                                {
-                                    $sort: {
-                                        'timeWorking': 1
+                                        ]
                                     },
+                                    'timeWorking': { $gte: tmp },
+                                }
+                            },
+                            {
+                                $sort: {
+                                    'timeWorking': 1
                                 },
-                            ],
-                            as: "Doctor_Schedule"
-                        },
+                            },
+                        ],
+                        as: "Doctor_Schedule",
                     },
-                    {
-                        $unwind: { path: "$Id", preserveNullAndEmptyArrays: false },
-                    },
-                ])
+                }, ])
                 .then((accounts => {
-
-                    console.log(accounts)
+                    console.log(accounts[2])
                     res.render('accounts', { accounts })
                 }))
                 .catch((error) => {
+                    next();
                     console.log(error)
                 })
         }
@@ -68,18 +118,25 @@ class AccountController {
             .then(() => res.redirect('/accounts'))
             .catch((error) => {});
     }
-    edit(req, res, next) {
+    edit(req, res) {
         Account.findById(req.params.id, (err, account) => {
             if (account.RoleName == 'patient') {
                 res.render('accounts/edit', { accountPatient: mongooseToObject(account) })
             } else {
-
-                res.redirect(`/profile/${account.Id}/edit`)
+                res.redirect(`/accounts/${account.Id}/edit/admin`)
             }
         })
     }
-
-    //[PUT] accounts/:id
+    editAdmin(req, res, next) {
+            accounts_doctor.findOne({ Id: req.params.Id })
+                .then((editprofile) => {
+                    res.render('editprofileAdmin', {
+                        profileDoctor: mongooseToObject(editprofile),
+                    });
+                })
+                .catch(next)
+        }
+        //[PUT] accounts/:id
     async update(req, res, next) {
             if (req.body.RoleName == 'doctor') {
                 const data = await Account_Patient.findOneAndDelete({ Id: req.body.Id });

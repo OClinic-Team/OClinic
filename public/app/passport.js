@@ -16,8 +16,10 @@ passport.deserializeUser((user, done) => {
 passport.use(new GoogleStrategy({
         clientID: '1044360178044-m8dmf3ou6d0vdb9cuaiodudfn67ce5f5.apps.googleusercontent.com',
         clientSecret: 'LKtBVKiujlp-Tbar-UawBdxK',
-        callbackURL: "http://localhost:3000/google/callback"
+        callbackURL: "https://oonlineclinic.herokuapp.com/google/callback"
     },
+    //https://oonlineclinic.herokuapp.com/google/callback
+    //http://localhost:3000/google/callback
     function(accessToken, refreshToken, profile, done) {
         return done(null, profile);
 

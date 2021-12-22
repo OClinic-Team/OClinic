@@ -34,8 +34,6 @@ class profileController {
                 })
                 .catch(next)
         }
-
-
     }
     saveprofile(req, res, next) {
         console.log(`Id: ${req.body.Id}`)

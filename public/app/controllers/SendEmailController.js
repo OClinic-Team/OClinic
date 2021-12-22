@@ -31,11 +31,15 @@ class SendEmailController {
                     time: req.query.time,
                 })
                 data.save();
-                // config content email
-                const content = `Chào ${dataPatientName} \nBạn có 1 cuộc hẹn với Bác Sĩ ${dataDoctorName} vào lúc ${time}\n Click vào đây để tham gia phòng khám: ${link}`
+                // config content email for Patient
+                const contentForPatient = `Chào ${dataPatientName} \nBạn có 1 cuộc hẹn với Bác Sĩ ${dataDoctorName} vào lúc ${time}\n Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
+                    // config content email for Doctor
+                const contentForDoctor = `Chào ${dataDoctorName} \nBạn có 1 cuộc hẹn với Bệnh Nhân ${dataPatientName} vào lúc ${time}\n Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
                     // Lấy data truyền lên từ form phía client
-                    // Thực hiện gửi email
-                await mailer.sendMailAppointment(dataEmailDoctor, dataEmailPatient, content);
+                    // Thực hiện gửi email cho bệnh nhân
+                await mailer.sendMailAppointment(dataEmailPatient, contentForPatient);
+                // Thực hiện gửi email cho Bác Sĩ
+                await mailer.sendMailAppointment(dataEmailDoctor, contentForDoctor);
                 // sau khi đặt lịch thành công thì khung giờ được đặt lịch hẹn của bác sĩ sẽ bị ẩn
                 const inforTime = time.split(' ');
                 switch (inforTime[0]) {
