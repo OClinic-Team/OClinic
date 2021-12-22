@@ -102,13 +102,12 @@ navigator.mediaDevices
 	})
 	.then((stream) => {
 		myVideoStream = stream
-		addVideoStream(myVideo, stream)
+		addVideoStream(myVideoStream, stream)
 
 	
 		socket.on('user-connected',function(userId) {
 			connectToNewUser(userId, stream)
-			//alert('some one have connect',userId);
-			alert(`Có người tham gia phòng họp`);
+			alert('Có người tham gia phòng họp',userId);
 		})
 
 		peer.on('call', (call) => {
@@ -174,9 +173,9 @@ const connectToNewUser = (userId,stream) => {
 }
 
 const addVideoStream = (video, stream) => {
-	video.srcObject = stream
+	video.srcObject = stream;
 	video.addEventListener('loadedmetadata', () => {
-		video.play()
+		video.play();
 	})
 	videoGrid.append(video)
 }

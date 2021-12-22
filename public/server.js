@@ -173,7 +173,6 @@ io.sockets.on('connection', (socket) => {
         console.log(userId)
         socket.join(roomId);
         socket.broadcast.to(roomId).emit('user-connected', userId);
-
         socket.on('message', (message, userId) => {
             io.to(roomId).emit('createMessage', message, userId);
         });
