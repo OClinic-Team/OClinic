@@ -15,7 +15,7 @@ class AddScheduleController {
                 if (req.body.time1 == null && req.body.time2 == null && req.body.time3 == null && req.body.time4 == null && req.body.time5 == null && req.body.time6 == null && req.body.time7 == null && req.body.time8 == null && req.body.time9 == null && req.body.time10 == null && req.body.time11 == null && req.body.time12 == null) {
                     res.send('<script> window.location.href = "/addschedule/create"; alert("Bạn chưa chọn ngày làm việc !!!");</script>');
                 } else {
-                    addschedule.findOne({ date: req.body.date }, (err, data) => {
+                    addschedule.findOne({ Id: req.body.doctorId, date: req.body.date }, (err, data) => {
                         if (data) {
                             res.send('<script> window.location.href = "/addschedule/create"; alert("Bạn đã đăng ký ngày này rồi !!!");</script>');
                         } else {

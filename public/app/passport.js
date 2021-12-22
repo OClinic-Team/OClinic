@@ -18,8 +18,8 @@ passport.use(new GoogleStrategy({
         clientSecret: 'LKtBVKiujlp-Tbar-UawBdxK',
         callbackURL: "https://oonlineclinic.herokuapp.com/google/callback"
     },
-    //https://oonlineclinic.herokuapp.com/google/callback
-    //http://localhost:3000/google/callback
+    //https://oonlineclinic.herokuapp.com/google/callback //return callback to website
+    //http://localhost:3000/google/callback // return callback to localhost
     function(accessToken, refreshToken, profile, done) {
         return done(null, profile);
 
