@@ -58,8 +58,10 @@ class MedicalRecordController {
         }
         //[POST] /medicalRecord/storeMedicalRecord (button save)
     async storeMedicalRecord(req, res, next) {
-            let x = new Date()
-            const time = x.getHours().toString() + ':' + x.getMinutes().toString() + ' ' + x.getDate().toString() + '/' + x.getMonth().toString() + '/' + x.getFullYear().toString()
+            let x = new Date();
+            let month = x.getMonth() + 1; // biến month = x.getMonth()+1 để lấy tháng đúng với thời gian thực
+            // tạo chuỗi chứa thời gian hiện tại
+            const time = x.getHours().toString() + ':' + x.getMinutes().toString() + ' ' + x.getDate().toString() + '/' + month + '/' + x.getFullYear().toString();
             const medicalRecord = new MedicalRecord({
                 Doctor_Id: req.session.authUser.Id,
                 Patient_Id: req.body.patientId,

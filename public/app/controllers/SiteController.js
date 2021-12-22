@@ -3,6 +3,9 @@ const { mutileMongooseToObject } = require('../../util/mongoose');
 class SiteController {
     //Trang Chu
     home(req, res, next) {
+        var tmp = new Date();
+        tmp.setDate(tmp.getDate() - 1);
+        console.log(tmp)
         Account.find({})
             .then((accounts) => {
                 res.render('home', {
