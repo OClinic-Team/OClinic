@@ -170,8 +170,7 @@ app.get('/videocall/:room', auth, (req, res) => {
 
 io.sockets.on('connection', (socket) => {
     socket.on('join-room', (roomId, userId) => {
-        console.log(userId)
-        socket.join(roomId);
+        socket.join(roomId, userId);
         socket.to(roomId).broadcast.emit('user-connected', userId);
         socket.on('message', (message, userId) => {
             io.to(roomId).emit('createMessage', message, userId);

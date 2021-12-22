@@ -24,36 +24,4 @@ passport.use(new GoogleStrategy({
         return done(null, profile);
 
     }
-
-    // (profile, done) => {
-    //     if (profile.id) {
-    //         Account.findOne({ Id: profile.id })
-    //             .then((existingUser) => {
-    //                 if (existingUser) {
-    //                     done(null, existingUser);
-    //                 } else {
-    //                     new Account({
-    //                             Id: profile.id,
-    //                             Email: profile.emails[0].value,
-    //                             RoleName: 'patient',
-    //                         })
-    //                         .save()
-    //                         .then(user => done(null, user));
-    //                 }
-    //             })
-    //     }
-    // function(accessToken, refreshToken, profile, done) {
-    //     //user the profile info to check if the user is registered in db
-    //     // User.findOrCreate({ exampleId: profile.id }, function(done, user) {
-    //     // console.log(accessToken);
-    //     return done(null, profile);
-
-    // }
-
-
-));
-
-
-// app.get('/api/current_user', (req, res) => {
-//     res.send(req.user);
-// });
+))
