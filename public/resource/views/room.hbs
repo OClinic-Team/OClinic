@@ -128,12 +128,12 @@ navigator.mediaDevices
 			}
 		})
 		// sent message in box chat
-		socket.on('createMessage', (message,userId,userName) => {
+		socket.on('createMessage', (message,userId) => {
 			$('ul').append(`<li >
 								<span class="messageHeader">
 									<span>
 										From 
-										<span class="messageSender">${userName}</span> 
+										<span class="messageSender">SomeOne</span> 
 										to 
 										<span class="messageReceiver">Everyone:</span>
 									</span>

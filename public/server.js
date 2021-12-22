@@ -129,7 +129,6 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
                 console.log(req.session.authUser.Permission);
             }
         }
-        // alert(` CHÀO MỪNG ${req.session.authUser.Name} `)
         req.session.isAuthenticated = true;
         req.session.token = req.user.token;
         var redirectionUrl = req.session.redirectUrl || '/';
@@ -165,14 +164,15 @@ app.get('/createVideocall', (req, res) => {
 });
 
 app.get('/videocall/:room', auth, (req, res) => {
-    res.render('room', { layout: false, roomId: req.params.room, userName: req.session.authUser.Name });
+    console.log(req.params.id)
+    res.render('room', { layout: false, roomId: req.params.room });
 });
 
 io.sockets.on('connection', (socket) => {
     socket.on('join-room', (roomId, userId) => {
-
+        console.log(userId)
         socket.join(roomId);
-        socket.to(roomId).broadcast.emit('user-connected', userId);
+        socket.to.broadcast(roomId).emit('user-connected', userId);
 
         socket.on('message', (message, userId) => {
             io.to(roomId).emit('createMessage', message, userId);
