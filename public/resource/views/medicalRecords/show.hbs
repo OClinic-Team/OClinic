@@ -121,21 +121,23 @@
             </tbody>
           </table>
       </div>
-    <form method="POST" action="/sendEmail/sendMedicalRecords">
-          <input type="text" name="medicalRecord_id" value="{{medicalrecords._id}}"   hidden>
-          <input type="text" name="namePatient" value="{{medicalrecords.namePatient}}"   hidden>
-          <input type="text" name="patientId" value="{{medicalrecords.Patient_Id}}"   hidden>
-          <input type="text" name="address"  value="{{medicalrecords.address}}" hidden>
-          <input type="text" name="phone" value="{{medicalrecords.phone}}"  hidden>
-          <input type="text" name="symptom"  value="{{medicalrecords.symptom}}" hidden>
-          <input type="text" name="diagnose" value="{{medicalrecords.diagnose}}"   hidden>
-          <input type="text" name="prescription" value="{{medicalrecords.prescription}}"    hidden>
-          <input type="text" name="date"  value="{{medicalrecords.date}}"  hidden>
-          <input type="text" name="nameDoctor" value="{{medicalrecords.nameDoctor}}"  hidden>
-          <div>
-             <button class="btn btn-success" type="submit">Gửi Hồ Sơ Bệnh Án Cho Bệnh Nhân</button>
-          </div>
-    </form>
+    {{#if_eq lcAuthUser.Permission '1'}}  
+        <form method="POST" action="/sendEmail/sendMedicalRecords">
+              <input type="text" name="medicalRecord_id" value="{{medicalrecords._id}}"   hidden>
+              <input type="text" name="namePatient" value="{{medicalrecords.namePatient}}"   hidden>
+              <input type="text" name="patientId" value="{{medicalrecords.Patient_Id}}"   hidden>
+              <input type="text" name="address"  value="{{medicalrecords.address}}" hidden>
+              <input type="text" name="phone" value="{{medicalrecords.phone}}"  hidden>
+              <input type="text" name="symptom"  value="{{medicalrecords.symptom}}" hidden>
+              <input type="text" name="diagnose" value="{{medicalrecords.diagnose}}"   hidden>
+              <input type="text" name="prescription" value="{{medicalrecords.prescription}}"    hidden>
+              <input type="text" name="date"  value="{{medicalrecords.date}}"  hidden>
+              <input type="text" name="nameDoctor" value="{{medicalrecords.nameDoctor}}"  hidden>
+              <div>
+                <button class="btn btn-success" type="submit">Gửi Hồ Sơ Bệnh Án Cho Bệnh Nhân</button>
+              </div>
+        </form>
+    {{/if_eq}}
   </div>
 
 </div>
