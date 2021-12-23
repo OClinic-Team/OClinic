@@ -99,7 +99,7 @@ class SendEmailController {
             const content = `Chào ${req.body.namePatient}!!!\n\nHỒ SƠ BỆNH ÁN\nBác Sĩ Khám: ${req.body.nameDoctor}\n` +
                 `Tên Bệnh Nhân: ${req.body.namePatient}\nNgày Khám: ${req.body.date}\nSố điện thoại: ${req.body.phone}\n` +
                 `Địa chỉ: ${req.body.address}\nTriệu Chứng: ${req.body.symptom}\nChuẩn Đoán: ${req.body.diagnose}\n` +
-                `Đơn thuốc: ${req.body.prescription}`
+                `Đơn thuốc: ${req.body.prescription}\nLời Khuyên: ${req.body.note}`
             try {
                 // Lấy data truyền lên từ form phía client
                 // Thực hiện gửi email

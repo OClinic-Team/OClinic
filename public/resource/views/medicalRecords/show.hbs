@@ -111,6 +111,10 @@
                       <td scope="row" name="prescription"><h6>{{medicalrecords.prescription}}</h6></dt>
                     </tr>
                     <tr>
+                      <th scope="row"><h5>Lời Khuyên:</h5></th>
+                      <td scope="row" name="note"><h6>{{medicalrecords.note}}</h6></dt>
+                    </tr>
+                    <tr>
                       <th scope="row"><h5>Ngày Tạo:</h5></th>
                       <td scope="row" name="date"><h6>{{medicalrecords.date}}</h6></td>
                     </tr>
@@ -133,6 +137,7 @@
               <input type="text" name="prescription" value="{{medicalrecords.prescription}}"    hidden>
               <input type="text" name="date"  value="{{medicalrecords.date}}"  hidden>
               <input type="text" name="nameDoctor" value="{{medicalrecords.nameDoctor}}"  hidden>
+               <input type="text" name="note" value="{{medicalrecords.note}}"  hidden>
               <div>
                 <button class="btn btn-success" type="submit">Gửi Hồ Sơ Bệnh Án Cho Bệnh Nhân</button>
               </div>
