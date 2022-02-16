@@ -7,54 +7,6 @@ const { mongooseToObject } = require('../../util/mongoose');
 const accounts_patient = require('../models/AccountPatient');
 const accounts_doctor = require('../models/AccountDoctor');
 class AccountController {
-    //[GET] /account/:slug
-    // accounts2(req, res, next) {
-    //     // var tmp = new Date();
-    //     // tmp.setDate(tmp.getDate() + 1);
-    //     // console.log(tmp)
-    //     accounts_doctor.aggregate([{
-    //                 $lookup: {
-    //                     from: "addschedules",
-    //                     as: "Doctor_Schedule",
-    //                     localField: "Id",
-    //                     foreignField: "doctorId",
-    //                     // pipeline: [{
-    //                     //         $match: {
-    //                     //             'timeWorking': { $gte: tmp },
-    //                     //         },
-    //                     //     },
-    //                     //     {
-    //                     //         $sort: {
-    //                     //             'timeWorking': 1
-    //                     //         },
-    //                     //     },
-    //                     // ],
-
-    //                 },
-    //             },
-    //             {
-    //                 $unwind: { path: "$Id", preserveNullAndEmptyArrays: true },
-    //             },
-    //             {
-    //                 $match: {
-    //                     'Doctor_Schedule.timeWorking': { $gt: new Date() },
-    //                 },
-    //             },
-    //             {
-    //                 $sort: {
-    //                     'timeWorking': 1
-    //                 },
-    //             },
-    //         ])
-    //         .then((accounts => {
-    //             console.log(accounts[0])
-    //             res.render('accounts', { accounts })
-    //         }))
-    //         .catch((error) => {
-    //             next();
-    //             console.log(error)
-    //         })
-    // }
     accounts(req, res, next) {
             var tmp = new Date();
             tmp.setDate(tmp.getDate() - 1);
@@ -86,7 +38,6 @@ class AccountController {
                     },
                 }, ])
                 .then((accounts => {
-                    console.log(accounts[2])
                     res.render('accounts', { accounts })
                 }))
                 .catch((error) => {

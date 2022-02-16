@@ -62,6 +62,22 @@ class MedicalRecordController {
             let month = x.getMonth() + 1; // biến month = x.getMonth()+1 để lấy tháng đúng với thời gian thực
             // tạo chuỗi chứa thời gian hiện tại
             const time = x.getHours().toString() + ':' + x.getMinutes().toString() + ' ' + x.getDate().toString() + '/' + month + '/' + x.getFullYear().toString();
+            const dataPres = req.body.prescription;
+            //config data prescription
+            let i = 0;
+            let prescription = "";
+            while (i < dataPres.length) {
+                if (dataPres[i]) {
+                    prescription += 'thuốc:' + dataPres[i] + '\tsố lượng:' + dataPres[i + 1] + '\tđơn vị:' + dataPres[i + 2] + '\n';
+                    i += 3;
+                } else {
+                    i += 3;
+                }
+            }
+            if (!prescription) {
+                prescription = "Bác sĩ không tạo đơn thuốc";
+            }
+            console.log(prescription)
             const medicalRecord = new MedicalRecord({
                 Doctor_Id: req.session.authUser.Id,
                 Patient_Id: req.body.patientId,
@@ -72,7 +88,7 @@ class MedicalRecordController {
                 symptom: req.body.symptom,
                 phone: req.body.phone,
                 diagnose: req.body.diagnose,
-                prescription: req.body.prescription,
+                prescription: prescription,
                 note: req.body.note,
                 date: time,
             });

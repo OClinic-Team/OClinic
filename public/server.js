@@ -131,7 +131,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
         }
         req.session.isAuthenticated = true;
         req.session.token = req.user.token;
-        var redirectionUrl = req.session.redirectUrl || '/';
+        const redirectionUrl = req.session.redirectUrl || '/';
         res.redirect(redirectionUrl);
     });
 
@@ -158,25 +158,39 @@ app.set('view engine', 'ejs');
 app.get('/videocall', (req, res) => {
     res.redirect(`/videocall/${uuidv4()}`);
 });
-app.get('/createVideocall', (req, res) => {
-    res.send(`http:/localhost:3000/videocall/${uuidv4()}`);
 
-});
 
 app.get('/videocall/:room', auth, (req, res) => {
-    console.log(req.params.id)
-    res.render('room', { layout: false, roomId: req.params.room, userId: req.session.authUser.Id });
+    res.render('room', { layout: false, roomId: req.params.room, userName: req.session.authUser.Name });
 });
 
+const { addUser, getUser, deleteUser, getUsers } = require('../public/app/middlewares/user')
 io.sockets.on('connection', (socket) => {
+    socket.on('setSocketId', function(data) {
+        //config data user join in room{id,name,room}
+        const userName = data.name;
+        const userId = socket.id;
+        const userRoom = data.room;
+        //add user 
+        addUser(userId, userName, userRoom);
+        //query user
+        getUsers(userRoom);
+    });
     socket.on('join-room', (roomId, userId) => {
+        console.log(userId)
+        console.log(socket.id)
         socket.join(roomId);
-        socket.to(roomId).broadcast.emit('user-connected', userId);
-        socket.on('message', (message, userId) => {
-            io.to(roomId).emit('createMessage', message, userId);
+        const user = getUser(socket.id)
+        socket.to(roomId).broadcast.emit('user-connected', userId, user);
+        console.log(userId)
+        socket.on('message', (message) => {
+            const user = getUser(socket.id);
+            console.log(user.id)
+            io.to(roomId).emit('createMessage', message, user.name);
         });
         socket.on('disconnect', () => {
             socket.to(roomId).broadcast.emit('user-disconnected', userId);
+            deleteUser(socket.id)
         });
     });
 });
@@ -185,9 +199,7 @@ io.sockets.on('connection', (socket) => {
 
 
 
-// app.get('/datlichhen', (req, res) => {
-//     res.render('datlichhen');
-// });
+
 app.get('/logout', function(req, res) {
     req.session = null;
     req.logout();

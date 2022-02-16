@@ -3,7 +3,7 @@ const adminEmail = 'onlineclinicvn@gmail.com';
 const adminPassword = '123456789abcD@'
 const { v4: uuidv4 } = require('uuid');
 
-const sendMailAppointment = (email, link) => {
+const sendMailAppointment = (email, content) => {
     var transporter = nodeMailer.createTransport({
         // config mail server
         host: 'smtp.gmail.com',
@@ -19,7 +19,7 @@ const sendMailAppointment = (email, link) => {
         from: adminEmail,
         to: `${email}`,
         subject: 'INFORMATION ABOUT APPOINTMENT',
-        text: link
+        text: content
     };
     return transporter.sendMail(mailOptions)
 }

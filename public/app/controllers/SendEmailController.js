@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 class SendEmailController {
     async sendMailAppointment(req, res) {
         // link room clinic
-        const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
+        const link = `https://oonlineclinic.herokuapp.com/videocall/` + uuidv4();
         const dataDoctorId = req.query.doctorId;
         const dataPatientId = req.session.authUser.Id;
         const dataEmailDoctor = req.query.doctorEmail
@@ -20,6 +20,11 @@ class SendEmailController {
 
         } else {
             try {
+
+                const dateTime = req.query.time;
+                const dateAppointment = dateTime.split(" ");
+                // console.log(dateAppointment[1]);
+                const dataDateAppointment = new Date(dateAppointment[1])
                 const data = new Appointment({
                     doctorId: dataDoctorId,
                     patientId: dataPatientId,
@@ -29,12 +34,15 @@ class SendEmailController {
                     patientEmail: dataEmailPatient,
                     roomLink: link,
                     time: req.query.time,
+                    dateOfAppointment: dataDateAppointment,
                 })
                 data.save();
                 // config content email for Patient
-                const contentForPatient = `Chào ${dataPatientName} \nBạn có 1 cuộc hẹn với Bác Sĩ ${dataDoctorName} vào lúc ${time}\n Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
+                const contentForPatient = `Chào ${dataPatientName} \nBạn có 1 cuộc hẹn với Bác Sĩ ${dataDoctorName} vào lúc ${time}\n` +
+                    +`Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
                     // config content email for Doctor
-                const contentForDoctor = `Chào ${dataDoctorName} \nBạn có 1 cuộc hẹn với Bệnh Nhân ${dataPatientName} vào lúc ${time}\n Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
+                const contentForDoctor = `Chào ${dataDoctorName} \nBạn có 1 cuộc hẹn với Bệnh Nhân ${dataPatientName} vào lúc ${time}\n` +
+                    +`Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
                     // Lấy data truyền lên từ form phía client
                     // Thực hiện gửi email cho bệnh nhân
                 await mailer.sendMailAppointment(dataEmailPatient, contentForPatient);

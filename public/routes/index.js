@@ -25,7 +25,6 @@ function route(app) {
 
     app.use('/addschedule', addscheduleRoute); //done
     app.use('/sendEmail', siteRouter) //done
-
     app.use('/', siteRouter);
 }
 

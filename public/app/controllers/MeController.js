@@ -10,10 +10,13 @@ const { medicalrecords } = require('./MedicalRecordController');
 class MeController {
 
 
-    //[GET] /datlichhen
+
     async xemLichHen(req, res, next) {
+        // biet tmp là để chứa ngay dùng cho filter tìm kiếm (lọc các ngày đã qua và chỉ lấy lịch làm việc từ hôm nay trở đi) 
+        var tmp = new Date();
+        tmp.setDate(tmp.getDate() - 1);
         if (req.session.authUser.Permission == '1') {
-            const accountQuery = await Appointment.find({ doctorId: req.session.authUser.Id })
+            const accountQuery = await Appointment.find({ doctorId: req.session.authUser.Id, dateOfAppointment: { $gte: tmp } }).sort({ dateOfAppointment: -1 })
             if (req.query.hasOwnProperty('_sort')) {
                 accountQuery = accountQuery.sort({
                     [req.query.column]: req.query.type
@@ -26,7 +29,7 @@ class MeController {
 
         } else {
             if (req.session.authUser.Permission == '0') {
-                const accountQuery = await Appointment.find({ patientId: req.session.authUser.Id })
+                const accountQuery = await Appointment.find({ patientId: req.session.authUser.Id, dateOfAppointment: { $gte: tmp } }).sort({ dateOfAppointment: -1 })
                 if (req.query.hasOwnProperty('_sort')) {
                     accountQuery = accountQuery.sort({
                         [req.query.column]: req.query.type
@@ -36,7 +39,7 @@ class MeController {
                     patient: mutileMongooseToObject(accountQuery)
                 })
             } else {
-                const accountQuery = await Appointment.find({})
+                const accountQuery = await Appointment.find({}).sort({ dateOfAppointment: -1 })
                 if (req.query.hasOwnProperty('_sort')) {
                     accountQuery = accountQuery.sort({
                         [req.query.column]: req.query.type
@@ -66,27 +69,6 @@ class MeController {
     //     }
     // }
 
-    //[GET] stored/account
-
-
-    // storedAccounts(req, res, next) {
-    //     let accountQuery = Account.find({});
-    //     if (req.query.hasOwnProperty('_sort')) {
-    //         accountQuery = accountQuery.sort({
-    //             name: 'asc'
-    //         })
-    //     }
-
-
-    //     Promise.all([accountQuery, Account.countDocumentsDeleted()])
-    //         .then(([accounts, deleteCount]) =>
-    //             res.render('me/stored-accounts', {
-    //                 deleteCount,
-    //                 accounts: mutileMongooseToObject(accounts),
-    //             })
-    //         )
-    //         .catch(next);
-    // }
     //[GET] /me/stored/accounts
     storedAccounts(req, res, next) {
             Account.find({}, function(err, data) {
@@ -154,14 +136,6 @@ class MeController {
                     .catch(next);
             }
         }
-        // Promise.all([MedicalRecord.find({}), MedicalRecord.countDocumentsDeleted()])
-        //     .then(([medicalrecords, deleteCount]) =>
-        //         res.render('me/medical-record', {
-        //             deleteCount,
-        //             medicalrecords: mutileMongooseToObject(medicalrecords),
-        //         })
-        //     )
-        //     .catch(next);
     }
 }
 

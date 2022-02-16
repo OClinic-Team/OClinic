@@ -53,8 +53,25 @@
                 </div>
                 <div class=" mt-1">
                     <h5 style=" width:220px ; " for="prescription"><b>Đơn Thuốc: </b></h5>
-                    <textarea name="prescription" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
-                        rows="4"></textarea>
+                    {{!-- <textarea name="prescription" class="form-control" id="exampleFormControlTextarea1" name="diagnose"
+                        rows="4"></textarea> --}}
+                        <table id="myTable">
+                                <tr>
+                                    <td style="text-align:center ;"><h6>Tên thuốc</h6></td>
+                                    <td style="text-align:center ;"><h6>Số lượng</h6></td>
+                                    <td style="text-align:center ;"><h6>Đơn vị</h6></td>        
+                                </tr>
+                                <tr>
+                                    
+                                    <td><input type="text" style="width:400px" name="prescription" /></td>
+                                    <td><input type="text" style="width:100px" name="prescription" /></td>
+                                    <td><input type="text" style="width:300px" name="prescription" /></td>
+                                    <td> <button class="btn btn-success m-2"  id="btn-addRow" type="button" onclick="myFunction1()">+</button></td>
+                                </tr>
+                               
+                                </table>
+                                <br>
+                                
                 </div>
                 <div class=" mt-1">
                     <h5 style=" width:220px ; " for="note"><b>Lời Khuyên: </b></h5>
@@ -62,7 +79,7 @@
                         rows="4"></textarea>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Tạo hồ sơ</button>
+            <button type="submit" class="btn btn-primary mt-3 ">Tạo hồ sơ</button>
         </form>
     </div>
     <div class="mt-5">
@@ -70,10 +87,10 @@
         <div class="dropdown">
             {{#each this.medical_record}}
             <div class="mt-3">
-                <div class="btn-group" style="width: 400px;">
+                <div class="btn-group" style="width: 300px;">
                     <button class="btn btn-success dropdown-toggle  text-left" type="button" data-toggle="dropdown"
-                        aria-expanded="false" name="date" value="{{this.date}}" style="300px">
-                        {{this.namePatient}} {{this.date}}>
+                        aria-expanded="false" name="date" value="{{this.date}}" style="width:300px">
+                        {{this.namePatient}} {{this.date}}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 530px;">
                         <div class="form-check ml-3">
@@ -84,7 +101,7 @@
                         <div class="form-check ml-3">
                             <label class="form-check-label" for="defaultCheck1">
                                 <h5><b>Chuẩn Đoán:</b> {{this.diagnose}}</h5>
-                            </label>
+                           </label>
                         </div>
                         <div class="form-check ml-3">
                             <label class="form-check-label" for="defaultCheck1">
@@ -106,3 +123,20 @@
     </div>
     {{/each}}
 </div>
+<script>
+  function myFunction1() {
+  var table = document.getElementById("myTable");
+  var i= table.lastRow
+  var row = table.insertRow(i);
+  var cell1 = row.insertCell(i);
+  var cell2 = row.insertCell(i+1);
+  var cell3 = row.insertCell(i+2);
+  var data ="<input type='text' name='prescription'/>";
+   var data1 ="<input type='text' style='width:400px' name='prescription' />"
+   var data2 ="<input type='text' style='width:100px' name='prescription' />"
+   var data3 ="<input type='text' style='width:300px' name='prescription' />"
+  cell1.innerHTML = data3;
+  cell2.innerHTML = data2;
+  cell3.innerHTML = data1;
+}
+</script>
