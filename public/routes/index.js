@@ -7,7 +7,7 @@ const medicalrecordRouter = require('./medicalRecord');
 const addscheduleRoute = require('./addschedule');
 const profileRouter = require('./profile');
 const searchRouter = require('./search');
-
+const paymentRouter = require('./payment');
 
 function route(app) {
     // app.use('/medicalRecord', createsMedicalRecord);
@@ -23,6 +23,7 @@ function route(app) {
 
     app.use('/accounts', accountsRouter); //done
 
+    app.use('/payment', paymentRouter); //redirect to router payment
     app.use('/addschedule', addscheduleRoute); //done
     app.use('/sendEmail', siteRouter) //done
     app.use('/', siteRouter);

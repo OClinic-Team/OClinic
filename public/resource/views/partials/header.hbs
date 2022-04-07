@@ -21,6 +21,22 @@
 						<li class='nav-item'>
 							<a class='nav-link' href='/accounts/'>Bác Sĩ</a>
 						</li>
+							<li class='nav-item'>
+							{{!-- <a class='nav-link' href='/payment/checkout'>Thanh Toán</a> --}}
+							<form action="payment" method="POST"> 
+							<script
+								src="//checkout.stripe.com/v2/checkout.js"
+								class="stripe-button"
+								data-key="pk_test_51Kj29fGNuWrPJtOZvRKSQ6VQFvIN9mVCQFTmy2r9dAGpliX8yKvJefmepRQ1L4jtxQhutqikJOwbTdrrJ7UJBAej009Y9NTGPz"
+								data-email="{{lcAuthUser.Email}}"
+								data-amount="200000" 
+								data-currency="vnd" 
+								data-name={{lcAuthUser.Name}} 
+								data-description="Thanh toán cho Online Clinic" 
+								data-locale="auto"> 
+								</script> 
+							</form> 
+						</li>
 					{{/if_eq}}
 			   	<li class='nav-item dropdown'>
 					{{#if lcIsAuthenticated}}
