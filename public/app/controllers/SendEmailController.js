@@ -14,16 +14,18 @@ class SendEmailController {
         const dataDoctorName = req.query.doctorName;
         const dataPatientName = req.session.authUser.Name;
         const time = req.query.time;
+        console.log('query' + req.query);
         // check user choose time for appointment or not
         if (req.query.time == null) {
             res.send('<script> window.location.href = "/accounts"; alert("Bạn chưa chọn thời gian cho cuộc hẹn");</script>');
 
         } else {
+            console.log('query' + req.query.time);
             try {
 
                 const dateTime = req.query.time;
                 const dateAppointment = dateTime.split(" ");
-                // console.log(dateAppointment[1]);
+                console.log(dateAppointment[1]);
                 const dataDateAppointment = new Date(dateAppointment[1])
                 const data = new Appointment({
                     doctorId: dataDoctorId,
@@ -33,10 +35,13 @@ class SendEmailController {
                     doctorEmail: dataEmailDoctor,
                     patientEmail: dataEmailPatient,
                     roomLink: link,
+                    paid: false,
                     time: req.query.time,
                     dateOfAppointment: dataDateAppointment,
                 })
+                console.log(data);
                 data.save();
+
                 // config content email for Patient
                 const contentForPatient = `Chào ${dataPatientName} \nBạn có 1 cuộc hẹn với Bác Sĩ ${dataDoctorName} vào lúc ${time}\n` +
                     +`Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`

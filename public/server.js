@@ -161,7 +161,8 @@ app.get('/videocall', (req, res) => {
 
 
 app.get('/videocall/:room', auth, (req, res) => {
-    res.render('room', { layout: false, roomId: req.params.room, userName: req.session.authUser.Name });
+    res.redirect(`/payment/${req.params.room }`);
+    // res.render('room', { layout: false, roomId: req.params.room, userName: req.session.authUser.Name });
 });
 
 const { addUser, getUser, deleteUser, getUsers } = require('../public/app/middlewares/user')
@@ -248,9 +249,10 @@ app.engine(
                 };
                 const icon = icons[sortType];
                 const type = types[sortType];
-                return `<a href="?_sort&column=${field}&type=${type}">
-                    <span class="${icon}"></span>
-                </a>`;
+                return ` < a href = "?_sort&column=${field}&type=${type}" >
+        <
+        span class = "${icon}" > < /span> <
+        /a>`;
             },
             sections: function(name, options) {
                 if (!this._sections) this._sections = {};

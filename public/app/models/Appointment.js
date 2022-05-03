@@ -10,6 +10,7 @@ const appointment = new Schema({
     doctorEmail: { type: String, required: true },
     patientEmail: { type: String, required: true },
     roomLink: { type: String, required: true },
+    paid: { type: Boolean, default: false },
     dateOfAppointment: { type: String },
     time: { type: String },
 }, {
