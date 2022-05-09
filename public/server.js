@@ -197,7 +197,12 @@ io.sockets.on('connection', (socket) => {
 });
 
 
+app.use('/froalacss',express.static(__dirname+'/node_modules/froala-editor/css/froala_editor.pkgd.min.css'));
+app.use('/froalajs',express.static(__dirname+'/node_modules/froala-editor/js/froala_editor.pkgd.min.js'));
 
+app.get('/blog',(req,res)=>{
+ res.render('editor');
+});
 
 
 
