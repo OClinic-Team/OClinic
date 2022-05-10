@@ -8,6 +8,7 @@ const addscheduleRoute = require('./addschedule');
 const profileRouter = require('./profile');
 const searchRouter = require('./search');
 const paymentRouter = require('./payment');
+const blog = require('./blog')
 
 function route(app) {
     // app.use('/medicalRecord', createsMedicalRecord);
@@ -27,6 +28,7 @@ function route(app) {
     app.use('/addschedule', addscheduleRoute); //done
     app.use('/sendEmail', siteRouter) //done
     app.use('/', siteRouter);
+    app.use('/blog', blog)
 }
 
 module.exports = route;
