@@ -25,8 +25,41 @@ const auth = require('./app/middlewares/auth');
 const stream = require('./app/room_module/stream');
 
 //webRTC
-const server = require('http').Server(app);
-const io = require('socket.io').listen(server);
+let server = require('http').Server(app);
+let io = require('socket.io')(server);
+io.of( '/stream' ).on('connection', (socket) => {
+    socket.on('subscribe', (data) => {
+        //subscribe/join a room
+        socket.join(data.room);
+        socket.join(data.socketId);
+
+        //Inform other members in the room of new user's arrival
+        if (socket.adapter.rooms[data.room].length > 1) {
+            socket.to(data.room).emit('new user', { socketId: data.socketId });
+        }
+    });
+
+
+    socket.on('newUserStart', (data) => {
+        socket.to(data.to).emit('newUserStart', { sender: data.sender });
+    });
+
+
+    socket.on('sdp', (data) => {
+        socket.to(data.to).emit('sdp', { description: data.description, sender: data.sender });
+    });
+
+
+    socket.on('ice candidates', (data) => {
+        socket.to(data.to).emit('ice candidates', { candidate: data.candidate, sender: data.sender });
+    });
+
+
+    socket.on('chat', (data) => {
+        socket.to(data.room).emit('chat', { sender: data.sender, msg: data.msg });
+    });
+});
+
 const { ExpressPeerServer } = require('peer');
 const peerServer = ExpressPeerServer(server, {
     debug: true,
@@ -147,7 +180,10 @@ app.use(async function(req, res, next) {
     res.locals.lcAuthUser = req.session.authUser;
     next();
 });
-
+//new video call
+app.get('/new-call-video', (req, res) => {
+    res.render('newRoom', { layout: false });
+});
 
 //video call
 const { v4: uuidv4 } = require('uuid');
