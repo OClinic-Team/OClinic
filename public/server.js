@@ -27,7 +27,7 @@ const stream = require('./app/room_module/stream');
 //webRTC
 let server = require('http').Server(app);
 let io = require('socket.io')(server);
-io.of( '/stream' ).on('connection', (socket) => {
+io.of('/stream').on('connection', (socket) => {
     socket.on('subscribe', (data) => {
         //subscribe/join a room
         socket.join(data.room);
@@ -73,11 +73,11 @@ app.use(cookieSession({
     keys: ['key1', 'key2']
 }))
 
-const queryPatientAcc = async function(userId) {
+const queryPatientAcc = async function (userId) {
     const data = await account_patient.findOne({ Id: userId })
     return data;
 };
-const queryAdminAcc = async function(req, res, userId) {
+const queryAdminAcc = async function (req, res, userId) {
     const data = await account_admin.findOne({ Id: userId })
     if (data === null) {
         const newAdminAcc = new account_admin({
@@ -92,7 +92,7 @@ const queryAdminAcc = async function(req, res, userId) {
     }
     return data;
 }
-const queryDoctorAcc = async function(req, res, userId) {
+const queryDoctorAcc = async function (req, res, userId) {
     const data = await account_doctor.findOne({ Id: userId })
     if (data === null) {
         const newDoctorAcc = new account_doctor({
@@ -115,7 +115,7 @@ const queryDoctorAcc = async function(req, res, userId) {
 
 };
 
-const queryAcc = async function(req, res) {
+const queryAcc = async function (req, res) {
     const data = await accounts.findOne({ Id: req.user.id })
     if (data === null) {
         const newAcc = new accounts({
@@ -148,7 +148,7 @@ app.use(passport.session());
 app.use(SortMiddleware);
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/fail' }),
-    async function(req, res, next) {
+    async function (req, res, next) {
         const account = await queryAcc(req, res);
         console.log(account);
         if (account.RoleName === 'patient') {
@@ -172,7 +172,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
 
 
 //set data cho res.locals su dung cho .hdb
-app.use(async function(req, res, next) {
+app.use(async function (req, res, next) {
     if (req.session.isAuthenticated === null) {
         req.session.isAuthenticated = false;
     }
@@ -197,13 +197,13 @@ app.get('/videocall', (req, res) => {
 
 
 app.get('/videocall/:room', auth, (req, res) => {
-    res.redirect(`/payment/${req.params.room }`);
+    res.redirect(`/payment/${req.params.room}`);
     // res.render('room', { layout: false, roomId: req.params.room, userName: req.session.authUser.Name });
 });
 
 const { addUser, getUser, deleteUser, getUsers } = require('../public/app/middlewares/user')
 io.sockets.on('connection', (socket) => {
-    socket.on('setSocketId', function(data) {
+    socket.on('setSocketId', function (data) {
         //config data user join in room{id,name,room}
         const userName = data.name;
         const userId = socket.id;
@@ -237,7 +237,7 @@ io.sockets.on('connection', (socket) => {
 
 
 
-app.get('/logout', function(req, res) {
+app.get('/logout', function (req, res) {
     req.session = null;
     req.logout();
     res.redirect('/');
@@ -250,7 +250,6 @@ db.connect();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-
 //sử dụng middleware để sử lý form.
 app.use(
     express.urlencoded({
@@ -262,13 +261,15 @@ app.use(cookieParser())
 
 app.use(morgan('combined'));
 
+//blog
+
 //template engine
 app.engine(
     'hbs',
     handlebars({
         extname: '.hbs',
         helpers: {
-            sum: function(a, b) {
+            sum: function (a, b) {
                 return a + b;
             },
             sortable: (field, sort) => {
@@ -290,12 +291,12 @@ app.engine(
         span class = "${icon}" > < /span> <
         /a>`;
             },
-            sections: function(name, options) {
+            sections: function (name, options) {
                 if (!this._sections) this._sections = {};
                 this._sections[name] = options.fn(this);
                 return null;
             },
-            'if_eq': function(a, b, opts) {
+            'if_eq': function (a, b, opts) {
                 if (a == b) {
                     return opts.fn(this);
                 } else {
