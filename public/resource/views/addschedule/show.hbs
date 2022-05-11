@@ -14,7 +14,7 @@
     </thead>
    <tbody>
         <tr>
-            <td scope="row">7h00-8h00</td>
+            <td scope="row">7h00-7h30</td>
             {{#each schedule}}
             {{#if_eq this.time1 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -28,7 +28,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">8h00-9h00</td>
+            <td scope="row">7h30-8h00</td>
             {{#each schedule}}
             {{#if_eq this.time2 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -43,7 +43,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">9h00-10h00</td>
+            <td scope="row">8h00-8h30</td>
             {{#each schedule}}
             {{#if_eq this.time3 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -57,7 +57,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">10h00-11h00</td>
+            <td scope="row">8h30-9h00</td>
             {{#each schedule}}
             {{#if_eq this.time4 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -71,7 +71,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">13h00-14h00</td>
+            <td scope="row">9h00-9h30</td>
             {{#each schedule}}
             {{#if_eq this.time5 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -85,7 +85,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">14h00-15h00</td>
+            <td scope="row">9h30-10h00</td>
             {{#each schedule}}
             {{#if_eq this.time6 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -99,7 +99,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">15h00-16h00</td>
+            <td scope="row">10h00-10h30</td>
             {{#each schedule}}
             {{#if_eq this.time7 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -113,7 +113,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">16h00-17h00</td>
+            <td scope="row">10h30-11h00</td>
             {{#each schedule}}
             {{#if_eq this.time8 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -127,7 +127,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">18h00-19h00</td>
+            <td scope="row">13h00-13h30</td>
             {{#each schedule}}
             {{#if_eq this.time9 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -141,7 +141,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">19h00-20h00</td>
+            <td scope="row">13h30-14h00</td>
             {{#each schedule}}
             {{#if_eq this.time10 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -155,7 +155,7 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">20h00-21h00</td>
+            <td scope="row">14h00-14h30</td>
             {{#each schedule}}
             {{#if_eq this.time11 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
@@ -169,12 +169,180 @@
             {{/each}}
         </tr>
         <tr>
-            <td scope="row">21h00-22h00</td>
+            <td scope="row">14h30-15h00</td>
             {{#each schedule}}
             {{#if_eq this.time12 true}}
             <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
             {{else}}
             {{#if_eq this.time12 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">15h00-15h30</td>
+            {{#each schedule}}
+            {{#if_eq this.time13 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time13 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">15h30-16h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time14 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time14 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">16h00-16h30</td>
+            {{#each schedule}}
+            {{#if_eq this.time15 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time15 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">16h30-17h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time16 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time16 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">18h00-18h30</td>
+            {{#each schedule}}
+            {{#if_eq this.time17 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time17 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">18h30-19h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time18 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time18 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">19h00-19h30</td>
+            {{#each schedule}}
+            {{#if_eq this.time19 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time19 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">19h30-20h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time20 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time20 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">20h00-20h30</td>
+            {{#each schedule}}
+            {{#if_eq this.time21 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time21 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">20h30-21h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time22 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time22 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">21h00-21h30</td>
+            {{#each schedule}}
+            {{#if_eq this.time23 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time23 false}}
+            <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
+            {{else}}
+            <th scope="row"></th>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
+        </tr>
+        <tr>
+            <td scope="row">21h30-22h00</td>
+            {{#each schedule}}
+            {{#if_eq this.time24 true}}
+            <th scope="row" style="background-color: rgb(255, 178, 143)"></th>
+            {{else}}
+            {{#if_eq this.time24 false}}
             <th scope="row" style="background-color: rgb(114, 253, 172)"></th>
             {{else}}
             <th scope="row"></th>

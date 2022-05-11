@@ -12,7 +12,7 @@ class AddScheduleController {
             if (req.body.date === '') {
                 res.send('<script> window.location.href = "/addschedule/create"; alert("Bạn chưa chọn ngày làm việc !!!");</script>');
             } else {
-                if (req.body.time1 == null && req.body.time2 == null && req.body.time3 == null && req.body.time4 == null && req.body.time5 == null && req.body.time6 == null && req.body.time7 == null && req.body.time8 == null && req.body.time9 == null && req.body.time10 == null && req.body.time11 == null && req.body.time12 == null) {
+                if (req.body.time1 == null && req.body.time2 == null && req.body.time3 == null && req.body.time4 == null && req.body.time5 == null && req.body.time6 == null && req.body.time7 == null && req.body.time8 == null && req.body.time9 == null && req.body.time10 == null && req.body.time11 == null && req.body.time12 == null && req.body.time13 == null && req.body.time14 == null && req.body.time15 == null && req.body.time16 == null && req.body.time17 == null && req.body.time18 == null && req.body.time19 == null && req.body.time20 == null && req.body.time21 == null && req.body.time22 == null && req.body.time23 == null && req.body.time24 == null) {
                     res.send('<script> window.location.href = "/addschedule/create"; alert("Bạn chưa chọn ngày làm việc !!!");</script>');
                 } else {
                     addschedule.findOne({ Id: req.body.doctorId, date: req.body.date }, (err, data) => {
@@ -40,6 +40,18 @@ class AddScheduleController {
                                 time10: req.body.time10,
                                 time11: req.body.time11,
                                 time12: req.body.time12,
+                                time13: req.body.time13,
+                                time14: req.body.time14,
+                                time15: req.body.time15,
+                                time16: req.body.time16,
+                                time17: req.body.time17,
+                                time18: req.body.time18,
+                                time19: req.body.time19,
+                                time20: req.body.time20,
+                                time21: req.body.time21,
+                                time22: req.body.time22,
+                                time23: req.body.time23,
+                                time24: req.body.time24,
                                 timeWorking: timeTmp,
                             })
                             scheduleTmp.save();

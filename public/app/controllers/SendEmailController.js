@@ -56,41 +56,77 @@ class SendEmailController {
                 // sau khi đặt lịch thành công thì khung giờ được đặt lịch hẹn của bác sĩ sẽ bị ẩn
                 const inforTime = time.split(' ');
                 switch (inforTime[0]) {
-                    case '7h00-8h00':
+                    case '7h00-7h30':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time1: false });
                         break;
-                    case '8h00-9h00':
+                    case '7h30-8h00':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time2: false });
                         break;
-                    case '9h00-10h00':
+                    case '8h00-8h30':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time3: false });
                         break;
-                    case '10h00-11h00':
+                    case '8h30-9h00':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time4: false });
                         break;
-                    case '13h00-14h00':
+                    case '9h00-9h30':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time5: false });
                         break;
-                    case '14h00-15h00':
+                    case '9h30-10h00':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time6: false });
                         break;
-                    case '15h00-16h00':
+                    case '10h00-10h30':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time7: false });
                         break;
-                    case '16h00-17h00':
+                    case '10h30-11h00':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time8: false });
                         break;
-                    case '18h00-19h00':
+                    case '13h00-13h30':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time9: false });
                         break;
-                    case '19h00-20h00':
+                    case '13h30-14h00':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time10: false });
                         break;
-                    case '20h00-21h00':
+                    case '14h00-14h30':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time11: false });
                         break;
-                    case '21h00-22h00':
+                    case '14h30-15h00':
                         await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time12: false });
+                        break;
+                    case '15h00-15h30':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time13: false });
+                        break;
+                    case '15h30-16h00':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time14: false });
+                        break;
+                    case '16h00-16h30':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time15: false });
+                        break;
+                    case '16h30-17h00':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time16: false });
+                        break;
+                    case '18h00-18h30':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time17: false });
+                        break;
+                    case '18h30-19h00':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time18: false });
+                        break;
+                    case '19h00-19h30':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time19: false });
+                        break;
+                    case '19h30-20h00':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time20: false });
+                        break;
+                    case '20h00-20h30':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time21: false });
+                        break;
+                    case '20h30-21h00':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time22: false });
+                        break;
+                    case '21h00-21h30':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time23: false });
+                        break;
+                    case '21h30-22h00':
+                        await Schedule.findOneAndUpdate({ doctorId: dataDoctorId, date: inforTime[1] }, { time24: false });
                         break;
                 }
                 // sau khi đặt lịch sẽ sửa data schedule thành false-- > đã có người đặt lịch true-- > lịch đăng kí và chưa có người đặt null-- > không đăng kí
