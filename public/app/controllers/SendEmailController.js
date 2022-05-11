@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 class SendEmailController {
     async sendMailAppointment(req, res) {
         // link room clinic
-        const link = `https://oonlineclinic.herokuapp.com/videocall/` + uuidv4();
+        const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
         const dataDoctorId = req.query.doctorId;
         const dataPatientId = req.session.authUser.Id;
         const dataEmailDoctor = req.query.doctorEmail
@@ -14,19 +14,12 @@ class SendEmailController {
         const dataDoctorName = req.query.doctorName;
         const dataPatientName = req.session.authUser.Name;
         const time = req.query.time;
-        console.log('query' + req.query);
         // check user choose time for appointment or not
         if (req.query.time == null) {
             res.send('<script> window.location.href = "/accounts"; alert("Bạn chưa chọn thời gian cho cuộc hẹn");</script>');
 
         } else {
-            console.log('query' + req.query.time);
             try {
-
-                const dateTime = req.query.time;
-                const dateAppointment = dateTime.split(" ");
-                console.log(dateAppointment[1]);
-                const dataDateAppointment = new Date(dateAppointment[1])
                 const data = new Appointment({
                     doctorId: dataDoctorId,
                     patientId: dataPatientId,
@@ -35,21 +28,15 @@ class SendEmailController {
                     doctorEmail: dataEmailDoctor,
                     patientEmail: dataEmailPatient,
                     roomLink: link,
-                    paid: false,
                     time: req.query.time,
-                    dateOfAppointment: dataDateAppointment,
                 })
-                console.log(data);
                 data.save();
-
                 // config content email for Patient
-                const contentForPatient = `Chào ${dataPatientName} \nBạn có 1 cuộc hẹn với Bác Sĩ ${dataDoctorName} vào lúc ${time}\n` +
-                    +`Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
-                    // config content email for Doctor
-                const contentForDoctor = `Chào ${dataDoctorName} \nBạn có 1 cuộc hẹn với Bệnh Nhân ${dataPatientName} vào lúc ${time}\n` +
-                    +`Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
-                    // Lấy data truyền lên từ form phía client
-                    // Thực hiện gửi email cho bệnh nhân
+                const contentForPatient = `Chào ${dataPatientName} \nBạn có 1 cuộc hẹn với Bác Sĩ ${dataDoctorName} vào lúc ${time}\n Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
+                // config content email for Doctor
+                const contentForDoctor = `Chào ${dataDoctorName} \nBạn có 1 cuộc hẹn với Bệnh Nhân ${dataPatientName} vào lúc ${time}\n Click vào đường dẫn dưới đây để tham gia phòng khám:\n${link}`
+                // Lấy data truyền lên từ form phía client
+                // Thực hiện gửi email cho bệnh nhân
                 await mailer.sendMailAppointment(dataEmailPatient, contentForPatient);
                 // Thực hiện gửi email cho Bác Sĩ
                 await mailer.sendMailAppointment(dataEmailDoctor, contentForDoctor);
@@ -148,12 +135,12 @@ class SendEmailController {
             const content = `Chào ${req.body.namePatient}!!!\n\nHỒ SƠ BỆNH ÁN\nBác Sĩ Khám: ${req.body.nameDoctor}\n` +
                 `Tên Bệnh Nhân: ${req.body.namePatient}\nNgày Khám: ${req.body.date}\nSố điện thoại: ${req.body.phone}\n` +
                 `Địa chỉ: ${req.body.address}\nTriệu Chứng: ${req.body.symptom}\nChuẩn Đoán: ${req.body.diagnose}\n` +
-                `Đơn thuốc: ${req.body.prescription}\nLời Khuyên: ${req.body.note}`
+                `Đơn thuốc: ${req.body.prescription}`
             try {
                 // Lấy data truyền lên từ form phía client
                 // Thực hiện gửi email
                 mailer.sendMailMedicalRecord(emailPatient, content)
-                    // Quá trình gửi email thành công thì gửi về thông báo success cho người dùng
+                // Quá trình gửi email thành công thì gửi về thông báo success cho người dùng
                 res.send(`<script> window.location.href = "/medicalRecord/${req.body.medicalRecord_id}"; alert("Bạn đã gửi hồ sơ bệnh án cho bệnh nhân !!!");</script>`);
             } catch (error) {
                 // Nếu có lỗi thì log ra để kiểm tra và cũng gửi về client
