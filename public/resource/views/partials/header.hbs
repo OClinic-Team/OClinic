@@ -7,14 +7,12 @@
 			aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="fa fa-bars"></span>
 		</button>
-
 		<div class="collapse navbar-collapse text-center" id="navbarsExample09">
 			<ul class="navbar-nav ml-auto">
 				{{#if_eq lcAuthUser.Permission '1'}}
 				<li class="nav-item active">
 					<a class="nav-link" href='/'>Trang Chủ <span class="sr-only">(current)</span></a>
 				</li>
-
 				{{else}}
 				<li class="nav-item active">
 					<a class="nav-link" href='/'>Trang Chủ <span class="sr-only">(current)</span></a>
@@ -23,21 +21,18 @@
 					<a class='nav-link' href='/accounts/'>Bác Sĩ</a>
 				</li>
 				<li class='nav-item'>
-					{{!-- <a class='nav-link' href='/payment/checkout'>Thanh Toán</a> --}}
-					<form action="payment" method="POST">
-						<script src="//checkout.stripe.com/v2/checkout.js" class="stripe-button"
-							data-key="pk_test_51Kj29fGNuWrPJtOZvRKSQ6VQFvIN9mVCQFTmy2r9dAGpliX8yKvJefmepRQ1L4jtxQhutqikJOwbTdrrJ7UJBAej009Y9NTGPz"
-							data-email="{{lcAuthUser.Email}}" data-amount="200000" data-currency="vnd"
-							data-name={{lcAuthUser.Name}} data-description="Thanh toán cho Online Clinic"
-							data-locale="auto">
-							</script>
-					</form>
+					<a class='nav-link' href='/new-call-video'>Video</a>
 				</li>
-				<li class='nav-item'>
-					<a class='nav-link' href='/new-call-video'>Test Video</a>
-				</li>
-				<li class='nav-item'>
-					<a class='nav-link' href='/blog/create'>Test Blog</a>
+				<li class='nav-item dropdown'>
+					<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button'
+						data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+						Blog
+					</a>
+					<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+						<a class='dropdown-item' href='/blog'>Blog</a>
+						<hr>
+						<a class='dropdown-item' href='/blog/create'>Create Blog</a>
+					</div>
 				</li>
 				{{/if_eq}}
 				<li class='nav-item dropdown'>
@@ -51,16 +46,8 @@
 						{{#if_eq lcAuthUser.Permission '0'}}
 						<a class='dropdown-item' href='/profile/{{lcAuthUser.Id}}'>Trang Cá Nhân</a>
 						<div class='dropdown-divider'></div>
-						{{!-- <a class='dropdown-item' href='/accounts/create'>Thêm Bác Sĩ</a>
-						<div class='dropdown-divider'></div> --}}
 						<a class='dropdown-item' href='/me/appointment'>Quản Lý Cuộc Hẹn</a>
 						<div class='dropdown-divider'></div>
-						{{!-- <a class='dropdown-item' href='/me/stored/accounts'>Quản Lý Tài Khoản</a>
-						<div class='dropdown-divider'></div> --}}
-						{{!-- <a class='dropdown-item' href='/addschedule/create'>Đăng Ký Lịch</a>
-						<div class='dropdown-divider'></div> --}}
-						{{!-- <a class='dropdown-item' href='/medicalRecord/create'>Tạo Hồ sơ bệnh án</a>
-						<div class='dropdown-divider'></div> --}}
 						<a class='dropdown-item' href='/me/stored/medical-record'>Quản Lý Hồ Sơ Bệnh Án</a>
 						<div class='dropdown-divider'></div>
 						<a class='dropdown-item' href='/logout'>Logout</a>
@@ -79,8 +66,6 @@
 						<a class='dropdown-item' href='/logout'>Logout</a>
 						{{else}}
 						{{#if_eq lcAuthUser.Permission '2'}}
-						{{!-- <a class='dropdown-item' href='/accounts/create'>Thêm Bác Sĩ</a>
-						<div class='dropdown-divider'></div> --}}
 						<a class='dropdown-item' href='/me/stored/accounts'>Quản Lý Tài Khoản</a>
 						<div class='dropdown-divider'></div>
 						<a class='dropdown-item' href='/me/stored/medical-record'>Quản Lý Hồ Sơ Bệnh Án</a>

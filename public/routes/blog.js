@@ -8,6 +8,12 @@ router.post('/store', blog.store);
 
 router.get('/create', blog.createBlog);
 
+router.get('/edit/:id', blog.edit);
+
+router.put('/update/:id', blog.update);
+
 router.get('/:id', blog.show);
+
+router.get('/', blog.blogs);
 
 module.exports = router;

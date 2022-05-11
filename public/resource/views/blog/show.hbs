@@ -1,21 +1,50 @@
-<div class='mt-4 container'>
-  <div class='title'>
-    <h1>Thông Tin Bác Sĩ</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
+    type="text/css" />
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class='mt-4 container'>
+    <h2>{{blog.title}}</h2>
+    {{!-- <div>{{blog.content }}></div> --}}
+
+    {{!--
+    <div dangerouslySetInnerHTML={{__html: blog.content}} />
+    --}}
+
+    {{!-- <p>{{blog.content}}</p> --}}
+
+    <textarea id="example">
+
+      &nbsp; <p>{{blog.content}}</p>
+    </textarea>
+
+    <p>
+      &nbsp; <a id="btn-destroy" href="#" class="btn r-btn highlight text-small">Destroy</a>
+      &nbsp; <a id="btn-init" href="#" class="btn r-btn text-small">Init</a>
+    </p>
   </div>
-  <div class='row'>
-    <div class='col-lg-3'>
-      <img
-        class='card-img-top'
-        src='{{account.image}}'
-        alt='{{account.name}}'
-      />
-    </div>
-    <div class='col-lg-9'>
-      <h2>Họ và tên: {{account.name}}</h2>
-      <h2>Lịch Làm Việc: {{account.time}}</h2>
-      <h2>Chuyên khoa: {{account.name}}</h2>
-      <h2>Chứng Nhận: {{account.chungNhan}}</h2>
-      <h3>Mô tả: {{account.description}}</h3>
-    </div>
-  </div>
-</div>
+  <script>
+    $(document).ready(function () {
+      $("#example").froalaEditor("edit.off");
+    });
+    var editor = new FroalaEditor('#example', {
+      toolbarInline: true,
+      charCounterCount: false,
+    });
+    
+
+
+  </script>
+</body>
+
+</html>
