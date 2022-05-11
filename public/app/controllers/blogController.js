@@ -3,11 +3,7 @@ const { mongooseToObject } = require('../../util/mongoose');
 const Blog = require('../models/blog')
 class blogController {
     createBlog(req, res, next) {
-        // Account.find({}, function(err, data) {
-        // if (err) res.send(err)
         res.render('blog/create')
-
-        // })
     }
 
     blogs(req, res, next) {

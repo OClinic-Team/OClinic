@@ -23,27 +23,20 @@
 
     {{!-- <p>{{blog.content}}</p> --}}
 
-    <textarea id="example">
-
+    <textarea id="example" readonly>
       &nbsp; <p>{{blog.content}}</p>
     </textarea>
 
-    <p>
-      &nbsp; <a id="btn-destroy" href="#" class="btn r-btn highlight text-small">Destroy</a>
-      &nbsp; <a id="btn-init" href="#" class="btn r-btn text-small">Init</a>
-    </p>
   </div>
   <script>
-    $(document).ready(function () {
-      $("#example").froalaEditor("edit.off");
-    });
     var editor = new FroalaEditor('#example', {
       toolbarInline: true,
       charCounterCount: false,
-    });
+    }, function () {
+      editor.edit.off();
+    })
+
     
-
-
   </script>
 </body>
 
