@@ -13,6 +13,7 @@ const appointment = new Schema({
     paid: { type: Boolean, default: false },
     dateOfAppointment: { type: String },
     time: { type: String },
+    slug: { type: String, slug: 'roomLink', unique: true },
 }, {
     timestamps: true
 });
