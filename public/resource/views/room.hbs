@@ -1,135 +1,142 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<title>Room Video Call</title>
+<link rel="stylesheet" href="/css/app.css">
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+	integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+	crossorigin="anonymous"></script>
+<script>
+	const ROOM_ID = `{{roomId}}`;
+	const userName = `{{userName}}`;
+</script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <title>Room Video Call</title>
-	<link rel="stylesheet" href="/css/app.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>      
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script>
-		const ROOM_ID = `{{roomId}}`;
-		const userName = `{{userName}}`;
-	</script>
-	
-  <div class="main">
-    <div class="mainLeft">
-      <div class="mainVideos">
-        <div id="videoGrid"> </div>
-      </div>
-      <div class="mainControls">
-        <div class="mainControlsBlock">
-          <div onclick="muteUnmute()" class="mainControlsButton mainMuteButton">
-            <i class="fas fa-microphone"></i>
-            <span>Tắt micro</span>
-          </div>
-          <div onclick="playStop()" class="mainControlsButton mainVideoButton">
-            <i class="fas fa-video"></i>
-            <span>Dừng video</span>
-          </div>
-        </div>
-		<div>
-		
+<div class="main">
+	<div class="mainLeft">
+		<div class="mainVideos">
+			<div id="videoGrid"> </div>
 		</div>
-        <div class="mainControlsBlock">
-          <div class="mainControlsButton">
-            <i class="fas fa-id-card"></i>
-            <span id="medical-record-btn">Tạo hồ sơ bệnh án</span>
-         </div>
-         {{!-- <div class="mainControlsButton">
-            <i class="fas fa-user-friends"></i>
-            <span>Participants</span>
-         </div>
-         <div class="mainControlsButton">
-            <i class="fas fa-comment-alt"></i>
-            <span>Chat </span>
-         </div>
-         <div class="mainControlsButton">
-          <i class="fas fa-record-vinyl"></i>         
-          <span>Record</span>
-       </div> --}}
-        </div>
+		<div class="mainControls">
+			<div class="mainControlsBlock">
+				<div onclick="muteUnmute()" class="mainControlsButton mainMuteButton">
+					<i class="fas fa-microphone"></i>
+					<span>Tắt micro</span>
+				</div>
+				<div onclick="playStop()" class="mainControlsButton mainVideoButton">
+					<i class="fas fa-video"></i>
+					<span>Dừng video</span>
+				</div>
+			</div>
+			<div>
 
-        <div class="mainControlsBlock">
-          <div class="mainControlsButtonEndMeeting">
-             <span id="leave-btn" class="leaveMeeting">Rời phòng</span>
-          </div>
-       </div>
+			</div>
+			<div class="mainControlsBlock">
+				<div class="mainControlsButton">
+					<i class="fas fa-id-card"></i>
+					<span id="medical-record-btn">Tạo hồ sơ bệnh án</span>
+				</div>
+				{{!-- <div class="mainControlsButton">
+					<i class="fas fa-user-friends"></i>
+					<span>Participants</span>
+				</div>
+				<div class="mainControlsButton">
+					<i class="fas fa-comment-alt"></i>
+					<span>Chat </span>
+				</div>
+				<div class="mainControlsButton">
+					<i class="fas fa-record-vinyl"></i>
+					<span>Record</span>
+				</div> --}}
+			</div>
 
-      </div>
+			<div class="mainControlsBlock">
+				<div class="mainControlsButtonEndMeeting">
+					<span id="leave-btn" class="leaveMeeting">Rời phòng</span>
+				</div>
+			</div>
 
-    </div>
-    <div class="mainRight">
-      <div class="mainHeader">
-        <h6>Hộp Thoại</h6>
-      </div>
-      <div class="mainChatWindow">
-        <ul class="messagesContainer">
-        </ul>
-     </div>
-     <div class="messageSendingTo">gửi: <span>Mọi Người <i class="fas fa-angle-down"></i></span> </div>
-     <div class="mainMessageContainer">
-       <input id="chatMessage" type="text" placeholder="Nhập tin nhắn tại đây...">
-     </div>
-    </div>
+		</div>
+
+	</div>
+	<div class="mainRight">
+		<div class="mainHeader">
+			<h6>Hộp Thoại</h6>
+		</div>
+		<div class="mainChatWindow">
+			<ul class="messagesContainer">
+			</ul>
+		</div>
+		<div class="messageSendingTo">gửi: <span>Mọi Người <i class="fas fa-angle-down"></i></span> </div>
+		<div class="mainMessageContainer">
+			<input id="chatMessage" type="text" placeholder="Nhập tin nhắn tại đây...">
+		</div>
+	</div>
 </div>
 <script>
 
-//const socket = io.connect();
-const socket = io("/");
-const videoGrid = document.getElementById('videoGrid')
-const myVideo = document.createElement('video')
-// set data for user. include name and id
-data = {name: userName, userId: socket.id, room :ROOM_ID};
-socket.emit('setSocketId', data);
+	//const socket = io.connect();
+	const socket = io("/");
+	const videoGrid = document.getElementById('videoGrid')
+	const myVideo = document.createElement('video')
+	// set data for user. include name and id
+	data = { name: userName, userId: socket.id, room: ROOM_ID };
+	socket.emit('setSocketId', data);
 
 
-var peer = new Peer()
+	var peer = new Peer()
 
-const myPeer = new Peer(undefined, {
-	path: '/peerjs',
-	host: '/',
-	port: '3000',
-})
-
-const peers = {};
-let myVideoStream
-navigator.mediaDevices
-	.getUserMedia({
-		video: true,
-		audio: true,
+	const myPeer = new Peer(undefined, {
+		path: '/peerjs',
+		host: '/',
+		port: '3000',
 	})
-	.then((stream) => {
-		myVideoStream = stream
-		addVideoStream(myVideo, stream)
-		socket.on('user-connected',function(userId,user) {
-			connectToNewUser(userId, stream)
-			alert(`${user.name} đã tham gia phòng `);
-		})
 
-		peer.on('call', (call) => {
-			call.answer(stream)
-			const video = document.createElement('video')
-			call.on('stream', (userVideoStream) => {
-				addVideoStream(video, userVideoStream)
+	const peers = {};
+	let myVideoStream
+	navigator.mediaDevices
+		.getUserMedia({
+			video: true,
+			audio: true,
+		})
+		.then((stream) => {
+			myVideoStream = stream
+			addVideoStream(myVideo, stream)
+			socket.on('user-connected', function (userId, user) {
+				connectToNewUser(userId, stream)
+				alert(`${user.name} đã tham gia phòng `);
 			})
-		})
 
-		let text = $('input')
+			peer.on('call', (call) => {
+				call.answer(stream)
+				const video = document.createElement('video')
+				call.on('stream', (userVideoStream) => {
+					addVideoStream(video, userVideoStream)
+				})
+			})
 
-		$('html').keydown(function (e) {
-			if (e.which == 13 && text.val().length !== 0) {
-				socket.emit('message', text.val())
-				text.val('')
-			}
-		})
-		// sent message in box chat
-		socket.on('createMessage', (message,userName) => {
-			$('ul').append(`<li >
+			let text = $('input')
+
+			$('html').keydown(function (e) {
+				if (e.which == 13 && text.val().length !== 0) {
+					socket.emit('message', text.val())
+					text.val('')
+				}
+			})
+			// sent message in box chat
+			socket.on('createMessage', (message, userName) => {
+				$('ul').append(`<li >
 								<span class="messageHeader">
 									<span>
 										From 
@@ -138,122 +145,122 @@ navigator.mediaDevices
 										<span class="messageReceiver">Mọi người:</span>
 									</span>
 									${new Date().toLocaleString('en-US', {
-										hour: 'numeric',
-										minute: 'numeric',
-										hour12: true,
-									})}
+					hour: 'numeric',
+					minute: 'numeric',
+					hour12: true,
+				})}
 								</span>
 
 								<span class="message">${message}</span>
 							
 							</li>`)
-			scrollToBottom()
+				scrollToBottom()
+			})
 		})
+
+	socket.on('user-disconnected', (userId) => {
+		if (peers[userId]) peers[userId].close();
+		videoGrid.load();
 	})
 
-socket.on('user-disconnected', (userId) => {
-	if (peers[userId]) peers[userId].close();
-	videoGrid.load();
-})
-
-peer.on('open', id => {
-	socket.emit('join-room', ROOM_ID, id)
-})
-
-const connectToNewUser = (userId,stream) => {
-	const call = peer.call(userId,stream)
-	const video = document.createElement('video')
-	call.on('stream', (userVideoStream) => {
-		addVideoStream(video, userVideoStream)
-	})
-	call.on('close', () => {
-		video.remove()
+	peer.on('open', id => {
+		socket.emit('join-room', ROOM_ID, id)
 	})
 
-	peers[userId] = call
-}
-const removeVideoStream=()=>{
-	
-	videoGrid.load();
-}
-const addVideoStream = (video, stream) => {
-	video.srcObject = stream
-	video.addEventListener('loadedmetadata', () => {
-		video.play();
-	})
-	videoGrid.append(video)
-}
+	const connectToNewUser = (userId, stream) => {
+		const call = peer.call(userId, stream)
+		const video = document.createElement('video')
+		call.on('stream', (userVideoStream) => {
+			addVideoStream(video, userVideoStream)
+		})
+		call.on('close', () => {
+			video.remove()
+		})
 
-const scrollToBottom = () => {
-	var d = $('.mainChatWindow')
-	d.scrollTop(d.prop('scrollHeight'))
-}
-
-const muteUnmute = () => {
-	const enabled = myVideoStream.getAudioTracks()[0].enabled
-	if (enabled) {
-		myVideoStream.getAudioTracks()[0].enabled = false
-		setUnmuteButton()
-	} else {
-		setMuteButton()
-		myVideoStream.getAudioTracks()[0].enabled = true
+		peers[userId] = call
 	}
-}
+	const removeVideoStream = () => {
 
-const setMuteButton = () => {
-	const html = `
+		videoGrid.load();
+	}
+	const addVideoStream = (video, stream) => {
+		video.srcObject = stream
+		video.addEventListener('loadedmetadata', () => {
+			video.play();
+		})
+		videoGrid.append(video)
+	}
+
+	const scrollToBottom = () => {
+		var d = $('.mainChatWindow')
+		d.scrollTop(d.prop('scrollHeight'))
+	}
+
+	const muteUnmute = () => {
+		const enabled = myVideoStream.getAudioTracks()[0].enabled
+		if (enabled) {
+			myVideoStream.getAudioTracks()[0].enabled = false
+			setUnmuteButton()
+		} else {
+			setMuteButton()
+			myVideoStream.getAudioTracks()[0].enabled = true
+		}
+	}
+
+	const setMuteButton = () => {
+		const html = `
 	  <i class="fas fa-microphone"></i>
 	  <span>Tắt Micro</span>
 	`
-	document.querySelector('.mainMuteButton').innerHTML = html
-}
+		document.querySelector('.mainMuteButton').innerHTML = html
+	}
 
-const setUnmuteButton = () => {
-	const html = `
+	const setUnmuteButton = () => {
+		const html = `
 	  <i class="unmute fas fa-microphone-slash"></i>
 	  <span>Bật Micro</span>
 	`
-	document.querySelector('.mainMuteButton').innerHTML = html
-}
-
-const playStop = () => {
-	console.log('object')
-	let enabled = myVideoStream.getVideoTracks()[0].enabled
-	if (enabled) {
-		myVideoStream.getVideoTracks()[0].enabled = false
-		setPlayVideo()
-	} else {
-		setStopVideo()
-		myVideoStream.getVideoTracks()[0].enabled = true
+		document.querySelector('.mainMuteButton').innerHTML = html
 	}
-}
 
-const setStopVideo = () => {
-	const html = `
+	const playStop = () => {
+		console.log('object')
+		let enabled = myVideoStream.getVideoTracks()[0].enabled
+		if (enabled) {
+			myVideoStream.getVideoTracks()[0].enabled = false
+			setPlayVideo()
+		} else {
+			setStopVideo()
+			myVideoStream.getVideoTracks()[0].enabled = true
+		}
+	}
+
+	const setStopVideo = () => {
+		const html = `
 	  <i class="fas fa-video"></i>
 	  <span>Dừng video</span>
 	`
-	document.querySelector('.mainVideoButton').innerHTML = html
-}
+		document.querySelector('.mainVideoButton').innerHTML = html
+	}
 
-const setPlayVideo = () => {
-	const html = `
+	const setPlayVideo = () => {
+		const html = `
 	<i class="stop fas fa-video-slash"></i>
 	  <span>Bật video</span>
 	`
-	document.querySelector('.mainVideoButton').innerHTML = html
-}
+		document.querySelector('.mainVideoButton').innerHTML = html
+	}
 
-//button end
-document.getElementById('leave-btn').addEventListener('click', () => {
-  const leaveRoom = confirm('Bạn có muốn rời phòng họp ?');
-  if (leaveRoom) {
-    window.location = '/';
-  } else {
-  }
-});
-//button medical record
-document.getElementById('medical-record-btn').addEventListener('click', () => {
-window.open("http://localhost:3000/me/appointment")
-});
+	//button end
+	document.getElementById('leave-btn').addEventListener('click', () => {
+		const leaveRoom = confirm('Bạn có muốn rời phòng họp ?');
+		if (leaveRoom) {
+			window.location = '/';
+		} else {
+		}
+	});
+	//button medical record
+	document.getElementById('medical-record-btn').addEventListener('click', () => {
+		window.open("http://localhost:3000/me/appointment")
+	});
 </script>

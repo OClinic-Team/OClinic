@@ -22,7 +22,7 @@ const port = process.env.PORT || 3000;
 const SortMiddleware = require('./app/middlewares/SoftMiddleware');
 const auth = require('./app/middlewares/auth');
 //room video-call
-const stream = require('./app/room_module/stream');
+//const stream = require('./app/room_module/stream');
 
 //webRTC
 let server = require('http').Server(app);
