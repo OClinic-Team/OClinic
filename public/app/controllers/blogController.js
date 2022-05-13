@@ -48,5 +48,31 @@ class blogController {
             .then(() => res.redirect('/blog'))
             .catch(next);
     }
+
+    destroy(req, res, next) {
+        Blog.delete({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
+    destroyThat(req, res, next) {
+        Blog.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
+    //[PATCH] accounts/:id/restore
+    restore(req, res, next) {
+        Blog.restore({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+    //[POST]
+    update_image(req, res) {
+        // Store image.
+        FroalaEditor.Image.upload(req, '/public/uploads/', function (data) {
+            res.send(data);
+        });
+    }
 }
 module.exports = new blogController();

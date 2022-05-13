@@ -3,10 +3,16 @@ const Appointment = require('../models/Appointment');
 const account_Patient = require('../models/AccountPatient');
 const mailer = require('../../util/mailer');
 const { v4: uuidv4 } = require('uuid');
+function generateRandomString() {
+    const crypto = window.crypto || window.msCrypto;
+    let array = new Uint32Array(1);
+
+    return crypto.getRandomValues(array);
+}
 class SendEmailController {
     async sendMailAppointment(req, res) {
         // link room clinic
-        const link = 'https://oonlineclinic.herokuapp.com/videocall/' + uuidv4();
+        const link = 'http://localhost:3000/new-call-video/?room=luan_' + generateRandomString();
         const dataDoctorId = req.query.doctorId;
         const dataPatientId = req.session.authUser.Id;
         const dataEmailDoctor = req.query.doctorEmail

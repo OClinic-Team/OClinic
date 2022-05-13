@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -9,6 +10,16 @@
     type="text/css" />
   <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+  <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <CORSRule>
+      <AllowedOrigin>ALLOWED_URL</AllowedOrigin>
+      <AllowedMethod>GET</AllowedMethod>
+      <AllowedMethod>POST</AllowedMethod>
+      <AllowedMethod>PUT</AllowedMethod>
+      <MaxAgeSeconds>3000</MaxAgeSeconds>
+      <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+  </CORSConfiguration>
 </head>
 
 <body>
@@ -18,21 +29,59 @@
     </div>
     <form onSubmit="return confirm('Bạn muốn đăng blog ?')" method="POST" action="/blog/store">
       <div class='form-group'>
-        <label for='name'>title</label>
+        <label for='name'>Tiêu Đề</label>
         <input type='text' class='form-control' id='title' name='title' />
       </div>
       <div class='form-group'>
-        <label for='name'>image URL</label>
+        <label for='name'>Đường Dẫn Hình Ảnh</label>
         <input type='text' class='form-control' id='ImageURL' name='ImageURL' />
       </div>
-      <textarea id="example" name='content'></textarea>
+      <div class='form-group'>
+        <label for='name'>Mô Tả</label>
+        <input type='text' class='form-control' id='description' name='description' />
+      </div>
+      <div class='form-group'>
+        <label for='name'>Nội Dung</label>
+        <textarea id="example" name='content'></textarea>
+      </div>
       <div class="mt-4">
         <button type='submit' class='btn btn-success mr-3'>Tạo Blog</button>
       </div>
     </form>
   </div>
   <script>
-    var editor = new FroalaEditor("#example")
+    var editor = new FroalaEditor("#example", {
+      imageUploadURL: '/blog/upload_image'
+    })
+  </script>
+  <script>
+    var configs = {
+      // The name of your bucket.
+      bucket: 'oclinic',
+
+      // S3 region. If you are using the default us-east-1, it this can be ignored.
+      region: 'ap-southeast-1',
+
+      // The folder where to upload the images.
+      keyStart: 'oclinic',
+
+      // File access.
+      acl: 'public-read',
+
+      // AWS keys.
+      accessKey: AKIA4VNGP5AL72EU2ICD,
+      secretKey: J759DY4yBdbRNDw2tfpYOoYGlWqZpJRDiM
+    }
+
+    var s3Hash = FroalaEditor.S3.getHash(configs);
+  </script>
+  <script>
+    $.get('/get_signature', {})
+      .done(function (s3Hash) {
+        $('#edit-amazon').froalaEditor({
+          imageUploadToS3: s3Hash
+        })
+      });
   </script>
 </body>
 

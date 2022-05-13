@@ -1,6 +1,7 @@
 const Doctor_Account = require('../models/AccountDoctor');
 const Appointment = require('../models/Appointment')
 const Account = require('../models/Account');
+const Blog = require('../models/blog');
 const MedicalRecord = require('../models/MedicalRecord');
 const { mutileMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
@@ -71,14 +72,23 @@ class MeController {
 
     //[GET] /me/stored/accounts
     storedAccounts(req, res, next) {
-            Account.find({}, function(err, data) {
-                if (err) res.send(err)
-                res.render('me/stored-accounts', {
-                    account: mutileMongooseToObject(data),
-                });
-            })
-        }
-        //[GET] /accounts/:Id/edit
+        Account.find({}, function (err, data) {
+            if (err) res.send(err)
+            res.render('me/stored-accounts', {
+                account: mutileMongooseToObject(data),
+            });
+        })
+    }
+    //[GET] /me/stored/blogs
+    storedBlogs(req, res, next) {
+        Blog.find({}, function (err, data) {
+            if (err) res.send(err)
+            res.render('me/stored-blogs', {
+                blog: mutileMongooseToObject(data),
+            });
+        })
+    }
+    //[GET] /accounts/:Id/edit
     editUser(req, res, next) {
         console.log(req.body.Id)
     }
@@ -86,25 +96,35 @@ class MeController {
 
     //[GET] /me/trash/account
     trashAccounts(req, res, next) {
-            Account.findDeleted({})
-                .then((accounts) =>
-                    res.render('me/trash-accounts', {
-                        accounts: mutileMongooseToObject(accounts),
-                    }),
-                )
-                .catch(next);
-        }
-        //[GET] /me/trash/medical-record
+        Account.findDeleted({})
+            .then((accounts) =>
+                res.render('me/trash-accounts', {
+                    accounts: mutileMongooseToObject(accounts),
+                }),
+            )
+            .catch(next);
+    }
+    //[GET] /me/trash/medical-record
     trashMedicalRecord(req, res, next) {
-            MedicalRecord.findDeleted({})
-                .then((medicalrecords) =>
-                    res.render('me/trash-medical-record', {
-                        medicalrecords: mutileMongooseToObject(medicalrecords),
-                    }),
-                )
-                .catch(next);
-        }
-        //[GET] /me/store/medical-record
+        MedicalRecord.findDeleted({})
+            .then((medicalrecords) =>
+                res.render('me/trash-medical-record', {
+                    medicalrecords: mutileMongooseToObject(medicalrecords),
+                }),
+            )
+            .catch(next);
+    }
+    //[GET] /me/trash/account
+    trashBlogs(req, res, next) {
+        Blog.findDeleted({})
+            .then((blogs) =>
+                res.render('me/trash-blogs', {
+                    blogs: mutileMongooseToObject(blogs),
+                }),
+            )
+            .catch(next);
+    }
+    //[GET] /me/store/medical-record
     storedMedicalRecord(req, res, next) {
         if (req.session.authUser.Permission === '2') {
             Promise.all([MedicalRecord.find({}), MedicalRecord.countDocumentsDeleted()])

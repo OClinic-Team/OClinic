@@ -1,17 +1,17 @@
 <div class='mt-4 container'>
-  <div class='row'>
-    {{#each blogs}}
-    <div class='col-sm-6 col-lg-4'>
-      <div class='card-body'>
-        <a href='/blog/{{this._id}}'>
-          <img class='card-img-top' src='{{this.ImageURL}}' alt='{{this._id}}' />
-          <h4>{{this.title}}</h4>
-        </a>
-        <a href='/blog/{{this._id}}' class='btn btn-primary'>Xem thông
-          tin</a>
-        <a href='/blog/edit/{{this._id}}' class='btn btn-success'>Edit</a>
-      </div>
+  {{#each blogs}}
+  <div class='row row-cols-2 mt-3'>
+    <div class="col-4">
+      <a href='/blog/{{this._id}}'>
+        <img class='card-img-top' src='{{this.ImageURL}}' alt='{{this._id}}' />
+      </a>
     </div>
-    {{/each}}
+    <div class="col-8">
+      <a href='/blog/{{this._id}}'>
+        <h4>{{this.title}}</h4>
+      </a>
+      <h6>{{this.description}}</h6>
+    </div>
   </div>
+  {{/each}}
 </div>

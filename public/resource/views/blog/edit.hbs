@@ -26,12 +26,18 @@
         <label for='name'>image URL</label>
         <input type='text' class='form-control' id='ImageURL' name='ImageURL' value='{{blog.ImageURL}}' />
       </div>
+      <div class='form-group'>
+        <label for='name'>image URL</label>
+        <input type='text' class='form-control' id='description' name='description' value='{{blog.ImageURL}}' />
+      </div>
       <textarea id="example" name='content'>{{blog.content}}</textarea>
       <div class="mt-4">
         <button type='submit' class='btn btn-success mr-3'>Lưu</button>
+        <a href='/me/stored/blogs' class='btn btn-danger mr-3'>Hủy</a>
       </div>
     </form>
   </div>
+
   <script>
     var editor = new FroalaEditor("#example")
   </script>

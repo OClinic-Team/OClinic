@@ -14,7 +14,7 @@
 
 <body>
   <div class='mt-4 container'>
-    <h2>{{blog.title}}</h2>
+    <h1 style="font-weight: bold; color: rgb(55, 71, 100);" class="animated fadeInUp mb-5">{{blog.title}}</h1>
     {{!-- <div>{{blog.content }}></div> --}}
 
     {{!--
@@ -34,7 +34,10 @@
       charCounterCount: false,
     }, function () {
       editor.edit.off();
+      
     })
+
+    
 
     
   </script>

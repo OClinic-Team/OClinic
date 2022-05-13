@@ -1,0 +1,88 @@
+<div class='mt-4 container'>
+  <div>
+    <a href='/me/stored/blogs'>QUAY LẠI</a>
+    <h3>BLOG ĐÃ XÓA</h3>
+  </div>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">NO.</th>
+        <th scope="col">ID</th>
+        <th scope="col" colspan="2">Title</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each blogs}}
+      <tr>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this._id}}</td>
+        <td>{{this.title}}</td>
+        <td>
+          <a href="" class="btn btn-success btn-restore" data-id="{{this._id}}">khôi phục</a>
+          <a href="" class="btn btn-danger" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-blog">Xóa
+            Vĩnh Viễn</a>
+        </td>
+      </tr>
+    </tbody>
+    {{else}}
+    <tr>
+      <td colspan="5" class="text-center">
+        Không Có Tài Khoản Nào. !!!
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+  {{! xacs nhận xóa account }}
+  <div id="delete-blog" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">XÓA TÀI KHOẢN</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn có chắc muốn xóa bài viết nay không???
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
+          <button id="btn-delete-account" type="button" class="btn btn-danger">Xóa Bỏ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{! delete form }}
+  <form method='POST' name='delete-form'></form>
+
+  {{! restore form }}
+  <form method='POST' name='restore-form'></form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var accountID;
+      var deleteForm = document.forms['delete-form'];
+      var restoreForm = document.forms['restore-form'];
+      var btnDeleteAccount = document.getElementById('btn-delete-account');
+      var restoreBtn = $('.btn-restore');
+      $('#delete-account').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        accountID = button.data('id');
+      });
+      //khinhấn vào nút delete 
+      btnDeleteAccount.onclick = function () {
+        deleteForm.action = '/blog/' + accountID + '/xoa-that?_method=DELETE';
+        deleteForm.submit();
+      }
+      //khi nhấn vào nút khôi phục 
+      restoreBtn.click(function (e) {
+        e.preventDefault();
+        var accountID = $(this).data('id');
+        restoreForm.action = '/blog/' + accountID + '/restore?_method=PATCH';
+        restoreForm.submit();
+      })
+    });
+  </script>

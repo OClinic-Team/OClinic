@@ -180,6 +180,18 @@ app.use(async function (req, res, next) {
     next();
 });
 //new video call
+function generateRandomString() {
+    const crypto = window.crypto || window.msCrypto;
+    let array = new Uint32Array(1);
+
+    return crypto.getRandomValues(array);
+}
+
+app.get('/videocall/:room', auth, (req, res) => {
+    res.redirect(`/payment/${req.params.room}`);
+    // res.render('room', { layout: false, roomId: req.params.room, userName: req.session.authUser.Name });
+});
+
 app.get('/new-call-video', (req, res) => {
     res.render('newRoom', { layout: false });
 });
@@ -189,6 +201,8 @@ const { v4: uuidv4 } = require('uuid');
 
 app.use('/peerjs', peerServer);
 app.set('view engine', 'ejs');
+
+
 
 app.get('/videocall', (req, res) => {
     res.redirect(`/videocall/${uuidv4()}`);
