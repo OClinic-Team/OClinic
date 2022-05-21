@@ -53,6 +53,35 @@
       }
     })
   </script>
+  <script>
+    var configs = {
+      // The name of your bucket.
+      bucket: 'oclinic',
+
+      // S3 region. If you are using the default us-east-1, it this can be ignored.
+      region: 'ap-southeast-1',
+
+      // The folder where to upload the images.
+      keyStart: 'oclinic',
+
+      // File access.
+      acl: 'public-read',
+
+        // AWS keys.
+        accessKey: AKIA4VNGP5AL72EU2ICD,
+        secretKey: J759DY4yBdbRNDw2tfpYOoYGlWqZpJRDiM
+    }
+
+    var s3Hash = FroalaEditor.S3.getHash(configs);
+  </script>
+  <script>
+    $.get('/get_signature', {})
+      .done(function (s3Hash) {
+        $('#edit-amazon').froalaEditor({
+          imageUploadToS3: s3Hash
+        })
+      });
+  </script>
 </body>
 
 </html>

@@ -1,219 +1,360 @@
-
 <div class="main-wrapper ">
-<!-- Slider Start -->
-<section class="slider">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-9 col-md-10">
-				<div class="block">
-					<h1 class="animated fadeInUp mb-5">Online Clinic <br>Website Khám Bệnh Toàn Diện <br></h1>
-          <form method='GET' action="/search">
-					<div class='form-group' style="width:fit-content">
-						<select name='Department' class='form-control' id='Khoa-input'>
-              <option value='' >Chọn Khoa Mà Bạn Muốn Tìm ...</option>
-							<option value='Xương Khớp'>Xương Khớp</option>
-							<option value='Tiêu Hoá'>Tiêu Hoá</option>
-							<option value='Da Liễu'>Da Liễu</option>
-							<option value='Thần Kinh'>Thần Kinh</option>
-							<option value='Nhi Khoa'>Nhi Khoa</option>
-							<option value='Nha Khoa'> Nha Khoa </option>
-							<option value='Nội Tiết'>Nội Tiết</option>
-							<option value='Tai Mũi Họng'>Tai Mũi Họng</option>
-							<option value='Tư Vấn Covid'>Tư Vấn Covid</option>
-						</select>
-					</div>
-					<button type='submit' class='btn btn-success'>Tìm Kiếm</button>
-				</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- Section Intro Start -->
-<section class="section intro">
-	{{!-- <div class="container">
-		<div class="row ">
-			<div class="col-lg-8">
-				<h2 class="mt-3 content-title text-color">Chọn Chuyên Khoa Mà Bạn Muốn</h2>
-				<form method='GET' action="/search">
-					<div class='form-group'>
-						<select name='Department' class='form-control' id='Khoa-input'>
-              <option value='' >Chọn Khoa Mà Bạn Muốn Tìm ...</option>
-							<option value='Xương Khớp'>Xương Khớp</option>
-							<option value='Tiêu Hoá'>Tiêu Hoá</option>
-							<option value='Da Liễu'>Da Liễu</option>
-							<option value='Thần Kinh'>Thần Kinh</option>
-							<option value='Nhi Khoa'>Nhi Khoa</option>
-							<option value='Nha Khoa'> Nha Khoa </option>
-							<option value='Nội Tiết'>Nội Tiết</option>
-							<option value='Tai Mũi Họng'>Tai Mũi Họng</option>
-							<option value='Tư Vấn Covid'>Tư Vấn Covid</option>
-						</select>
-					</div>
-					<button type='submit' class='btn btn-primary'>Tìm Kiếm</button>
-				</form>
-			</div>
-		</div>F
-	</div> --}}
-  {{!-- đây là phần bog --}}
-<div class="blog">
-  <section id="hero">
-    <div class="hero-container">
-      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-        <div class="carousel-inner" role="listbox">
-          <!-- thông điệp 5k -->
-          <div class="carousel-item active" style="background-image: url('https://meta.vn/Data/image/2021/02/01/thong-diep-5k-al.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content container">
-                <h2 class="animate__animated animate__fadeInDown">"THÔNG ĐIỆP 5K"</h2>
-                <p class="animate__animated animate__fadeInUp">Đeo khẩu trang tại những nơi công cộng tập trung đông người<br> 
-                                                              Khử khuẩn và thường xuyên thực hiện rửa tay <br>
-                                                              Luôn giữ khoảng cách khi tiếp xúc với người khác <br>
-                                                              Không được tụ tập đông người <br>
-                                                              Thực hiện nghiêm chỉnh việc khai báo y tế online</p>
+  <!-- Slider Start -->
+  <section class="slider">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-md-10">
+          <div class="block">
+            <h1 class="animated fadeInUp mb-5">Online Clinic <br>Website Khám Bệnh Toàn Diện <br></h1>
+            <form method='GET' action="/search">
+              <div class='form-group' style="width:fit-content">
+                <select name='Department' class='form-control' id='Khoa-input'>
+                  <option value=''>Chọn Khoa Mà Bạn Muốn Tìm ...</option>
+                  <option value='Xương Khớp'>Xương Khớp</option>
+                  <option value='Tiêu Hoá'>Tiêu Hoá</option>
+                  <option value='Da Liễu'>Da Liễu</option>
+                  <option value='Thần Kinh'>Thần Kinh</option>
+                  <option value='Nhi Khoa'>Nhi Khoa</option>
+                  <option value='Nha Khoa'> Nha Khoa </option>
+                  <option value='Nội Tiết'>Nội Tiết</option>
+                  <option value='Tai Mũi Họng'>Tai Mũi Họng</option>
+                  <option value='Tư Vấn Covid'>Tư Vấn Covid</option>
+                </select>
               </div>
-            </div>
-          </div>
-          <!-- thông điệp 5t -->
-          <div class="carousel-item" style="background-image: url('https://suckhoedoisong.qltns.mediacdn.vn/324455921873985536/2021/9/1/thong-diep-5t5-16304934196461205694545.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content container">
-                <h2 class="animate__animated animate__fadeInDown">"THÔNG ĐIỆP 5T"</h2>
-                <p class="animate__animated animate__fadeInUp">Thông điệp 5T bao gồm 'Tuân thủ nghiêm 5K - Thực phẩm đủ tại nhà - Thầy, thuốc đến tại gia - Test Covid tất cả - Tiêm chủng tại phường, xã' đối với các xã phường tăng cường giãn cách xã hội.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url('https://nld.mediacdn.vn/thumb_w/600/291774122806476800/2021/12/4/avata-12dauhieu-covid-19-16386154713171838041949.png');">
-            <div class="carousel-container">
-              <div class="carousel-content container">
-                <h2 class="animate__animated animate__fadeInDown">12 dấu hiệu, biểu hiện nhiễm SARS-CoV-2</h2>
-                <p class="animate__animated animate__fadeInUp">Bộ Y tế cũng nêu 12 dấu hiệu, biểu hiện nhiễm SARS-CoV-2 bao gồm: Ho; Sốt (trên 37,5 độ C); Đau đầu; Đau họng, rát họng; Sổ mũi, chảy mũi, ngạt mũi; Khó thở; Đau ngực, tức ngực; Đau mỏi người, đau cơ; Mất vị giác’ Mất khứu giác; Đau bụng, buồn nôn; Tiêu chảy</p>
-              </div>
-            </div>
+              <button type='submit' class='btn btn-success'>Tìm Kiếm</button>
+            </form>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-          <span  class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true">
-             <svg  xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-    </svg> 
-    </span>
-        </a>
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-</svg>
-          </span>
-        </a>
       </div>
     </div>
   </section>
-</div>
-	<div class="covidVietNam">
-  <div class="animatediv">
-  <img src="https://atheistiran.com/wp-content/uploads/2020/03/corona-virus.png">
-  <img src="https://atheistiran.com/wp-content/uploads/2020/03/corona-virus.png">
-  <img src="https://atheistiran.com/wp-content/uploads/2020/03/corona-virus.png">
-  <img src="https://atheistiran.com/wp-content/uploads/2020/03/corona-virus.png">
-</div>
-<div class="container text-center">
-  <h1 class="">Covid-19 Cases In <span id="country"></span> <img src="" alt="" id="flag"></h1>
-  <div class="card-deck text-center">
-    <div class="card mb-2">
-      <div class="card-body bg-primary text-light rounded">
-        <h5 class="card-title"><i class="fas fa-tachometer-alt fa-2x"></i></h5>
-        <h4 class="card-text">Active Cases</h4>
-        <p class="card-text badge badge-outline-light" id="Active_Cases">21</p>
+  <!-- Section Intro Start -->
+  <section class="section intro">
+    {{!-- <div class="container">
+      <div class="row ">
+        <div class="col-lg-8">
+          <h2 class="mt-3 content-title text-color">Chọn Chuyên Khoa Mà Bạn Muốn</h2>
+          <form method='GET' action="/search">
+            <div class='form-group'>
+              <select name='Department' class='form-control' id='Khoa-input'>
+                <option value=''>Chọn Khoa Mà Bạn Muốn Tìm ...</option>
+                <option value='Xương Khớp'>Xương Khớp</option>
+                <option value='Tiêu Hoá'>Tiêu Hoá</option>
+                <option value='Da Liễu'>Da Liễu</option>
+                <option value='Thần Kinh'>Thần Kinh</option>
+                <option value='Nhi Khoa'>Nhi Khoa</option>
+                <option value='Nha Khoa'> Nha Khoa </option>
+                <option value='Nội Tiết'>Nội Tiết</option>
+                <option value='Tai Mũi Họng'>Tai Mũi Họng</option>
+                <option value='Tư Vấn Covid'>Tư Vấn Covid</option>
+              </select>
+            </div>
+            <button type='submit' class='btn btn-primary'>Tìm Kiếm</button>
+          </form>
+        </div>
+      </div>F
+    </div> --}}
+    {{!-- đây là phần bog --}}
+    <div class="blog">
+      <section id="hero">
+        <div class="hero-container">
+          <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+              <!-- thông điệp 5k -->
+              <div class="carousel-item active"
+                style="background-image: url('https://bmtu.edu.vn/CMS/Content/trung%20tam%20TT/covid2021/1-01.png');">
+                <div class="carousel-container">
+                  <div class="carousel-content container">
+                    <h2 class="animate__animated animate__fadeInDown">"THÔNG ĐIỆP 5K"</h2>
+                    <p class="animate__animated animate__fadeInUp">Đeo khẩu trang tại những nơi công cộng tập trung đông
+                      người<br>
+                      Khử khuẩn và thường xuyên thực hiện rửa tay <br>
+                      Luôn giữ khoảng cách khi tiếp xúc với người khác <br>
+                      Không được tụ tập đông người <br>
+                      Thực hiện nghiêm chỉnh việc khai báo y tế online</p>
+                  </div>
+                </div>
+              </div>
+              <!-- thông điệp 5t -->
+              <div class="carousel-item"
+                style="background-image: url('https://suckhoedoisong.qltns.mediacdn.vn/324455921873985536/2021/9/1/thong-diep-5t5-16304934196461205694545.jpg');">
+                <div class="carousel-container">
+                  <div class="carousel-content container">
+                    <h2 class="animate__animated animate__fadeInDown">"THÔNG ĐIỆP 5T"</h2>
+                    <p class="animate__animated animate__fadeInUp">Thông điệp 5T bao gồm 'Tuân thủ nghiêm 5K - Thực phẩm
+                      đủ tại nhà - Thầy, thuốc đến tại gia - Test Covid tất cả - Tiêm chủng tại phường, xã' đối với các
+                      xã phường tăng cường giãn cách xã hội.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="carousel-item"
+                style="background-image: url('https://nld.mediacdn.vn/thumb_w/600/291774122806476800/2021/12/4/avata-12dauhieu-covid-19-16386154713171838041949.png');">
+                <div class="carousel-container">
+                  <div class="carousel-content container">
+                    <h2 class="animate__animated animate__fadeInDown">12 dấu hiệu, biểu hiện nhiễm SARS-CoV-2</h2>
+                    <p class="animate__animated animate__fadeInUp">Bộ Y tế cũng nêu 12 dấu hiệu, biểu hiện nhiễm
+                      SARS-CoV-2 bao gồm: Ho; Sốt (trên 37,5 độ C); Đau đầu; Đau họng, rát họng; Sổ mũi, chảy mũi, ngạt
+                      mũi; Khó thở; Đau ngực, tức ngực; Đau mỏi người, đau cơ; Mất vị giác’ Mất khứu giác; Đau bụng,
+                      buồn nôn; Tiêu chảy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                  class="bi bi-chevron-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                </svg>
+              </span>
+            </a>
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                  class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="total-block">
+      <div class="background-image">
+
+      </div>
+      <div class="all-block">
+        <div class="blog-website">
+          {{#each blogs}}
+          <div class="content-blog">
+            <div class="blog-title">
+              <a href='/blog/{{this._id}}'>
+                <h4>{{this.title}}</h4>
+              </a>
+            </div>
+            <div class="blog-content-web">
+              <div class="div-img">
+                <a href='/blog/{{this._id}}'>
+                  <img class='img-blog' src='{{this.ImageURL}}' alt='{{this._id}}' />
+                </a>
+              </div>
+              <div class="blog-desc">
+                {{this.description}}
+              </div>
+            </div>
+            <hr>
+          </div>
+          {{/each}}
+        </div>
       </div>
     </div>
-    <div class="card mb-2">
-      <div class="card-body bg-info text-light rounded">
-        <h5 class="card-title"><i class="fas fa-list fa-2x"></i></h5>
-        <h4 class="card-text">Total Cases</h4>
-        <p class="card-text badge badge-outline-light" id="Total_Cases">21</p>
+    <style>
+      .total-block {
+        width: 100%;
+        height: 900px;
+        position: relative;
+      }
+
+      .background-image {
+        background-image: url('https://images.pexels.com/photos/5862307/pexels-photo-5862307.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940&fbclid=IwAR0BdN1enOxjn1MEvWhRuUWmsbfQTaxSau-3QJ53mJoxkL5Uy0oMp_SV04w');
+        left: 0;
+        right: 0;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+      }
+
+      .all-block {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        text-align: center;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        top: 0;
+        position: absolute;
+      }
+
+      .blog-website {
+        width: 100%;
+        height: fit-content;
+        display: block;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0px 60px;
+      }
+
+      .content-blog {
+        width: 50%;
+        text-align: start;
+        color: white;
+        z-index: 10000;
+        ;
+      }
+
+      .content-blog2 {
+        width: 45%;
+        float: right;
+        text-align: end;
+
+      }
+
+      .blog-title {
+        width: 90%;
+        margin-left: 20px;
+      }
+
+      .blog-title a {
+        color: #ff6f6f;
+        text-decoration: none;
+      }
+
+      .blog-title a: :hover {
+        background-color: yellow;
+        text-decoration: none;
+      }
+
+      .blog-content-web {
+        width: 100%;
+        display: flex;
+      }
+
+      .div-img {
+        width: 40%;
+      }
+
+      .blog-desc {
+        width: 55%;
+        margin-left: 15px;
+        text-align: justify;
+      }
+
+      img.img-blog {
+        width: 95%;
+        height: 190px;
+        margin: 0px 20px;
+      }
+    </style>
+    <div class="covidVietNam">
+      <div class="animatediv">
+        <img src="https://atheistiran.com/wp-content/uploads/2020/03/corona-virus.png">
+        <img src="https://atheistiran.com/wp-content/uploads/2020/03/corona-virus.png">
+        <img src="https://atheistiran.com/wp-content/uploads/2020/03/corona-virus.png">
+        <img src="https://atheistiran.com/wp-content/uploads/2020/03/corona-virus.png">
+      </div>
+      <div class="container text-center">
+        <h1 class="">Covid-19 Cases In <span id="country"></span> <img src="" alt="" id="flag"></h1>
+        <div class="card-deck text-center">
+          <div class="card mb-2">
+            <div class="card-body bg-primary text-light rounded">
+              <h5 class="card-title"><i class="fas fa-tachometer-alt fa-2x"></i></h5>
+              <h4 class="card-text">Active Cases</h4>
+              <p class="card-text badge badge-outline-light" id="Active_Cases">21</p>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-body bg-info text-light rounded">
+              <h5 class="card-title"><i class="fas fa-list fa-2x"></i></h5>
+              <h4 class="card-text">Total Cases</h4>
+              <p class="card-text badge badge-outline-light" id="Total_Cases">21</p>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-body bg-warning text-light rounded">
+              <h5 class="card-title"><i class="fas fa-times-circle fa-2x"></i></h5>
+              <h4 class="card-text">Critical Cases</h4>
+              <p class="card-text badge badge-outline-light" id="Critical_Cases">21</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body bg-danger text-light rounded">
+              <h5 class="card-title"><i class="fa fa-times fa-2x"></i></h5>
+              <h4 class="card-text">Total Death</h4>
+              <p class="card-text badge badge-outline-light" id="Total_Death">21</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body bg-success text-light rounded">
+              <h5 class="card-title"><i class="fas fa-check-square fa-2x"></i></h5>
+              <h4 class="card-text">Recovered Cases</h4>
+              <p class="card-text badge badge-outline-light" id="Recovered_Cases">21</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body bg-secondary text-light rounded">
+              <h5 class="card-title"><i class="fas fa-eye fa-2x"></i></h5>
+              <h4 class="card-text">Total Test Done</h4>
+              <p class="card-text badge badge-outline-light" id="Total_Test_Done">21</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card mb-2">
-      <div class="card-body bg-warning text-light rounded">
-        <h5 class="card-title"><i class="fas fa-times-circle fa-2x"></i></h5>
-        <h4 class="card-text">Critical Cases</h4>
-        <p class="card-text badge badge-outline-light" id="Critical_Cases">21</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body bg-danger text-light rounded">
-        <h5 class="card-title"><i class="fa fa-times fa-2x"></i></h5>
-        <h4 class="card-text">Total Death</h4>
-        <p class="card-text badge badge-outline-light" id="Total_Death">21</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body bg-success text-light rounded">
-        <h5 class="card-title"><i class="fas fa-check-square fa-2x"></i></h5>
-        <h4 class="card-text">Recovered Cases</h4>
-        <p class="card-text badge badge-outline-light" id="Recovered_Cases">21</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body bg-secondary text-light rounded">
-        <h5 class="card-title"><i class="fas fa-eye fa-2x"></i></h5>
-        <h4 class="card-text">Total Test Done</h4>
-        <p class="card-text badge badge-outline-light" id="Total_Test_Done">21</p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 
-{{!-- đây là scrip của block --}}
-   
-  <script>
-    (function() {
-  "use strict";
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
-  let heroCarouselIndicators = select("#hero-carousel-indicators")
-  let heroCarouselItems = select('#heroCarousel .carousel-item', true)
+    {{!-- đây là scrip của block --}}
 
-  heroCarouselItems.forEach((item, index) => {
-    (index === 0) ?
-    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
-      heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
-  });
-})()
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-{{!-- đây là của covid-19 --}}
+    <script>
+      (function () {
+        "use strict";
+        const select = (el, all = false) => {
+          el = el.trim()
+          if (all) {
+            return [...document.querySelectorAll(el)]
+          } else {
+            return document.querySelector(el)
+          }
+        }
+        let heroCarouselIndicators = select("#hero-carousel-indicators")
+        let heroCarouselItems = select('#heroCarousel .carousel-item', true)
 
-<script>
-  fetch("https://corona.lmao.ninja/v2/countries/vietnam")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    document.getElementById("flag").src = data.countryInfo.flag;
-    document.getElementById("country").innerHTML = data.country;
-    document.getElementById("Active_Cases").innerHTML = data.active;
-    document.getElementById("Total_Cases").innerHTML = data.cases;
-    document.getElementById("Critical_Cases").innerHTML = data.critical;
-    document.getElementById("Total_Death").innerHTML = data.deaths;
-    document.getElementById("Recovered_Cases").innerHTML = data.recovered;
-    document.getElementById("Total_Test_Done").innerHTML = data.tests;
-  });
+        heroCarouselItems.forEach((item, index) => {
+          (index === 0) ?
+            heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>" :
+            heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+        });
+      })()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {{!-- đây là của covid-19 --}}
 
-</script>
+    <script>
+      fetch("https://corona.lmao.ninja/v2/countries/vietnam")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          document.getElementById("flag").src = data.countryInfo.flag;
+          document.getElementById("country").innerHTML = data.country;
+          document.getElementById("Active_Cases").innerHTML = data.active;
+          document.getElementById("Total_Cases").innerHTML = data.cases;
+          document.getElementById("Critical_Cases").innerHTML = data.critical;
+          document.getElementById("Total_Death").innerHTML = data.deaths;
+          document.getElementById("Recovered_Cases").innerHTML = data.recovered;
+          document.getElementById("Total_Test_Done").innerHTML = data.tests;
+        });
+
+    </script>
