@@ -13,6 +13,7 @@
     "license": "ISC",
     "dependencies": {
         "alert": "^5.0.10",
+        "aws-sdk": "^2.1136.0",
         "cookie-parser": "^1.4.5",
         "cookie-session": "^1.4.0",
         "dotenv": "^16.0.0",
@@ -36,7 +37,8 @@
         "socket.io": "^2.4.1",
         "stripe": "^8.215.0",
         "uuid": "^8.3.0",
-        "vercel": "^23.1.2"
+        "vercel": "^23.1.2",
+        "wysiwyg-editor-node-sdk": "^4.0.11"
     },
     "devDependencies": {
         "husky": "^7.0.2",

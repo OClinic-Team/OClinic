@@ -5,7 +5,8 @@ const stripe = require("stripe")('sk_test_51Kj29fGNuWrPJtOZqO7IMWfS8dD9AxG9JkAy6
 
 class PaymentController {
     async payment(req, res, next) {
-        Appointment.findOne({ roomLink: `https://oonlineclinic.herokuapp.com/videocall/${req.params.roomLink}` }, (err, data) => {
+        Appointment.findOne({ roomLink: `https://oonlineclinic.herokuapp.com/new-call-video/${req.params.roomLink}` }, (err, data) => {
+            console.log(req.params.roomLink)
             if (data !== null) {
                 if (data.paid == false) {
                     res.render('charge', { roomLink: req.params.roomLink })
@@ -19,15 +20,16 @@ class PaymentController {
                 res.send('No data');
             }
         })
+
     }
     async payment2(req, res) {
         // Moreover you can take more details from user 
         // like Address, Name, etc from form 
         await stripe.customers.create({
-                email: req.body.email,
-                source: req.body.stripeToken,
-                name: req.body.name,
-            })
+            email: req.body.email,
+            source: req.body.stripeToken,
+            name: req.body.name,
+        })
             .then((customer) => {
                 return stripe.charges.create({
                     amount: '200000',

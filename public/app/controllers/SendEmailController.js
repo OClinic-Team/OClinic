@@ -12,7 +12,7 @@ function generateRandomString() {
 class SendEmailController {
     async sendMailAppointment(req, res) {
         // link room clinic
-        const link = 'http://localhost:3000/new-call-video/?room=luan_' + generateRandomString();
+        const link = 'http://localhost:3000/new-call-video/?room=oclinic_' + generateRandomString();
         const dataDoctorId = req.query.doctorId;
         const dataPatientId = req.session.authUser.Id;
         const dataEmailDoctor = req.query.doctorEmail

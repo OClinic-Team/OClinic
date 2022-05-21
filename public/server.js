@@ -18,14 +18,87 @@ const route = require('./routes');
 const db = require('./config/db');
 const path = require('path');
 const port = process.env.PORT || 3000;
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //Middleware
 const SortMiddleware = require('./app/middlewares/SoftMiddleware');
 const auth = require('./app/middlewares/auth');
-//room video-call
+//blog
+var bodyParser = require('body-parser')
+var fs = require('fs');
+var gm = require('gm').subClass({ imageMagick: true });
+const AWS = require('aws-sdk');
+// const s3Object = new AWS.S3({
+//    accessKeyId : config.aws_access_key_id,
+//    secretAccessKey : config.aws_secret_access_key,
+//    region: config.aws_region,
+// });
+// var FroalaEditor = require('./wysiwyg-editor-node-sdk/lib/froalaEditor.js');
 
+app.use(express.static(__dirname + '/'));
+app.use('/bower_components', express.static(path.join(__dirname, '../bower_components')));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.get('/get_signature', function (req, res) {
+    var configs = {
+        // The name of your bucket.
+        bucket: 'oclinic',
+
+        // S3 region. If you are using the default us-east-1, it this can be ignored.
+        region: 'ap-southeast-1',
+
+        // The folder where to upload the images.
+        keyStart: 'oclinic',
+
+        // File access.
+        acl: 'public-read',
+
+        // AWS keys.
+        accessKey: AKIA4VNGP5AL72EU2ICD,
+        secretKey: J759DY4yBdbRNDw2tfpYOoYGlWqZpJRDiM
+    }
+
+    var s3Hash = FroalaEditor.S3.getHash(configs);
+
+    res.send(s3Hash);
+});
+//room video-call
 //webRTC
 let server = require('http').Server(app);
 let io = require('socket.io')(server);
+io.sockets.on('connection', (socket) => {
+    socket.on('setSocketId', function (data) {
+        //config data user join in room{id,name,room}
+        const userName = data.name;
+        const userId = socket.id;
+        const userRoom = data.room;
+        //add user 
+        addUser(userId, userName, userRoom);
+        //query user
+        getUsers(userRoom);
+    });
+    socket.on('join-room', (roomId, userId) => {
+        console.log(userId)
+        console.log(socket.id)
+        socket.join(roomId);
+        const user = getUser(socket.id)
+        socket.to(roomId).broadcast.emit('user-connected', userId, user);
+        console.log(userId)
+        socket.on('message', (message) => {
+            const user = getUser(socket.id);
+            console.log(user.id)
+            io.to(roomId).emit('createMessage', message, user.name);
+        });
+        socket.on('disconnect', () => {
+            socket.to(roomId).broadcast.emit('user-disconnected', userId);
+            deleteUser(socket.id)
+        });
+    });
+});
+
+
 io.of('/stream').on('connection', (socket) => {
     socket.on('subscribe', (data) => {
         //subscribe/join a room
@@ -187,13 +260,10 @@ function generateRandomString() {
     return crypto.getRandomValues(array);
 }
 
-app.get('/videocall/:room', auth, (req, res) => {
-    res.redirect(`/payment/${req.params.room}`);
-    // res.render('room', { layout: false, roomId: req.params.room, userName: req.session.authUser.Name });
-});
-
-app.get('/new-call-video', (req, res) => {
+app.get('/new-call-video/', (req, res) => {
+    console.log(req.query.room)
     res.render('newRoom', { layout: false });
+    // res.redirect(`/payment/${req.params.room}`);
 });
 
 //video call
@@ -201,8 +271,6 @@ const { v4: uuidv4 } = require('uuid');
 
 app.use('/peerjs', peerServer);
 app.set('view engine', 'ejs');
-
-
 
 app.get('/videocall', (req, res) => {
     res.redirect(`/videocall/${uuidv4()}`);
@@ -215,35 +283,7 @@ app.get('/videocall/:room', auth, (req, res) => {
 });
 
 const { addUser, getUser, deleteUser, getUsers } = require('../public/app/middlewares/user')
-io.sockets.on('connection', (socket) => {
-    socket.on('setSocketId', function (data) {
-        //config data user join in room{id,name,room}
-        const userName = data.name;
-        const userId = socket.id;
-        const userRoom = data.room;
-        //add user 
-        addUser(userId, userName, userRoom);
-        //query user
-        getUsers(userRoom);
-    });
-    socket.on('join-room', (roomId, userId) => {
-        console.log(userId)
-        console.log(socket.id)
-        socket.join(roomId);
-        const user = getUser(socket.id)
-        socket.to(roomId).broadcast.emit('user-connected', userId, user);
-        console.log(userId)
-        socket.on('message', (message) => {
-            const user = getUser(socket.id);
-            console.log(user.id)
-            io.to(roomId).emit('createMessage', message, user.name);
-        });
-        socket.on('disconnect', () => {
-            socket.to(roomId).broadcast.emit('user-disconnected', userId);
-            deleteUser(socket.id)
-        });
-    });
-});
+
 
 
 

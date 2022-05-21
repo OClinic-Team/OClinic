@@ -1032,7 +1032,7 @@
                 sessionStorage.setItem('username', yourName);
 
                 //create room link
-                let roomLink = `${location.origin}/new-call-video/?room=${roomName.trim().replace(' ', '_')}_${generateRandomString()}`;
+                let roomLink = `${location.origin}/new-call-video/${generateRandomString()}`;
 
                 //show message with link to room
                 document.querySelector('#room-created').innerHTML = `Room successfully created. Click <a href='${roomLink}'>here</a> to enter room. 
