@@ -65,7 +65,7 @@
             <div class="carousel-inner" role="listbox">
               <!-- thông điệp 5k -->
               <div class="carousel-item active"
-                style="background-image: url('https://meta.vn/Data/image/2021/02/01/thong-diep-5k-al.jpg');">
+                style="background-image: url('https://bmtu.edu.vn/CMS/Content/trung%20tam%20TT/covid2021/1-01.png');">
                 <div class="carousel-container">
                   <div class="carousel-content container">
                     <h2 class="animate__animated animate__fadeInDown">"THÔNG ĐIỆP 5K"</h2>
@@ -126,38 +126,70 @@
         </div>
       </section>
     </div>
-    
-   <div class="all-blog">
-      <h1 class="">Bài Viết</h1>
-    <div class="blog-website">
-        {{#each blogs}}
-      <div class="content-blog">
-        <div class="blog-title">
-          <a href='/blog/{{this._id}}'>
-            <h4>{{this.title}}</h4>
-          </a>
-        </div>
-        <div class="blog-content-web">
-          <div class="div-img">
-            <a href='/blog/{{this._id}}'>
-              <img class='img-blog' src='{{this.ImageURL}}' alt='{{this._id}}' />
-            </a>
-          </div>
-          <div class="blog-desc">
-            {{this.description}}
-          </div>
-        </div>
-        <hr>
+
+    <div class="total-block">
+      <div class="background-image">
+
       </div>
-        {{/each}}
+      <div class="all-block">
+        <div class="blog-website">
+          {{#each blogs}}
+          <div class="content-blog">
+            <div class="blog-title">
+              <a href='/blog/{{this._id}}'>
+                <h4>{{this.title}}</h4>
+              </a>
+            </div>
+            <div class="blog-content-web">
+              <div class="div-img">
+                <a href='/blog/{{this._id}}'>
+                  <img class='img-blog' src='{{this.ImageURL}}' alt='{{this._id}}' />
+                </a>
+              </div>
+              <div class="blog-desc">
+                {{this.description}}
+              </div>
+            </div>
+            <hr>
+          </div>
+          {{/each}}
+        </div>
+      </div>
     </div>
-   </div>
     <style>
-      .all-blog{
-        text-align: center;
-        background-color: background-color: #2a2a72;
-        background-image: linear-gradient(315deg, #2a2a72 0%, #335b7300 74%); ;
+      .total-block {
+        width: 100%;
+        height: 900px;
+        position: relative;
       }
+
+      .background-image {
+        background-image: url('https://images.pexels.com/photos/5862307/pexels-photo-5862307.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940&fbclid=IwAR0BdN1enOxjn1MEvWhRuUWmsbfQTaxSau-3QJ53mJoxkL5Uy0oMp_SV04w');
+        left: 0;
+        right: 0;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+      }
+
+      .all-block {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        text-align: center;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        top: 0;
+        position: absolute;
+      }
+
       .blog-website {
         width: 100%;
         height: fit-content;
@@ -170,14 +202,32 @@
 
       .content-blog {
         width: 50%;
+        text-align: start;
+        color: white;
+        z-index: 10000;
+        ;
       }
-      .content-blog2{
-         width: 45%; float: right;
-    text-align: end;
+
+      .content-blog2 {
+        width: 45%;
+        float: right;
+        text-align: end;
 
       }
+
       .blog-title {
         width: 90%;
+        margin-left: 20px;
+      }
+
+      .blog-title a {
+        color: #ff6f6f;
+        text-decoration: none;
+      }
+
+      .blog-title a: :hover {
+        background-color: yellow;
+        text-decoration: none;
       }
 
       .blog-content-web {
@@ -192,7 +242,7 @@
       .blog-desc {
         width: 55%;
         margin-left: 15px;
-    text-align: justify;
+        text-align: justify;
       }
 
       img.img-blog {
