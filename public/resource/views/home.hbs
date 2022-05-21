@@ -164,18 +164,23 @@
       }
 
       .background-image {
-        background-image: url('https://images.pexels.com/photos/5862307/pexels-photo-5862307.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940&fbclid=IwAR0BdN1enOxjn1MEvWhRuUWmsbfQTaxSau-3QJ53mJoxkL5Uy0oMp_SV04w');
+        background-image: url('https://images.pexels.com/photos/48604/pexels-photo-48604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&fbclid=IwAR3GfLw7c39UIlXa8Tj3eoAbDK8I-SeLVpl7vO7fSaKQ-nDfHWucIIkuGzU');
         left: 0;
         right: 0;
         z-index: 1;
         display: block;
         width: 100%;
         height: 100%;
-        -webkit-filter: blur(5px);
-        -moz-filter: blur(5px);
-        -o-filter: blur(5px);
-        -ms-filter: blur(5px);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
         filter: blur(5px);
+        opacity: 0.5;
+        background: #000;
+      }
+
+      .background-image::before {
+        opacity: 0.5;
+    background: #000;
       }
 
       .all-block {
